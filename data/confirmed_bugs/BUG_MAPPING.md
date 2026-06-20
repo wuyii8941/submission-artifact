@@ -1,105 +1,109 @@
 # Bug Mapping: Issue → Reproducer Directory
 
-All 71 counted bugs mapped to their reproducer directories and paper tables.
+All 77 counted bugs from the paper, anonymized for double-blind
+review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 
-## PyTorch/Inductor (30 bugs, plus 1 TBD unfiled)
+## PyTorch/Inductor: 31 Counted Bugs
 
-| # | Issue | Directory | Category | Silent/Crash | Paper Table |
-|---|-------|-----------|----------|-------------|-------------|
-| 1 | [#179561](<upstream issue, anonymized>) | `pytorch/bug_004_bf16_cast_elided` | Fusion composition | Silent | Tab 4 row 1 |
-| 2 | [#179931](<upstream issue, anonymized>) | `pytorch/bug_006_adaptive_avgpool_flatten_sum` | Fusion composition | Silent | Tab 4 row 2 |
-| 3 | [#180164](<upstream issue, anonymized>) | `pytorch/bug_007_slice_scatter_backward` | Backward codegen | Silent | Tab 4 row 3 |
-| 4 | [#180221](<upstream issue, anonymized>) | `pytorch/bug_011_cumsum_splitscan_crash` | Split-scan boundary | Crash | Tab 4 row 4 |
-| 5 | [#180771](<upstream issue, anonymized>) | `pytorch/bug_013_slice_scatter_backward` | Backward codegen | Silent | Tab 4 row 5 |
-| 6 | [#180772](<upstream issue, anonymized>) | `pytorch/bug_013v_slice_scatter_backward_variant` | Backward codegen | Silent | Tab 4 row 6 |
-| 7 | [#181512](<upstream issue, anonymized>) | `pytorch/bug_020_inference_mode_batched_matmul` | Context/higher-order | Crash | Tab 4 row 7 |
-| 8 | [#181581](<upstream issue, anonymized>) | `pytorch/bug_019_create_graph_requires_grad_dropped` | Context/higher-order | Silent | Tab 4 row 8 |
-| 9 | [#181584](<upstream issue, anonymized>) | `pytorch/bug_015_associative_scan_dynamic` | Split-scan boundary | Crash | Tab 4 row 9 |
-| 10 | [#182012](<upstream issue, anonymized>) | `pytorch/bug_022_diagonal_scatter_backward` | Backward codegen | Silent | Tab 4 row 10 |
-| 11 | [#182217](<upstream issue, anonymized>) | `pytorch/bug_023_layer_norm_nestedtensor_guard_crash` | Context/higher-order | Crash | Tab 4 row 11 |
-| 12 | [#183017](<upstream issue, anonymized>) | `pytorch/bug_029_while_loop_backward_stride` | Backward codegen | Crash | Tab 4 row 12 |
-| 13 | [#183249](<upstream issue, anonymized>) | `pytorch/bug_032_frac_maxpool_random_compile` | Codegen/lowering | Silent | Tab 4 row 13 |
-| 14 | [#183250](<upstream issue, anonymized>) | `pytorch/bug_031_cumprod_splitdim_bwd_crash` | Split-scan boundary | Crash | Tab 4 row 14 |
-| 15 | [#183986](<upstream issue, anonymized>) | `pytorch/bug_033_index_family_expanded_wrong_result` | Scatter/indexing | Silent | Tab 4 row 15 |
-| 16 | [#183987](<upstream issue, anonymized>) | `pytorch/bug_034_addcmul_addcdiv_inplace_bwd_crash` | Backward codegen | Crash | Tab 4 row 16 |
-| 17 | [#183988](<upstream issue, anonymized>) | `pytorch/bug_036_randperm_index_pattern_crash` | Scatter/indexing | Crash | Tab 4 row 17 |
-| 18 | [#184081](<upstream issue, anonymized>) | `pytorch/bug_061_float8_cast_arch_crash` | Codegen/lowering | Crash | Tab 4 row 18 |
-| 19 | [#184089](<upstream issue, anonymized>) | `pytorch/bug_043_flip_0d_inductor_crash` | Codegen/lowering | Crash | Tab 4 row 19 |
-| 20 | [#184100](<upstream issue, anonymized>) | `pytorch/bug_044_complex_scalar_backward_crash` | Backward codegen | Crash | Tab 4 row 20 |
-| 21 | [#184101](<upstream issue, anonymized>) | `pytorch/bug_045_complex_abs_transpose_backward` | Backward codegen | Crash | Tab 4 row 21 |
-| 22 | [#182200](<upstream issue, anonymized>) | — | Backward codegen | Crash | Appendix (Backward) |
-| 23 | [#183015](<upstream issue, anonymized>) | — | Context/higher-order | Crash | Appendix (Context) |
-| 24 | [#184222](<upstream issue, anonymized>) | `pytorch/bug_051_scheduler_prologue_fusion_typo` | Context/higher-order | Silent | Tab 4 row 22 |
-| 25 | [#184088](<upstream issue, anonymized>) | `pytorch/bug_042_expand_backward_aot_crash` | Backward codegen | Crash | Tab 4 row 24 |
-| 26 | [#184408](<upstream issue, anonymized>) | `pytorch/bug_053_div_trunc_approximate_division` (graph_exp) | Codegen/lowering | Silent | Appendix (Codegen) |
-| 27 | [#184410](<upstream issue, anonymized>) | — | Codegen/lowering | Silent | Appendix (Codegen) |
-| 28 | [#184415](<upstream issue, anonymized>) | `pytorch/bug_055_foreach_sub_alpha_ignored` | Codegen/lowering | Silent | Tab 4 row 23 |
-| 29 | [#184416](<upstream issue, anonymized>) | `pytorch/bug_059_deterministic_extern_kernel` | Codegen/lowering | Silent | Tab 4 row 25 |
-| 30 | [#184992](<upstream issue, anonymized>) | `pytorch/bug_063_cat_axis_sink_crash` | Codegen/lowering | Crash | Tab 4 row 27 |
-| — | TBD | `pytorch/bug_062_var_norm_donated_buffer_create_graph` | Context/higher-order | Crash | — |
+| Issue | Internal ID | Root Cause | Status |
+|----|----|----|----|
+| #179561 (anonymized) | bug_004 | bf16 cast elided during fusion | Closed / Fixed |
+| #179931 (anonymized) | bug_006 | adaptive_avgpool fusion stride error | Open / assigned <maintainer> |
+| #180164 (anonymized) | bug_007 | slice_scatter backward gradient corruption | Closed / Fixed |
+| #180221 (anonymized) | bug_011 | cumsum SplitScan crash at dim=129 | Closed / Fixed |
+| #180771 (anonymized) | bug_013 | slice_scatter backward variant | Closed / Fixed |
+| #180772 (anonymized) | bug_013 variant | slice_scatter backward variant with a distinct trigger condition | Closed / linked variant |
+| #181512 (anonymized) | bug_020 | `torch.compile` crashes on batched matmul inside `torch.inference_mode()` | Open; developer (dsashidh) confirmed |
+| #181581 (anonymized) | bug_019 | AOTAutograd silently drops higher-order grad metadata from `autograd.grad(create_graph=True)` | Open; high priority; fix PR #181606 |
+| #181584 (anonymized) | bug_015 | `associative_scan` crashes with `dynamic=True` for ndim >= 2 (lifted arguments) | Closed / Fixed; event |
+| #182012 (anonymized) | bug_022 | `diagonal_scatter` backward silently zeroes `x.grad` — Inductor stride-0 clone | Open; contributor (irshadcc) confirmed; fix commit ready |
+| #182200 (anonymized) | — | Backward codegen crash (in paper appendix) | Confirmed |
+| #182217 (anonymized) | bug_023 | `torch.compile` crashes on `F.layer_norm(NestedTensor)` — guard builder IndexError | Open; developer confirmed |
+| #183015 (anonymized) | — | Context/higher-order crash (in paper appendix) | Confirmed |
+| #183017 (anonymized) | bug_030 | `torch.while_loop` backward crashes — Inductor stride mismatch `(0,0)` vs `(64,1)` | Open; triaged, reproduced on H100 |
+| #183250 (anonymized) | bug_031 | `torch.cumprod` backward crashes at scan dim >= 8193 — TritonSplitDimKernel unsupported reduction | Closed / Fixed |
+| #183986 (anonymized) | bug_033 | `index_add`/`index_copy`/`index_fill`/`index_put` on expanded tensors wrong result | Open; triaged, reproduced on H100, `has workaround` |
+| #183988 (anonymized) | bug_036 | `torch.compile` crashes on `x[torch.randperm(n)]` — pattern matcher missing `slice_shape` input | Open; triaged; developer confirmed |
+| #184222 (anonymized) | bug_051 | Copy-paste typo in scheduler prologue fusion guard: `node1` checked twice instead of `node1` and `node2` | Closed / Fixed; PR #184239 merged |
+| #183249 (anonymized) | bug_032 | `fractional_max_pool2d` produces wrong results when `_random_samples` not provided — compiled path generates different pooling indices | Open; triaged; developer confirmed |
+| #183987 (anonymized) | bug_034 | `addcmul_`/`addcdiv_` backward crashes — missing autograd formula for `prims.fma.default` | Closed; fix PR #184629; developer confirmed |
+| #184081 (anonymized) | bug_061 | `torch.compile` crashes on cast to `float8_e4m3fn` on GPUs without native FP8 support — Triton codegen emits unsupported type | Closed / Fixed |
+| #184089 (anonymized) | bug_043 | `torch.compile` crashes on `flip()` applied to 0-dimensional tensors — IndexError in lowering | Open; triaged; developer confirmed |
+| #184100 (anonymized) | bug_044 | `torch.compile` backward crashes when complex tensor multiplied by Python complex literal — `.get_name()` on raw complex | Open; triaged; developer confirmed |
+| #184101 (anonymized) | bug_045 | `torch.compile` backward crashes for `abs()`/`angle()` on transposed complex tensors — stride assertion failure | Open; triaged; developer confirmed |
+| #184415 (anonymized) | bug_055 | `torch._foreach_sub` silently ignores `alpha` parameter under `torch.compile` — missing `allow_alpha=True` in lowering | Closed / Fixed; commit 8fdef8b |
+| #184992 (anonymized) | bug_063 | `torch.compile` crashes when `torch.cat` uses `axis=` keyword — `sink_cat_after_pointwise` pass helper only accepts `dim` | Open; triaged; `module: inductor`, `module: numpy` |
+| #184088 (anonymized) | bug_042 | `torch.compile` crashes on `expand` backward with AOT autograd | Closed / Fixed; PR #184519 merged |
+| #184408 (anonymized) | bug_053 | `torch.div(rounding_mode='trunc')` produces off-by-one results under `torch.compile` — Triton approximate division instead of `_div_rn` | Open; high priority, triaged; fix PR #184680; developer confirmed |
+| #184410 (anonymized) | — | Codegen/lowering silent wrong result (in paper appendix) | Confirmed |
+| #184416 (anonymized) | bug_059 | `pick_deterministic_choice()` checks `ExternKernelChoice` instead of `ExternKernelCaller` — deterministic extern kernel preference is dead code | Closed; triaged as `module: determinism`, `module: inductor` |
+| #185472 (anonymized) | bug_064 | `F.hardtanh` compiled backward silently drops gradient at bf16 boundary values — decomposition compares in bf16 precision while eager kernel uses float scalar | Closed / Fixed |
 
-**Silent: 14, Crash: 16, Total: 30** (excluding TBD unfiled)
+## TensorFlow/XLA: 29 Counted Bugs
 
-## TensorFlow (24 bugs)
+| Issue | Root Cause | Status |
+|----|----|----|
+| #116436 (anonymized) | Grappler incorrectly strips non-strictly-monotonic ops from ArgMin/ArgMax | `type:bug`, `awaiting PR merge`; fix PR #116709 |
+| #116943 (anonymized) | Eigen SELU/ELU eager kernels catastrophic cancellation for small negative fp32 | `type:bug`, `awaiting PR merge`; fix PR #116947 |
+| #116945 (anonymized) | Eager `tf.math.sign` returns 0 for small nonzero complex numbers | `type:bug`, assigned |
+| #116992 (anonymized) | CPU XLA silently drops NaN in `reduce_max`/`reduce_min`/`maximum`/`minimum` | `type:bug`, `awaiting PR merge`; fix PR #117046 |
+| #117319 (anonymized) | `tf.debugging.check_numerics` silently passes NaN/Inf under XLA `jit_compile=True` | `type:bug`, assigned |
+| #117546 (anonymized) | `tf.math.cumsum`/`tf.math.cumprod` crash with `jit_compile=True` on complex dtypes | `type:bug`, assigned |
+| #117547 (anonymized) | `tf.argmin`/`tf.argmax` crash XLA on empty-dimension tensor dead code | `type:bug`, `comp:xla`, assigned <maintainer> |
+| #117802 (anonymized) | Eager `tf.pow(0+0j, 0+0j)` returns NaN+NaNj via `exp(b*log(a))`; NumPy/XLA return 1+0j | `type:bug`, confirmed/reproduced by maintainer |
+| #117803 (anonymized) | `tf.image.resize` bilinear under XLA over-propagates NaN to entire channel | `type:bug`, confirmed/reproduced by maintainer |
+| #117804 (anonymized) | `tf.searchsorted(side='right')` returns wrong position for NaN under XLA | `type:bug`, `comp:xla`; fix PR #117850 in progress |
+| #117807 (anonymized) | `tf.linalg.eigvalsh` returns wrong eigenvalues under XLA for large-magnitude matrices | `type:bug`, confirmed/reproduced by maintainer |
+| #117862 (anonymized) | `segment_min`/`segment_max` CPU kernel NaN-position-dependent results | `type:bug`, assigned <maintainer> `stat:contribution welcome` |
+| #117864 (anonymized) | `tf.linalg.eigvalsh`/`eigh` returns wrong results for complex input under XLA — real eigenvalue buffer reinterpreted as complex | `type:bug`, `comp:xla`; community reproduced |
+| #117962 (anonymized) | `fake_quant_with_min_max_vars` XLA rounding divergence (half-to-even vs half-away-from-zero) | `type:bug`, `comp:xla`, assigned <maintainer> |
+| #118642 (anonymized) | XLA `floordiv(x,y)*y + floormod(x,y)` violates division identity for float32 at large magnitudes | `type:bug`, assigned <maintainer> |
+| #118643 (anonymized) | `tf.math.atan2` returns NaN on CPU for subnormal float32 inputs — intermediate underflow | `type:bug`, assigned <maintainer> |
+| #118644 (anonymized) | `tf.math.rsqrt` returns inf for subnormal float32 inputs on CPU and GPU | `type:bug`, `comp:ops`, assigned <maintainer> |
+| #118645 (anonymized) | GPU `x * reciprocal(x)` returns 0 for normal float32 `x=1e38` — GPU FTZ flushes subnormal intermediate | `type:bug`, `comp:ops`, assigned <maintainer> |
+| #118647 (anonymized) | XLA `argmax`/`argmin` returns wrong index when NaN present for non-power-of-2 sizes | `type:bug`, `comp:xla`, assigned <maintainer> |
+| #118673 (anonymized) | XLA gradient of `reduce_max`/`reduce_min` silently returns 0 instead of NaN for NaN input | `2.21.0`, assigned <maintainer> |
+| #118674 (anonymized) | XLA gradient of `tf.where` evaluates dead branch, leaking NaN/inf via `NaN*0=NaN` | `type:bug`, `comp:xla`, assigned <maintainer> |
+| #118675 (anonymized) | Grappler strips strictly-monotonic ops (tanh, exp, sigmoid) from ArgMax/ArgMin — float32 saturation breaks injectivity | `type:bug`, `comp:ops`, assigned <maintainer> |
+| #118701 (anonymized) | XLA `FusedBatchNormV3` one-pass variance formula produces negative variance and NaN output | `type:bug`, `comp:xla`, assigned <maintainer> |
+| #119476 (anonymized) | `tf.math.xlogy` and `tf.math.xlog1py` gradient w.r.t. x incorrectly zero when x=0 — zero-mask from forward applied to backward | `type:bug`, `comp:ops`, assigned <maintainer> |
+| #41167 (anonymized) | `erf` scalar-vs-vector lowering divergence | **Merged** |
+| #119428 (anonymized) | Grappler constant folding suppresses NaN for `x * 0` with Inf/NaN inputs | `type:bug`, assigned |
+| #119429 (anonymized) | Grappler ArithmeticOptimizer treats `reciprocal(reciprocal(x))` as an exact involution | `type:bug`, assigned |
+| #119477 (anonymized) | `tf.linalg.det` gradient crashes on singular matrices — backward calls `matrix_inverse` on non-invertible input | `type:bug`, assigned <maintainer> |
+| #119430 (anonymized) | `tf.math.cumprod` gradient incorrect when input contains zeros — `cumprod/x[i]` produces silent `0/0` | `type:bug`, assigned <maintainer> fix PR #120282 |
 
-| # | Issue | Directory | Status |
-|---|-------|-----------|--------|
-| 1 | [#116436](<upstream issue, anonymized>) | `tensorflow/tf_grappler_argmin_monotonic` | Awaiting PR merge |
-| 2 | [#116943](<upstream issue, anonymized>) | `tensorflow/tf_selu_elu_expm1` | Awaiting PR merge |
-| 3 | [#116945](<upstream issue, anonymized>) | `tensorflow/tf_complex_sign_eager` | Assigned |
-| 4 | [#116992](<upstream issue, anonymized>) | `tensorflow/tf_xla_cpu_nan_minmax` | Awaiting PR merge |
-| 5 | [#117319](<upstream issue, anonymized>) | `tensorflow/tf_check_numerics_xla_silent` | Assigned |
-| 6 | [#117546](<upstream issue, anonymized>) | `tensorflow/tf_xla_cumsum_cumprod_complex_crash` | Assigned |
-| 7 | [#117547](<upstream issue, anonymized>) | `tensorflow/tf_xla_argmin_dead_code_crash` | Assigned |
-| 8 | [#117802](<upstream issue, anonymized>) | `tensorflow/tf_complex_pow_zero` | Confirmed |
-| 9 | [#117803](<upstream issue, anonymized>) | `tensorflow/tf_resize_bilinear_nan_xla` | Confirmed |
-| 10 | [#117804](<upstream issue, anonymized>) | `tensorflow/tf_searchsorted_nan_xla` | Fix PR in progress |
-| 11 | [#117807](<upstream issue, anonymized>) | `tensorflow/tf_eigvalsh_large_xla` | Confirmed |
-| 12 | [#117862](<upstream issue, anonymized>) | `tensorflow/tf_segment_min_max_nan_position` | Assigned |
-| 13 | [#117864](<upstream issue, anonymized>) | `tensorflow/tf_eigvalsh_complex_xla` | Community reproduced |
-| 14 | [#117962](<upstream issue, anonymized>) | `tensorflow/tf_fake_quant_nudge_rounding` | Assigned |
-| 15 | [#118642](<upstream issue, anonymized>) | `tensorflow/tf_xla_floordiv_floormod_identity` | Assigned |
-| 16 | [#118643](<upstream issue, anonymized>) | `tensorflow/tf_atan2_subnormal_nan` | Assigned |
-| 17 | [#118644](<upstream issue, anonymized>) | `tensorflow/tf_rsqrt_subnormal_inf` | Assigned |
-| 18 | [#118645](<upstream issue, anonymized>) | `tensorflow/tf_gpu_reciprocal_ftz` | Assigned |
-| 19 | [#118647](<upstream issue, anonymized>) | `tensorflow/tf_xla_argmax_nan_nonpow2` | Assigned |
-| 20 | [#118673](<upstream issue, anonymized>) | `tensorflow/tf_xla_reduce_max_grad_nan` | Assigned |
-| 21 | [#118674](<upstream issue, anonymized>) | `tensorflow/tf_xla_where_gradient_dead_branch` | Assigned |
-| 22 | [#118675](<upstream issue, anonymized>) | `tensorflow/tf_grappler_monotonic_saturation` | Assigned |
-| 23 | [#118701](<upstream issue, anonymized>) | `tensorflow/tf_xla_fused_batchnorm_negative_variance` | Assigned |
-| 24 | [#119476](<upstream issue, anonymized>) | `tensorflow/tf_xlogy_xlog1py_gradient_zero` (tf_cross) | `type:bug`, `comp:ops`, assigned @Venkat6871 |
+## IREE: 6 Counted Bugs
 
-**6 TF issues need local reproducers**: #117802, #117804, #117807, #117862, #117864, #117962.
-All 6 have reproducers in the GitHub issues themselves; local scripts need to be extracted.
+| Issue | Root Cause | Status |
+|----|----|----|
+| #24180 (anonymized) | `DemoteF64ToF32Pass` f64/f32 buffer-size mismatch → silent f64 output corruption | Open; labeled `bug`; developer confirmed |
+| #24181 (anonymized) | ReduceProd keepdims=0 shape/lowering crash | Closed / Fixed (torch-mlir PR #4540) |
+| #24228 (anonymized) | SoftmaxCrossEntropyLoss with weights divides by N instead of weight sum | Open; labeled `bug`; developer confirmed (hanhanW provided fix patch) |
+| #24229 (anonymized) | ReverseSequence wrong results when batch_axis=1, time_axis=0 | Closed / Fixed by hanhanW |
+| #24230 (anonymized) | Unique op torch lowering causes compiler SEGFAULT | Open; labeled `bug`; developer confirmed (hanhanW provided fix patch) |
+| #24265 (anonymized) | ReduceMax/ReduceMin multi-axis + negative index SEGFAULT | Open; labeled `bug`; developer confirmed |
 
-## XLA (1 bug)
+## TVM: 11 Counted Bugs
 
-| Issue | Directory | Status |
-|-------|-----------|--------|
-| [openxla/xla#41167](<upstream PR, anonymized>) | `xla/tf_fuzz_real_seed71684` | Merged |
+| Issue | Root Cause | Status |
+|----|----|----|
+| #19419 (anonymized) | DLight GEMV schedule rule crashes with KeyError on auto-detected CUDA | Closed; developer confirmed |
+| #19420 (anonymized) | ONNX Softmax/LogSoftmax/Hardmax frontend ignores opset <13 semantics | Closed / Fixed |
+| #19435 (anonymized) | ONNX ScatterElements ignores `reduction` attribute, silently produces wrong results | Closed / Fixed; resolved by PR #19527 |
+| #19436 (anonymized) | ONNX Gather with negative indices reads out-of-bounds memory (garbage values) | Closed / Fixed; resolved by PR #19525 |
+| #19437 (anonymized) | CumSum ignores axis parameter, always reduces along axis 0 | Closed; developer confirmed |
+| #19451 (anonymized) | scatter_elements / scatter_nd fail to compile for CUDA target | Open; developer confirmed |
+| #19452 (anonymized) | `R.isnan`, `R.isinf`, `R.isfinite` crash at build time | Closed; developer confirmed |
+| #19571 (anonymized) | ONNX TopK operator crashes during `from_onnx()` — K tensor scalar extraction failure | Closed / Fixed; PR #19573 |
+| #19575 (anonymized) | `ReorderPermuteDimsAfterConcat` pass crashes with negative concat axis — missing index normalization | Closed / Fixed; PR #19588 |
+| #19577 (anonymized) | `DataflowUseInplaceCalls` corrupts concat input via incorrect liveness analysis — in-place buffer reuse on still-live value | Closed / Fixed; PR #19644 |
+| #19579 (anonymized) | `maximum`/`minimum`/`relu`/`clip` do not propagate NaN (IEEE 754 violation) — LLVM `maxss`/`maxps` semantics | Open; PR #19589 |
 
-## IREE (6 bugs)
+---
 
-| # | Issue | Directory |
-|---|-------|-----------|
-| 1 | [#24180](<upstream issue, anonymized>) | `iree/bug_006_f64_demote_buffer_mismatch` |
-| 2 | [#24181](<upstream issue, anonymized>) | `iree/bug_002_reduceprod_keepdims0` |
-| 3 | [#24228](<upstream issue, anonymized>) | `iree/iree_bug_004_sceloss_weight_mean` |
-| 4 | [#24229](<upstream issue, anonymized>) | `iree/bug_005_reverse_sequence` |
-| 5 | [#24230](<upstream issue, anonymized>) | `iree/iree_bug_006_unique_segfault` |
-| 6 | [#24265](<upstream issue, anonymized>) | `iree/iree_bug_009_reduce_segfault` |
+**Total: 77 counted bugs** (matches paper Table 1).
 
-## TVM (10 bugs)
-
-| # | Issue | Directory |
-|---|-------|-----------|
-| 1 | [#19419](<upstream issue, anonymized>) | `tvm/bug_001_gemv_keyerror` |
-| 2 | [#19420](<upstream issue, anonymized>) | `tvm/bug_004_softmax_opset11` |
-| 3 | [#19435](<upstream issue, anonymized>) | `tvm/bug_005_scatter_reduction` |
-| 4 | [#19436](<upstream issue, anonymized>) | `tvm/bug_010_gather_negative_idx` |
-| 5 | [#19437](<upstream issue, anonymized>) | `tvm/bug_011_cumsum_axis` |
-| 6 | [#19451](<upstream issue, anonymized>) | `tvm/bug_018_scatter_elements_cuda` |
-| 7 | [#19452](<upstream issue, anonymized>) | `tvm/bug_020_isnan_isinf_not_implemented` |
-| 8 | [#19571](<upstream issue, anonymized>) | `tvm/bug_029_topk_crash` |
-| 9 | [#19575](<upstream issue, anonymized>) | `tvm/bug_032_reorder_permute_concat_neg_axis` |
-| 10 | [#19579](<upstream issue, anonymized>) | `tvm/bug_036_nan_propagation` |
+Note: 6 additional bugs were discovered after the paper freeze
+(post-submission). They are tracked separately in upstream trackers
+and are **not** included in the paper's 77-bug count.
