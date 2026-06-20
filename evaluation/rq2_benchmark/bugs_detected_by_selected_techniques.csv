@@ -1,0 +1,27 @@
+Title,Issue Link,Bug Type,Detected by Techniques
+[cpu inductor] where is silently incorrect when SIMD code is generated.,https://github.com/pytorch/pytorch/issues/100800,Low-level Code Generation Bug,"DeepConstr, NeuRI"
+torch.dist is more numerical unstable on scalar input after torch.compile,https://github.com/pytorch/pytorch/issues/143960,Low-level Code Generation Bug,Opera
+[inductor] [cpu] `nn.Tanhshrink-atan2` output inconsistent results with eager,https://github.com/pytorch/pytorch/issues/148241,Low-level Code Generation Bug,"DeepConstr, NeuRI, WhiteFox"
+[Inductor][GPU] Input is padded with incorrect value when executing `torch.nn.functional.pad` on gpu,https://github.com/pytorch/pytorch/issues/144462,Low-level Code Generation Bug,"NNSmith, NeuRI, WhiteFox"
+[inductor] [cpu] [silent] `avg_pool2d` incorrectly process int64,https://github.com/pytorch/pytorch/issues/143738,Operator Transformation Bug,Opera
+torch.special.polygamma outputs incorrect when using torch.compile,https://github.com/pytorch/pytorch/issues/143648,Low-level Code Generation Bug,NeuRI
+[Inductor] [CPU] [silent] `bitwise_right_shift` outputs wrong results when `other==64`,https://github.com/pytorch/pytorch/issues/143555,Low-level Code Generation Bug,NeuRI
+"[Inductor] [CPU] `config.fallback_random = True` has a negative effect for `nn.Dropout1d`, `nn.Dropout2d`, and `nn.Dropout3d` on CPU",https://github.com/pytorch/pytorch/issues/142853,Operator Transformation Bug,"Opera, WhiteFox"
+[torch.addmm] [torch.cat] Abnormal random output when using torch.compile(),https://github.com/pytorch/pytorch/issues/137254,Operator Transformation Bug,WhiteFox
+Incorrect output from inductor: tile -> as_strided -> add,https://github.com/pytorch/pytorch/issues/127474,In-Place Operation Handling Bug,NeuRI
+[torch.compile] the sum of `softmax` isn't `1` on cuda,https://github.com/pytorch/pytorch/issues/101039,Operator Transformation Bug,Opera
+[torch.compile] `fuse_attention` returns inconsistent value for the model,https://github.com/pytorch/pytorch/issues/121174,Memory Layout Conflict,WhiteFox
+different outputs of torch.diag_embed between torch.compile mode and eagermode,https://github.com/pytorch/pytorch/issues/117019,Operator Transformation Bug,DeepConstr
+[Inductor][cpu][miscompile] Outputs of torch.tan abnormally change when adding an intermediate result as output,https://github.com/pytorch/pytorch/issues/115260,Precision Bug,NeuRI
+Inconsistency error with `torch.sinh` and `torch.relu` in PyTorch Model,https://github.com/pytorch/pytorch/issues/117544,Low-level Code Generation Bug,WhiteFox
+[torch.compile] returns NaN for `tensor.mul(big_number).softmax()`,https://github.com/pytorch/pytorch/issues/100775,Configuration Bug,"DeepConstr, NNSmith, NeuRI, WhiteFox"
+Output mismatch of torch.sum with torch.compile when swapping the input parameters of torch.mul on CPU,https://github.com/pytorch/pytorch/issues/113141,Low-level Code Generation Bug,NeuRI
+Inconsitent results before/after compilation for squeeze + tensor mutation + if statement,https://github.com/pytorch/pytorch/issues/97083,In-Place Operation Handling Bug,NNSmith
+Discrepancy Between Eager Mode and Optimized Mode Results for hinge_embedding_loss,https://github.com/pytorch/pytorch/issues/113012,Configuration Bug,"DeepConstr, NNSmith, NeuRI, WhiteFox"
+Inconsistent output of torch.nn.Conv2d with torch.compile over multiple runs,https://github.com/pytorch/pytorch/issues/113018,Memory Layout Conflict,WhiteFox
+Different behaviors on`torch.var_mean` with torch.compile(default mode),https://github.com/pytorch/pytorch/issues/113167,Operator Transformation Bug,DeepConstr
+[torch.compile] returns different value/type tensor with naive execution,https://github.com/pytorch/pytorch/issues/109925,Operator Transformation Bug,WhiteFox
+AOTautograd returns wrong result for in_place update on input which is view tensor ,https://github.com/pytorch/pytorch/issues/93363,In-Place Operation Handling Bug,NeuRI
+[torch.compile] returns inconsistent value `AvgPool` when `ceil_mode = True`,https://github.com/pytorch/pytorch/issues/100987,Operator Transformation Bug,WhiteFox
+Inconsistent behaviours when padding size is zero,https://github.com/pytorch/pytorch/issues/97117,In-Place Operation Handling Bug,NeuRI
+[torch.compile] WRONG VALUE for `split+cat`,https://github.com/pytorch/pytorch/issues/99686,Operator Transformation Bug,WhiteFox

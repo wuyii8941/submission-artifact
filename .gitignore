@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv*/
+venv/
+
+# Editor/OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Generated artifacts (do not commit local experiment outputs)
+results_*/
+triggers/
+*.log
+*.err
+.cache/
+cache/
+
+# Caches and tmp
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment overrides
+.env
+*.local

@@ -1,0 +1,49 @@
+issue_id,title,bug_type,device,source,test_file,verified_on_220
+93262,interpolate bilinear wrong result,Operator Transformation,CUDA,Demystifying,verify_bugs_v2.py,BUG
+97083,squeeze+mutation+if wrong result,In-Place Operation Handling,CPU,Demystifying,verify_bugs_v2.py,BUG
+99686,split+cat wrong reorder,Operator Transformation,CPU,Demystifying,verify_bugs_v2.py,BUG
+100775,mul(big).softmax NaN,Operator Transformation,CPU,Demystifying,verify_bugs_v2.py,BUG
+101039,softmax sum!=1 on CUDA,Operator Transformation,CUDA,Demystifying,verify_bugs_v2.py,BUG
+105929,TorchDispatchMode silently ignored,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_extra3.py,BUG
+111133,index_add_ stride mismatch,Memory Layout Conflict,CPU,Demystifying,verify_bugs_v2.py,BUG
+111884,custom FFT wrong under compile,Operator Transformation,CPU,Demystifying,verify_bugs_v2.py,BUG
+112710,argmin+argsort max-autotune wrong,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra2.py,BUG
+114215,mul args swap produces wrong result,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra2.py,BUG
+114221,extra cat output corrupts lt,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+114222,lt result changes with output order,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+114223,mean result changes with output order,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+114226,interpolate changes with output order,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+114229,extra output corrupts argmax,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+114302,expand+mutation wrong result,In-Place Operation Handling,CPU,Demystifying,verify_bugs_v2.py,BUG
+114464,clone+reshape silently ignored,In-Place Operation Handling,CPU,Demystifying,verify_bugs_v2.py,BUG
+115071,add input mutation complex64,In-Place Operation Handling,CPU,Demystifying,verify_bugs_v2.py,BUG
+115159,extra transpose corrupts sin,Low-level Code Generation,CPU,GitHub Search,verify_bugs_extra.py,BUG
+115679,Rprop optimizer step not incremented,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_v2.py,BUG
+116935,Transformer AOT accuracy fail,Memory Layout Conflict,CUDA,Demystifying,verify_bugs_v2.py,BUG
+117019,diag_embed non-default dims wrong,Operator Transformation,CPU,Demystifying,verify_bugs_v2.py,BUG
+117778,roll+fill_ wrong outputs,Low-level Code Generation,CUDA,Demystifying,verify_bugs_v2.py,BUG
+118265,bitwise_right_shift out= wrong,Low-level Code Generation,CPU,Demystifying,verify_bugs_v2.py,BUG
+118266,log1p+argmax out= wrong,Low-level Code Generation,CPU,Demystifying,verify_bugs_v2.py,BUG
+121174,fuse_attention inconsistent,Memory Layout Conflict,CPU,Demystifying,verify_bugs_v2.py,BUG
+122260,fma precision loss,Operator Transformation,CUDA,Demystifying,verify_bugs_v2.py,BUG
+122379,split_cat wrong output shape,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_v2.py,BUG
+124357,mutable attr captured as constant,Graph Caching,CPU,GitHub Search,verify_bugs_extra.py,BUG
+125999,copy_() inside compile no-ops,In-Place Operation Handling,CUDA,GitHub Search,verify_bugs_extra.py,BUG
+127474,tile+as_strided+add wrong,In-Place Operation Handling,CUDA,Demystifying,verify_bugs_v2.py,BUG
+127749,gumbel_softmax NaN,Low-level Code Generation,CUDA,Demystifying,verify_bugs_v2.py,BUG
+128035,detach+inplace zeros gradient,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_v2.py,BUG
+130290,capture_dynamic_output_shape_ops wrong,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_extra3.py,BUG
+130750,dynamo map returns tuple not iterator,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_extra3.py,BUG
+135432,torch.Tensor() stale cached values,Graph Caching,CPU,Demystifying,verify_bugs_extra3.py,BUG
+135441,Tensor._version not incremented,In-Place Operation Handling,CPU,Demystifying,verify_bugs_extra3.py,BUG
+135873,bucketize non-contiguous strided wrong,Low-level Code Generation,CUDA,Demystifying,verify_bugs_extra3.py,BUG
+137254,addmm+cat produces random garbage,Operator Transformation,CUDA,Demystifying,verify_bugs_extra3.py,BUG
+138908,scatter-add 4x vs 2x,In-Place Operation Handling,CPU,Demystifying,verify_bugs_v2.py,BUG
+143431,aot_eager changes CPU RNG behavior,Graph Semantic Capturing,CPU,Demystifying,verify_bugs_extra3.py,BUG
+143555,bitwise_right_shift ==64 wrong,Low-level Code Generation,CPU,Demystifying,verify_bugs_v2.py,BUG
+145379,torch.logit wrong when input < eps,Low-level Code Generation,CPU,Demystifying,verify_bugs_extra3.py,BUG
+148241,Tanhshrink-atan2 pi error,Low-level Code Generation,CPU,Demystifying,verify_bugs_extra3.py,BUG
+88813,inductor merges two output tensors,Low-level Code Generation,CUDA,GitHub Search,verify_bugs_extra4.py,BUG
+94693,trailing copy_() wrong result,In-Place Operation Handling,CPU,GitHub Search,verify_bugs_extra4.py,BUG
+115260,tan output order corruption,Low-level Code Generation,CPU,Demystifying,verify_bugs_extra4.py,BUG
+115774,mutable attr captured as stale,Graph Caching,CPU,GitHub Search,verify_bugs_extra4.py,BUG

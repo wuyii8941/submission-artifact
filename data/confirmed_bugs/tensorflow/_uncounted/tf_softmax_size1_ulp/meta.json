@@ -1,0 +1,85 @@
+{
+  "seed": 58944,
+  "shapes": [
+    [
+      129,
+      64
+    ]
+  ],
+  "dtype": "tf.float32",
+  "op_fingerprint": [
+    "idx_roll",
+    "idx_slice_half",
+    "idx_sort",
+    "k3_ceil",
+    "k3_elu",
+    "k3_floor",
+    "k3_layernorm",
+    "k3_log1p",
+    "k3_log_softmax",
+    "k3_max_last",
+    "k3_min",
+    "k3_power",
+    "k3_prod_last",
+    "k3_rmsnorm",
+    "k3_sigmoid",
+    "k3_softmax",
+    "m_sin",
+    "nn_softplus"
+  ],
+  "composition_preset": null,
+  "severity": "CATASTROPHIC",
+  "oracle_results": [
+    {
+      "oracle": "eager_vs_tfn",
+      "label": "seed=58944",
+      "diff": 0.0,
+      "tol": 0.01291,
+      "status": "OK"
+    },
+    {
+      "oracle": "tfn_vs_xla",
+      "label": "seed=58944",
+      "diff": 0.0,
+      "tol": 1.291,
+      "status": "OK"
+    },
+    {
+      "oracle": "grad_eager_vs_tfn",
+      "label": "seed=58944",
+      "status": "ALL_NONFINITE",
+      "diff": 0.0
+    },
+    {
+      "oracle": "cpu_vs_gpu",
+      "label": "seed=58944",
+      "diff": 128.0,
+      "tol": 0.011,
+      "status": "DIFF"
+    }
+  ],
+  "verify": {
+    "verified": true,
+    "oracles": [
+      [
+        "grad_tfn_CRASH",
+        "'NoneType' object has no attribute 'numpy'"
+      ],
+      [
+        "cpu_vs_gpu",
+        128.0
+      ]
+    ],
+    "raw": {
+      "eager_ok": true,
+      "eager_tfn_diff": 0.0,
+      "tfn_xla_diff": 0.0,
+      "grad_diff": -1.0,
+      "cpu_gpu_diff": 128.0,
+      "tfn_crash": null,
+      "xla_crash": null,
+      "grad_tfn_crash": "'NoneType' object has no attribute 'numpy'"
+    }
+  },
+  "hlo_info": {}
+}
