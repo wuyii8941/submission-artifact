@@ -1,7 +1,8 @@
 # Bug Mapping: Issue → Reproducer Directory
 
-All 77 counted bugs from the paper, anonymized for double-blind
-review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
+All 86 bugs counted in the paper, anonymized for double-blind review.
+Includes 9 bugs filed/confirmed post-2026-06-04 (already counted in the 86 total).
+See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 
 ## PyTorch/Inductor: 31 Counted Bugs
 
@@ -39,7 +40,7 @@ review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 | #184416 (anonymized) | bug_059 | `pick_deterministic_choice()` checks `ExternKernelChoice` instead of `ExternKernelCaller` — deterministic extern kernel preference is dead code | Closed; triaged as `module: determinism`, `module: inductor` |
 | #185472 (anonymized) | bug_064 | `F.hardtanh` compiled backward silently drops gradient at bf16 boundary values — decomposition compares in bf16 precision while eager kernel uses float scalar | Closed / Fixed |
 
-## TensorFlow/XLA: 29 Counted Bugs
+## TensorFlow/XLA: 31 Counted Bugs
 
 | Issue | Root Cause | Status |
 |----|----|----|
@@ -72,8 +73,10 @@ review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 | #119429 (anonymized) | Grappler ArithmeticOptimizer treats `reciprocal(reciprocal(x))` as an exact involution | `type:bug`, assigned |
 | #119477 (anonymized) | `tf.linalg.det` gradient crashes on singular matrices — backward calls `matrix_inverse` on non-invertible input | `type:bug`, assigned <maintainer> |
 | #119430 (anonymized) | `tf.math.cumprod` gradient incorrect when input contains zeros — `cumprod/x[i]` produces silent `0/0` | `type:bug`, assigned <maintainer> fix PR #120282 |
+| #120578 (anonymized) | `tf.math.bessel_i1` gradient at x=0 returns 1.0 instead of correct 0.5 — removable singularity I₁(x)/x mishandled in gradient computation; companion `bessel_j1` is correct | `type:bug`, `comp:core`, `2.21.0`; fix PR #120944 awaiting merge |
+| #121629 (anonymized) | `tf.math.erfinv` eager fp32 kernel (Eigen, `cwise_op_erfinv.cc`) loses ~4 digits of precision near `x = ±1` while XLA `jit_compile=True` matches fp64 to ~2e-7 — eager kernel never updated to match modernized XLA `math.cc::Erfinv` | `type:bug`, assigned <maintainer>; fix PR #121644; developer confirmed |
 
-## IREE: 6 Counted Bugs
+## IREE: 7 Counted Bugs
 
 | Issue | Root Cause | Status |
 |----|----|----|
@@ -83,8 +86,9 @@ review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 | #24229 (anonymized) | ReverseSequence wrong results when batch_axis=1, time_axis=0 | Closed / Fixed by hanhanW |
 | #24230 (anonymized) | Unique op torch lowering causes compiler SEGFAULT | Open; labeled `bug`; developer confirmed (hanhanW provided fix patch) |
 | #24265 (anonymized) | ReduceMax/ReduceMin multi-axis + negative index SEGFAULT | Open; labeled `bug`; developer confirmed |
+| #24585 (anonymized) | ONNX `Pad` with `mode="wrap"` causes IREE compiler to hang in an infinite loop; other padding modes (constant/reflect/edge) compile successfully — triggered by PyTorch circular padding exported as ONNX `Pad(mode='wrap')` | Open; labeled `bug 🐞 Something isn't working` |
 
-## TVM: 11 Counted Bugs
+## TVM: 17 Counted Bugs
 
 | Issue | Root Cause | Status |
 |----|----|----|
@@ -99,11 +103,27 @@ review. See `data/confirmed_bugs/<stack>/` for minimal reproducers.
 | #19575 (anonymized) | `ReorderPermuteDimsAfterConcat` pass crashes with negative concat axis — missing index normalization | Closed / Fixed; PR #19588 |
 | #19577 (anonymized) | `DataflowUseInplaceCalls` corrupts concat input via incorrect liveness analysis — in-place buffer reuse on still-live value | Closed / Fixed; PR #19644 |
 | #19579 (anonymized) | `maximum`/`minimum`/`relu`/`clip` do not propagate NaN (IEEE 754 violation) — LLVM `maxss`/`maxps` semantics | Open; PR #19589 |
+| #19572 (anonymized) | Relax/ONNX `Relu`, `Sign` convert NaN to 0 instead of preserving it; `ReduceMax`/`ReduceMin` exhibit position-dependent NaN behavior — improper `fmax`/`fmin` semantics + comparison chains failing to propagate NaN | Closed / Fixed; commit b44988b (tlopex, 2026-06-15); `type: bug` |
+| #19574 (anonymized) | `LegalizeOps` lowering of `relax.nn.batch_norm` recomputes mean/variance from input data instead of using supplied `running_mean`/`running_var`, producing training-mode behavior under inference — repro shows max error ~60 vs ground truth | Closed / Fixed; PR #19818; `type: bug` |
+| #19688 (anonymized) | Relax/ONNX `GridSample._impl_v16` unconditionally permutes grid from `[N,H,W,2]` to `[N,2,H,W]` and dispatches to 2D `image.grid_sample`, crashing on 5D volumetric inputs (`PermuteDims` expects 4 axes but tensor ndim=5) | Closed / Fixed; PR #19816; `type: bug`; developer confirmed |
+| #19691 (anonymized) | Relax/ONNX `LayerNormalization` without optional bias synthesizes a zero bias of shape `data.shape[1]` instead of `gamma_shape`, causing dimension mismatch in `relax.nn.layer_norm` (breaks PyTorch transformers exported with `LayerNorm(bias=False)`) | Closed / Fixed; PR #19772; `type: bug` |
+| #19692 (anonymized) | Relax/ONNX `CumSum` with `exclusive=1` hits a bare `AssertionError` in `CumSum._impl_v14` — `topi.cumsum`/`relax.op.cumsum` only implement the inclusive variant | Closed / Fixed; PR #19773; `type: bug` |
+| #19696 (anonymized) | `relax.op.nn.attention` fails to legalize when batch dim is a symbolic `tir.Var` — `_te_attention` builds two `Mul(B, num_head)` exprs, and `topi.nn.batch_matmul` compares them with Python `==` which returns a deferred `PrimExpr` instead of `True`, tripping the batch-dim assertion | Closed / Fixed; PR #19779; `type: bug` |
+
+## Post-2026-06-04 Bugs (Already Counted in 86)
+
+9 bugs were filed/confirmed after the 2026-06-04 freeze and are **included** in the 86 total above (anonymized):
+
+- **TF/XLA (2):** #120578 (bessel_i1 grad), #121629 (erfinv eager precision)
+- **IREE (1):** #24585 (ONNX Pad mode=wrap hang)
+- **TVM (6):** #19572 (NaN propagation), #19574 (batch_norm legalize), #19688 (GridSample 5D), #19691 (LayerNorm bias), #19692 (CumSum exclusive), #19696 (attention symbolic batch)
+
+All satisfy the same counting policy (upstream issue submitted + developer-confirmed via comment / PR / label).
 
 ---
 
-**Total: 77 counted bugs** (matches paper Table 1).
-
-Note: 6 additional bugs were discovered after the paper freeze
-(post-submission). They are tracked separately in upstream trackers
-and are **not** included in the paper's 77-bug count.
+**Total counted: 86** (matches paper Table 1)
+- PyTorch/Inductor: 31 (Silent 15, Crash 16; 20 fixed / 11 open)
+- TensorFlow/XLA: 31 (Silent 28, Crash 3; 5 fixed / 26 open)
+- IREE: 7 (Silent 3, Crash 4; 2 fixed / 5 open)
+- TVM: 17 (Silent 8, Crash 9; 16 fixed / 1 open)

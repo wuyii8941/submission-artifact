@@ -16,7 +16,7 @@ evaluation/         Scripts for the experiments reported in the paper
   nnsmith_baseline/     Replay scripts for the NNSmith baseline
   ...                   See INSTALL.md and REPRODUCE.md
 data/
-  confirmed_bugs/   Minimized reproducers for the 77 confirmed bugs reported
+  confirmed_bugs/   Minimized reproducers for the 86 confirmed bugs reported
                     in the paper, grouped by stack (pytorch, tensorflow,
                     xla, iree, tvm). Upstream issue links are anonymized
                     for double-blind review.
