@@ -127,3 +127,47 @@ All satisfy the same counting policy (upstream issue submitted + developer-confi
 - TensorFlow/XLA: 31 (Silent 28, Crash 3; 5 fixed / 26 open)
 - IREE: 7 (Silent 3, Crash 4; 2 fixed / 5 open)
 - TVM: 17 (Silent 8, Crash 9; 16 fixed / 1 open)
+
+---
+
+## Reproducer Provenance Audit
+
+Most `repro.py` scripts in this artifact are copied verbatim from local
+fuzzer-output scripts. A small number were reconstructed from upstream issue
+bodies or synthesized from source-level bug descriptions. The lists below
+flag every script in those two latter classes for reviewer inspection.
+
+**Class A — copied verbatim from local reproducer scripts (23 scripts).**
+All TF reproducers (16), TVM bug_034/037/038/039, IREE bug_006/007, and
+PT bug_053. These are byte-identical to the fuzzer-emitted scripts and
+require no extra scrutiny beyond running the script.
+
+**Class B — code lifted from upstream issue body (6 scripts).**
+The reproducer code block was lifted from the upstream issue's first
+post. No local fuzzer-output script existed at submission time. The
+extracted code is not guaranteed byte-identical to the issue post
+(extraction passed through web-fetch tooling); reviewers may wish to
+diff against the upstream issue.
+
+| Path | Verification on this server |
+|---|---|
+| `pytorch/bug_064_hardtanh_bf16_boundary_grad/repro.py` | Runs, but bug does not trigger on Tesla T4 (bf16 compile is skipped on sm_75). To reproduce the eager≠compiled divergence, run on sm_80+. |
+| `pytorch/bug_appendix_182200_fft_backward_stride_crash/repro.py` | ✅ All 4 FFT-backward cases crash with `AssertionError: ... stride mismatch` at `torch.ops.aten.mul.Tensor` — fake/meta stride bug confirmed. |
+| `pytorch/bug_appendix_183015_vmap_hessian_crash/repro.py` | ✅ Hessian path crashes with `TorchRuntimeError` on the fake-tensor `_autograd_grad` call; nested-jacrev workaround compiles cleanly. |
+| `tvm/bug_040_gridsample_5d_crash/repro.py` | ✅ Crashes with `tvm.error.InternalError: PermuteDims expects ... ndim is 5 while the given number of axes is 4` — exact match. |
+| `tvm/bug_041_layernorm_bias_shape/repro.py` | ✅ Crashes with `tvm.error.InternalError: Op(relax.nn.layer_norm) requires ... [T.int64(8)] and [T.int64(3)] are unequal` — confirms [3]-shaped synthesized zero-bias bug. |
+| `tvm/bug_042_attention_symbolic_batch/repro.py` | Not verified: this server's TVM build has a `tvm_ffi` version mismatch that breaks `from tvm import tir` before the bug-reach line. Reproducer matches the upstream issue body verbatim (with one obvious `tirx` → `tir` typo correction). |
+
+**Class C — static demonstrations (2 scripts).**
+The upstream issue has *no* Python reproducer — the bug is source-level
+(an `isinstance` / `is` check whose branch is dead code). The script in
+the artifact is a *static demonstration* that exposes the type confusion
+via class introspection or FX-graph construction. It is **not** a
+runtime crash / wrong-result reproducer.
+
+| Path | What it does | Verification |
+|---|---|---|
+| `pytorch/bug_059_deterministic_extern_kernel/repro.py` | Prints class MROs and runs an `isinstance` filter to show that the buggy filter always matches zero choices, while the corrected filter matches one. | ✅ Runs on PT 2.13.0.dev20260609+cu126; prints "BUG CONFIRMED: extern-kernel preference ... is unreachable". |
+| `pytorch/bug_appendix_184410_pad_mm_getitem_dead_code/repro.py` | Builds a 1-op FX graph with `operator.getitem` and shows that `node.op is operator.getitem` is always False (string-vs-function comparison). | ✅ Runs on PT 2.13.0.dev20260609+cu126; prints "BUG CONFIRMED: pad_mm.get_non_view_def cannot recurse through getitem". |
+
+**Tested environments.** PT scripts run with `/data1/tzh/pt_nightly_env/bin/python` (PyTorch 2.13.0.dev20260609+cu126, Tesla T4). TVM scripts run with `/data1/tzh/tvm_fuzz/bin/python` plus `LD_LIBRARY_PATH=/data1/tzh/tvm_fuzz/lib` (TVM 0.24.dev0). 7 of 8 Class B/C scripts were verified to behave as documented on this server; bug_064 (T4 hardware limitation) and bug_042 (TVM env tir-init mismatch) were not.

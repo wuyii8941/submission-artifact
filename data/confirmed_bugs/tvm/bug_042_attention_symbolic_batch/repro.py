@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class B — issue-body lifted ===============================
+# Code lifted from upstream issue body via web extraction. Not guaranteed
+# byte-identical to the original issue post; verify against upstream before
+# relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
+# NOT verified on this server: TVM env (tvm_ffi 0.1.10 vs source tvm
+# 0.24.dev0) has a 'Cannot find object type index for tir.Buffer' build
+# mismatch that blocks 'from tvm import tir' — unrelated to the bug
+# itself. Reproducer code matches the upstream issue body verbatim
+# (minus a 'tirx' → 'tir' typo correction).
+# ==========================================================================
 """
 Bug: relax.op.nn.attention fails to legalize when the batch dim is a symbolic
 tir.Var. _te_attention builds two separate Mul(B, num_head) expressions, and

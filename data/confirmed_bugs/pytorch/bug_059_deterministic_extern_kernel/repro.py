@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class C — static demonstration ===========================
+# The upstream issue has NO Python reproducer (the bug is source-level dead
+# code). This script demonstrates the type confusion via class introspection.
+# Not a runtime crash or wrong-result reproducer.
+# Verified to run on PyTorch 2.13.0.dev20260609+cu126; final line prints
+# "BUG CONFIRMED: extern-kernel preference ... is unreachable".
+# See BUG_MAPPING.md > Reproducer Provenance Audit.
+# ==========================================================================
 """
 Bug: pick_deterministic_choice() checks the wrong type — ExternKernelChoice
 instead of ExternKernelCaller — so the deterministic-mode preference for

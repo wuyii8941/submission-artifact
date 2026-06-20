@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class B — issue-body lifted ===============================
+# Code lifted from upstream issue body via web extraction. Not guaranteed
+# byte-identical to the original issue post; verify against upstream before
+# relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
+# Verified on PyTorch 2.13.0.dev20260609+cu126 / Tesla T4: hessian path
+# crashes with TorchRuntimeError on the fake-tensor call_function for
+# _autograd_grad; the nested-jacrev workaround compiles cleanly.
+# ==========================================================================
 """
 Bug: torch.compile(torch.vmap(torch.func.hessian(f))) crashes with
 TorchRuntimeError — fake-tensor propagation breaks during Dynamo when

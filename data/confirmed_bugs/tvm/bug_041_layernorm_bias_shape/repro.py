@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class B — issue-body lifted ===============================
+# Code lifted from upstream issue body via web extraction. Not guaranteed
+# byte-identical to the original issue post; verify against upstream before
+# relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
+# Verified on TVM 0.24.dev0 (LD_LIBRARY_PATH=/data1/tzh/tvm_fuzz/lib):
+# crashes with tvm.error.InternalError 'Op(relax.nn.layer_norm) requires
+# ... However, there exists [T.int64(8)] and [T.int64(3)] that are
+# unequal' — confirms the [3]-shaped synthesized zero bias bug.
+# ==========================================================================
 """
 Bug: Relax/ONNX LayerNormalization without optional bias synthesizes a zero
 bias of shape data.shape[1] instead of gamma_shape, causing a dimension

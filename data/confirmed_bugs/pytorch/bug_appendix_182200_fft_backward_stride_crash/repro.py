@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class B — issue-body lifted ===============================
+# Code lifted from upstream issue body via web extraction. Not guaranteed
+# byte-identical to the original issue post; verify against upstream before
+# relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
+# Verified on PyTorch 2.13.0.dev20260609+cu126 / Tesla T4: all 4 cases
+# crash with AssertionError 'expected size N==N, stride X==Y at dim=...'
+# at torch.ops.aten.mul.Tensor — fake/meta stride mismatch as described.
+# ==========================================================================
 """
 Bug: torch.compile crashes on stft/fftn/rfftn/ifftn backward with
 "AssertionError: stride mismatch" — meta kernels for `_fft_r2c` and `_fft_c2c`

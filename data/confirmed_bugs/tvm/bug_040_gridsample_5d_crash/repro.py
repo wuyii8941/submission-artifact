@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# === PROVENANCE: Class B — issue-body lifted ===============================
+# Code lifted from upstream issue body via web extraction. Not guaranteed
+# byte-identical to the original issue post; verify against upstream before
+# relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
+# Verified on TVM 0.24.dev0 (LD_LIBRARY_PATH=/data1/tzh/tvm_fuzz/lib):
+# crashes with tvm.error.InternalError 'PermuteDims expects ... tensor
+# ndim is 5 while the given number of axes is 4' — exact match.
+# ==========================================================================
 """
 Bug: Relax/ONNX GridSample._impl_v16 unconditionally permutes the grid from
 [N,H,W,2] to [N,2,H,W] and dispatches to the 2D image.grid_sample, crashing
