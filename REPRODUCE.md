@@ -52,8 +52,8 @@ aggregating per-kernel hit counts in the same JSON outputs:
 
 ```bash
 python evaluation/rq2_benchmark/build_timecurve.py
-# Saturation analysis: aggregate template_sample_counts across seeds
-python scripts/aggregate_saturation.py
+# Per-kernel hit counts are recorded in the timeseries field of each
+# JSON checkpoint produced by the worker.
 ```
 
 ## RQ4 — Portability (IREE / TVM)

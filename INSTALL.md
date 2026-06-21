@@ -77,10 +77,13 @@ mkdir -p $TMPDIR
 
 ## Smoke test
 
-After installation:
+After installation, verify the environment by running any confirmed-bug
+reproducer:
 
 ```bash
-scripts/run_smoke.sh
+cd data/confirmed_bugs/pytorch
+python bug_007_slice_scatter_backward/minimal_repro.py
 ```
 
-(See `scripts/` for the available launchers.)
+A successful run prints an eager-vs-compiled gradient diff, demonstrating
+that the PyTorch/Inductor stack is working.

@@ -20,7 +20,6 @@ data/
                     in the paper, grouped by stack (pytorch, tensorflow,
                     xla, iree, tvm). Upstream issue links are anonymized
                     for double-blind review.
-scripts/            Convenience launchers
 ```
 
 ## Getting started
