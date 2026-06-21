@@ -46,6 +46,21 @@ source .venv-tf/bin/activate
 pip install tf-nightly numpy
 ```
 
+## External runtime dependency: FreeFuzz oracle classes
+
+The PyTorch fuzzer (`kernelfuzz/fuzzer.py`) reuses the test-execution
+oracle from the FreeFuzz baseline. Clone FreeFuzz and point an
+environment variable at its `classes/` package:
+
+```bash
+git clone <FreeFuzz repo, anonymized for review> /path/to/FreeFuzz
+export KERNELFUZZ_FREEFUZZ_SRC=/path/to/FreeFuzz/kernel-guided/src
+```
+
+If `KERNELFUZZ_FREEFUZZ_SRC` is unset the fuzzer falls back to
+`${ARTIFACT_ROOT}/../FreeFuzz-baseline/kernel-guided/src/`, so placing
+the FreeFuzz checkout as a sibling of this artifact root also works.
+
 ## External datasets
 
 ### WhiteFox pre-generated tests (baseline replay)
