@@ -67,7 +67,7 @@ Eager produces the correct gradient. Inductor produces `x.grad = all-ones`, igno
 
 ## Root cause
 
-Same mechanism as #179561 (slice_scatter) and #182012 (diagonal_scatter):
+Same mechanism as #<anon> (slice_scatter) and #<anon> (diagonal_scatter):
 
 The backward formula for `select_scatter` w.r.t. `self` is:
 ```
@@ -116,9 +116,9 @@ shape=(4, 8)         dim=1 idx=3 dtype=float16    diff=1.0e+00  BUG
 ## Relationship to other issues
 
 This is the same vulnerability family as:
-- **#179561** (`slice_scatter` backward stride-0) — same root cause, different scatter variant
-- **#182012** (`diagonal_scatter` backward stride-0) — same root cause, different scatter variant
-- **#178995** (scatter ops on expanded stride-0 tensor in backward graph) — broader framing
+- **#<anon>** (`slice_scatter` backward stride-0) — same root cause, different scatter variant
+- **#<anon>** (`diagonal_scatter` backward stride-0) — same root cause, different scatter variant
+- **#<anon>** (scatter ops on expanded stride-0 tensor in backward graph) — broader framing
 
 All share the root cause: `*_scatter` ops receiving an expanded (stride-0) tensor as `self` in the backward graph, with Inductor trusting the stride annotation to collapse the iteration space.
 

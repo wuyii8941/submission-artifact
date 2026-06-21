@@ -14,7 +14,7 @@ chain, both of which use IEEE 754 fmax/comparison semantics that treat NaN as
 "missing" rather than propagating it.
 
 Root cause (ReduceMax/ReduceMin): Fold-order-dependent NaN handling — same class
-as TensorFlow #117862 (segment_min/segment_max NaN-position-dependent results).
+as TensorFlow #<anon> (segment_min/segment_max NaN-position-dependent results).
 """
 import numpy as np
 import onnx

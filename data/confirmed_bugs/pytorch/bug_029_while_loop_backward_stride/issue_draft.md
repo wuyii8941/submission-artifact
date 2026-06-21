@@ -42,4 +42,4 @@ torch.compile(fn, fullgraph=True)(x).backward()  # CRASHES
 
 ## Root cause
 
-Inductor-specific. Related to #160939/#145451 (forward-pass while_loop issues) but backward trigger is novel.
+Inductor-specific. Related to #<anon>/#<anon> (forward-pass while_loop issues) but backward trigger is novel.

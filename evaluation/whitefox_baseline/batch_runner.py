@@ -164,7 +164,7 @@ def main():
     tag = f"gpu{args.gpu}_{args.device}"
     if args.test_ad:
         tag += "_ad"
-    result_dir = Path(f"${ARTIFACT_ROOT}/paper/evaluation/whitefox_baseline/results_{tag}")
+    result_dir = Path(f"${ARTIFACT_ROOT}/evaluation/whitefox_baseline/results_{tag}")
     result_dir.mkdir(parents=True, exist_ok=True)
 
     logfile = result_dir / "experiment.log"

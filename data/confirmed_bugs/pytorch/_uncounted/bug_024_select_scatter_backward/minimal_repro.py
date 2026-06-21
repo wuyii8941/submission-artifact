@@ -22,8 +22,8 @@ When tangent is an expand with stride-0 (from sum backward), Inductor
 materializes it as all-ones instead of applying the zero at idx.
 
 Same vulnerability family as:
-  - pytorch#179561 (slice_scatter backward stride-0)
-  - pytorch#182012 (diagonal_scatter backward stride-0)
+  - pytorch#<anon> (slice_scatter backward stride-0)
+  - pytorch#<anon> (diagonal_scatter backward stride-0)
 
 Severity: SILENT CORRECTNESS — wrong gradient, no error or warning
 """

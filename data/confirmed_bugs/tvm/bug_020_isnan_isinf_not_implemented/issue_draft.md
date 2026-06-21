@@ -47,5 +47,5 @@ Same crash for `R.isinf(x)` and `R.isfinite(x)`.
 ### Notes
 
 - These ops are registered in the Relax op registry and can be used to construct valid IR modules.
-- The PyTorch FX frontend already supports importing `isnan`/`isinf`/`isfinite` (PR #17659), but the backend code generation was not updated to handle them — so models using these ops can be imported but not compiled.
-- Similar CodeGenVM gaps have been reported and fixed before for other ops (e.g., #14437, #17867).
+- The PyTorch FX frontend already supports importing `isnan`/`isinf`/`isfinite` (PR <anon>), but the backend code generation was not updated to handle them — so models using these ops can be imported but not compiled.
+- Similar CodeGenVM gaps have been reported and fixed before for other ops (e.g., #<anon>, #<anon>).

@@ -1,6 +1,6 @@
 # `tf.math.cumsum`/`tf.math.cumprod` crash with `jit_compile=True` on complex dtypes
 
-> **Status: CONFIRMED** — Filed as [upstream issue #117546 (anonymized)]. Labeled `type:bug`, assigned.
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>]. Labeled `type:bug`, assigned.
 
 ## Summary
 

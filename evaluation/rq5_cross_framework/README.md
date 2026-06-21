@@ -1,4 +1,7 @@
-# RQ5: Cross-Framework Transferability
+# RQ4: Cross-Framework Portability
+
+> **Note:** this RQ was numbered RQ5 in earlier drafts and the directory
+> name was kept for stability. The paper refers to it as RQ4.
 
 Demonstrates that the oracle design, adversarial shapes, and bug taxonomy
 transfer to TensorFlow/XLA, JAX/XLA, IREE, and TVM without a
@@ -29,26 +32,21 @@ framework-specific state model.
 | `iree_runner.py` | IREE compilation + ONNX Runtime oracle |
 
 ### TVM (5 bugs)
-Bug reproducers in `${ARTIFACT_ROOT}/paper/confirmed_bugs/tvm/`
+Bug reproducers in `${ARTIFACT_ROOT}/data/confirmed_bugs/tvm/`
 (discovered via manual Relax/DLight schedule rule testing).
-
-## Source
-
-Scripts are symlinked from:
-- `${ARTIFACT_ROOT}/tf_cross/fuzzer/`
-- `${ARTIFACT_ROOT}/jax_cross/fuzzer/`
 
 ## Reproducing
 
+The TensorFlow/XLA campaign that `REPRODUCE.md` runs is driven by
+`run_tf_1800s_parallel.sh` in this directory; it calls the `tf_main.py`
+fuzzer in batches and writes per-batch JSON. IREE bugs are reproduced
+from the minimized scripts under
+`${ARTIFACT_ROOT}/data/confirmed_bugs/iree/`; TVM bugs likewise under
+`${ARTIFACT_ROOT}/data/confirmed_bugs/tvm/`.
+
 ```bash
 # TensorFlow/XLA fuzzer (requires TF 2.x + XLA)
-cd ${ARTIFACT_ROOT}/tf_cross
-bash harness/run_tf.sh fuzzer/main.py --iters 5000 --seed 42 \
-    --oracles eager_vs_tfn,tfn_vs_xla,grad,cpu_gpu
-
-# JAX/XLA fuzzer (requires JAX 0.4+)
-cd ${ARTIFACT_ROOT}/jax_cross
-bash harness/run_jax.sh fuzzer/main.py --iters 5000 --seed 42
+bash run_tf_1800s_parallel.sh
 
 # Pattern migration validation
 python pattern_migration_test.py

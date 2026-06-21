@@ -62,7 +62,7 @@ Correct behavior: `clone` must materialize the expanded tensor into a
 contiguous buffer so that `diagonal_scatter` can selectively zero only the
 diagonal positions.
 
-This is **not** the same root cause as #180164 / #180771 (slice_scatter
+This is **not** the same root cause as #<anon> / #<anon> (slice_scatter
 backward), which was in AOTAutograd's `meta_slice_scatter` preserving zero
 strides. Here `aot_eager` is correct; only Inductor's codegen is wrong.
 

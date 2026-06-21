@@ -9,7 +9,7 @@ they are "strictly monotonic". But in float32:
 
 This creates ties that change the argmax result.
 
-Existing bug #116436 covers NON-strictly-monotonic ops (relu, floor, etc).
+Existing bug #<anon> covers NON-strictly-monotonic ops (relu, floor, etc).
 This bug is about STRICTLY-monotonic ops that produce ties due to float representation limits.
 """
 import tensorflow as tf
@@ -84,4 +84,4 @@ print(f"Bugs confirmed: {bugs_found}")
 print(f"Root cause: Grappler's ArithmeticOptimizer assumes strictly-monotonic")
 print(f"ops preserve argmax/argmin ordering, but float32 saturation/overflow")
 print(f"creates ties that change the result.")
-print(f"This is DISTINCT from #116436 which covers non-strictly-monotonic ops.")
+print(f"This is DISTINCT from #<anon> which covers non-strictly-monotonic ops.")

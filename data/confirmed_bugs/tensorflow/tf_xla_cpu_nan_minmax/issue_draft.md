@@ -22,7 +22,7 @@ limitation: JAX on CPU correctly propagates NaN for the same max/min operations.
 TensorFlow eager mode propagates NaN for `reduce_max`, `reduce_min`,
 `maximum`, and `minimum`, matching NumPy behavior. TensorFlow previously fixed
 NaN propagation for these eager paths in issues such as
-tensorflow/tensorflow#13046 and tensorflow/tensorflow#12659. Compiling the same
+tensorflow/tensorflow#<anon> and tensorflow/tensorflow#<anon>. Compiling the same
 TensorFlow program with `jit_compile=True` should not silently change this
 observable behavior.
 

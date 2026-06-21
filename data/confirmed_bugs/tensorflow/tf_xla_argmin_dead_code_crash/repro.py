@@ -1,5 +1,5 @@
 """
-TensorFlow #117547: jit_compile=True crashes on dead code involving
+TensorFlow #<anon>: jit_compile=True crashes on dead code involving
 tf.argmin/tf.argmax on empty-dimension tensors.
 
 Root cause: XLA's tf2xla conversion attempts to lower argmin/argmax on
@@ -9,7 +9,7 @@ Grappler (non-XLA path) correctly eliminates the dead code before execution.
 Category: XLA dead-code lowering (T7: backend divergence)
 Bug type: Crash
 Issue: <upstream issue, anonymized>
-Status: type:bug, comp:xla, assigned @Venkat6871
+Status: type:bug, comp:xla, assigned <upstream maintainer>
 Tested: TF 2.22.0-dev20260424, TF 2.21.0
 """
 import tensorflow as tf

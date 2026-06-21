@@ -1,6 +1,6 @@
 # [Bug][ONNX] ReduceProd with keepdims=0 crashes: tensor.reshape rank mismatch
 
-> **Status: CONFIRMED BY DEVELOPER — fixed upstream in torch-mlir (PR #4540)**
+> **Status: CONFIRMED BY DEVELOPER — fixed upstream in torch-mlir (PR <anon>)**
 > GitHub issue (IREE): <upstream issue, anonymized>
 > GitHub issue (LLVM): <upstream issue, anonymized>
 

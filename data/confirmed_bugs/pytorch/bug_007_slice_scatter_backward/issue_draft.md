@@ -224,29 +224,29 @@ CUDA:    12.6
 OS:      Linux 5.4.0-42-generic
 ```
 
-## Relationship to #178995 (same family, different code path)
+## Relationship to #<anon> (same family, different code path)
 
-While searching for prior reports I found [#178995](<upstream issue, anonymized for review>) ("`reinplace_inplaceable_ops` fails with `diagonal_scatter` on expanded (stride-zero) tensor in backward graph"), which is **open** and labeled `high priority` as of April 2026. Both bugs share the same root cause — **a `*_scatter` op receiving an expanded (stride-0) tensor as `self` in the backward graph** — but manifest on different inductor code paths and with different symptoms:
+While searching for prior reports I found [#<anon>](<upstream issue, anonymized for review>) ("`reinplace_inplaceable_ops` fails with `diagonal_scatter` on expanded (stride-zero) tensor in backward graph"), which is **open** and labeled `high priority` as of April 2026. Both bugs share the same root cause — **a `*_scatter` op receiving an expanded (stride-0) tensor as `self` in the backward graph** — but manifest on different inductor code paths and with different symptoms:
 
-|  | #178995 | **this issue** |
+|  | #<anon> | **this issue** |
 | --- | --- | --- |
 | Trigger path | Two-stage `aot_export → transform → aot_compile` (AutoParallel) | Plain single-stage `torch.compile(fn); fn(x); loss.backward()` |
 | Failure location | `torch/_inductor/fx_passes/reinplace.py` — the reinplace pass tries to clone an overlapping layout and raises | Inductor codegen — the stride-0 output annotation collapses the iteration space and the slice-region mask is folded to a constant |
 | Symptom | `RuntimeError: more than one element of the written-to tensor refers to a single memory location` (loud crash) | `x.grad` silently returns wrong values (zeros when the slice covers index 0, or `dim_size / (dim_size - slice_size)` times the correct value otherwise) |
 | Affected ops listed | `diagonal_scatter`, `select_scatter`, `slice_scatter`, `as_strided_scatter` | Same family — verified on `slice_scatter`, likely applies to the siblings |
 
-Critically, #178995 explicitly notes:
+Critically, #<anon> explicitly notes:
 
 > "torch.compile's single-shot path avoids this because functionalization ordering prevents the pattern from reaching reinplace."
 
 That statement is correct about the crash but the same stride-0 `self` still flows *past* the reinplace pass into inductor's codegen, and codegen trusts the `[33, 0, 1]` stride annotation on the `slice_scatter` output and generates a kernel with a collapsed iteration space (see "Root cause" above). That is the bug this issue reports.
 
-PR #179188 ("Handle overlapping bases in scatter decomposition") attempted to fix #178995 by materializing the clone in `_decompose_scatter_mutating` when the scatter base has internal overlap, but was **closed without merging** on 2026-04-10. Because that PR only modified `torch/_inductor/fx_passes/reinplace.py`, it would not have fixed this issue even if it had landed — the single-shot path never reaches the reinplace pass.
+PR <anon> ("Handle overlapping bases in scatter decomposition") attempted to fix #<anon> by materializing the clone in `_decompose_scatter_mutating` when the scatter base has internal overlap, but was **closed without merging** on 2026-04-10. Because that PR only modified `torch/_inductor/fx_passes/reinplace.py`, it would not have fixed this issue even if it had landed — the single-shot path never reaches the reinplace pass.
 
-A fix at the level of `aten.slice_scatter`'s meta kernel — returning a contiguous-strided output regardless of `self`'s stride — would address **both** #178995 and this issue with a single one-file change, because both code paths trust the meta kernel's stride annotation to decide whether to materialize or not. The same fix should be mirrored to the other `*_scatter` ops (`diagonal_scatter`, `select_scatter`, `as_strided_scatter`) listed in #178995.
+A fix at the level of `aten.slice_scatter`'s meta kernel — returning a contiguous-strided output regardless of `self`'s stride — would address **both** #<anon> and this issue with a single one-file change, because both code paths trust the meta kernel's stride annotation to decide whether to materialize or not. The same fix should be mirrored to the other `*_scatter` ops (`diagonal_scatter`, `select_scatter`, `as_strided_scatter`) listed in #<anon>.
 
-## Not a duplicate of #122291
+## Not a duplicate of #<anon>
 
-[#122291](<upstream issue, anonymized for review>) is a forward-pass bug in `slice_scatter` where a mismatch between the slice range and the source tensor size produces garbage output; it is unrelated to the backward path and was reported/assigned in March 2024. The minimal reproducer above uses well-formed shapes that eager accepts without error, and the forward result is numerically identical between eager and inductor (`max_diff = 4.77e-07`). The bug is purely in the backward path.
+[#<anon>](<upstream issue, anonymized for review>) is a forward-pass bug in `slice_scatter` where a mismatch between the slice range and the source tensor size produces garbage output; it is unrelated to the backward path and was reported/assigned in March 2024. The minimal reproducer above uses well-formed shapes that eager accepts without error, and the forward result is numerically identical between eager and inductor (`max_diff = 4.77e-07`). The bug is purely in the backward path.
 
 cc <upstream maintainer> <upstream maintainer> <upstream maintainer> <upstream maintainer> <upstream maintainer>

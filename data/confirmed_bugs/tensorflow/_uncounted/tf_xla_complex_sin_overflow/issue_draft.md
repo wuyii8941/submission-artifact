@@ -1,6 +1,6 @@
 # XLA `tf.math.sin` / `tf.math.cos` returns inf/nan for complex inputs with large imaginary part, even when the correct result is representable
 
-> **Status: SUPPORTING / PENDING** — This remains a separate XLA complex special-function candidate. Do not cite TensorFlow issue #116943 for this finding; #116943 is the SELU/ELU `exp(x)-1` cancellation issue.
+> **Status: SUPPORTING / PENDING** — This remains a separate XLA complex special-function candidate. Do not cite TensorFlow issue <anon> for this finding; #<anon> is the SELU/ELU `exp(x)-1` cancellation issue.
 
 ## Summary
 

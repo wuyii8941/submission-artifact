@@ -1,6 +1,6 @@
 # `tf.math.sign` returns 0 for small nonzero complex numbers (eager mode)
 
-> **Status: CONFIRMED** — Filed as [upstream issue #116945 (anonymized)], labeled `type:bug`, and assigned to a TensorFlow maintainer.
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>], labeled `type:bug`, and assigned to a TensorFlow maintainer.
 
 ## Summary
 
@@ -8,7 +8,7 @@
 
 XLA (`jit_compile=True`), NumPy, and JAX all return the correct result.
 
-Related: #60656 reported the same function returning `0` for *very large* complex inputs. That issue appears to have been fixed (tested with `-3e307+0j`, now returns correct `(-1+0j)`). This issue covers *small* inputs where the root cause is different.
+Related: #<anon> reported the same function returning `0` for *very large* complex inputs. That issue appears to have been fixed (tested with `-3e307+0j`, now returns correct `(-1+0j)`). This issue covers *small* inputs where the root cause is different.
 
 ## Reproduction
 

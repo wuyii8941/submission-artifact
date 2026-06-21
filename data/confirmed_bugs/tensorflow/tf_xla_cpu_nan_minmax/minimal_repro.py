@@ -4,7 +4,7 @@ jit_compile=True on CPU changes tf.reduce_max and tf.reduce_min to ignore NaN,
 returning the max/min of the finite values instead. Eager mode correctly
 propagates NaN, matching NumPy.
 
-This was previously fixed for eager in tensorflow/tensorflow#13046 and #12659,
+This was previously fixed for eager in tensorflow/tensorflow#<anon> and #<anon>,
 but the XLA CPU lowering was never updated to match.
 
 JAX 0.9.2 (same XLA backend) correctly propagates NaN on CPU, confirming this

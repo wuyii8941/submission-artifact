@@ -241,22 +241,22 @@ CUDA:    12.6
 OS:      Linux 5.4.0-42-generic
 ```
 
-## Related — and why this is NOT a duplicate of #151198 / PR #152993
+## Related — and why this is NOT a duplicate of #<anon> / PR <anon>
 
-At first glance this looks related to the ReflectionPad + view bug (#151198,
-fixed by PR #152993), since both produce silent wrong output from a
-fused-view-then-reduction pattern. **They are not the same bug and #152993
+At first glance this looks related to the ReflectionPad + view bug (#<anon>,
+fixed by PR <anon>), since both produce silent wrong output from a
+fused-view-then-reduction pattern. **They are not the same bug and #<anon>
 does not fix this one.** Concretely:
 
-| | #151198 (fixed) | This issue |
+| | #<anon> (fixed) | This issue |
 | --- | --- | --- |
 | Triggering op | `reflection_pad + view + chunk + sum` | `adaptive_avg_pool2d + flatten + sum` |
 | Layer the bug lives in | SymPy IR (`torch/utils/_sympy/functions.py`) | Triton kernel codegen (`torch/_inductor/codegen/triton.py` or called helpers) |
 | Root cause | `ModularIndexing._eval_is_positive` returned `True` when the operands were positive, but the result can be zero, which let the simplifier drop an `abs()` it should have kept | An integer literal emitted by codegen as the outer/batch stride of `in_ptr0` inside a fused `triton_red_fused_view_sum` kernel; the literal is `ceil(r0_numel / 32) * 32` instead of the actual buffer stride `r0_numel` |
 | Fix shape | 4-line delete in `functions.py` | Will need a fix in the reduction-kernel codegen path that computes the outer-dim stride of a view over a pool output |
-| Verifiable by `grep`ing PR #152993 diff | Yes | No — PR #152993 does not touch `_inductor/codegen/*` or `_inductor/scheduler.py` |
+| Verifiable by `grep`ing PR <anon> diff | Yes | No — PR <anon> does not touch `_inductor/codegen/*` or `_inductor/scheduler.py` |
 
-I've verified PR #152993 merged commit `e5f8699` is present in 2.11.0 and in
+I've verified PR <anon> merged commit `e5f8699` is present in 2.11.0 and in
 today's nightly (`2.12.0.dev20260410`). The present bug reproduces on both
 versions with byte-identical output, so the fix for the ReflectionPad case
 does not reach this path.

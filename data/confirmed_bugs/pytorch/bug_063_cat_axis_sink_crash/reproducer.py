@@ -28,7 +28,7 @@ Fix: Change cat_args to also accept axis:
           dim = axis
       return tensors, dim
 
-Related: GitHub issue #171979 (opened Jan 8, 2026, still unfixed as of May 22, 2026)
+Related: GitHub issue <anon> (opened Jan 8, 2026, still unfixed as of May 22, 2026)
 """
 import torch
 import torch._dynamo

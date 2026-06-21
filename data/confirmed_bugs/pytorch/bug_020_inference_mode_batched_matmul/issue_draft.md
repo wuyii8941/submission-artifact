@@ -1,6 +1,6 @@
 # [inductor][aotautograd] `torch.compile` crashes on batched matmul inside `torch.inference_mode()`
 
-> **Status: CONFIRMED** — Filed as [upstream issue #181512 (anonymized)]. Developer (dsashidh) confirmed and is working on a fix.
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>]. Developer confirmed and is working on a fix.
 
 ## 🐛 Describe the bug
 

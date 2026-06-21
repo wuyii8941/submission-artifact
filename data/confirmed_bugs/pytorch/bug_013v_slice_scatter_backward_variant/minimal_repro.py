@@ -1,11 +1,11 @@
 """
-Bug 013 variant (#180772): slice_scatter backward wrong gradient when slice excludes index 0.
+Bug 013 variant (#<anon>): slice_scatter backward wrong gradient when slice excludes index 0.
 
-This is a distinct trigger condition from #180771 (which fires when the slice
+This is a distinct trigger condition from #<anon> (which fires when the slice
 includes index 0). Here the overwritten region starts after index 0, triggering
 a different stride-0 broadcasting path in Inductor's backward codegen.
 
-Related: #180771 (bug_013), #180164 (bug_007)
+Related: #<anon> (bug_013), #<anon> (bug_007)
 """
 import torch
 

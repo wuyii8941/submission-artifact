@@ -70,7 +70,7 @@ XLA uses a comparator that explicitly places NaN above all finite values (consis
 
 ## Relationship to existing issues
 
-This is distinct from the `reduce_min`/`reduce_max` NaN propagation issue (#116345). That issue is about whether NaN propagates through fold-style reductions. This issue is about NaN's relative ordering in comparison-based sorting, which affects `top_k`, `sort`, `argsort`, and `argmax`/`argmin`.
+This is distinct from the `reduce_min`/`reduce_max` NaN propagation issue (#<anon>). That issue is about whether NaN propagates through fold-style reductions. This issue is about NaN's relative ordering in comparison-based sorting, which affects `top_k`, `sort`, `argsort`, and `argmax`/`argmin`.
 
 ## Impact
 

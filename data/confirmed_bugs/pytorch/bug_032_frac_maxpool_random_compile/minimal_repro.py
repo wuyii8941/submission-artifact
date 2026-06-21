@@ -10,7 +10,7 @@ random pooling regions, causing it to select wrong elements.
 With explicit _random_samples: results match (diff=0.0)
 Without _random_samples: results differ (diff=2.03, wrong indices)
 
-This is different from bug_006 (#179931) which was about stride alignment
+This is different from bug_006 (#<anon>) which was about stride alignment
 in flatten+sum fusion. Bug_006 is FIXED. This bug is about random state
 handling in the compiled graph.
 

@@ -1,6 +1,6 @@
 # `tf.nn.selu` and `tf.nn.elu` return 0 for small negative inputs (catastrophic cancellation in `exp(x) - 1`)
 
-> **Status: CONFIRMED** — Filed as [upstream issue #116943 (anonymized)]. A fix was submitted in [upstream issue #116947 (anonymized)], replacing `exp(x) - 1` with `expm1(x)` in Eigen ELU/SELU kernels.
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>]. A fix was submitted in [upstream issue <anonymized>], replacing `exp(x) - 1` with `expm1(x)` in Eigen ELU/SELU kernels.
 
 ## Summary
 

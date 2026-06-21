@@ -1,6 +1,6 @@
 ## `tf.math.xlogy` and `tf.math.xlog1py` gradient w.r.t. x is incorrectly zero when x=0
 
-**Filed:** [upstream issue #119476 (anonymized)]
+**Filed:** [upstream issue <anonymized>]
 **Status:** `type:bug`, `comp:ops`, assigned <upstream maintainer>
 
 ### Summary

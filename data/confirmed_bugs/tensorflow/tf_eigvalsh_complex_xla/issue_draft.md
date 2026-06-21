@@ -1,6 +1,6 @@
 # `tf.linalg.eigvalsh` / `eigh` returns wrong results for complex input under XLA
 
-> **Status: CONFIRMED** — Filed as [upstream issue #117864 (anonymized)], labeled `type:bug` + `comp:xla`; [community reproduced](<upstream issue, anonymized for review>)
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>], labeled `type:bug` + `comp:xla`; [community reproduced](<upstream issue, anonymized for review>)
 
 ## Summary
 

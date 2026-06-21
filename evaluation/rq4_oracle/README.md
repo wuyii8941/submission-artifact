@@ -1,7 +1,12 @@
-# RQ4: Oracle Validity
+# Oracle Validation (RQ3 ablation prototype)
+
+> **Note:** the paper now reports the oracle contribution as part of the
+> RQ3 ablation (driven from `evaluation/rq2_benchmark/`). The scripts in
+> this directory are an earlier prototype kept for completeness; they are
+> not invoked by `REPRODUCE.md`.
 
 Validates the multi-stage oracle pipeline's precision (low false-positive
-rate) and necessity (crash-only oracles miss 75% of findings).
+rate) and necessity (crash-only oracles miss the majority of findings).
 
 ## Pipeline Stages
 
@@ -30,7 +35,7 @@ rate) and necessity (crash-only oracles miss 75% of findings).
 The full oracle pipeline is integrated into:
 - `${ARTIFACT_ROOT}/kernelfuzz/fuzzer.py` (GraphFuzzerV4 class methods)
 - `${ARTIFACT_ROOT}/kernelfuzz/bug_result.py` (`_verify_bug_in_fresh_process`)
-- `${ARTIFACT_ROOT}/paper/evaluation/dedup_analysis.py` (post-hoc filtering)
+- `${ARTIFACT_ROOT}/evaluation/dedup_analysis.py` (post-hoc filtering)
 
 ## Usage
 

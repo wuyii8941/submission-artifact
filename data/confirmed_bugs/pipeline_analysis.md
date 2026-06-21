@@ -75,11 +75,11 @@ User Python code
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_006 | [#179931](<upstream issue, anonymized>) | After fusing `adaptive_avg_pool2d + flatten + sum`, Inductor uses `ceil(3185/32)*32 = 3200` as the batch stride literal in the Triton source, but the buffer's real stride is `3185`. Every load with batch >= 1 is offset by 15 elements. | Silent |
-| bug_007 | [#180164](<upstream issue, anonymized>) | The AOTAutograd meta kernel annotates `slice_scatter` with stride-0 -> Inductor trusts this and collapses the iteration space to 132 elements (should be 1716) -> dim-1 coordinate is hard-coded to 0 -> boundary checks are constant-folded by the Triton compiler -> `x.grad` is all zero. | Silent |
-| bug_013 | [#180771](<upstream issue, anonymized>) | Same root-cause family as bug_007. Backward of `slice_scatter` exhibits different error patterns for different slice positions. | Silent |
-| bug_022 | [#182012](<upstream issue, anonymized>) | In the backward of `diagonal_scatter(...).sum()`, Inductor optimises `clone(expand(scalar,[N,N]))` into a 1-element buffer with stride-(0,0). A subsequent `diagonal_scatter` then writes zero into that element, so the entire N x N gradient becomes zero. | Silent |
-| bug_004 | [#179561](<upstream issue, anonymized>) | The `fp32 -> bf16 -> fp32` round-trip cast is eliminated by fusion as a no-op, so the emitted Triton kernel performs no dtype conversion and the expected precision truncation is missing. | Silent |
+| bug_006 | [#<anon>](<upstream issue, anonymized>) | After fusing `adaptive_avg_pool2d + flatten + sum`, Inductor uses `ceil(3185/32)*32 = 3200` as the batch stride literal in the Triton source, but the buffer's real stride is `3185`. Every load with batch >= 1 is offset by 15 elements. | Silent |
+| bug_007 | [#<anon>](<upstream issue, anonymized>) | The AOTAutograd meta kernel annotates `slice_scatter` with stride-0 -> Inductor trusts this and collapses the iteration space to 132 elements (should be 1716) -> dim-1 coordinate is hard-coded to 0 -> boundary checks are constant-folded by the Triton compiler -> `x.grad` is all zero. | Silent |
+| bug_013 | [#<anon>](<upstream issue, anonymized>) | Same root-cause family as bug_007. Backward of `slice_scatter` exhibits different error patterns for different slice positions. | Silent |
+| bug_022 | [#<anon>](<upstream issue, anonymized>) | In the backward of `diagonal_scatter(...).sum()`, Inductor optimises `clone(expand(scalar,[N,N]))` into a 1-element buffer with stride-(0,0). A subsequent `diagonal_scatter` then writes zero into that element, so the entire N x N gradient becomes zero. | Silent |
+| bug_004 | [#<anon>](<upstream issue, anonymized>) | The `fp32 -> bf16 -> fp32` round-trip cast is eliminated by fusion as a no-op, so the emitted Triton kernel performs no dtype conversion and the expected precision truncation is missing. | Silent |
 
 **Root-cause patterns:**
 
@@ -91,21 +91,21 @@ User Python code
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_019 | [#181581](<upstream issue, anonymized>) | Under `autograd.grad(create_graph=True)`, AOTAutograd silently loses `requires_grad=True` and `grad_fn` on ops such as `mm`/`relu` -> higher-order backward fails. Also reproduces under the `aot_eager` backend, so it is not Inductor-specific. | Silent |
-| bug_020 | [#181512](<upstream issue, anonymized>) | `inference_mode()` + 3D+ matmul + `torch.compile` -> a weakref to `UntypedStorage` in AOTAutograd's functionalisation phase cannot be resolved -> crash. | Crash |
+| bug_019 | [#<anon>](<upstream issue, anonymized>) | Under `autograd.grad(create_graph=True)`, AOTAutograd silently loses `requires_grad=True` and `grad_fn` on ops such as `mm`/`relu` -> higher-order backward fails. Also reproduces under the `aot_eager` backend, so it is not Inductor-specific. | Silent |
+| bug_020 | [#<anon>](<upstream issue, anonymized>) | `inference_mode()` + 3D+ matmul + `torch.compile` -> a weakref to `UntypedStorage` in AOTAutograd's functionalisation phase cannot be resolved -> crash. | Crash |
 
 #### L3: Inductor Scheduling (2 bugs) - kernel template selection / initialisation goes wrong
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_011 | [#180221](<upstream issue, anonymized>) | When scan dim >= 129, Inductor switches to SplitScan codegen -> `tensor_dim=None` is used as a list index -> crash. | Crash |
+| bug_011 | [#<anon>](<upstream issue, anonymized>) | When scan dim >= 129, Inductor switches to SplitScan codegen -> `tensor_dim=None` is used as a list index -> crash. | Crash |
 | bug_015 | (not submitted) | `associative_scan` + `dynamic=True` + ndim >= 2 -> lifted arguments are unsupported -> codegen crash. | Crash |
 
 #### L4: Dynamo (1 bug) - graph capture / guard construction goes wrong
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_023 | [#182217](<upstream issue, anonymized>) | `F.layer_norm(NestedTensor)` -> the symbolic variable has no source entry -> the guard builder raises `IndexError`. All backends crash. | Crash |
+| bug_023 | [#<anon>](<upstream issue, anonymized>) | `F.layer_norm(NestedTensor)` -> the symbolic variable has no source entry -> the guard builder raises `IndexError`. All backends crash. | Crash |
 
 ### PyTorch summary diagram
 
@@ -210,8 +210,8 @@ These two bugs are entirely independent of the compilation pipeline; they are ma
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| tf_selu_elu_expm1 | [#116943](<upstream issue, anonymized>) | The Eigen SELU/ELU kernel uses `exp(x) - 1` instead of `expm1(x)`. For small negatives with \|x\| <= 1e-8, `exp(x)` first rounds to `1.0`, then `1.0 - 1.0 = 0.0` (catastrophic cancellation), yielding a 100% error. **Ironically, XLA uses `expm1`, so the compiled result is correct.** | Silent |
-| tf_complex_sign | [#116945](<upstream issue, anonymized>) | When `tf.math.sign(z)` computes \|z\|^2 = re^2 + im^2 for complex64, the intermediate \|z\|^2 underflows to zero when \|z\| < 1.084e-19 (= sqrt(float32_tiny)), so the kernel thinks `z == 0` and returns `sign = 0`. XLA and NumPy are correct. | Silent |
+| tf_selu_elu_expm1 | [#<anon>](<upstream issue, anonymized>) | The Eigen SELU/ELU kernel uses `exp(x) - 1` instead of `expm1(x)`. For small negatives with \|x\| <= 1e-8, `exp(x)` first rounds to `1.0`, then `1.0 - 1.0 = 0.0` (catastrophic cancellation), yielding a 100% error. **Ironically, XLA uses `expm1`, so the compiled result is correct.** | Silent |
+| tf_complex_sign | [#<anon>](<upstream issue, anonymized>) | When `tf.math.sign(z)` computes \|z\|^2 = re^2 + im^2 for complex64, the intermediate \|z\|^2 underflows to zero when \|z\| < 1.084e-19 (= sqrt(float32_tiny)), so the kernel thinks `z == 0` and returns `sign = 0`. XLA and NumPy are correct. | Silent |
 
 **Characteristics:** these are **wrong numerical method choices** in the eager kernel, with no compiler optimisation involved. The fixes are direct (substitute `expm1`, use `hypot` instead of a sum of squares).
 
@@ -221,7 +221,7 @@ Grappler is TF's graph-level optimiser; it runs by default during `tf.function` 
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| tf_grappler_argmin | [#116436](<upstream issue, anonymized>) | The `ArithmeticOptimizer`'s `OptimizeMaxOrMinOfMonotonic` pass rewrites `ArgMin(f(x))` to `ArgMin(x)` when `f` is marked "monotonic". However `IsElementWiseMonotonic()` marks **non-strictly-monotonic** functions such as ReLU/Floor/Ceil/Sign as monotonic too, so the rewrite is not semantics-preserving (argmin under ties differs). | Silent |
+| tf_grappler_argmin | [#<anon>](<upstream issue, anonymized>) | The `ArithmeticOptimizer`'s `OptimizeMaxOrMinOfMonotonic` pass rewrites `ArgMin(f(x))` to `ArgMin(x)` when `f` is marked "monotonic". However `IsElementWiseMonotonic()` marks **non-strictly-monotonic** functions such as ReLU/Floor/Ceil/Sign as monotonic too, so the rewrite is not semantics-preserving (argmin under ties differs). | Silent |
 
 **Detailed mechanism:**
 ```python
@@ -242,10 +242,10 @@ ReLU is monotonic but not **strictly** monotonic (there is a flat region where `
 
 | Bug | Issue | Specific inconsistency | Type |
 |-----|-------|----------------|------|
-| tf_xla_cpu_nan | [#116992](<upstream issue, anonymized>) | `reduce_max([nan, 1, 3])`: eager returns `nan` (IEEE 754 NaN propagation); CPU XLA returns `3` (drops NaN). NumPy and JAX propagate NaN. | Silent |
-| tf_check_numerics | [#117319](<upstream issue, anonymized>) | `check_numerics(nan_tensor)`: eager raises `InvalidArgumentError`; XLA passes silently (the check is skipped). Users who rely on `check_numerics` as a numerical guard lose it after switching to XLA. | Silent |
-| tf_cumsum_complex | [#117546](<upstream issue, anonymized>) | `cumsum(complex_tensor)`: eager computes normally; XLA compilation crashes (HLO lowering does not implement complex scan). | Crash |
-| tf_argmin_dead_code | [#117547](<upstream issue, anonymized>) | `argmin(empty_dim_tensor)`: eager handles it normally; XLA compilation crashes (the dead-code path is not handled by XLA). | Crash |
+| tf_xla_cpu_nan | [#<anon>](<upstream issue, anonymized>) | `reduce_max([nan, 1, 3])`: eager returns `nan` (IEEE 754 NaN propagation); CPU XLA returns `3` (drops NaN). NumPy and JAX propagate NaN. | Silent |
+| tf_check_numerics | [#<anon>](<upstream issue, anonymized>) | `check_numerics(nan_tensor)`: eager raises `InvalidArgumentError`; XLA passes silently (the check is skipped). Users who rely on `check_numerics` as a numerical guard lose it after switching to XLA. | Silent |
+| tf_cumsum_complex | [#<anon>](<upstream issue, anonymized>) | `cumsum(complex_tensor)`: eager computes normally; XLA compilation crashes (HLO lowering does not implement complex scan). | Crash |
+| tf_argmin_dead_code | [#<anon>](<upstream issue, anonymized>) | `argmin(empty_dim_tensor)`: eager handles it normally; XLA compilation crashes (the dead-code path is not handled by XLA). | Crash |
 
 **Why does TF suffer this class while PyTorch does not?**
 
@@ -309,7 +309,7 @@ So TF bugs of this class look more like **"missing semantic contracts"** than "i
 
 | Bug | Issue | Pipeline location | Error mechanism | Type |
 |-----|-------|---------|---------|------|
-| erf scalar-vs-vector | [openxla/xla#41167](<upstream PR, anonymized>) | XLA LLVM codegen (Emitter layer) | `erf` uses two implementations for the scalar and vector paths: the vector path has a saturation select (\|x\| >= 3.83 -> +/-1.0); the scalar path only clamps the input (`clamp(x, +/-3.74)`, no output saturation). The same input `x=4.5` therefore produces different results, which `floor` amplifies to 0 vs 1. | Silent |
+| erf scalar-vs-vector | [openxla/xla#<anon>](<upstream PR, anonymized>) | XLA LLVM codegen (Emitter layer) | `erf` uses two implementations for the scalar and vector paths: the vector path has a saturation select (\|x\| >= 3.83 -> +/-1.0); the scalar path only clamps the input (`clamp(x, +/-3.74)`, no output saturation). The same input `x=4.5` therefore produces different results, which `floor` amplifies to 0 vs 1. | Silent |
 
 **Location:** XLA's lowest-level LLVM IR emitter. In the [XLA Architecture](https://openxla.org/xla/architecture) diagram this corresponds to the final "Backend-specific code generation" stage. The fix has been merged.
 
@@ -321,10 +321,10 @@ Pipeline: `ONNX model -> iree-import-onnx -> torch-mlir -> linalg -> HAL -> targ
 
 | Bug | Issue | Pipeline location | Root cause | Type |
 |-----|-------|---------|------|------|
-| f64_demote | [#24180](<upstream issue, anonymized>) | Compiler pass (`DemoteF64ToF32Pass`) | The function body is demoted from f64 to f32 but the ABI stays f64, so buffer sizes mismatch and the second half of the data becomes zero. | Silent |
-| reduceprod | [#24181](<upstream issue, anonymized>) | torch-mlir lowering | `ReduceProd` + `keepdims=0` emits a `tensor.reshape` with the wrong rank. | Crash |
-| reverse_seq | [#24229](<upstream issue, anonymized>) | ONNX frontend | Indexing is wrong under non-default `batch_axis` / `time_axis` configurations. | Silent |
-| reduce_segfault | [#24265](<upstream issue, anonymized>) | torch-mlir lowering | Multi-axis + negative index + `keepdims=0` -> SEGFAULT. | Crash |
+| f64_demote | [#<anon>](<upstream issue, anonymized>) | Compiler pass (`DemoteF64ToF32Pass`) | The function body is demoted from f64 to f32 but the ABI stays f64, so buffer sizes mismatch and the second half of the data becomes zero. | Silent |
+| reduceprod | [#<anon>](<upstream issue, anonymized>) | torch-mlir lowering | `ReduceProd` + `keepdims=0` emits a `tensor.reshape` with the wrong rank. | Crash |
+| reverse_seq | [#<anon>](<upstream issue, anonymized>) | ONNX frontend | Indexing is wrong under non-default `batch_axis` / `time_axis` configurations. | Silent |
+| reduce_segfault | [#<anon>](<upstream issue, anonymized>) | torch-mlir lowering | Multi-axis + negative index + `keepdims=0` -> SEGFAULT. | Crash |
 
 ---
 
@@ -334,11 +334,11 @@ Pipeline: `ONNX model -> Frontend converter -> Relax IR -> LegalizeOps -> TIR ->
 
 | Bug | Issue | Pipeline location | Root cause | Type |
 |-----|-------|---------|------|------|
-| gemv_keyerror | [#19419](<upstream issue, anonymized>) | DLight scheduling | KeyError when the GEMV schedule rule auto-detects the CUDA target. | Crash |
-| softmax_opset | [#19420](<upstream issue, anonymized>) | ONNX frontend | Only opset-13 semantics are implemented, so opset <= 12 silently computes wrong results. | Silent |
-| cumsum_axis | [#19437](<upstream issue, anonymized>) | ONNX frontend | When axis is a `relax.Var`, `axis=0` is hard-coded. | Silent |
-| scatter_cuda | [#19451](<upstream issue, anonymized>) | TIR legalization | The emitted TIR uses `T.parallel` instead of a GPU thread binding. | Crash |
-| isnan_isinf | [#19452](<upstream issue, anonymized>) | CodeGenVM | The op is registered, but CodeGenVM does not implement the intrinsic. | Crash |
+| gemv_keyerror | [#<anon>](<upstream issue, anonymized>) | DLight scheduling | KeyError when the GEMV schedule rule auto-detects the CUDA target. | Crash |
+| softmax_opset | [#<anon>](<upstream issue, anonymized>) | ONNX frontend | Only opset-13 semantics are implemented, so opset <= 12 silently computes wrong results. | Silent |
+| cumsum_axis | [#<anon>](<upstream issue, anonymized>) | ONNX frontend | When axis is a `relax.Var`, `axis=0` is hard-coded. | Silent |
+| scatter_cuda | [#<anon>](<upstream issue, anonymized>) | TIR legalization | The emitted TIR uses `T.parallel` instead of a GPU thread binding. | Crash |
+| isnan_isinf | [#<anon>](<upstream issue, anonymized>) | CodeGenVM | The op is registered, but CodeGenVM does not implement the intrinsic. | Crash |
 
 ---
 

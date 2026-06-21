@@ -5,8 +5,8 @@
 # GPU 2: cpu, forward-only (for comparison)
 
 PYTHON="python3"
-SCRIPT="${ARTIFACT_ROOT}/paper/evaluation/whitefox_baseline/batch_runner.py"
-LOGDIR="${ARTIFACT_ROOT}/paper/evaluation/whitefox_baseline"
+SCRIPT="${ARTIFACT_ROOT}/evaluation/whitefox_baseline/batch_runner.py"
+LOGDIR="${ARTIFACT_ROOT}/evaluation/whitefox_baseline"
 
 echo "=== Launching WhiteFox Baseline Experiment ==="
 echo "Start time: $(date)"

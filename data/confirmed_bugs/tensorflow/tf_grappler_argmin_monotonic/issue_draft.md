@@ -1,6 +1,6 @@
 # Grappler ArithmeticOptimizer incorrectly strips non-strictly-monotonic ops from ArgMin/ArgMax
 
-> **Status: CONFIRMED** — Filed as [upstream issue #116436 (anonymized)]. Developer confirmed and a fix was submitted in [upstream issue #116709 (anonymized)].
+> **Status: CONFIRMED** — Filed as [upstream issue <anonymized>]. Developer confirmed and a fix was submitted in [upstream issue <anonymized>].
 
 ## Summary
 

@@ -82,7 +82,7 @@ class CumSum(OnnxOpConverter):
 
 In ONNX, `axis` is always provided as an input tensor. When it arrives as a `relax.Var` (not resolved to a constant), the converter silently defaults to 0.
 
-Note: PR #18137 fixed the `reverse` handling for CumSum but did not address this hardcoded axis.
+Note: PR <anon> fixed the `reverse` handling for CumSum but did not address this hardcoded axis.
 
 ## Suggested fix
 

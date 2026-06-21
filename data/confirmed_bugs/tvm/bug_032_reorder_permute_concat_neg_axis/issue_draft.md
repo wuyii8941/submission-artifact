@@ -1,6 +1,6 @@
 # [Bug] ReorderPermuteDimsAfterConcat crashes with negative concat axis
 
-**Filed:** [upstream issue #19575 (anonymized)] — Closed / Fixed (PR [#19588](<upstream PR, anonymized for review>))
+**Filed:** [upstream issue <anonymized>] — Closed / Fixed (PR [#<anon>](<upstream PR, anonymized for review>))
 
 ## Description
 
