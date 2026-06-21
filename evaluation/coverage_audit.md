@@ -11,10 +11,10 @@ templates present in the current fuzzer implementations under
 | Stack | Reachable | Unreachable | Out-of-scope | Total |
 |---|---:|---:|---:|---:|
 | PyTorch | 30 | 1 (static-analysis) | 0 | 31 |
-| TensorFlow / XLA | 28 | 3 (ops not in current pool) | 0 | 31 |
+| TensorFlow / XLA | 31 | 0 | 0 | 31 |
 | IREE | 0 | 0 | 7 (separate harness) | 7 |
 | TVM | 0 | 0 | 17 (separate harness) | 17 |
-| **Total** | **58** | **4** | **24** | **86** |
+| **Total** | **61** | **1** | **24** | **86** |
 
 ## Interpretation
 
@@ -33,25 +33,16 @@ every confirmed PT bug except one:
   `BUG_MAPPING.md > Reproducer Provenance Audit`. By design no fuzzer
   reaches it.
 
-### TensorFlow / XLA (28/31 reachable)
+### TensorFlow / XLA (31/31 reachable)
 
 The TF graph generator (`kernelfuzz/tensorflow/graph_gen.py`) covers
-~126 distinct `tf.*` ops. Three confirmed TF bugs use ops that are
-**not in the current op pool**:
-
-- `tf_atan2_subnormal_nan` — `tf.math.atan2` is absent from the pool.
-- `tf_bessel_i1_gradient_zero` — `tf.math.bessel_i0e` is present, but
-  the sibling `tf.math.bessel_i1` (the buggy op) is not.
-- `tf_erfinv_eager_precision` — `tf.math.erfinv` is absent.
-- `tf_det_gradient_singular_crash` — `tf.linalg.det` is absent.
-
-These four ops were exercised in the original RQ1 campaign that
-produced the bug but were dropped from the trimmed op pool shipped with
-the artifact (the original campaign used a larger pool). The
-reproducers under `data/confirmed_bugs/tensorflow/` are sufficient to
-verify the bugs themselves; re-discovering them from scratch via the
-artifact fuzzer would require adding these four ops back to the
-`graph_gen` pool.
+~130 distinct `tf.*` ops, including the four bug-trigger ops that were
+originally exercised during the RQ1 campaign but had been dropped from
+the trimmed pool: `tf.math.atan2`, `tf.math.bessel_i1`,
+`tf.math.erfinv`, and `tf.linalg.det`. These now live alongside the
+other bug-specific operators in `BUGSPEC_OPS` (entries 13-16). With
+the four ops restored, every confirmed TF bug is reachable by the
+released fuzzer.
 
 ### IREE (7) and TVM (17) — out of scope for the main fuzzer
 

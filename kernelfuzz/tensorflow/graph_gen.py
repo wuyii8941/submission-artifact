@@ -233,6 +233,24 @@ BUGSPEC_OPS = [
      "tf.zeros([tf.shape(_t)[-1]]), tf.ones([tf.shape(_t)[-1]]), 1e-5)"
      "[0, 0, 0])({x})",
      "same"),
+    # #anon-13: atan2 returns NaN on CPU for subnormal float32 inputs
+    ("bs_atan2",
+     "tf.math.atan2({x}, tf.abs({x}) + 1e-7)",
+     "same"),
+    # #anon-14: bessel_i1 gradient at x=0 returns 1.0 instead of 0.5
+    ("bs_bessel_i1",
+     "tf.math.bessel_i1({x})",
+     "same"),
+    # #anon-15: erfinv eager fp32 precision divergence near +/-1
+    ("bs_erfinv",
+     "tf.math.erfinv(tf.math.tanh({x}))",
+     "same"),
+    # #anon-16: linalg.det gradient crashes on singular matrices
+    # Build a 2x2 matrix from the first 4 flattened elements of _t and take
+    # its determinant. The det call exercises the buggy gradient path.
+    ("bs_linalg_det",
+     "(lambda _t: tf.linalg.det(tf.reshape(tf.reshape(_t, [-1])[:4], [2, 2])))({x})",
+     "scalar"),
 ]
 
 
