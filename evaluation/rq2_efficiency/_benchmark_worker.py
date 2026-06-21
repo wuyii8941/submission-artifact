@@ -507,7 +507,7 @@ def _init_whitefox(seed):
         return
 
     test_dir = os.environ.get('WHITEFOX_TEST_DIR',
-                os.path.join(SCRIPT_DIR, '..', 'whitefox_baseline', 'torch-inductor-generated'))
+                os.path.join(SCRIPT_DIR, '..', 'baselines', 'whitefox_baseline', 'torch-inductor-generated'))
     _whitefox_tests = []
     for step_dir in sorted(os.listdir(test_dir)):
         step_path = os.path.join(test_dir, step_dir)

@@ -1,5 +1,5 @@
 """
-KernelFuzz: compiler-operation-guided fuzzing for deep learning compilers.
+DeepOpFuzz: compiler-operation-guided fuzzing for deep learning compilers.
 
 Package structure (maps to paper Algorithm 1 stages):
 

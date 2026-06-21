@@ -6,7 +6,7 @@ runtime fuzzer loaded via a PYTHONPATH side effect. The class has been
 moved into kernel/state_space.py so the runtime fuzzer and evaluation
 scripts share a single implementation. This file remains only to keep
 the import path `from kernel_state_space import KernelStateSpace`
-working for any rq1_bugsindlls script that still relies on it.
+working for any bugsindlls script that still relies on it.
 """
 
 # Ensure the package root is on sys.path so `kernel.state_space` resolves

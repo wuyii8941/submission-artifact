@@ -2,44 +2,45 @@
 
 The authoritative entry point for reproducing the paper's results is the
 top-level **[`REPRODUCE.md`](../REPRODUCE.md)**, which maps each paper
-table / figure to the script that produces it. This file is just an index
-to the directories that script lives in.
+table / figure to the script that produces it. This file is just an
+index of the layout under `evaluation/`.
 
-## RQ → Directory Mapping
+## Paper RQ → Directory Mapping
 
 | Paper element | Directory | Driver script |
 |---|---|---|
-| RQ1: BugsInDLLs reachability (Table 2, Table 4) | `rq1_bugsindlls/` | `run_bugsindlls_batch.py` |
-| RQ2: Generation efficiency (Figure 3) | `rq2_benchmark/` | `run_benchmark.py` (5 seeds × 4 modes × 4h budget) |
-| RQ3: Ablation (Table 3) and per-kernel saturation (Table 5) | `rq2_benchmark/` | Same run as RQ2; saturation re-aggregated from each JSON's `timeseries` field |
-| RQ4: Cross-framework portability (TF/IREE/TVM) | `rq5_cross_framework/` + `data/confirmed_bugs/{iree,tvm}/` | `run_tf_1800s_parallel.sh` |
+| RQ1 (Effectiveness, Table 1) | `rq1_effectiveness/` | (catalog only — see `data/confirmed_bugs/`) |
+| RQ2 (Efficiency, Figure 3) | `rq2_efficiency/` | `run_benchmark.py` via `launch_template_runs.sh` |
+| RQ3 (Ablation, Tables 3 + 5) | `rq2_efficiency/` (same runs as RQ2) | `run_benchmark.py` |
+| RQ3 (BugsInDLLs validation, Table 4) | `rq3_ablation/bugsindlls/` | `run_bugsindlls_batch.py` |
+| RQ4 (Portability, TF / IREE / TVM) | `rq4_portability/` + `data/confirmed_bugs/{iree,tvm}/` | `run_tf_1800s_parallel.sh` |
 
-Confirmed bugs (RQ1 main campaign) live in
-`../data/confirmed_bugs/{pytorch,tensorflow,xla,iree,tvm}/`; see the
-top-level catalog at `../data/confirmed_bugs/BUG_MAPPING.md`.
+## Baseline replays
 
-## Baseline replay scripts
+`baselines/` holds the WhiteFox and NNSmith helpers used by the RQ2
+benchmark for the comparative columns:
 
-- `whitefox_baseline/` — replays the 61k WhiteFox pre-generated programs
-  under the KernelFuzz oracle.
-- `nnsmith_baseline/` — runs NNSmith under the KernelFuzz oracle (used
-  for the RQ2 efficiency comparison).
+- `baselines/whitefox_baseline/` — replays the 61k WhiteFox
+  pre-generated programs under the DeepOpFuzz oracle.
+- `baselines/nnsmith_baseline/` — runs NNSmith under the DeepOpFuzz oracle.
+- `baselines/nnsmith_native/` — runs NNSmith with its own native oracle
+  (supplementary cross-check, not in the paper's main tables).
 
-## Supporting / archived directories
+## Archive
 
-These directories are kept for completeness but are **not** referenced by
-`REPRODUCE.md` — they hold superseded experiments, secondary analyses,
-and intermediate artifacts:
+`archive/` contains earlier prototypes of the experiments and
+one-off analysis scripts that are **not** invoked by `REPRODUCE.md`.
+They are retained for completeness but should not be needed to
+reproduce paper results:
 
-- `time_controlled/`, `rq2_coverage/`, `ablation/`, `baselines/`,
-  `fusion_analysis/`, `nnsmith_native/` — earlier prototypes of the
-  RQ2/RQ3 experiments; superseded by `rq2_benchmark/`.
-- `rq4_oracle/` — earlier oracle-validation prototype.
-- `analysis_*.py`, `dedup_analysis.py`, `derive_component_table.py`,
-  `extract_*.py`, `merge_seeds.py`, `plot_causal_figures.py`,
-  `retrospective_enrichment.py` — one-off analysis helpers; outputs of
-  the ones actually used by the paper are produced by the drivers above
-  or by `build_timecurve.py` inside `rq2_benchmark/`.
+- `archive/time_controlled/`, `archive/rq2_coverage/`,
+  `archive/ablation/`, `archive/fusion_analysis/` — earlier prototypes
+  of the RQ2/RQ3 experiments superseded by `rq2_efficiency/`.
+- `archive/rq4_oracle/` — earlier oracle-validation prototype.
+- `archive/analysis_*.py`, `archive/dedup_analysis.py`,
+  `archive/derive_component_table.py`, `archive/extract_api_ablation.py`,
+  `archive/merge_seeds.py`, `archive/plot_causal_figures.py`,
+  `archive/retrospective_enrichment.py` — one-off analysis helpers.
 
 ## Hardware
 

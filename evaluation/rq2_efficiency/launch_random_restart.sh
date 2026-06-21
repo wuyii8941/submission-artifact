@@ -34,7 +34,7 @@ restart_until_done() {
     CUDA_VISIBLE_DEVICES="$gpu" \
     TORCHINDUCTOR_CACHE_DIR="$cache" \
     TRITON_CACHE_DIR="$tcache" \
-    TMPDIR=${TMPDIR:-/tmp/kernelfuzz} \
+    TMPDIR=${TMPDIR:-/tmp/deepopfuzz} \
     WHITEFOX_TEST_DIR="$WHITEFOX_DIR" \
     "$PYBIN" "$WORKER" --mode random --seed "$seed" --time-budget "$BUDGET" \
       --device cuda --checkpoint "$ckpt" >> "$log" 2>&1

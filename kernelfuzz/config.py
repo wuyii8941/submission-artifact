@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-KernelFuzz configuration. No hardcoded paths.
+DeepOpFuzz configuration. No hardcoded paths.
 """
 
 import argparse
@@ -51,8 +51,8 @@ def setup_environment():
 
 
 def get_parser():
-    """CLI argument parser for KernelFuzz."""
-    p = argparse.ArgumentParser(description="KernelFuzz: Kernel-space guided fuzzer")
+    """CLI argument parser for DeepOpFuzz."""
+    p = argparse.ArgumentParser(description="DeepOpFuzz: Kernel-space guided fuzzer")
     p.add_argument("--output", default=OUTPUT_DIR, help="Output directory")
     p.add_argument("--max-iterations", type=int, default=DEFAULT_MAX_ITERATIONS)
     p.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT_MINUTES,

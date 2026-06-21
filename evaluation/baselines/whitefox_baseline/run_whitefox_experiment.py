@@ -2,7 +2,7 @@
 WhiteFox Baseline Experiment on PyTorch 2.13.0 nightly Inductor.
 
 Goal: Run WhiteFox's pre-generated tests + fresh LLM-generated tests
-against the same Inductor version as KernelFuzz, for 24h.
+against the same Inductor version as DeepOpFuzz, for 24h.
 Measure: total bugs, bug types, CDC bug overlap.
 
 Usage:

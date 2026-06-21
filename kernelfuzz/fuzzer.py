@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-KernelFuzz: Kernel-space guided graph fuzzer for PyTorch/Inductor.
+DeepOpFuzz: Kernel-space guided graph fuzzer for PyTorch/Inductor.
 
 Main fuzzing loop (Algorithm 1 in the paper).
 
@@ -3002,7 +3002,7 @@ class GraphFuzzerV4(GraphFuzzerV3):
             try:
                 body_code, is_det = _TPL_MAP[name](batch, seq, hidden, dtype)
             except Exception as e:
-                print(f"  [KernelFuzz] forced template {name} failed: {type(e).__name__}: {e}")
+                print(f"  [DeepOpFuzz] forced template {name} failed: {type(e).__name__}: {e}")
                 body_code, is_det = _tpl_d2_linear_bias_act(batch, seq, hidden, dtype)
                 name = "d2_linear_bias_act"
 
@@ -3041,7 +3041,7 @@ class GraphFuzzerV4(GraphFuzzerV3):
         try:
             body_code, is_det = _TPL_MAP[name](batch, seq, hidden, dtype)
         except Exception as e:
-            print(f"  [KernelFuzz] adaptive template {name} failed: {type(e).__name__}: {e}")
+            print(f"  [DeepOpFuzz] adaptive template {name} failed: {type(e).__name__}: {e}")
             body_code, is_det = _tpl_d2_linear_bias_act(batch, seq, hidden, dtype)
             name = "d2_linear_bias_act"
 
@@ -3078,15 +3078,15 @@ class GraphFuzzerV4(GraphFuzzerV3):
               f"(guidance_mode={self.guidance_mode})")
         print(f"  strategy={self.strategy_name} max_iter={max_iterations}")
         print(f"  Templates: {len(PROGRAM_TEMPLATES)} + TemplateCompositor")
-        print(f"  [KernelFuzz] Adversarial shapes: {self._V4_ADV_RATIO:.0%} "
+        print(f"  [DeepOpFuzz] Adversarial shapes: {self._V4_ADV_RATIO:.0%} "
               f"(batch={_ADV_BATCH}, seq={_ADV_SEQ[:4]}..., hidden={_ADV_HIDDEN[:4]}...)")
-        print(f"  [KernelFuzz] Semantic mutation: {self._V4_SEMANTIC_PROB:.0%} "
+        print(f"  [DeepOpFuzz] Semantic mutation: {self._V4_SEMANTIC_PROB:.0%} "
               f"(.clone, .contiguous, +0, *1, reshape, dtype cast)")
-        print(f"  [KernelFuzz] Layout stages: layout_permute_contig, layout_slice_stride")
-        print(f"  [KernelFuzz] Config: +no_cudagraph preset")
-        print(f"  [KernelFuzz] FP64 backoff: enabled "
+        print(f"  [DeepOpFuzz] Layout stages: layout_permute_contig, layout_slice_stride")
+        print(f"  [DeepOpFuzz] Config: +no_cudagraph preset")
+        print(f"  [DeepOpFuzz] FP64 backoff: enabled "
               f"(downgrade if fp64_diff < {self._V4_FP64_BACKOFF_THRESHOLD:.0e})")
-        print(f"  [KernelFuzz] Coverage: kernel hash")
+        print(f"  [DeepOpFuzz] Coverage: kernel hash")
         print(f"  [Enrichment] Enrichment cluster boost: "
               f"{len(ENRICHED_CLUSTER_BOOST)} templates in 3 clusters (A/B/C)")
         if self._novelty_seed_pool:
@@ -3106,7 +3106,7 @@ class GraphFuzzerV4(GraphFuzzerV3):
         self._corpus_checkpoint_path = join(self._graph_dir, "corpus_checkpoint.json")
         restored = self.corpus.load_checkpoint(self._corpus_checkpoint_path)
         if restored > 0:
-            print(f"  [KernelFuzz] Resumed corpus with {restored} entries")
+            print(f"  [DeepOpFuzz] Resumed corpus with {restored} entries")
 
         start = time.time()
 
@@ -3118,7 +3118,7 @@ class GraphFuzzerV4(GraphFuzzerV3):
                 self.mutation_ctrl.record_warmup()
             else:
                 if i == warmup_threshold:
-                    print(f"\n  [KernelFuzz] warmup -> evolution (iter {i})\n")
+                    print(f"\n  [DeepOpFuzz] warmup -> evolution (iter {i})\n")
                     if self.corpus.size() == 0:
                         for _ in range(5):
                             seed, _ = self._generate_program(i, inject_poison=False)

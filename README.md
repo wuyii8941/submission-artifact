@@ -1,6 +1,6 @@
-# KernelFuzz — Anonymized Artifact
+# DeepOpFuzz — Anonymized Artifact
 
-This is the artifact for the paper *KernelFuzz: Operation-Guided Fuzzing for
+This is the artifact for the paper *DeepOpFuzz: Operation-Guided Fuzzing for
 Deep Learning Compiler Stacks*, anonymized for double-blind review.
 
 ## What's in this repository
@@ -8,13 +8,13 @@ Deep Learning Compiler Stacks*, anonymized for double-blind review.
 ```
 kernelfuzz/         Core fuzzing framework (generation, oracles, kernel tracing)
 evaluation/         Scripts for the experiments reported in the paper
-  rq1_bugsindlls/   RQ1 external benchmark (BugsInDLLs)
-  rq2_benchmark/    RQ2 historical PyTorch benchmark + RQ3 ablation
-  rq4_oracle/       Oracle ablation
-  rq5_cross_framework/  IREE / TVM / cross-framework portability
-  whitefox_baseline/    Replay scripts for the WhiteFox baseline
-  nnsmith_baseline/     Replay scripts for the NNSmith baseline
-  ...                   See INSTALL.md and REPRODUCE.md
+  rq1_effectiveness/ RQ1 — index pointing to the 86-bug catalog (no script)
+  rq2_efficiency/    RQ2 — historical benchmark (5 seeds × 4 modes × 4h)
+  rq3_ablation/      RQ3 — reuses rq2_efficiency runs + BugsInDLLs
+    bugsindlls/      External API-level benchmark (Table 4)
+  rq4_portability/   RQ4 — TensorFlow / IREE / TVM cross-framework
+  baselines/         WhiteFox / NNSmith replay helpers for RQ2
+  archive/           Superseded prototypes (not invoked by REPRODUCE.md)
 data/
   confirmed_bugs/   Minimized reproducers for the 86 confirmed bugs reported
                     in the paper, grouped by stack (pytorch, tensorflow,

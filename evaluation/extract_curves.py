@@ -63,7 +63,7 @@ def main():
 
     # Load NNSmith results (prefer 5-seed merged)
     nnsmith_merged = os.path.join(script_dir, 'results', 'nnsmith_5seed_merged.json')
-    nnsmith_fallback = os.path.join(script_dir, 'nnsmith_baseline', 'nnsmith_baseline_results.json')
+    nnsmith_fallback = os.path.join(script_dir, 'baselines', 'nnsmith_baseline', 'nnsmith_baseline_results.json')
     nnsmith_path = nnsmith_merged if os.path.exists(nnsmith_merged) else nnsmith_fallback
     print(f"Using NNSmith data: {nnsmith_path}")
     with open(nnsmith_path) as f:

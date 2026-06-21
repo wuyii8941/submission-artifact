@@ -44,9 +44,9 @@ fairness enhancement.
 - All bugs map 1:1 to specific optimization passes
 - No bug depends on scheduling decisions, fusion structure, or template selection
 
-## Comparison with KernelFuzz
+## Comparison with DeepOpFuzz
 
-| | WhiteFox (122K tests) | KernelFuzz |
+| | WhiteFox (122K tests) | DeepOpFuzz |
 |---|---|---|
 | Pass-implementation bugs | 475+ | 0 |
 | Decision-conditioned bugs | 0 | 10 (PyTorch) |
@@ -54,7 +54,7 @@ fairness enhancement.
 | Dominant bug type | cumsum pass numerical drift | scheduling/fusion codegen |
 
 The cumsum example is illustrative: WhiteFox finds numerical drift in the
-`pointwise_cumsum_replacement` pass transformation (pass-level bug). KernelFuzz
+`pointwise_cumsum_replacement` pass transformation (pass-level bug). DeepOpFuzz
 finds a crash in the SplitScan codegen path triggered when dim>=129 causes a
 scheduling decision change (decision-conditioned bug). Same operator, same
 compiler, structurally different bug classes.

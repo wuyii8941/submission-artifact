@@ -24,7 +24,7 @@ COLORS = {
     'nnsmith': '#4dac26',
 }
 LABELS = {
-    'targeted': 'KernelFuzz (targeted)',
+    'targeted': 'DeepOpFuzz (targeted)',
     'random': 'Random baseline',
     'nnsmith': 'NNSmith',
 }

@@ -58,11 +58,11 @@ set:
 export WHITEFOX_TEST_DIR=/path/to/WhiteFox/starcoder-generated/torch-inductor-generated
 ```
 
-### BugsInDLLs benchmark (RQ1 external)
+### BugsInDLLs benchmark (RQ3 external)
 
 Obtain the BugsInDLLs dataset from the original authors (cited in the
 paper). Set the path used by the corresponding evaluation scripts under
-`evaluation/rq1_bugsindlls/`.
+`evaluation/rq3_ablation/bugsindlls/`.
 
 ## Working directory
 
@@ -71,7 +71,7 @@ Scripts assume the artifact root is the current working directory:
 ```bash
 cd /path/to/this/repo
 export ARTIFACT_ROOT=$(pwd)
-export TMPDIR=${TMPDIR:-/tmp/kernelfuzz}
+export TMPDIR=${TMPDIR:-/tmp/deepopfuzz}
 mkdir -p $TMPDIR
 ```
 

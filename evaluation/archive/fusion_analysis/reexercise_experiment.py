@@ -18,7 +18,7 @@ Design:
   genuinely lower quality (this is unlikely for mature compilers).
 
 Methodology:
-  1. For each target cell, use KernelFuzz's targeted generator to produce
+  1. For each target cell, use DeepOpFuzz's targeted generator to produce
      programs that combine the required operator categories.
   2. Compile each, check for bugs via eager-vs-compiled differential.
   3. Track cumulative unique bug triggers over program count.

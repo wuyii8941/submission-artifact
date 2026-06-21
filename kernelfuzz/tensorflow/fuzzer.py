@@ -321,7 +321,7 @@ def save_bug(prog_info, result, verify_result, bug_id, out_dir):
     bug_dir = Path(out_dir) / f"tf_bug_{bug_id:04d}_seed{seed}"
     bug_dir.mkdir(parents=True, exist_ok=True)
 
-    repro = f'''"""KernelFuzz TF finding.
+    repro = f'''"""DeepOpFuzz TF finding.
 seed={seed}
 severity={result.get('severity', '?')}
 oracles: {[r['oracle'] + ':' + r.get('status','?') for r in result.get('oracle_results', [])]}
@@ -372,7 +372,7 @@ print(f"eager_vs_xla   max_abs={{np.abs(e-x).max():.6e}}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="KernelFuzz TF fuzzer")
+    parser = argparse.ArgumentParser(description="DeepOpFuzz TF fuzzer")
     parser.add_argument("--iters", type=int, default=5000)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--oracles", type=str, default="eager,xla,grad,cpu_gpu",
@@ -423,7 +423,7 @@ def main():
     scheduler = EpsilonGreedyScheduler(state_space, epsilon=args.epsilon,
                                         seed=args.seed) if args.guided else None
 
-    print(f"KernelFuzz TF: {args.iters} iters, base_seed={args.seed}")
+    print(f"DeepOpFuzz TF: {args.iters} iters, base_seed={args.seed}")
     print(f"Oracles: {oracle_names}")
     print(f"Guided: {args.guided} (epsilon={args.epsilon})" if args.guided else "Guided: OFF")
     print(f"Kernel states: {state_space.total_reachable} reachable")

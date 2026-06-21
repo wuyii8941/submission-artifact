@@ -1,7 +1,7 @@
 """
 TensorFlow/XLA differential fuzzer.
 
-Instantiates the KernelFuzz methodology for TensorFlow's compilation pipeline:
+Instantiates the DeepOpFuzz methodology for TensorFlow's compilation pipeline:
   - Execution seams: eager vs Grappler, eager vs XLA, CPU vs GPU
   - Oracles: crash, numerical divergence, gradient inconsistency, math invariant
   - Coverage: HLO op/fusion tracking, kernel state space guidance

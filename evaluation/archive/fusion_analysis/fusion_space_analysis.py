@@ -5,7 +5,7 @@ Fusion Space Analysis — the core experiment for the paper.
 Produces:
   1. Fusion op frequency distribution (random baseline)
   2. Bug-op vs baseline frequency table
-  3. Rare-op reachability comparison (random vs KernelFuzz corpus)
+  3. Rare-op reachability comparison (random vs DeepOpFuzz corpus)
   4. Fusion distribution shift visualization
 """
 
@@ -115,7 +115,7 @@ def extract_op_frequency(traces):
 
 
 def load_kernelfuzz_corpus(union_all=True):
-    """Load KernelFuzz corpus programs. If union_all, merge all campaigns."""
+    """Load DeepOpFuzz corpus programs. If union_all, merge all campaigns."""
     if union_all:
         seen_names = set()
         entries = []
@@ -335,10 +335,10 @@ def analyze():
     print(f"\n  Sparse (absent+rare) fusion bugs: {n_sparse}/{n_with_fusion} "
           f"({n_sparse/max(n_with_fusion,1)*100:.0f}% of bugs with fusion ops)")
 
-    # ── 4. Rare-op reachability: KernelFuzz corpus vs random ──────────
+    # ── 4. Rare-op reachability: DeepOpFuzz corpus vs random ──────────
 
     print(f"\n{'=' * 80}")
-    print(f"RARE-OP REACHABILITY: KernelFuzz CORPUS vs RANDOM")
+    print(f"RARE-OP REACHABILITY: DeepOpFuzz CORPUS vs RANDOM")
     print(f"{'=' * 80}")
 
     kf_corpus = load_kernelfuzz_corpus()
@@ -372,7 +372,7 @@ def analyze():
             if any(kw in fusions_str.lower() for kw in keywords):
                 random_count += 1
 
-        # KernelFuzz: count corpus entries with this keyword
+        # DeepOpFuzz: count corpus entries with this keyword
         kf_count = sum(1 for n in kf_names if any(kw in n for kw in keywords))
 
         r_pct = random_count / max(n_random, 1) * 100

@@ -10,7 +10,7 @@ Key findings:
   - Random/Targeted both plateau at 9 interaction cells (out of 6^2 possible)
   - Saturation occurs at ~200 programs — the remaining 800 add nothing
   - 6/23 bugs (26%) are in interaction cells with ZERO baseline frequency
-  - KernelFuzz found 23 bugs: 13 kernel-level spanning 5 distinct cells, 10 pre-codegen
+  - DeepOpFuzz found 23 bugs: 13 kernel-level spanning 5 distinct cells, 10 pre-codegen
 
 Uses:
   - Random baseline (1k programs, compiled traces)

@@ -6,7 +6,7 @@ set -u
 cd "$(dirname "$0")"
 
 OUT=results_template
-mkdir -p "$OUT" ${TMPDIR:-/tmp/kernelfuzz}
+mkdir -p "$OUT" ${TMPDIR:-/tmp/deepopfuzz}
 PYBIN=python3
 WORKER=$(pwd)/_benchmark_worker.py
 BUDGET=14400
@@ -23,7 +23,7 @@ launch() {
   CUDA_VISIBLE_DEVICES="$gpu" \
   TORCHINDUCTOR_CACHE_DIR="$cache" \
   TRITON_CACHE_DIR="$tcache" \
-  TMPDIR=${TMPDIR:-/tmp/kernelfuzz} \
+  TMPDIR=${TMPDIR:-/tmp/deepopfuzz} \
   WHITEFOX_TEST_DIR="$WHITEFOX_DIR" \
   nohup "$PYBIN" "$WORKER" \
     --mode "$mode" --seed "$seed" --time-budget "$BUDGET" \

@@ -4,7 +4,7 @@ NNSmith Native Oracle Experiment (RQ2 supplement): runs NNSmith with its
 own multi-backend differential oracle (CPU vs CUDA torchjit).
 
 This complements the main generation comparison (Table 4) where NNSmith
-uses KernelFuzz's oracle. Here NNSmith runs in its native setting:
+uses DeepOpFuzz's oracle. Here NNSmith runs in its native setting:
   - Generate model via SMT-guided graph construction
   - Execute on torchjit-CPU (oracle) and torchjit-CUDA (test backend)
   - Differential comparison using NNSmith's assert_allclose

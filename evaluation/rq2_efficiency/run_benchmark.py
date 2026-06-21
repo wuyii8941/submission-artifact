@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RQ2 Benchmark: Run KernelFuzz vs baselines on PyTorch 2.2.0.
+RQ2 Benchmark: Run DeepOpFuzz vs baselines on PyTorch 2.2.0.
 Measures bugs found over time against 17 known ground-truth bugs.
 """
 import argparse
@@ -236,7 +236,7 @@ def main():
 
     out_path = os.path.join(out_dir, 'benchmark_results.json')
     output = {
-        'experiment': 'rq2_benchmark',
+        'experiment': 'rq2_efficiency',
         'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
         'config': {
             'time_budget_sec': args.time_budget,

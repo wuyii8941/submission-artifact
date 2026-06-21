@@ -667,13 +667,13 @@ def analyze():
     plt.close()
     print("  Saved semantic_interaction_heatmap.{png,pdf}")
 
-    # ── 6. KernelFuzz boundary coverage comparison ────────────────────
+    # ── 6. DeepOpFuzz boundary coverage comparison ────────────────────
 
     print(f"\n{'=' * 80}")
     print(f"RANDOM vs KERNELFUZZ: BOUNDARY COVERAGE")
     print(f"{'=' * 80}")
 
-    # Load KernelFuzz corpus
+    # Load DeepOpFuzz corpus
     kf_entries = []
     seen = set()
     for i in range(1, 10):

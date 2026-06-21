@@ -14,7 +14,7 @@ TRIGGERS = "results_5seeds/triggers"
 CKPT_DIR = "results_5seeds"
 MODES = ["targeted", "random", "nnsmith", "whitefox"]
 MODE_LABELS = {
-    "targeted": "KernelFuzz (targeted)",
+    "targeted": "DeepOpFuzz (targeted)",
     "random": "Random",
     "nnsmith": "NNSmith",
     "whitefox": "WhiteFox",
