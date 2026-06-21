@@ -202,14 +202,14 @@ def boundary_label(categories):
 
 BUGS = {
     # ── Fusion composition (2) ──────────────────────────────────────
-    '#179561': {
+    '#anon-1': {
         'desc': 'bf16 cast elided in pointwise fusion',
         'ops': ['to_bf16', 'sigmoid', 'to_fp32', 'mul'],
         'boundary': frozenset({CATEGORY_POINTWISE}),
         'boundary_detail': 'pointwise-only (dtype cast elision in fused kernel)',
         'type': 'silent',
     },
-    '#179931': {
+    '#anon-2': {
         'desc': 'adaptive_avg_pool + flatten + sum fusion stride error',
         'ops': ['adaptive_avg_pool2d', 'flatten', 'sum'],
         'boundary': frozenset({CATEGORY_REDUCTION, CATEGORY_LAYOUT}),
@@ -217,56 +217,56 @@ BUGS = {
         'type': 'silent',
     },
     # ── Backward codegen (8) ────────────────────────────────────────
-    '#180164': {
+    '#anon-3': {
         'desc': 'slice_scatter backward zeroes grad',
         'ops': ['slice_scatter'],
         'boundary': frozenset({CATEGORY_SCATTER}),
         'boundary_detail': 'scatter-only (backward codegen)',
         'type': 'silent',
     },
-    '#180771': {
+    '#anon-4': {
         'desc': 'slice_scatter backward variant (includes index 0)',
         'ops': ['slice_scatter'],
         'boundary': frozenset({CATEGORY_SCATTER}),
         'boundary_detail': 'scatter-only (backward codegen)',
         'type': 'silent',
     },
-    '#180772': {
+    '#anon-5': {
         'desc': 'slice_scatter backward variant (excludes index 0)',
         'ops': ['slice_scatter'],
         'boundary': frozenset({CATEGORY_SCATTER}),
         'boundary_detail': 'scatter-only (backward codegen)',
         'type': 'silent',
     },
-    '#182012': {
+    '#anon-6': {
         'desc': 'diagonal_scatter backward zeroes grad',
         'ops': ['diagonal_scatter'],
         'boundary': frozenset({CATEGORY_SCATTER}),
         'boundary_detail': 'scatter-only (backward codegen)',
         'type': 'silent',
     },
-    '#183017': {
+    '#anon-7': {
         'desc': 'while_loop backward stride mismatch crash',
         'ops': ['while_loop'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: backward compilation crash)',
         'type': 'crash',
     },
-    '#183987': {
+    '#anon-8': {
         'desc': 'addcmul_/addcdiv_ backward missing autograd formula',
         'ops': ['addcmul_'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: missing prims.fma formula)',
         'type': 'crash',
     },
-    '#184100': {
+    '#anon-9': {
         'desc': 'complex literal backward .get_name() crash',
         'ops': ['mul', 'complex'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: raw complex in IR)',
         'type': 'crash',
     },
-    '#184101': {
+    '#anon-10': {
         'desc': 'complex abs/angle backward stride assertion crash',
         'ops': ['abs', 'angle'],
         'boundary': frozenset({CATEGORY_POINTWISE}),
@@ -274,21 +274,21 @@ BUGS = {
         'type': 'crash',
     },
     # ── Split-scan boundary (3) ─────────────────────────────────────
-    '#180221': {
+    '#anon-11': {
         'desc': 'cumsum SplitScan codegen crash at dim>=129',
         'ops': ['cumsum'],
         'boundary': frozenset({CATEGORY_SCAN}),
         'boundary_detail': 'scan-only (split_scan boundary crash)',
         'type': 'crash',
     },
-    '#181584': {
+    '#anon-12': {
         'desc': 'associative_scan dynamic crash ndim>=2',
         'ops': ['associative_scan'],
         'boundary': frozenset({CATEGORY_SCAN}),
         'boundary_detail': 'scan-only (dynamic shape crash)',
         'type': 'crash',
     },
-    '#183250': {
+    '#anon-13': {
         'desc': 'cumprod backward crash at scan dim>=8193',
         'ops': ['cumprod'],
         'boundary': frozenset({CATEGORY_SCAN}),
@@ -296,14 +296,14 @@ BUGS = {
         'type': 'crash',
     },
     # ── Scatter / indexing (2) ──────────────────────────────────────
-    '#183986': {
+    '#anon-14': {
         'desc': 'index_add on expanded tensors wrong result',
         'ops': ['index_add'],
         'boundary': frozenset({CATEGORY_SCATTER}),
         'boundary_detail': 'scatter-only (stride-0 expansion)',
         'type': 'silent',
     },
-    '#183988': {
+    '#anon-15': {
         'desc': 'randperm pattern matcher missing slice_shape',
         'ops': ['randperm'],
         'boundary': None,
@@ -311,28 +311,28 @@ BUGS = {
         'type': 'crash',
     },
     # ── Context / higher-order (4) ──────────────────────────────────
-    '#184222': {
+    '#anon-16': {
         'desc': 'scheduler prologue fusion copy-paste typo',
         'ops': [],
         'boundary': None,
         'boundary_detail': 'N/A (scheduler-level guard bug)',
         'type': 'crash',
     },
-    '#181512': {
+    '#anon-17': {
         'desc': 'inference_mode batched matmul crash',
         'ops': ['bmm'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: inference_mode guard)',
         'type': 'crash',
     },
-    '#181581': {
+    '#anon-18': {
         'desc': 'AOTAutograd drops higher-order grad metadata',
         'ops': ['autograd_grad'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: AOTAutograd metadata)',
         'type': 'silent',
     },
-    '#182217': {
+    '#anon-19': {
         'desc': 'NestedTensor layer_norm guard builder crash',
         'ops': ['layer_norm'],
         'boundary': None,
@@ -340,28 +340,28 @@ BUGS = {
         'type': 'crash',
     },
     # ── Codegen / lowering (4) ──────────────────────────────────────
-    '#183249': {
+    '#anon-20': {
         'desc': 'fractional_max_pool2d wrong result under compile',
         'ops': ['fractional_max_pool2d'],
         'boundary': frozenset({CATEGORY_REDUCTION}),
         'boundary_detail': 'reduction-only (wrong pooling indices)',
         'type': 'silent',
     },
-    '#184081': {
+    '#anon-21': {
         'desc': 'float8 cast Triton codegen unsupported type crash',
         'ops': ['to_float8'],
         'boundary': None,
         'boundary_detail': 'N/A (pre-codegen: arch-unsupported dtype)',
         'type': 'crash',
     },
-    '#184089': {
+    '#anon-22': {
         'desc': 'flip 0-d tensor IndexError in lowering',
         'ops': ['flip'],
         'boundary': None,
         'boundary_detail': 'N/A (lowering crash)',
         'type': 'crash',
     },
-    '#184415': {
+    '#anon-23': {
         'desc': 'foreach_sub silently ignores alpha parameter',
         'ops': ['_foreach_sub'],
         'boundary': frozenset({CATEGORY_POINTWISE}),

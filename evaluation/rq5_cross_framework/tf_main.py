@@ -59,11 +59,11 @@ CHECKPOINT_PATH = OUT_DIR / "fuzzer_checkpoint.json"
 
 # Pre-register known bug basins
 KNOWN_BASINS = [
-    ({"cast_bf16_f32"}, "bf16 cast elision — JAX #32545 analog"),
-    ({"cast_f16_f32"}, "fp16 cast elision — JAX #32545 analog"),
+    ({"cast_bf16_f32"}, "bf16 cast elision — JAX #anon-1 analog"),
+    ({"cast_f16_f32"}, "fp16 cast elision — JAX #anon-1 analog"),
 ]
 
-# Grappler #116436: argmin/argmax + non-strictly-monotonic op → known bug
+# Grappler #anon-2: argmin/argmax + non-strictly-monotonic op → known bug
 _GRAPPLER_ARGMIN_MONOTONIC_OPS = {
     "nn_relu", "k3_relu", "k3_relu6", "raw_relu",
     "amp_floor", "amp_ceil", "amp_round", "amp_rint",
@@ -72,7 +72,7 @@ _GRAPPLER_ARGMIN_MONOTONIC_OPS = {
 }
 
 def _is_grappler_argmin_basin(op_fingerprint, oracle_results):
-    """Check if a finding is a variant of #116436."""
+    """Check if a finding is a variant of #anon-2."""
     has_argminmax = "amp_argmin" in op_fingerprint or "amp_argmax" in op_fingerprint
     if not has_argminmax:
         return False
@@ -554,13 +554,13 @@ def main():
                     print(f"  [iter {i}] seed={seed} — known basin, skipping")
                 continue
 
-            # Grappler #116436 filter
+            # Grappler #anon-2 filter
             if _is_grappler_argmin_basin(
                     prog.get("op_fingerprint", []),
                     result.get("oracle_results", [])):
                 stats["known_basin"] += 1
                 if args.verbose:
-                    print(f"  [iter {i}] seed={seed} — Grappler argmin #116436, skipping")
+                    print(f"  [iter {i}] seed={seed} — Grappler argmin #anon-2, skipping")
                 continue
 
             # f64 truth filter: skip candidates with near-zero expected output

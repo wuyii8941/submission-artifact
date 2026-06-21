@@ -221,7 +221,7 @@ def _tpl_d1_multi_axis_reduce(batch, seq, hidden, dtype):
 def _tpl_d1_large_reduce_float(batch, seq, hidden, dtype):
     """
     Float reduction on large tensors (>2^18 elements).
-    Inspired by PyTorch #113976 (Triton codegen loop variable type error
+    Inspired by PyTorch #anon-1 (Triton codegen loop variable type error
     on large tensors). Generalized to float sum for differential oracle.
     """
     large_n = max(640, seq * 10)
@@ -427,7 +427,7 @@ def _tpl_d2_conv_bn_act(batch, seq, hidden, dtype):
     """
     Conv -> BatchNorm -> activation.
     After conv2d + bn fusion, Inductor's C++ codegen may produce
-    duplicate buffer declarations (Issue #159245).
+    duplicate buffer declarations (Issue #anon-2).
     """
     c = max(4, hidden // 8)
     hw = max(4, seq // 4)
@@ -471,7 +471,7 @@ def _tpl_d2_attention_epilogue(batch, seq, hidden, dtype):
 def _tpl_d2_interpolate_chain(batch, seq, hidden, dtype):
     """
     interpolate(bicubic) -> neg -> linear -> tan.
-    Inspired by PyTorch #145264 (100% element mismatch, abs diff up to ~4132).
+    Inspired by PyTorch #anon-3 (100% element mismatch, abs diff up to ~4132).
     Bicubic interpolation output through multi-step epilogue triggers
     completely incorrect Inductor fusion results.
     """
@@ -495,7 +495,7 @@ def _tpl_d2_interpolate_chain(batch, seq, hidden, dtype):
 def _tpl_d2_pool_int_dtype(batch, seq, hidden, dtype):
     """
     argsort(int64) -> float cast -> avg_pool2d.
-    Inspired by PyTorch #143738 (avg_pool2d mishandles int64 input).
+    Inspired by PyTorch #anon-4 (avg_pool2d mishandles int64 input).
     Tests Inductor lowering correctness on dtype cast + pool chains.
     """
     c = max(1, batch)
@@ -556,7 +556,7 @@ def _tpl_d2_conv_groupnorm_skip(batch, seq, hidden, dtype):
 def _tpl_d2_reduction_transpose_fusion(batch, seq, hidden, dtype):
     """
     amax -> scale -> transpose.contiguous fusion.
-    Inspired by PyTorch #146416 (Inductor uses ReinterpretView instead of
+    Inspired by PyTorch #anon-5 (Inductor uses ReinterpretView instead of
     a real transpose, 99.5% element mismatch).
     """
     m = max(8, seq)
@@ -594,7 +594,7 @@ def _tpl_d2_addmm_pattern(batch, seq, hidden, dtype):
 def _tpl_d2_einsum_multi_contract(batch, seq, hidden, dtype):
     """
     torch.einsum with multi-dimensional contraction.
-    Inspired by PyTorch #162722 (einsum Inductor lowering issues in
+    Inspired by PyTorch #anon-6 (einsum Inductor lowering issues in
     Transformer subgraphs).
     """
     n_heads = random.choice([1, 2, 4])
@@ -733,7 +733,7 @@ def _tpl_d2_depthwise_conv_epilogue(batch, seq, hidden, dtype):
 def _tpl_d3_permute_matmul(batch, seq, hidden, dtype):
     """
     permute -> matmul: Inductor's layout propagation can mis-infer strides
-    after multiple ReinterpretViews. Graph-level variant of Issue #159462.
+    after multiple ReinterpretViews. Graph-level variant of Issue #anon-7.
     """
     return (
         f"_x  = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
@@ -790,7 +790,7 @@ def _tpl_d3_channels_last_chain(batch, seq, hidden, dtype):
     """
     channels_last -> conv -> pointwise.
     Inductor's layout tag may not propagate correctly to epilogue ops after
-    channels_last operations (Issue #159134).
+    channels_last operations (Issue #anon-8).
     """
     c = max(4, hidden // 8)
     hw = max(4, seq // 4)
@@ -811,7 +811,7 @@ def _tpl_d3_channels_last_chain(batch, seq, hidden, dtype):
 def _tpl_d3_pad_reshape_chunk(batch, seq, hidden, dtype):
     """
     ReflectionPad -> view -> chunk -> distance.
-    Inspired by PyTorch #151198 (memory stride after pad mismatches view
+    Inspired by PyTorch #anon-9 (memory stride after pad mismatches view
     assumptions; layout inference after chunk is incorrect).
     Affects both Triton and C++ backends.
     """
@@ -832,7 +832,7 @@ def _tpl_d3_pad_reshape_chunk(batch, seq, hidden, dtype):
 def _tpl_d3_alias_cat_expand(batch, seq, hidden, dtype):
     """
     cat(x, x) same-buffer concatenation then expand + compute.
-    Inspired by PyTorch #93357: Inductor codegen uses __restrict__ on cat
+    Inspired by PyTorch #anon-10: Inductor codegen uses __restrict__ on cat
     output, but when both inputs are the same tensor the pointers alias.
     """
     return (
@@ -884,7 +884,7 @@ def _tpl_d3_inplace_view_mutation(batch, seq, hidden, dtype):
 def _tpl_d3_contiguous_elision(batch, seq, hidden, dtype):
     """
     transpose -> contiguous -> matmul.
-    Inspired by PyTorch #132102: Inductor may treat .contiguous() as a
+    Inspired by PyTorch #anon-11: Inductor may treat .contiguous() as a
     no-op and optimize it away incorrectly.
     """
     return (
@@ -945,7 +945,7 @@ def _tpl_d3_expand_stride_zero(batch, seq, hidden, dtype):
 def _tpl_d4_rope_pattern(batch, seq, hidden, dtype):
     """
     RoPE: chunk + neg + cat forms a data dependency chain.
-    Issue #159239 (Qwen3 Inductor inconsistency): the chunk->neg->cat
+    Issue #anon-12 (Qwen3 Inductor inconsistency): the chunk->neg->cat
     combination in rotate_half produces incorrect results after Inductor
     fusion. Confirmed in PyTorch production.
     """
@@ -994,7 +994,7 @@ def _tpl_d4_reduce_as_scale(batch, seq, hidden, dtype):
 def _tpl_d4_gather_scatter(batch, seq, hidden, dtype):
     """
     gather -> compute -> scatter dependency.
-    Issue #134535 (gather prologue fusion): gather's loop-invariant load
+    Issue #anon-13 (gather prologue fusion): gather's loop-invariant load
     has bugs in Triton codegen fusion.
     """
     vocab = max(16, hidden)
@@ -1118,7 +1118,7 @@ def _tpl_d4_cumsum_pointwise(batch, seq, hidden, dtype):
 def _tpl_d4_pointwise_then_cumsum(batch, seq, hidden, dtype):
     """
     Pointwise → cumsum fusion pattern (bug_011 gap fix).
-    Bug_011 (#180221) needs pointwise ops BEFORE cumsum so that Inductor
+    Bug_011 (#anon-14) needs pointwise ops BEFORE cumsum so that Inductor
     fuses them into a SplitScan kernel. The existing d4_cumsum_pointwise
     has cumsum first. This template reverses the order.
     Uses adversarial seq dimensions (129, 257, 513) to hit SplitScan threshold.
@@ -1155,7 +1155,7 @@ def _tpl_d4_cumprod_fused(batch, seq, hidden, dtype):
 def _tpl_d4_chunk_neg_cat(batch, seq, hidden, dtype):
     """
     chunk -> neg -> cat (core pattern of RoPE rotate_half, isolated).
-    Inspired by PyTorch #159239: chunk->neg->cat produces incorrect results
+    Inspired by PyTorch #anon-12: chunk->neg->cat produces incorrect results
     after Inductor fusion. More general variant extracted from d4_rope_pattern.
     """
     head_dim = max(16, hidden // 2)
@@ -1176,7 +1176,7 @@ def _tpl_d4_chunk_neg_cat(batch, seq, hidden, dtype):
 def _tpl_d4_transformer_subgraph(batch, seq, hidden, dtype):
     """
     Full Transformer subgraph: attention + layernorm + FFN.
-    Inspired by PyTorch #162722 (multiple optimization passes interact to
+    Inspired by PyTorch #anon-6 (multiple optimization passes interact to
     produce severe numerical inconsistency, 99.9% element mismatch).
     """
     n_heads = random.choice([1, 2, 4])
@@ -1480,7 +1480,7 @@ def _tpl_d5_reduction_keepdim_false(batch, seq, hidden, dtype):
 def _tpl_d5_logit_eps(batch, seq, hidden, dtype):
     """
     torch.logit with eps > input → Inductor decomposition flips sign.
-    Known bug: pytorch/pytorch#145379 (open on 2.6.0).
+    Known bug: pytorch/pytorch#anon-15 (open on 2.6.0).
     """
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype}).sigmoid()\n"
@@ -2018,7 +2018,7 @@ def _tpl_d7_precision_cast_emulate(batch, seq, hidden, dtype):
     ), True
 
 def _tpl_d7_addmv_decomp(batch, seq, hidden, dtype):
-    """addmv: new decomposition added in 2.7 (#143792)."""
+    """addmv: new decomposition added in 2.7 (#anon-16)."""
     return (
         f"_x = torch.randn({hidden}, dtype={dtype})\n"
         f"_M = torch.randn({hidden}, {hidden}, dtype={dtype})\n"
@@ -2053,7 +2053,7 @@ def _tpl_d7_cooperative_reduction(batch, seq, hidden, dtype):
     ), True
 
 def _tpl_d7_max_pool_as_reduction(batch, seq, hidden, dtype):
-    """max_pool2d with large kernel: 2.7 treats this as reduction (#147876)."""
+    """max_pool2d with large kernel: 2.7 treats this as reduction (#anon-17)."""
     h_2d = random.choice([14, 16, 28, 32])
     k = random.choice([7, 14])
     channels = min(hidden, 32)
@@ -2065,7 +2065,7 @@ def _tpl_d7_max_pool_as_reduction(batch, seq, hidden, dtype):
     ), True
 
 def _tpl_d7_groupnorm_parallel(batch, seq, hidden, dtype):
-    """GroupNorm parallel reduction: new optimization in 2.7 (#144020)."""
+    """GroupNorm parallel reduction: new optimization in 2.7 (#anon-18)."""
     channels = random.choice([g for g in [32, 64, 128, 256] if g <= max(hidden, 32)])
     groups = random.choice([g for g in [4, 8, 16, 32] if channels % g == 0])
     h_2d = max(int(seq ** 0.5), 8)
@@ -2330,7 +2330,7 @@ def _tpl_d10_decompose_k_matmul(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_3d_online_softmax(batch, seq, hidden, dtype):
-    """3D softmax — recently fixed in 2.9 (#162341), neighborhood likely buggy."""
+    """3D softmax — recently fixed in 2.9 (#anon-19), neighborhood likely buggy."""
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
         f"_program_inputs = (_x,)\n\n"
@@ -2341,7 +2341,7 @@ def _tpl_d10_3d_online_softmax(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_avg_pool_as_reduction(batch, seq, hidden, dtype):
-    """avg_pool2d rewritten as reduction in 2.11 (#167228) — NEW lowering."""
+    """avg_pool2d rewritten as reduction in 2.11 (#anon-20) — NEW lowering."""
     h_2d = max(int(seq ** 0.5), 8)
     channels = min(hidden, 32)
     k = random.choice([3, 5, 7, 9])
@@ -2355,7 +2355,7 @@ def _tpl_d10_avg_pool_as_reduction(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_fused_rmsnorm_backward(batch, seq, hidden, dtype):
-    """RMSNorm followed by op + sum — 2.10 added fused backward (#165370)."""
+    """RMSNorm followed by op + sum — 2.10 added fused backward (#anon-21)."""
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
         f"_w = torch.randn({hidden}, dtype={dtype})\n"
@@ -2368,7 +2368,7 @@ def _tpl_d10_fused_rmsnorm_backward(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_mix_order_reduction(batch, seq, hidden, dtype):
-    """Mix-order reduction along multiple axes — 2.10 fusion changes (#168209).
+    """Mix-order reduction along multiple axes — 2.10 fusion changes (#anon-22).
 
     Two reductions in different orders should now fuse into a single kernel
     via the mix-order reduction pass. The output is a scalar to keep the
@@ -2387,7 +2387,7 @@ def _tpl_d10_mix_order_reduction(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_ldexp_chain(batch, seq, hidden, dtype):
-    """torch.ldexp(x, e) — 2.11 added native lowering (#171721)."""
+    """torch.ldexp(x, e) — 2.11 added native lowering (#anon-23)."""
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
         # ldexp expects integer exponent tensor
@@ -2400,7 +2400,7 @@ def _tpl_d10_ldexp_chain(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_matmul_out_dtype(batch, seq, hidden, dtype):
-    """matmul with explicit out_dtype — 2.10 added support (#163393)."""
+    """matmul with explicit out_dtype — 2.10 added support (#anon-24)."""
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
         f"_w = torch.randn({hidden}, {hidden}, dtype={dtype})\n"
@@ -2413,7 +2413,7 @@ def _tpl_d10_matmul_out_dtype(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_slice_scatter_dtype(batch, seq, hidden, dtype):
-    """slice_scatter — recently fixed dtype issue 2.9 (#160851)."""
+    """slice_scatter — recently fixed dtype issue 2.9 (#anon-25)."""
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
         f"_y = torch.randn({batch}, {seq // 2}, {hidden}, dtype={dtype})\n"
@@ -2425,7 +2425,7 @@ def _tpl_d10_slice_scatter_dtype(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_sort_with_nan(batch, seq, hidden, dtype):
-    """sort with NaN values — 2.9 fixed CUDA NaN ordering (#159308).
+    """sort with NaN values — 2.9 fixed CUDA NaN ordering (#anon-26).
 
     The NaN mask is precomputed and passed in as an input so eager and
     inductor receive identical inputs (otherwise rand_like at runtime would
@@ -2443,7 +2443,7 @@ def _tpl_d10_sort_with_nan(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_constant_pad_nd_dynamic(batch, seq, hidden, dtype):
-    """constant_pad_nd — meta function fixed 2.9 (#159878)."""
+    """constant_pad_nd — meta function fixed 2.9 (#anon-27)."""
     pad = random.choice([(0, 1), (1, 1), (2, 3), (1, 2, 1, 2)])
     return (
         f"_x = torch.randn({batch}, {seq}, {hidden}, dtype={dtype})\n"
@@ -2455,7 +2455,7 @@ def _tpl_d10_constant_pad_nd_dynamic(batch, seq, hidden, dtype):
 
 
 def _tpl_d10_persistent_reduction_aggressive(batch, seq, hidden, dtype):
-    """Pattern that 2.9's more aggressive persistent reduction (#161055) should hit."""
+    """Pattern that 2.9's more aggressive persistent reduction (#anon-28) should hit."""
     # smaller dims so persistent reduction is preferred over split reduction
     h = min(hidden, 256)
     return (
@@ -3173,8 +3173,8 @@ PROGRAM_TEMPLATES = [
     ("d5_reduction_keepdim_false",  _tpl_d5_reduction_keepdim_false,  3),
 
     # Targeting known open Inductor bugs
-    ("d5_logit_eps",                _tpl_d5_logit_eps,                5),  # #145379
-    ("d5_logit_chain",              _tpl_d5_logit_chain,              4),  # #145379 variants
+    ("d5_logit_eps",                _tpl_d5_logit_eps,                5),  # #anon-15
+    ("d5_logit_chain",              _tpl_d5_logit_chain,              4),  # #anon-15 variants
     # bug_004 family — known unfixed in 2.11 but already reported.
     # Keep them in the registry (rare seed for mutation diversity) but
     # at very low weight so they don't dominate.
@@ -6054,7 +6054,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 def _tpl_bs_fractional_max_pool(B, S, H, dtype):
-    """fractional_max_pool2d with internal random samples — bug #183249"""
+    """fractional_max_pool2d with internal random samples — bug #anon-29"""
     C = min(16, H)
     hw = max(8, int(S ** 0.5))
     return (
@@ -6067,7 +6067,7 @@ def _tpl_bs_fractional_max_pool(B, S, H, dtype):
     ), True
 
 def _tpl_bs_index_add_expanded(B, S, H, dtype):
-    """index_add on expanded (stride-0) tensor — bug #183986"""
+    """index_add on expanded (stride-0) tensor — bug #anon-30"""
     n_idx = max(1, B // 2)
     return (
         f"_base = torch.zeros(1, {H}, dtype={dtype})\n"
@@ -6080,7 +6080,7 @@ def _tpl_bs_index_add_expanded(B, S, H, dtype):
     ), True
 
 def _tpl_bs_float8_cast(B, S, H, dtype):
-    """float8 cast — bug #184081 (crashes on compute capability < 8.9)"""
+    """float8 cast — bug #anon-31 (crashes on compute capability < 8.9)"""
     return (
         f"_x = torch.randn({B}, {S}, {H}, dtype=torch.float32)\n"
         f"_program_inputs = (_x,)\n\n"
@@ -6090,7 +6090,7 @@ def _tpl_bs_float8_cast(B, S, H, dtype):
     ), False
 
 def _tpl_bs_div_trunc_float(B, S, H, dtype):
-    """float div with rounding_mode='trunc' — bug #184408"""
+    """float div with rounding_mode='trunc' — bug #anon-32"""
     return (
         f"_x = torch.randn({B}, {S}, {H}, dtype={dtype})\n"
         f"_d = torch.randn({B}, {S}, {H}, dtype={dtype}).clamp(min=0.1)\n"

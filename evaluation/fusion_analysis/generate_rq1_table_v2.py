@@ -41,46 +41,46 @@ SF_CONTEXT    = 'guard/autograd/context'
 
 BUGS = [
     # Fusion composition (2)
-    ('#179561', 'pointwise-only',       SF_POINTWISE,  'codegen'),
-    ('#179931', 'layout × reduction',   SF_LAYOUT_RED, 'codegen'),
+    ('#anon-1', 'pointwise-only',       SF_POINTWISE,  'codegen'),
+    ('#anon-2', 'layout × reduction',   SF_LAYOUT_RED, 'codegen'),
 
     # Backward codegen (10)
-    ('#180164', 'scatter-only',         SF_SCATTER,    'codegen'),
-    ('#180771', 'scatter-only',         SF_SCATTER,    'codegen'),
-    ('#180772', 'scatter-only',         SF_SCATTER,    'codegen'),
-    ('#182012', 'scatter-only',         SF_SCATTER,    'codegen'),
-    ('#182200', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#183017', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#183987', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184088', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184100', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184101', 'pointwise-only',       SF_POINTWISE,  'codegen'),
+    ('#anon-3', 'scatter-only',         SF_SCATTER,    'codegen'),
+    ('#anon-4', 'scatter-only',         SF_SCATTER,    'codegen'),
+    ('#anon-5', 'scatter-only',         SF_SCATTER,    'codegen'),
+    ('#anon-6', 'scatter-only',         SF_SCATTER,    'codegen'),
+    ('#anon-7', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-8', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-9', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-10', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-11', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-12', 'pointwise-only',       SF_POINTWISE,  'codegen'),
 
     # Split-scan boundary (3)
-    ('#180221', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
-    ('#181584', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
-    ('#183250', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
+    ('#anon-13', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
+    ('#anon-14', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
+    ('#anon-15', 'scan-only',            SF_SPLIT_SCAN, 'codegen'),
 
     # Scatter/indexing (2)
-    ('#183986', 'scatter-only',         SF_SCATTER,    'codegen'),
-    ('#183988', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-16', 'scatter-only',         SF_SCATTER,    'codegen'),
+    ('#anon-17', None,                   SF_CONTEXT,    'pre-codegen'),
 
     # Context/higher-order (5)
-    ('#181581', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#181512', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#182217', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#183015', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184222', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-18', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-19', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-20', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-21', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-22', None,                   SF_CONTEXT,    'pre-codegen'),
 
     # Codegen/lowering (8)
-    ('#183249', 'reduction-only',       SF_RED,        'codegen'),
-    ('#184408', 'pointwise-only',       SF_POINTWISE,  'codegen'),
-    ('#184410', 'pointwise-only',       SF_POINTWISE,  'codegen'),
-    ('#184415', 'pointwise-only',       SF_FOREACH,    'codegen'),
-    ('#184416', 'extern-only',          SF_EXTERN,     'codegen'),
-    ('#184081', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184089', None,                   SF_CONTEXT,    'pre-codegen'),
-    ('#184992', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-23', 'reduction-only',       SF_RED,        'codegen'),
+    ('#anon-24', 'pointwise-only',       SF_POINTWISE,  'codegen'),
+    ('#anon-25', 'pointwise-only',       SF_POINTWISE,  'codegen'),
+    ('#anon-26', 'pointwise-only',       SF_FOREACH,    'codegen'),
+    ('#anon-27', 'extern-only',          SF_EXTERN,     'codegen'),
+    ('#anon-28', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-29', None,                   SF_CONTEXT,    'pre-codegen'),
+    ('#anon-30', None,                   SF_CONTEXT,    'pre-codegen'),
 ]
 
 assert len(BUGS) == 30, f"Expected 30, got {len(BUGS)}"

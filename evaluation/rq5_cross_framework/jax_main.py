@@ -46,8 +46,8 @@ CHECKPOINT_PATH = OUT_DIR / "fuzzer_checkpoint.json"
 # Each basin is (op_set, description). A program matches if ANY known basin op
 # appears in its fingerprint (subset matching for known root causes).
 KNOWN_BASINS = [
-    ({"to_bf16_f32"}, "bf16 cast elision — known #32545"),
-    ({"to_f16_f32"}, "fp16 cast elision — known #32545"),
+    ({"to_bf16_f32"}, "bf16 cast elision — known #anon-1"),
+    ({"to_f16_f32"}, "fp16 cast elision — known #anon-1"),
 ]
 
 

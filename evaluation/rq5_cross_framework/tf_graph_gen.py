@@ -104,7 +104,7 @@ KERAS3_NORMALIZE = [
 TFNN_OPS = [
     ("nn_relu",    "tf.nn.relu({x})",         "same"),
     ("nn_elu",     "tf.nn.elu({x})",          "same"),
-    ("nn_selu",    "tf.nn.selu({x})",         "same"),  # bug #116943 gap fix
+    ("nn_selu",    "tf.nn.selu({x})",         "same"),  # bug #anon-1 gap fix
     ("nn_gelu",    "tf.nn.gelu({x})",         "same"),
     ("nn_swish",   "tf.nn.swish({x})",        "same"),
     ("nn_silu",    "tf.nn.silu({x})",         "same"),
@@ -133,7 +133,7 @@ TFMATH_OPS = [
     ("m_igammac",  "tf.math.igammac(tf.abs({x}) + 0.5, tf.abs({x}) + 0.5)", "same"),
 ]
 
-# Cast pairs (bug basin: mostly known #32545 analog, but keep one or two)
+# Cast pairs (bug basin: mostly known #anon-2 analog, but keep one or two)
 CAST_OPS = [
     ("cast_bf16_f32", "tf.cast(tf.cast({x}, tf.bfloat16), tf.float32)", "same"),
     ("cast_f16_f32",  "tf.cast(tf.cast({x}, tf.float16), tf.float32)",  "same"),

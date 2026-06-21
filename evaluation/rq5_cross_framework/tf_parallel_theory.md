@@ -213,10 +213,10 @@ Output: program p = (G, theta), pipeline configuration
 
 | Oracle level | What it detects | TF bugs found |
 |-------------|-----------------|---------------|
-| Crash-only | XLA/Grappler compilation failures | #117546, #117547 (2 bugs) |
-| + Grappler differential | Grappler rewrite semantic changes | #116436 (1 bug) |
-| + XLA differential | XLA silent numerical divergences | #116992, #117319 (2 bugs) |
-| + Boundary values | Eager kernel numerical issues | #116943, #116945 (2 bugs) |
+| Crash-only | XLA/Grappler compilation failures | #anon-1, #anon-2 (2 bugs) |
+| + Grappler differential | Grappler rewrite semantic changes | #anon-3 (1 bug) |
+| + XLA differential | XLA silent numerical divergences | #anon-4, #anon-5 (2 bugs) |
+| + Boundary values | Eager kernel numerical issues | #anon-6, #anon-7 (2 bugs) |
 
 Without the 3-way differential oracle, only 2/7 bugs (the crashes) would be detected. The oracle provides $\delta$ for 5/7 bugs = **71% of TF bugs require the differential oracle** (comparable to PyTorch's 75%).
 
@@ -226,13 +226,13 @@ Without the 3-way differential oracle, only 2/7 bugs (the crashes) would be dete
 
 | Bug | Pipeline State | Category | Random reachable? |
 |-----|---------------|----------|-------------------|
-| #116436 | Grappler x fp32 x static | T1 | Partial: requires a non-monotonic pre-op composed with argmin/argmax. |
-| #116943 | eager x fp32 x boundary | T2 | Partial: requires small-negative boundary values. |
-| #116945 | eager x complex64 x boundary | T3 | No: random rarely generates complex dtype (5% weight) + small magnitude. |
-| #116992 | XLA x fp32 x boundary | T7 | Partial: requires NaN input + XLA path + reduce_max. |
-| #117319 | XLA x fp32 x boundary | T7 | No: requires check_numerics + NaN + XLA-specific combination. |
-| #117546 | XLA x complex64 x static | T3 | No: requires complex + cumsum + XLA. |
-| #117547 | XLA x fp32 x empty | T4 | No: requires an empty-dim tensor (shape=[N,0]) - outside random's sampling space. |
+| #anon-3 | Grappler x fp32 x static | T1 | Partial: requires a non-monotonic pre-op composed with argmin/argmax. |
+| #anon-6 | eager x fp32 x boundary | T2 | Partial: requires small-negative boundary values. |
+| #anon-7 | eager x complex64 x boundary | T3 | No: random rarely generates complex dtype (5% weight) + small magnitude. |
+| #anon-4 | XLA x fp32 x boundary | T7 | Partial: requires NaN input + XLA path + reduce_max. |
+| #anon-5 | XLA x fp32 x boundary | T7 | No: requires check_numerics + NaN + XLA-specific combination. |
+| #anon-1 | XLA x complex64 x static | T3 | No: requires complex + cumsum + XLA. |
+| #anon-2 | XLA x fp32 x empty | T4 | No: requires an empty-dim tensor (shape=[N,0]) - outside random's sampling space. |
 
 **Random structurally hard to reach: 4/7 bugs** (complex dtype + empty shapes + specific op combinations).
 

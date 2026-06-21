@@ -46,7 +46,7 @@ Source Distribution (48 bugs):
   GitHub-wide search:   13 (27.1%)
 
 Notable Bug Clusters:
-  - Output-order-dependent miscompiles (#114221-#114229, #115159, #115260, #114215):
+  - Output-order-dependent miscompiles (#anon-1-#anon-2, #anon-3, #anon-4, #anon-5):
     8 bugs where inductor buffer aliasing causes computation results to change
     based on unrelated graph structure (return tuple order, extra output nodes).
     Root cause: fusion scheduling reuses buffer storage incorrectly.

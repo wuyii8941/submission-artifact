@@ -176,56 +176,56 @@ SEMANTIC_MUTATIONS = [
 # Bug-specific ops: operators that triggered confirmed bugs not covered above.
 # T5/T6/T7 categories from paper appendix.
 BUGSPEC_OPS = [
-    # #117319: check_numerics silently passes NaN/Inf under XLA
+    # #anon-1: check_numerics silently passes NaN/Inf under XLA
     ("bs_check_numerics", "tf.debugging.check_numerics({x}, 'check')", "same"),
-    # #117803: image.resize bilinear over-propagates NaN under XLA
+    # #anon-2: image.resize bilinear over-propagates NaN under XLA
     ("bs_resize_bilinear",
      "(lambda _t: tf.image.resize(tf.reshape(_t, [1] + list(_t.shape) + [1]), "
      "[max(1, _t.shape[0]//2 if _t.shape.rank==1 else _t.shape[-2]//2), "
      "max(1, _t.shape[-1]//2)], method='bilinear')[0,:,:,0])({x})",
      "quarter_last"),
-    # #117804: searchsorted returns wrong position for NaN under XLA
+    # #anon-3: searchsorted returns wrong position for NaN under XLA
     ("bs_searchsorted",
      "tf.cast(tf.searchsorted(tf.sort({x}, axis=-1), {x}, side='right'), tf.float32)",
      "same"),
-    # #117807, #117864: eigvalsh wrong for large/complex matrices
+    # #anon-4, #anon-5: eigvalsh wrong for large/complex matrices
     ("bs_eigvalsh",
      "(lambda _t: tf.linalg.eigvalsh(tf.linalg.matmul(_t, _t, transpose_b=True)))({x})",
      "keepdim"),
-    # #117862: segment_min/max NaN-position-dependent results
+    # #anon-6: segment_min/max NaN-position-dependent results
     ("bs_segment_min",
      "(lambda _t: tf.math.unsorted_segment_min(_t, tf.zeros(tf.shape(_t)[0], dtype=tf.int32), 1))({x})",
      "scalar"),
     ("bs_segment_max",
      "(lambda _t: tf.math.unsorted_segment_max(_t, tf.zeros(tf.shape(_t)[0], dtype=tf.int32), 1))({x})",
      "scalar"),
-    # #117962: fake_quant nudge rounding mismatch
+    # #anon-7: fake_quant nudge rounding mismatch
     ("bs_fake_quant",
      "tf.quantization.fake_quant_with_min_max_vars({x}, min=-6.0, max=6.0, num_bits=8)",
      "same"),
-    # #119476: xlogy/xlog1py gradient at zero
+    # #anon-8: xlogy/xlog1py gradient at zero
     ("bs_xlogy",
      "tf.math.xlogy({x}, tf.abs({x}) + 1e-7)",
      "same"),
     ("bs_xlog1py",
      "tf.math.xlog1py({x}, tf.abs({x}))",
      "same"),
-    # #117802: complex pow(0+0j, 0+0j) returns NaN (unguarded power)
+    # #anon-9: complex pow(0+0j, 0+0j) returns NaN (unguarded power)
     ("bs_pow_raw",
      "tf.math.pow(tf.abs({x}), {x} * 0.5)",
      "same"),
-    # #118642: floordiv/floormod identity violation under XLA
+    # #anon-10: floordiv/floormod identity violation under XLA
     ("bs_floordiv",
      "tf.cast(tf.math.floordiv({x}, tf.ones_like({x}) * 2.0 + 1e-7), {x}.dtype)",
      "same"),
     ("bs_floormod",
      "tf.math.floormod({x}, tf.ones_like({x}) * 3.0 + 1e-7)",
      "same"),
-    # #118645: reciprocal flush-to-zero on GPU
+    # #anon-11: reciprocal flush-to-zero on GPU
     ("bs_reciprocal",
      "tf.math.reciprocal({x} + 1e-38)",
      "same"),
-    # #118701: fused_batch_norm with negative variance under XLA
+    # #anon-12: fused_batch_norm with negative variance under XLA
     ("bs_batchnorm",
      "(lambda _t: tf.nn.batch_normalization("
      "tf.reshape(_t, [1, 1, 1, -1]), "

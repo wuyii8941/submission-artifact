@@ -57,6 +57,6 @@ Confirmed upstream issues (root-cause dedup)  9
 ```
 
 - All 9 PyTorch bugs reproduce deterministically (Stage 1 pass)
-- Numerical-diff bugs (#179561, #179931, etc.) are perturbation-stable
-- Crash/metadata bugs (#180221, #181512) confirmed via control configs
+- Numerical-diff bugs (#anon-1, #anon-2, etc.) are perturbation-stable
+- Crash/metadata bugs (#anon-3, #anon-4) confirmed via control configs
 - Conservative pipeline: 61/300 → 20% survive → high precision

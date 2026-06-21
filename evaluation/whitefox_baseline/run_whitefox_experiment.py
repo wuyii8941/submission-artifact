@@ -28,16 +28,16 @@ RESULT_BASE = Path(os.path.dirname(os.path.abspath(__file__)))
 PYTHON = os.environ.get('KERNELFUZZ_PYTHON', sys.executable)
 
 CDC_BUG_SIGNATURES = {
-    "#179561": ["bf16", "bfloat16", "cast", "sigmoid", "to(torch.bfloat16)"],
-    "#179931": ["adaptive_avg_pool", "AdaptiveAvgPool", "stride"],
-    "#180164": ["slice_scatter", "backward", "gradient"],
-    "#180221": ["cumsum", "split_scan", "dim=129", "SplitScan"],
-    "#180771": ["slice_scatter", "backward", "index 0"],
-    "#180772": ["slice_scatter", "backward"],
-    "#181512": ["inference_mode", "batched", "matmul", "compile"],
-    "#181581": ["autograd.grad", "create_graph", "higher-order"],
-    "#182012": ["diagonal_scatter", "backward", "grad"],
-    "#182217": ["NestedTensor", "layer_norm", "guard"],
+    "#anon-1": ["bf16", "bfloat16", "cast", "sigmoid", "to(torch.bfloat16)"],
+    "#anon-2": ["adaptive_avg_pool", "AdaptiveAvgPool", "stride"],
+    "#anon-3": ["slice_scatter", "backward", "gradient"],
+    "#anon-4": ["cumsum", "split_scan", "dim=129", "SplitScan"],
+    "#anon-5": ["slice_scatter", "backward", "index 0"],
+    "#anon-6": ["slice_scatter", "backward"],
+    "#anon-7": ["inference_mode", "batched", "matmul", "compile"],
+    "#anon-8": ["autograd.grad", "create_graph", "higher-order"],
+    "#anon-9": ["diagonal_scatter", "backward", "grad"],
+    "#anon-10": ["NestedTensor", "layer_norm", "guard"],
 }
 
 CDC_OPS = [

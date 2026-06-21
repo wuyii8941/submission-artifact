@@ -331,7 +331,7 @@ class GraphGenerator:
                 "reduction": 15,
                 "normalize": 10,
                 "indexing": 8,
-                "cast": 2,  # low weight: cast bugs are mostly known (#32545)
+                "cast": 2,  # low weight: cast bugs are mostly known (#anon-1)
                 "where": 8,
                 "lax": 5,
                 "scan": 8 if has_scan else 2,

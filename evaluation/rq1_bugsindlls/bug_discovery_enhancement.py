@@ -31,7 +31,7 @@ class BugDiscoveryEnhancer:
         
         # Roulette over historical bug templates
         if roll < 0.25:
-            # Sniper target 1: Issue #117026 (ListIteratorVariable has no type)
+            # Sniper target 1: Issue #anon-1 (ListIteratorVariable has no type)
             mode_name = "target_117026_list_iter"
             tail_logic = """
     out = locals().get('results', dict())
@@ -46,7 +46,7 @@ class BugDiscoveryEnhancer:
             compile_decorator = 'torch.compile(backend="inductor", fullgraph=False)'
 
         elif roll < 0.50:
-            # Sniper target 2: Issue #116463 (missing support for itertools.chain)
+            # Sniper target 2: Issue #anon-2 (missing support for itertools.chain)
             mode_name = "target_116463_itertools"
             tail_logic = """
     import itertools
@@ -61,7 +61,7 @@ class BugDiscoveryEnhancer:
             compile_decorator = 'torch.compile(backend="inductor", fullgraph=False)'
 
         elif roll < 0.75:
-            # Sniper target 3: Issue #116609 and precision-class bugs
+            # Sniper target 3: Issue #anon-3 and precision-class bugs
             mode_name = "target_116609_bfloat16"
             tail_logic = """
     out = locals().get('results', dict())
