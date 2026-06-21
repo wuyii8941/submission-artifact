@@ -15,8 +15,8 @@ Usage:
     CUDA_VISIBLE_DEVICES=<gpu> python retrospective_enrichment.py
 
 Output:
-    ${ARTIFACT_ROOT}/graph_exp/retrospective_p1_data.json   (raw per-program data)
-    ${ARTIFACT_ROOT}/graph_exp/retrospective_p1_report.md   (analysis report)
+    ${ARTIFACT_ROOT}/graph_exp/retrospective_p1_data.json  (raw per-program data)
+    ${ARTIFACT_ROOT}/graph_exp/retrospective_p1_report.md  (analysis report)
 """
 
 import gc
@@ -384,7 +384,7 @@ def generate_report(enrichment_data, programs_with_passes, elapsed_sec):
 
     if len(high_enrichment_pairs) >= 3:
         lines.extend([
-            "### GATING DECISION: **PASS** ✅",
+            "### GATING DECISION: **PASS** ",
             "",
             f"Found **{len(high_enrichment_pairs)} pass pairs** with enrichment ≥ 3× and ≥2 bug hits.",
             "P1.1 constraint-guided generator has concrete anchor targets. Proceed to P1.1.",
@@ -392,7 +392,7 @@ def generate_report(enrichment_data, programs_with_passes, elapsed_sec):
         ])
     elif len(high_enrichment_pairs) >= 1:
         lines.extend([
-            "### GATING DECISION: **WEAK PASS** ⚠️",
+            "### GATING DECISION: **WEAK PASS** ",
             "",
             f"Found **{len(high_enrichment_pairs)} pass pairs** with enrichment ≥ 3× and ≥2 bug hits.",
             "Signal exists but is weak. Consider expanding the dataset or relaxing criteria before P1.1.",
@@ -400,7 +400,7 @@ def generate_report(enrichment_data, programs_with_passes, elapsed_sec):
         ])
     else:
         lines.extend([
-            "### GATING DECISION: **FAIL** ❌",
+            "### GATING DECISION: **FAIL** ",
             "",
             "No pass pairs found with enrichment ≥ 3× and ≥2 bug hits.",
             "The hypothesis 'pass pairs enrich in bug programs' is not supported by this data.",

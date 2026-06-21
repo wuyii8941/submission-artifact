@@ -70,10 +70,10 @@ try:
         CompileWrapperCorpus,
     )
     BUG_DISCOVERY_AVAILABLE = True
-    print("[BugDiscovery] ✅ Enhancement module loaded (EdgeCase + DtypeSweep + CompileWrapper)")
+    print("[BugDiscovery] Enhancement module loaded (EdgeCase + DtypeSweep + CompileWrapper)")
 except ImportError as _e:
     BUG_DISCOVERY_AVAILABLE = False
-    print(f"[BugDiscovery] ⚠️  Enhancement module not found: {_e}")
+    print(f"[BugDiscovery]  Enhancement module not found: {_e}")
 
     class BugDiscoveryEnhancer:
         def __init__(self, *a, **kw): pass
@@ -216,14 +216,14 @@ class MemoryMonitor:
 
         if rss > self.critical_threshold or force:
             is_critical = True
-            message = f"⚠️  CRITICAL MEMORY: {rss/1e9:.2f} GB RSS"
+            message = f" CRITICAL MEMORY: {rss/1e9:.2f} GB RSS"
             if self.enable_auto_gc:
                 self._aggressive_cleanup()
                 new_rss, new_gpu = self.get_memory_usage()
                 message += f" → {new_rss/1e9:.2f} GB after cleanup"
         elif rss > self.warning_threshold:
             self.warning_count += 1
-            message = f"⚠️  HIGH MEMORY: {rss/1e9:.2f} GB RSS"
+            message = f" HIGH MEMORY: {rss/1e9:.2f} GB RSS"
             if self.enable_auto_gc:
                 self._light_cleanup()
 
@@ -293,7 +293,7 @@ class Speedometer:
         current_speed = self.get_speed()
         if current_speed < self.slow_threshold:
             self.slow_warnings += 1
-            warning = f"⚠️  SLOW SPEED: {current_speed:.2f} it/s"
+            warning = f" SLOW SPEED: {current_speed:.2f} it/s"
             return True, warning
         return False, ""
 
@@ -332,7 +332,7 @@ class DiskGuard:
         total, used, free = self.get_disk_usage()
         if free < self.min_free_gb:
             self.warnings += 1
-            warning = f"⚠️  DISK SPACE: Only {free:.2f} GB free"
+            warning = f" DISK SPACE: Only {free:.2f} GB free"
             return True, warning
         return False, ""
 
@@ -361,10 +361,10 @@ class DiskGuard:
         if self.auto_cleanup:
             cleaned = self.cleanup_temp_files()
             total, used, free = self.get_disk_usage()
-            message = f"{warning}\n   Cleaned {cleaned} files → {free:.2f} GB free"
+            message = f"{warning}\n  Cleaned {cleaned} files → {free:.2f} GB free"
             if free < self.min_free_gb:
-                return True, message + "\n   ❌ CRITICAL: Still low!"
-            return False, message + "\n   ✅ Cleanup successful"
+                return True, message + "\n  CRITICAL: Still low!"
+            return False, message + "\n  Cleanup successful"
         return True, warning
 
     def get_status(self) -> str:
@@ -452,7 +452,7 @@ class CheckpointManager:
                 json.dump(metadata, f, indent=2)
             return True
         except Exception as e:
-            print(f"[Checkpoint] ❌ Save failed: {e}")
+            print(f"[Checkpoint] Save failed: {e}")
             return False
 
     def load(self) -> Optional[Dict]:
@@ -461,10 +461,10 @@ class CheckpointManager:
         try:
             with open(self.checkpoint_file, 'rb') as f:
                 data = pickle.load(f)
-            print(f"[Checkpoint] ✅ Loaded from iteration {data['iteration']}")
+            print(f"[Checkpoint] Loaded from iteration {data['iteration']}")
             return data
         except Exception as e:
-            print(f"[Checkpoint] ❌ Load failed: {e}")
+            print(f"[Checkpoint] Load failed: {e}")
             return None
 
     def exists(self) -> bool:
@@ -673,7 +673,7 @@ class BugTracker:
     def print_summary(self):
         self.scan_bugs()
         print(f"\n{'='*70}")
-        print(f"🧩 BUG ANALYSIS REPORT: {self.name}")
+        print(f"BUG ANALYSIS REPORT: {self.name}")
         print(f"{'='*70}")
         print(f"Total Unique Issues: {len(self.unique_bugs)}")
         print(f"Distribution: {dict(self.bug_stats)}")
@@ -686,8 +686,8 @@ class BugTracker:
         print("-" * 70)
         total_raw = self.get_total_bugs()
         total_unique = len(self.unique_bugs)
-        print(f"📌 UNIQUE Bugs: {total_unique}")
-        print(f"🔄 Raw Files:   CRASH={self.bug_counts['crash']} | CUDA={self.bug_counts['cuda']} | "
+        print(f"UNIQUE Bugs: {total_unique}")
+        print(f"Raw Files:  CRASH={self.bug_counts['crash']} | CUDA={self.bug_counts['cuda']} | "
               f"PRECISION={self.bug_counts['precision']} | COMPILE={self.bug_counts['compile']} | Total={total_raw}")
         print(f"{'='*70}\n")
 
@@ -768,7 +768,7 @@ class RealTimeBugDeduplicator:
     def print_summary(self):
         stats = self.get_dedup_stats()
         print(f"\n{'='*70}")
-        print("🔍 BUG DEDUPLICATION REPORT")
+        print("BUG DEDUPLICATION REPORT")
         print(f"{'='*70}")
         for oracle in ['crash', 'cuda', 'precision', 'compile']:
             total, unique = stats['total'][oracle], stats['unique'][oracle]
@@ -910,7 +910,7 @@ class AdaptiveSaturationDetector:
             self.last_kernel_count = current_kernels
             if self.expansion_mode:
                 self.expansion_mode = False
-                return False, "✅ New kernels found! Returning to normal mode"
+                return False, "New kernels found! Returning to normal mode"
         else:
             self.no_discovery_count += 1
 
@@ -919,7 +919,7 @@ class AdaptiveSaturationDetector:
             if self.no_discovery_count >= self.patience and not self.expansion_mode:
                 self.expansion_mode = True
                 self.expansion_count += 1
-                return True, f"🔍 Expanding search (stagnation: {self.no_discovery_count} iters)"
+                return True, f"Expanding search (stagnation: {self.no_discovery_count} iters)"
         return False, ""
 
     def is_in_expansion_mode(self) -> bool:
@@ -1091,13 +1091,13 @@ class AdaptiveMutationController:
         self.expansion_mode = True
         self.current_epsilon = self.expansion_epsilon
         self.current_range = self.exploration_range
-        print(f"  🔍 [Mutation] Expansion mode: ε={self.current_epsilon}, range=±{self.current_range}")
+        print(f"  [Mutation] Expansion mode: ε={self.current_epsilon}, range=±{self.current_range}")
 
     def exit_expansion_mode(self):
         self.expansion_mode = False
         self.current_epsilon = self.base_epsilon
         self.current_range = self.surgical_range
-        print(f"  ✅ [Mutation] Normal mode: ε={self.current_epsilon}, range=±{self.current_range}")
+        print(f"  [Mutation] Normal mode: ε={self.current_epsilon}, range=±{self.current_range}")
 
     def get_mutation_range(self) -> int:
         return self.current_range
@@ -1128,14 +1128,14 @@ class ProbabilityPatcher:
             return rand() < 0.2
 
         prob_module.do_select_from_db = high_db_select
-        print("[Patch] ✅ Database sampling: 20% → 80%")
+        print("[Patch] Database sampling: 20% → 80%")
 
     @staticmethod
     def restore():
         if _ORIGINAL_DO_SELECT_FROM_DB:
             import utils.probability as prob_module
             prob_module.do_select_from_db = _ORIGINAL_DO_SELECT_FROM_DB
-            print("[Patch] 🔄 Database sampling restored")
+            print("[Patch] Database sampling restored")
 
 
 # =============================================================================
@@ -1207,11 +1207,11 @@ class PoisonPatcher:
         Argument.mutate_float_value = poison_float_mutation
         Argument.mutate_int_value = poison_int_mutation
 
-        print("[Patch] 🧪 Enhanced Poison Injection enabled")
-        print("        Float: 5% Inf + 5% NaN + 10% Extreme")
-        print("        Int: 15% extreme (neg indices -32768~0 + padding 6442450944)")
-        print("        Int: 15% trap + 30% list + 40% micro")
-        print("        Protection: Special negative values preserved")
+        print("[Patch] Enhanced Poison Injection enabled")
+        print("  Float: 5% Inf + 5% NaN + 10% Extreme")
+        print("  Int: 15% extreme (neg indices -32768~0 + padding 6442450944)")
+        print("  Int: 15% trap + 30% list + 40% micro")
+        print("  Protection: Special negative values preserved")
 
     @staticmethod
     def restore():
@@ -1220,17 +1220,17 @@ class PoisonPatcher:
             Argument.mutate_float_value = _POISON_ORIGINAL_FLOAT
         if _POISON_ORIGINAL_INT:
             Argument.mutate_int_value = _POISON_ORIGINAL_INT
-        print("[Patch] 🔄 Poison Injection restored")
+        print("[Patch] Poison Injection restored")
 
 
 class AdaptiveMutationPatcher:
     @staticmethod
     def patch_adaptive_mutation(controller: AdaptiveMutationController):
-        print(f"[Patch] ✅ Adaptive range enabled: ±{controller.get_mutation_range()}")
+        print(f"[Patch] Adaptive range enabled: ±{controller.get_mutation_range()}")
 
     @staticmethod
     def restore():
-        print("[Patch] 🔄 Adaptive range disabled")
+        print("[Patch] Adaptive range disabled")
 
 
 # =============================================================================
@@ -1326,8 +1326,8 @@ class EnhancedFuzzer:
         if enable_patches:
             self.issue_ids = IssueScriptRunner.load_all_issue_ids()
             if self.issue_ids:
-                print(f"[IssueScripts] ✅ {len(self.issue_ids)} scripts available for guided warmup")
-                print(f"[IssueScripts]    Warmup will cycle through all {len(self.issue_ids)} issues")
+                print(f"[IssueScripts] {len(self.issue_ids)} scripts available for guided warmup")
+                print(f"[IssueScripts]  Warmup will cycle through all {len(self.issue_ids)} issues")
 
         # BUG-DISCOVERY: three-axis enhancement
         self.bug_enhancer = BugDiscoveryEnhancer(
@@ -1363,7 +1363,7 @@ class EnhancedFuzzer:
                 start_iteration = checkpoint_data['iteration'] + 1
                 if self.logger:
                     self.logger.total_iterations = checkpoint_data.get('logger_iterations', 0)
-                print(f"✅ Resuming from iteration {start_iteration}, "
+                print(f"Resuming from iteration {start_iteration}, "
                       f"kernels: {self.coverage.kernel_count}")
 
         start_time = time.time()
@@ -1407,7 +1407,7 @@ class EnhancedFuzzer:
                         if error_info:
                             self.bug_traces_log.update(error_info)
                         if bug_found:
-                            print(f"  🐛 [IssueScript] Bug reproduced: issue_{issue_id}")
+                            print(f"  [IssueScript] Bug reproduced: issue_{issue_id}")
                         new_count, (should_expand, _) = self.coverage.update(all_captured_kernels, i)
                         if new_count > 0 and self.corpus and script_src:
                             dummy_api = TorchAPI(self.api_name)
@@ -1422,7 +1422,7 @@ class EnhancedFuzzer:
                         self.iterations_completed = i + 1
                         continue
                     except Exception as e:
-                        print(f"  [IssueScript] ⚠️ issue_{issue_id} failed: {e}")
+                        print(f"  [IssueScript] issue_{issue_id} failed: {e}")
                         # On failure, fall through to plain random.
 
                 # Plain random warmup
@@ -1430,7 +1430,7 @@ class EnhancedFuzzer:
                 source = "warmup_random"
                 api.mutate()
                 if i == self.warmup_threshold - 1:
-                    print(f"\n🚀 PHASE TRANSITION: Warm-up → Evolution (iter {i+1})")
+                    print(f"\nPHASE TRANSITION: Warm-up → Evolution (iter {i+1})")
             else:
                 # Phase 2: Evolution -- epsilon-greedy hybrid strategy
                 if self.mutation_controller:
@@ -1505,7 +1505,7 @@ class EnhancedFuzzer:
                             iteration=i
                         )
                         if is_new:
-                            print(f"  🐛 NEW [{oracle_key.upper()}]: {sig[:50]}...")
+                            print(f"  NEW [{oracle_key.upper()}]: {sig[:50]}...")
 
                 except Exception:
                     pass
@@ -1568,7 +1568,7 @@ class EnhancedFuzzer:
                 if self.disk_guard:
                     is_critical, message = self.disk_guard.check_and_cleanup()
                     if is_critical:
-                        print(f"\n{message}\n❌ STOPPING: Critical disk space issue")
+                        print(f"\n{message}\nSTOPPING: Critical disk space issue")
                         break
                     elif message:
                         print(f"\n{message}")
@@ -1610,9 +1610,9 @@ class EnhancedFuzzer:
         self._save_bug_traces()  # The single flush point
 
         print(f"\n{'='*70}")
-        print(f"✅ {self.strategy_name} fuzzing completed: {self.iterations_completed} iterations")
-        print(f"   Total kernels: {self.coverage.get_total()}")
-        print(f"   Total bugs: {self.bug_tracker.get_total_bugs()}")
+        print(f"{self.strategy_name} fuzzing completed: {self.iterations_completed} iterations")
+        print(f"  Total kernels: {self.coverage.get_total()}")
+        print(f"  Total bugs: {self.bug_tracker.get_total_bugs()}")
         print(f"{'='*70}\n")
 
         return self.coverage
@@ -1648,9 +1648,9 @@ class EnhancedFuzzer:
         try:
             with open(out_file, "w", encoding="utf-8") as f:
                 json.dump(normalized, f, indent=2, ensure_ascii=False)
-            print(f"  [BugTraces] 💾 Saved {len(normalized)} entries → {out_file.name}")
+            print(f"  [BugTraces] Saved {len(normalized)} entries → {out_file.name}")
         except Exception as e:
-            print(f"  [BugTraces] ❌ JSON dump failed: {e}")
+            print(f"  [BugTraces] JSON dump failed: {e}")
 
     def print_stats(self):
         print(f"\n{'='*70}")
@@ -1739,7 +1739,7 @@ def _run_phase_worker(phase_name: str,
             with open(result_file, 'w') as f:
                 json.dump(result, f, indent=2)
         except Exception as e:
-            print(f"  ⚠️ Intermediate save failed: {e}")
+            print(f"  Intermediate save failed: {e}")
 
     try:
         fuzzer = EnhancedFuzzer(
@@ -1795,7 +1795,7 @@ def _run_phase_worker(phase_name: str,
 
     except Exception as e:
         result['error'] = f"{type(e).__name__}: {str(e)}\n{traceback.format_exc()}"
-        print(f"\n❌ Phase {phase_name} failed: {e}")
+        print(f"\nPhase {phase_name} failed: {e}")
 
     finally:
         if enable_patches:
@@ -1829,7 +1829,7 @@ def run_phase_isolated(phase_name: str,
     os.makedirs(output_dir, exist_ok=True)
 
     print(f"\n{'='*70}")
-    print(f"🚀 LAUNCHING ISOLATED PHASE: {phase_name}")
+    print(f"LAUNCHING ISOLATED PHASE: {phase_name}")
     print(f"{'='*70}")
     print(f"API: {api_name}")
     print(f"Max Iterations: {max_iterations:,}")
@@ -1897,7 +1897,7 @@ def run_phase_isolated(phase_name: str,
                 f.write(f"# CRASH BUG: This code caused process exit\n")
                 f.write(f"# Phase: {phase_name}, Exit: {p.exitcode}, Time: {elapsed:.1f}s\n\n")
                 f.write(content)
-            print(f"  💾 Crash code saved to: {dest_file}")
+            print(f"  Crash code saved to: {dest_file}")
 
             # [fix] Also write into bug_traces JSON so crash bugs are matched by the v14 analysis script.
             # The key uses the relative-path format (matches the format normalized by _save_bug_traces).
@@ -1916,7 +1916,7 @@ def run_phase_isolated(phase_name: str,
                 with open(trace_file, 'w', encoding='utf-8') as f:
                     json.dump(traces, f, indent=2, ensure_ascii=False)
             except Exception as te:
-                print(f"  ⚠️ Failed to update bug traces: {te}")
+                print(f"  Failed to update bug traces: {te}")
 
             for f_path in [crash_code_file, crash_code_file + '.tmp']:
                 try:
@@ -1927,7 +1927,7 @@ def run_phase_isolated(phase_name: str,
 
             return True
         except Exception as e:
-            print(f"  ⚠️ Failed to save crash code: {e}")
+            print(f"  Failed to save crash code: {e}")
             return False
 
     if p.is_alive():
@@ -1951,7 +1951,7 @@ def run_phase_isolated(phase_name: str,
         else:
             error_msg = f"Process exited with code {exit_code}"
 
-        print(f"\n❌ Phase {phase_name} CRASHED: {error_msg}")
+        print(f"\nPhase {phase_name} CRASHED: {error_msg}")
         result['error'] = error_msg
         result['exit_code'] = exit_code
         result['crash_saved'] = save_crash_code_as_bug()
@@ -1962,7 +1962,7 @@ def run_phase_isolated(phase_name: str,
                 with open(result_file, 'r') as f:
                     result = json.load(f)
                 result['elapsed_seconds'] = elapsed
-                print(f"\n✅ Phase {phase_name} completed in {elapsed/60:.1f} minutes")
+                print(f"\nPhase {phase_name} completed in {elapsed/60:.1f} minutes")
             except Exception as e:
                 result['error'] = f"Failed to read result file: {e}"
         else:
@@ -1979,11 +1979,11 @@ def run_phase_isolated(phase_name: str,
             result['iterations_completed'] = partial.get('iterations_completed', 0)
             result['dispatcher_stats'] = partial.get('dispatcher_stats', {})
             result['dispatcher_coverage_history'] = partial.get('dispatcher_coverage_history', [])
-            print(f"  ✅ Recovered: {result['iterations_completed']} iters, "
+            print(f"  Recovered: {result['iterations_completed']} iters, "
                   f"{result['total_kernels']} kernels, "
                   f"{result['bugs'].get('total', 0)} bugs")
         except Exception as e:
-            print(f"  ⚠️ Failed to recover partial results: {e}")
+            print(f"  Failed to recover partial results: {e}")
 
     # Disk scan
     bug_tracker = BugTracker(phase_name, output_dir)
@@ -1997,7 +1997,7 @@ def run_phase_isolated(phase_name: str,
             'total': bug_tracker.get_total_bugs(),
             'unique': len(bug_tracker.unique_bugs)
         }
-        print(f"  🐛 Found {bug_tracker.get_total_bugs()} bugs from disk scan")
+        print(f"  Found {bug_tracker.get_total_bugs()} bugs from disk scan")
 
     return result
 
@@ -2176,7 +2176,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
     plot_file = join(output_dir, f"{api_name.replace('.', '_')}_isolated_benchmark.png")
     plt.savefig(plot_file, dpi=150, bbox_inches='tight')
     plt.close()
-    print(f"\n📊 Plot saved: {plot_file}")
+    print(f"\nPlot saved: {plot_file}")
 
 
 # =============================================================================
@@ -2204,7 +2204,7 @@ def run_full_oracle_experiment(api_name: str,
             break
 
     if not config_path:
-        print("❌ Config file not found")
+        print("Config file not found")
         return None
 
     # API-availability sanity check
@@ -2214,11 +2214,11 @@ def run_full_oracle_experiment(api_name: str,
         for part in parts[1:]:
             obj = getattr(obj, part)
     except (AttributeError, ImportError, ModuleNotFoundError) as e:
-        print(f"⚠️  Skipping {api_name}: not available in current PyTorch ({e})")
+        print(f" Skipping {api_name}: not available in current PyTorch ({e})")
         return {"skipped": True, "reason": str(e), "api": api_name}
 
     print(f"\n{'='*70}")
-    print(f"🔬 PHASE-ISOLATED BENCHMARK")
+    print(f"PHASE-ISOLATED BENCHMARK")
     print(f"{'='*70}")
     print(f"API: {api_name}")
     print(f"Max Iterations: {max_iterations:,}")
@@ -2271,7 +2271,7 @@ def run_full_oracle_experiment(api_name: str,
     try:
         plot_full_oracle_results(random_result, guided_result, api_name, output_dir)
     except Exception as e:
-        print(f"⚠️ Plot generation failed: {e}")
+        print(f"Plot generation failed: {e}")
 
     # Save combined results
     combined_result = {
@@ -2292,20 +2292,20 @@ def run_full_oracle_experiment(api_name: str,
     result_file = join(output_dir, f"{api_name.replace('.', '_')}_isolated_results.json")
     with open(result_file, "w") as f:
         json.dump(combined_result, f, indent=2, default=str)
-    print(f"\n💾 Results saved: {result_file}")
+    print(f"\nResults saved: {result_file}")
 
     print(f"\n{'='*70}")
-    print(f"📊 FINAL SUMMARY")
+    print(f"FINAL SUMMARY")
     print(f"{'='*70}")
     for label, res in [("Random", random_result), ("Guided", guided_result)]:
-        status = "✅ Success" if res.get('success') else "❌ Failed"
+        status = "Success" if res.get('success') else "Failed"
         bugs = res.get('bugs', {})
         print(f"{label}: {status}")
         print(f"  Iterations: {res.get('iterations_completed', 0)}")
         print(f"  Kernels: {res.get('total_kernels', 0)}")
         print(f"  Bugs: {bugs.get('total', 0)}")
         if res.get('crash_saved'):
-            print(f"  💾 Crash bug saved!")
+            print(f"  Crash bug saved!")
         if res.get('error'):
             print(f"  Error: {res['error'][:80]}...")
     print(f"{'='*70}\n")

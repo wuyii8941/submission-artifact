@@ -42,7 +42,7 @@ CONFIRMED_DIR = Path(__file__).parent.parent / "confirmed_bugs"
 CONFIRMED_DIR.mkdir(exist_ok=True)
 CHECKPOINT_PATH = OUT_DIR / "fuzzer_checkpoint.json"
 
-# Pre-register known bug basins (from v1 findings)
+# Pre-register known bug basins
 # Each basin is (op_set, description). A program matches if ANY known basin op
 # appears in its fingerprint (subset matching for known root causes).
 KNOWN_BASINS = [

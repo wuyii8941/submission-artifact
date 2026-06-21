@@ -54,8 +54,8 @@ from enum import Enum
 # ══════════════════════════════════════════════════════════════════
 
 class BugDepth(Enum):
-    DEEP_BUG      = "deep_bug"
-    COMPILE_BUG   = "compile_bug"
+    DEEP_BUG  = "deep_bug"
+    COMPILE_BUG  = "compile_bug"
     SHALLOW_CHECK = "shallow_check"
     SCRIPT_DEFECT = "script_defect"
     IGNORED_NOISE = "ignored_noise"
@@ -128,11 +128,11 @@ class BugDepth(Enum):
 # ══════════════════════════════════════════════════════════════════
 
 _NORM_PATS = [
-    (r"0x[0-9a-fA-F]+",          "ADDR"),
-    (r"(?<!\w)\d+\.\d+(?!\w)",   "FLOAT"),
-    (r"(?<!\w)\d+(?!\w)",        "N"),
-    (r"\[.*?\]",                 "[SHAPE]"),
-    (r"\s+",                     " "),
+    (r"0x[0-9a-fA-F]+",  "ADDR"),
+    (r"(?<!\w)\d+\.\d+(?!\w)",  "FLOAT"),
+    (r"(?<!\w)\d+(?!\w)",  "N"),
+    (r"\[.*?\]",  "[SHAPE]"),
+    (r"\s+",  " "),
 ]
 
 def _normalize(msg: str) -> str:
@@ -150,8 +150,8 @@ def _get_exception_type(msg: str) -> str:
     if m:
         return m.group(1).split(".")[-1]
     if "segmentation fault" in msg.lower(): return "Segfault"
-    if "core dumped"        in msg.lower(): return "CoreDumped"
-    if "process exited"     in msg.lower(): return "HardCrash"
+    if "core dumped"  in msg.lower(): return "CoreDumped"
+    if "process exited"  in msg.lower(): return "HardCrash"
     return "Unknown"
 
 def _get_crash_module(content: str) -> str:
@@ -220,7 +220,7 @@ def _dir_to_api_name(dirname: str) -> str:
 
     [fix] The outer batch scheduler creates directories via
     api.replace(".", "_"), which maps:
-      "."  -> "_"   torch.matmul         -> torch_matmul
+      "."  -> "_"  torch.matmul  -> torch_matmul
       "._" -> "__"  torch._dynamo.export -> torch__dynamo_export
 
     Inverse: first protect double underscores, then convert single
@@ -238,21 +238,21 @@ def _dir_to_api_name(dirname: str) -> str:
 
 @dataclass
 class BugScript:
-    file_path:      str
-    api:            str
-    oracle_type:    str
-    bug_dir_type:   str
-    strategy:       str
-    raw_content:    str = ""
-    error_msg:      str = field(init=False)
-    bug_depth:      BugDepth = field(init=False)
-    crash_module:   str = field(init=False)
+    file_path:  str
+    api:  str
+    oracle_type:  str
+    bug_dir_type:  str
+    strategy:  str
+    raw_content:  str = ""
+    error_msg:  str = field(init=False)
+    bug_depth:  BugDepth = field(init=False)
+    crash_module:  str = field(init=False)
     exception_type: str = field(init=False)
 
     def __post_init__(self):
-        self.error_msg      = _extract_error_msg(self.raw_content)
-        self.bug_depth      = BugDepth.classify(self.error_msg, self.oracle_type, self.bug_dir_type)
-        self.crash_module   = _get_crash_module(self.raw_content)
+        self.error_msg  = _extract_error_msg(self.raw_content)
+        self.bug_depth  = BugDepth.classify(self.error_msg, self.oracle_type, self.bug_dir_type)
+        self.crash_module  = _get_crash_module(self.raw_content)
         self.exception_type = _get_exception_type(self.error_msg)
 
     def sig_key(self) -> str:
@@ -265,17 +265,17 @@ class BugScript:
 
 class BugScriptScanner:
     ORACLE_DIRS = [
-        ("compile",   "compile-oracle",   ["potential-bug", "compare-bug"]),
-        ("crash",     "crash-oracle",     ["potential-bug", "compare-bug"]),
-        ("cuda",      "cuda-oracle",      ["potential-bug", "compare-bug"]),
+        ("compile",  "compile-oracle",  ["potential-bug", "compare-bug"]),
+        ("crash",  "crash-oracle",  ["potential-bug", "compare-bug"]),
+        ("cuda",  "cuda-oracle",  ["potential-bug", "compare-bug"]),
         ("precision", "precision-oracle", ["potential-bug", "compare-bug"]),
     ]
 
     def __init__(self, batch_dir: str, max_per_api: int = 200):
-        self.batch_dir   = Path(batch_dir)
+        self.batch_dir  = Path(batch_dir)
         self.max_per_api = max_per_api
-        self.scripts:     List[BugScript] = []
-        self.fuzzed_apis: Set[str]        = set()
+        self.scripts:  List[BugScript] = []
+        self.fuzzed_apis: Set[str]  = set()
 
     @staticmethod
     def _load_traces(strat_dir: Path, strategy: str) -> Dict[str, str]:
@@ -315,7 +315,7 @@ class BugScriptScanner:
                 traces[raw_key] = msg
 
                 # 2. Register the relative path (locate the first part
-                #    containing "-oracle").
+                #  containing "-oracle").
                 norm_key = raw_key.replace("\\", "/")
                 parts = norm_key.split("/")
                 rel_from_oracle = None
@@ -406,16 +406,16 @@ class BugScriptScanner:
                             seen_hashes.add(h)
 
                             self.scripts.append(BugScript(
-                                file_path    = str(py_file),
-                                api          = api_name,
+                                file_path  = str(py_file),
+                                api  = api_name,
                                 oracle_type  = oracle_type,
                                 bug_dir_type = sub_dir,
-                                strategy     = strategy,
+                                strategy  = strategy,
                                 raw_content  = raw_content,
                             ))
                             added += 1
 
-        print(f"✓ {len(self.scripts)} raw bug records across {len(self.fuzzed_apis)} APIs")
+        print(f"{len(self.scripts)} raw bug records across {len(self.fuzzed_apis)} APIs")
         return self
 
 
@@ -431,17 +431,17 @@ class BugDeduplicator:
         h = hashlib.md5(s.sig_key().encode()).hexdigest()[:16]
         if h not in self.unique:
             self.unique[h] = {
-                "sig_key":        s.sig_key(),
-                "api":            s.api,
-                "oracle_type":    s.oracle_type,
-                "bug_dir_type":   s.bug_dir_type,
-                "bug_depth":      s.bug_depth.value,
-                "error_msg":      s.error_msg,
-                "crash_module":   s.crash_module,
+                "sig_key":  s.sig_key(),
+                "api":  s.api,
+                "oracle_type":  s.oracle_type,
+                "bug_dir_type":  s.bug_dir_type,
+                "bug_depth":  s.bug_depth.value,
+                "error_msg":  s.error_msg,
+                "crash_module":  s.crash_module,
                 "exception_type": s.exception_type,
-                "random_count":   0,
-                "guided_count":   0,
-                "sample_file":    s.file_path,
+                "random_count":  0,
+                "guided_count":  0,
+                "sample_file":  s.file_path,
             }
         e = self.unique[h]
         if s.strategy == "random":
@@ -452,7 +452,7 @@ class BugDeduplicator:
     def add_all(self, scripts: List[BugScript]) -> "BugDeduplicator":
         for s in scripts:
             self.add(s)
-        print(f"✓ Deduplicated → {len(self.unique)} unique bug signatures")
+        print(f"Deduplicated → {len(self.unique)} unique bug signatures")
         return self
 
     def depth_strategy_stats(self) -> Dict:
@@ -466,9 +466,9 @@ class BugDeduplicator:
             has_g = info["guided_count"] > 0
             if has_r: result[d]["random"] += 1
             if has_g: result[d]["guided"] += 1
-            if has_r and has_g:   result[d]["both"]        += 1
-            elif has_g:           result[d]["guided_only"] += 1
-            elif has_r:           result[d]["random_only"] += 1
+            if has_r and has_g:  result[d]["both"]  += 1
+            elif has_g:  result[d]["guided_only"] += 1
+            elif has_r:  result[d]["random_only"] += 1
         return dict(result)
 
 
@@ -487,7 +487,7 @@ class GroundTruthLoader:
 
     def load(self) -> "GroundTruthLoader":
         if not self.csv_path.exists():
-            print(f"⚠️  CSV not found: {self.csv_path}")
+            print(f" CSV not found: {self.csv_path}")
             return self
 
         raw = self.csv_path.read_text("utf-8", errors="replace")
@@ -516,11 +516,11 @@ class GroundTruthLoader:
             buggy_api = re.sub(r"\(.*\)", "", _get(row, "buggy api")).strip()
 
             record = {
-                "issue_id":   issue_id,
-                "title":      _get(row, "title"),
+                "issue_id":  issue_id,
+                "title":  _get(row, "title"),
                 "reproduced": _get(row, "reproduced").lower() == "yes",
-                "device":     _get(row, "device").lower(),
-                "bug_type":   _get(row, "type"),
+                "device":  _get(row, "device").lower(),
+                "bug_type":  _get(row, "type"),
                 "buggy_api":  buggy_api,
             }
             self.issue_map[issue_id] = record
@@ -536,9 +536,9 @@ class GroundTruthLoader:
                 if issue_id not in existing_ids:
                     self.api_to_issues[api].append(record)
 
-        total      = len(self.issue_map)
+        total  = len(self.issue_map)
         reproduced = sum(1 for r in self.issue_map.values() if r["reproduced"])
-        print(f"✓ CSV loaded: {total} issues total, {reproduced} reproduced=Yes")
+        print(f"CSV loaded: {total} issues total, {reproduced} reproduced=Yes")
         return self
 
 
@@ -548,8 +548,8 @@ class GroundTruthLoader:
 
 class MatchLabel:
     CONFIRMED_MATCH  = "confirmed_match"
-    RELAXED_MATCH    = "relaxed_match"
-    API_MATCH_ONLY   = "api_match_only"
+    RELAXED_MATCH  = "relaxed_match"
+    API_MATCH_ONLY  = "api_match_only"
     POTENTIALLY_NEW  = "potentially_new"
 
 
@@ -617,11 +617,11 @@ _BUG_TYPE_SIGNALS_RELAXED: Dict[str, List[str]] = {
         "runtimeerror", "process exited", "hard_crash",
     ],
     "internal exception": _BUG_TYPE_SIGNALS_STRICT["internal exception"],
-    "runtime error":      _BUG_TYPE_SIGNALS_STRICT["runtime error"],
-    "assertion error":    _BUG_TYPE_SIGNALS_STRICT["assertion error"],
-    "memory error":       _BUG_TYPE_SIGNALS_STRICT["memory error"],
-    "type error":         _BUG_TYPE_SIGNALS_STRICT["type error"],
-    "index error":        _BUG_TYPE_SIGNALS_STRICT["index error"],
+    "runtime error":  _BUG_TYPE_SIGNALS_STRICT["runtime error"],
+    "assertion error":  _BUG_TYPE_SIGNALS_STRICT["assertion error"],
+    "memory error":  _BUG_TYPE_SIGNALS_STRICT["memory error"],
+    "type error":  _BUG_TYPE_SIGNALS_STRICT["type error"],
+    "index error":  _BUG_TYPE_SIGNALS_STRICT["index error"],
 }
 
 
@@ -682,12 +682,12 @@ class BugMatcher:
         if not issues:
             return {
                 **info,
-                "match_label":        MatchLabel.POTENTIALLY_NEW,
+                "match_label":  MatchLabel.POTENTIALLY_NEW,
                 "match_label_strict": MatchLabel.POTENTIALLY_NEW,
-                "matched_issues":     [],
-                "match_detail":       f"🆕 No known issue for API '{info['api']}' in CSV",
-                "best_match":         None,
-                "type_aligned":       False,
+                "matched_issues":  [],
+                "match_detail":  f"🆕 No known issue for API '{info['api']}' in CSV",
+                "best_match":  None,
+                "type_aligned":  False,
                 "type_aligned_relaxed": False,
             }
 
@@ -724,30 +724,30 @@ class BugMatcher:
         else:
             label_strict = MatchLabel.API_MATCH_ONLY
 
-        repro_note   = f"reproduced={'Yes' if best['reproduced'] else 'No'}"
-        strict_note  = f"strict={'✓' if strict_aligned else '✗'}"
-        relaxed_note = f"relaxed={'✓' if relaxed_aligned else '✗'}"
+        repro_note  = f"reproduced={'Yes' if best['reproduced'] else 'No'}"
+        strict_note  = f"strict={'' if strict_aligned else ''}"
+        relaxed_note = f"relaxed={'' if relaxed_aligned else ''}"
         detail = (
-            f"{'✅' if strict_aligned else ('🔶' if relaxed_aligned else '📋')} "
+            f"{'' if strict_aligned else ('' if relaxed_aligned else '')} "
             f"Issue #{best['issue_id']} "
             f"| API: {best['buggy_api']} | CSV type: {best['bug_type']} "
             f"| {strict_note} | {relaxed_note} | {repro_note}"
         )
         return {
             **info,
-            "match_label":          label,
-            "match_label_strict":   label_strict,
-            "matched_issues":       [r["issue_id"] for r in issues],
-            "match_detail":         detail,
-            "best_match":           best,
-            "type_aligned":         strict_aligned,
+            "match_label":  label,
+            "match_label_strict":  label_strict,
+            "matched_issues":  [r["issue_id"] for r in issues],
+            "match_detail":  detail,
+            "best_match":  best,
+            "type_aligned":  strict_aligned,
             "type_aligned_relaxed": relaxed_aligned,
         }
 
     def match_all(self, dedup: BugDeduplicator,
                   target_depths: List[str]) -> List[Dict]:
         results = []
-        counts:        Dict[str, int] = defaultdict(int)
+        counts:  Dict[str, int] = defaultdict(int)
         counts_strict: Dict[str, int] = defaultdict(int)
 
         for h, info in dedup.unique.items():
@@ -759,15 +759,15 @@ class BugMatcher:
             counts[enriched["match_label"]] += 1
             counts_strict[enriched["match_label_strict"]] += 1
 
-        print(f"\n✓ Bug matching complete ({len(results)} deep bugs analyzed):")
+        print(f"\nBug matching complete ({len(results)} deep bugs analyzed):")
         print(f"  -- Relaxed criterion (main report) -----------------")
         print(f"  CONFIRMED_MATCH  : {counts[MatchLabel.CONFIRMED_MATCH]}  (strict type match)")
-        print(f"  RELAXED_MATCH    : {counts[MatchLabel.RELAXED_MATCH]}  (cross-version relaxed match)")
-        print(f"  API_MATCH_ONLY   : {counts[MatchLabel.API_MATCH_ONLY]}  (API match only)")
+        print(f"  RELAXED_MATCH  : {counts[MatchLabel.RELAXED_MATCH]}  (cross-version relaxed match)")
+        print(f"  API_MATCH_ONLY  : {counts[MatchLabel.API_MATCH_ONLY]}  (API match only)")
         print(f"  POTENTIALLY_NEW  : {counts[MatchLabel.POTENTIALLY_NEW]}  (not in CSV)")
         print(f"  -- Strict criterion (reference) --------------------")
         print(f"  CONFIRMED_MATCH  : {counts_strict[MatchLabel.CONFIRMED_MATCH]}")
-        print(f"  API_MATCH_ONLY   : {counts_strict[MatchLabel.API_MATCH_ONLY]}")
+        print(f"  API_MATCH_ONLY  : {counts_strict[MatchLabel.API_MATCH_ONLY]}")
         return results
 
 
@@ -779,7 +779,7 @@ def _strategy_label(info: Dict) -> str:
     has_r = info["random_count"] > 0
     has_g = info["guided_count"] > 0
     if has_r and has_g: return "Random + Guided"
-    if has_g:           return "**Guided Only** 🎯"
+    if has_g:  return "**Guided Only** "
     return "Random Only"
 
 
@@ -794,22 +794,22 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             "guided_only": 0, "random_only": 0,
         })
 
-    deep_s    = _ds(BugDepth.DEEP_BUG.value)
+    deep_s  = _ds(BugDepth.DEEP_BUG.value)
     compile_s = _ds(BugDepth.COMPILE_BUG.value)
     shallow_s = _ds(BugDepth.SHALLOW_CHECK.value)
     defect_s  = _ds(BugDepth.SCRIPT_DEFECT.value)
-    noise_s   = _ds(BugDepth.IGNORED_NOISE.value)
+    noise_s  = _ds(BugDepth.IGNORED_NOISE.value)
 
     total_r = deep_s["random"]  + compile_s["random"]
     total_g = deep_s["guided"]  + compile_s["guided"]
-    go_r    = deep_s["random_only"]  + compile_s["random_only"]
-    go_g    = deep_s["guided_only"]  + compile_s["guided_only"]
+    go_r  = deep_s["random_only"]  + compile_s["random_only"]
+    go_g  = deep_s["guided_only"]  + compile_s["guided_only"]
 
-    exact    = [r for r in matched if r["match_label"] == MatchLabel.CONFIRMED_MATCH]
+    exact  = [r for r in matched if r["match_label"] == MatchLabel.CONFIRMED_MATCH]
     relaxed  = [r for r in matched if r["match_label"] == MatchLabel.RELAXED_MATCH]
-    known    = [r for r in matched if r["match_label"] == MatchLabel.API_MATCH_ONLY]
+    known  = [r for r in matched if r["match_label"] == MatchLabel.API_MATCH_ONLY]
     new_all  = [r for r in matched if r["match_label"] == MatchLabel.POTENTIALLY_NEW]
-    ng       = [r for r in new_all if r["guided_count"] > 0 and r["random_count"] == 0]
+    ng  = [r for r in new_all if r["guided_count"] > 0 and r["random_count"] == 0]
 
     strict_confirmed = sum(1 for r in matched
                            if r.get("match_label_strict") == MatchLabel.CONFIRMED_MATCH)
@@ -827,7 +827,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         "",
         "| Strategy | Deep bugs found (total) | Exclusive finds (Only) |",
         "|---|---|---|",
-        f"| Random   | {total_r} | {go_r} |",
+        f"| Random  | {total_r} | {go_r} |",
         f"| **Guided** | **{total_g}** | **{go_g}** |",
         "",
         "> Deep bug = `deep_bug` + `compile_bug`; shallow type errors and environment defects are excluded.",
@@ -836,7 +836,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         "",
         "| Depth class | Random | Guided | Both | Guided Only | Random Only |",
         "|---|---|---|---|---|---|",
-        f"| Deep Bug    | {deep_s['random']} | {deep_s['guided']} | {deep_s['both']} | {deep_s['guided_only']} | {deep_s['random_only']} |",
+        f"| Deep Bug  | {deep_s['random']} | {deep_s['guided']} | {deep_s['both']} | {deep_s['guided_only']} | {deep_s['random_only']} |",
         f"| Compile Bug | {compile_s['random']} | {compile_s['guided']} | {compile_s['both']} | {compile_s['guided_only']} | {compile_s['random_only']} |",
         "", "---", "",
         "## Ground-truth matching results (against bug_dataset_pytorch.csv)",
@@ -844,8 +844,8 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         "| Match level | Count | Meaning |",
         "|---|---|---|",
         f"| CONFIRMED_MATCH  | **{len(exact)}** | API matches and the error type strictly matches the CSV semantics. |",
-        f"| RELAXED_MATCH    | **{len(relaxed)}** | API matches with a cross-version relaxed match (same bug appearing differently across versions). |",
-        f"| API_MATCH_ONLY   | **{len(known)}** | API matches, but the error type does not align or the CSV lacks type info. |",
+        f"| RELAXED_MATCH  | **{len(relaxed)}** | API matches with a cross-version relaxed match (same bug appearing differently across versions). |",
+        f"| API_MATCH_ONLY  | **{len(known)}** | API matches, but the error type does not align or the CSV lacks type info. |",
         f"| POTENTIALLY_NEW  | **{len(new_all)}** | No corresponding API in the CSV; likely new findings (Guided-only: {len(ng)}). |",
         "",
         "> **Relaxed-match note**: the same bug may manifest differently across PyTorch versions.",
@@ -930,8 +930,8 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         "| Category | Random | Guided |",
         "|---|---|---|",
         f"| Shallow argument errors (TypeError/ValueError, etc.) | {shallow_s.get('random', 0)} | {shallow_s.get('guided', 0)} |",
-        f"| AST extraction defects (SyntaxError/NameError)        | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
-        f"| Noise and timeouts                                    | {noise_s.get('random', 0)}   | {noise_s.get('guided', 0)} |",
+        f"| AST extraction defects (SyntaxError/NameError)  | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
+        f"| Noise and timeouts  | {noise_s.get('random', 0)}  | {noise_s.get('guided', 0)} |",
         "",
         "---", "",
         "## API coverage details",
@@ -952,7 +952,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         lines.append(f"| `{api}` | {s['r']} | {s['g']} | {issues_str} |")
 
     Path(output_file).write_text("\n".join(lines), encoding="utf-8")
-    print(f"\n✓ Report saved: {output_file}")
+    print(f"\nReport saved: {output_file}")
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -964,15 +964,15 @@ def export_json(matched: List[Dict], report_path: str):
     Emit four JSON files from the matched list, written next to the report.
 
     Output files:
-      new_bugs.json         - all POTENTIALLY_NEW entries.
+      new_bugs.json  - all POTENTIALLY_NEW entries.
       guided_new_bugs.json  - the Guided-Only subset (paper headline metric).
-      known_bugs.json       - all matched entries (CONFIRMED / RELAXED /
+      known_bugs.json  - all matched entries (CONFIRMED / RELAXED /
                               API_MATCH_ONLY).
-      phase_results.json    - the full matched list, for debugging.
+      phase_results.json  - the full matched list, for debugging.
     """
     out_dir = Path(report_path).parent
 
-    new_bugs   = [r for r in matched if r["match_label"] == MatchLabel.POTENTIALLY_NEW]
+    new_bugs  = [r for r in matched if r["match_label"] == MatchLabel.POTENTIALLY_NEW]
     guided_new = [r for r in new_bugs if r["guided_count"] > 0 and r["random_count"] == 0]
     known_bugs = [r for r in matched if r["match_label"] != MatchLabel.POTENTIALLY_NEW]
 
@@ -989,10 +989,10 @@ def export_json(matched: List[Dict], report_path: str):
         return obj
 
     files = {
-        "new_bugs.json":        new_bugs,
+        "new_bugs.json":  new_bugs,
         "guided_new_bugs.json": guided_new,
-        "known_bugs.json":      known_bugs,
-        "phase_results.json":   matched,
+        "known_bugs.json":  known_bugs,
+        "phase_results.json":  matched,
     }
 
     print(f"\n{'='*60}")
@@ -1005,7 +1005,7 @@ def export_json(matched: List[Dict], report_path: str):
             json.dumps(_serializable(data), ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-        print(f"✓ {fname}  ({len(data)} entries)  →  {p}")
+        print(f"{fname}  ({len(data)} entries)  →  {p}")
 
     print(f"{'='*60}")
 
@@ -1016,9 +1016,9 @@ def export_json(matched: List[Dict], report_path: str):
 
 def main():
     parser = argparse.ArgumentParser(description="HKG-Fuzz Analyzer v14")
-    parser.add_argument("--batch-dir",    "-b", required=True)
+    parser.add_argument("--batch-dir",  "-b", required=True)
     parser.add_argument("--ground-truth", "-g", required=True)
-    parser.add_argument("--report",       "-r", default="report_v14.md")
+    parser.add_argument("--report",  "-r", default="report_v14.md")
     parser.add_argument("--max-per-api",  type=int, default=200)
     args = parser.parse_args()
 
@@ -1027,14 +1027,14 @@ def main():
     print("=" * 60)
 
     scanner = BugScriptScanner(args.batch_dir, args.max_per_api).scan()
-    dedup   = BugDeduplicator().add_all(scanner.scripts)
-    gt      = GroundTruthLoader(args.ground_truth).load()
+    dedup  = BugDeduplicator().add_all(scanner.scripts)
+    gt  = GroundTruthLoader(args.ground_truth).load()
     matched = BugMatcher(gt).match_all(
         dedup,
         [BugDepth.DEEP_BUG.value, BugDepth.COMPILE_BUG.value]
     )
     generate_report(args.batch_dir, scanner, dedup, matched, args.report)
-    export_json(matched, args.report)   # v14: added
+    export_json(matched, args.report)  # v14: added
 
 
 if __name__ == "__main__":

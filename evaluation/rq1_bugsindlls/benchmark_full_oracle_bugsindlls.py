@@ -80,9 +80,9 @@ except Exception:
             # : 5(device dtype layout mem_format rank)
             # strided only, contiguous only, ranks [2d,3d,4d]
             devices = self.DIMENSION_DEVICE  # 2
-            dtypes = self.DIMENSION_DTYPE    # 12
-            layouts = ['strided']            # 1
-            mem_formats = ['contiguous']     # 1
+            dtypes = self.DIMENSION_DTYPE  # 12
+            layouts = ['strided']  # 1
+            mem_formats = ['contiguous']  # 1
             ranks = ['1d', '2d', '3d', '4d', '5d']  # 5 ranks (0d rare, nd unstable)
             valid_space = len(devices) * len(dtypes) * len(layouts) * len(mem_formats) * len(ranks)
             # 2 12 1 1 5 = 120 (expanded from 72)
@@ -210,9 +210,9 @@ class Speedometer:
             self.slow_warnings += 1
             warning = (f"SLOW SPEED: {current_speed:.2f} it/s (threshold: {self.slow_threshold})")
             if current_speed < 0.1:
-                warning += "\n   Check if Precision Oracle is too slow"
+                warning += "\n  Check if Precision Oracle is too slow"
             elif current_speed < 0.5:
-                warning += "\n   Consider reducing complexity or disabling oracles"
+                warning += "\n  Consider reducing complexity or disabling oracles"
             return True, warning
         return False, ""
     
@@ -254,7 +254,7 @@ class DiskGuard:
             self.warnings += 1
             warning = f"DISK SPACE: Only {free:.2f} GB free (threshold: {self.min_free_gb} GB)"
             if self.auto_cleanup:
-                warning += "\n   Attempting auto-cleanup..."
+                warning += "\n  Attempting auto-cleanup..."
             return True, warning
         return False, ""
     
@@ -283,11 +283,11 @@ class DiskGuard:
         if self.auto_cleanup:
             cleaned = self.cleanup_temp_files()
             total, used, free = self.get_disk_usage()
-            message = f"{warning}\n   Cleaned {cleaned} files {free:.2f} GB free"
+            message = f"{warning}\n  Cleaned {cleaned} files {free:.2f} GB free"
             if free < self.min_free_gb:
-                message += "\n   CRITICAL: Still low after cleanup!"
+                message += "\n  CRITICAL: Still low after cleanup!"
                 return True, message
-            message += "\n   Cleanup successful"
+            message += "\n  Cleanup successful"
             return False, message
         return True, warning
     
@@ -547,11 +547,11 @@ class BugAnalyzer:
     
     # Shape
     REGEX_PATTERNS = [
-        (r'0x[0-9a-fA-F]+', 'ADDR'),           #
-        (r'\d+\.\d+', 'FLOAT'),                #
-        (r'\d+', 'INT'),                       #
-        (r'\[.*?\]', '[SHAPE]'),               # Tensor Shape
-        (r'\s+', ' '),                         #
+        (r'0x[0-9a-fA-F]+', 'ADDR'),  #
+        (r'\d+\.\d+', 'FLOAT'),  #
+        (r'\d+', 'INT'),  #
+        (r'\[.*?\]', '[SHAPE]'),  # Tensor Shape
+        (r'\s+', ' '),  #
     ]
 
     @staticmethod
@@ -699,7 +699,7 @@ class BugTracker:
             print(f" {i+1}. [Count: {len(files)}] {sig}")
             #
             rel_path = files[0].replace(self.output_dir + "/", "")
-            print(f"    Sample: {rel_path}")
+            print(f"  Sample: {rel_path}")
         
         if not sorted_bugs:
             print(" No bugs found.")
@@ -709,7 +709,7 @@ class BugTracker:
         total_raw = self.get_total_bugs()
         total_unique = len(self.unique_bugs)
         print(f"UNIQUE Bugs: {total_unique}")
-        print(f"Raw Files:   CRASH={self.get_bugs_by_type('crash')} | CUDA={self.get_bugs_by_type('cuda')} | PRECISION={self.get_bugs_by_type('precision')} | Total={total_raw}")
+        print(f"Raw Files:  CRASH={self.get_bugs_by_type('crash')} | CUDA={self.get_bugs_by_type('cuda')} | PRECISION={self.get_bugs_by_type('precision')} | Total={total_raw}")
         print(f"Dedup Rate:  {total_unique}/{total_raw} ({total_unique/max(total_raw,1)*100:.1f}% unique)")
         print(f"{'='*70}\n")
 
@@ -1006,7 +1006,7 @@ class AdaptiveSaturationDetector:
     """
     
     def __init__(self, 
-                 patience: int = 500,           #
+                 patience: int = 500,  #
                  check_interval: int = 100):
         self.patience = patience
         self.check_interval = check_interval
@@ -1167,10 +1167,10 @@ class AdaptiveMutationController:
     """
     
     def __init__(self, 
-                 base_epsilon: float = 0.1,          #
-                 expansion_epsilon: float = 0.3,     #
-                 surgical_range: int = 8,            #
-                 exploration_range: int = 64):       #
+                 base_epsilon: float = 0.1,  #
+                 expansion_epsilon: float = 0.3,  #
+                 surgical_range: int = 8,  #
+                 exploration_range: int = 64):  #
         self.base_epsilon = base_epsilon
         self.expansion_epsilon = expansion_epsilon
         self.surgical_range = surgical_range
@@ -1376,9 +1376,9 @@ class PoisonPatcher:
             # [8%] common trap values - problematic for specific arguments
             elif roll < 0.38:
                 trap_values = [
-                    7, 11, 13,       # primes (non-divisible)
+                    7, 11, 13,  # primes (non-divisible)
                     256, 512, 1024,  # large sizes
-                    2, 3, 4, 5,      # small dimensions
+                    2, 3, 4, 5,  # small dimensions
                 ]
                 new_value = choice(trap_values)
 
@@ -1413,8 +1413,8 @@ class PoisonPatcher:
         Argument.mutate_float_value = poison_float_mutation 
         Argument.mutate_int_value = poison_int_mutation
         print("[Patch] Poison Injection enabled (ALL strategies):")
-        print("        Float: 5% Inf + 5% NaN + 10% Extreme")
-        print("        Int:   10% boundary + 10% extreme + 10% trap")
+        print("  Float: 5% Inf + 5% NaN + 10% Extreme")
+        print("  Int:  10% boundary + 10% extreme + 10% trap")
     
     @staticmethod
     def restore():
@@ -1466,8 +1466,8 @@ class EnhancedFuzzer:
                  enable_checkpoint: bool = True,
                  enable_safety_guards: bool = True,
                  diff_bound: float = 1e-5,
-                 warmup_ratio: float = 0.1,           #
-                 enable_dispatcher: bool = True):     # DispatcherSpace  #
+                 warmup_ratio: float = 0.1,  #
+                 enable_dispatcher: bool = True):  # DispatcherSpace  #
         self.api_name = api_name
         self.output_dir = output_dir
         self.strategy_name = strategy_name
@@ -1477,8 +1477,8 @@ class EnhancedFuzzer:
         self.enable_checkpoint = enable_checkpoint
         self.enable_safety_guards = enable_safety_guards
         self.diff_bound = diff_bound
-        self.warmup_ratio = warmup_ratio             #
-        self.enable_dispatcher = enable_dispatcher   # dispatcher
+        self.warmup_ratio = warmup_ratio  #
+        self.enable_dispatcher = enable_dispatcher  # dispatcher
         
         # Trackers
         self.coverage = EnhancedCoverageTracker(strategy_name, enable_adaptive_saturation=enable_patches)
@@ -1890,7 +1890,7 @@ def plot_full_oracle_results(
     random_dispatcher: DispatcherSpace = None,  #
     guided_dispatcher: DispatcherSpace = None,  #
     random_dedup = None,  # Bug
-    guided_dedup = None   #
+    guided_dedup = None  #
 ):
     """Bug """
     
@@ -2128,7 +2128,7 @@ def _generate_crash_bug_file(output_dir: str, phase_name: str, api_name: str,
         crash_keyword = "abnormal_exit"
     
     content = f"""# ---------------------------------------------------------
-# ⚠️ CRASH REPORT (Generated by Subprocess Crash Recovery)
+# CRASH REPORT (Generated by Subprocess Crash Recovery)
 # ---------------------------------------------------------
 # API: {api_name}
 # Framework: PyTorch
@@ -2148,9 +2148,9 @@ print("Subprocess crash detected: {crash_type}")
     try:
         with open(bug_file, 'w') as f:
             f.write(content)
-        print(f"🔥 Crash bug logged: {bug_file}")
+        print(f"Crash bug logged: {bug_file}")
     except Exception as e:
-        print(f"⚠️  Failed to write crash bug file: {e}")
+        print(f" Failed to write crash bug file: {e}")
     
     return bug_file
 
@@ -2176,10 +2176,10 @@ def _load_partial_result(output_dir: str, phase_name: str) -> Dict:
         try:
             with open(result_file, 'r') as f:
                 data = json.load(f)
-            print(f"✅ Loaded partial results from: {result_file}")
+            print(f"Loaded partial results from: {result_file}")
             return data
         except Exception as e:
-            print(f"⚠️  Failed to load partial result: {e}")
+            print(f" Failed to load partial result: {e}")
     return {}
 
 
@@ -2240,7 +2240,7 @@ def run_phase_isolated(
                 with open(partial_file, 'w') as f:
                     json.dump(partial_data, f, indent=2)
             except Exception as e:
-                print(f"⚠️  Failed to save partial result: {e}")
+                print(f" Failed to save partial result: {e}")
             
             result = {
                 'success': True,
@@ -2289,7 +2289,7 @@ def run_phase_isolated(
                 with open(partial_file, 'w') as f:
                     json.dump(partial_data, f, indent=2)
             except Exception as e:
-                print(f"⚠️  Failed to save partial result: {e}")
+                print(f" Failed to save partial result: {e}")
             
             result = {
                 'success': True,
@@ -2309,13 +2309,13 @@ def run_phase_isolated(
                 }
                 result_queue.put(queue_data, timeout=30)
             except Exception as e:
-                print(f"⚠️  Queue send failed: {e}")
+                print(f" Queue send failed: {e}")
         
         return result
     
     except Exception as e:
         error_msg = f"Phase {phase_name} failed: {str(e)}\n{traceback.format_exc()}"
-        print(f"❌ {error_msg}")
+        print(f"{error_msg}")
         
         result = {
             'success': False,
@@ -2367,7 +2367,7 @@ def run_phase_with_subprocess_isolation(
         )
     )
     
-    print(f"🚀 Launching {phase_name} phase in isolated subprocess...")
+    print(f"Launching {phase_name} phase in isolated subprocess...")
     process.start()
     
     # Wait for completion or timeout
@@ -2408,14 +2408,14 @@ def run_phase_with_subprocess_isolation(
         try:
             result = result_queue.get(timeout=30)
         except Exception as e:
-            print(f"⚠️  Queue retrieval failed: {e}")
+            print(f" Queue retrieval failed: {e}")
     
     exit_code = process.exitcode
     
     # Crash handling
     if exit_code is not None and exit_code != 0:
         print(f"\n{'='*70}")
-        print(f"🔥 {phase_name} subprocess crashed! Exit code: {exit_code}")
+        print(f"{phase_name} subprocess crashed! Exit code: {exit_code}")
         print(f"{'='*70}")
         
         if exit_code in (137, -9):
@@ -2429,7 +2429,7 @@ def run_phase_with_subprocess_isolation(
         recovered_bugs = _rescan_bugs_from_disk(output_dir, phase_name)
         partial_result = _load_partial_result(output_dir, phase_name)
         
-        print(f"🔧 Recovered bugs from disk: {recovered_bugs}")
+        print(f"Recovered bugs from disk: {recovered_bugs}")
         
         result = {
             'success': False,
@@ -2478,7 +2478,7 @@ def run_full_oracle_experiment(
     guided_iters = max_iterations - random_iters
     
     print(f"\n{'='*70}")
-    print("🧪 PyTorch Full Oracle Experiment (Subprocess Isolated)")
+    print("PyTorch Full Oracle Experiment (Subprocess Isolated)")
     print(f"{'='*70}")
     print(f"API: {api_name}")
     print(f"Total Iterations: {max_iterations}")
@@ -2573,9 +2573,9 @@ def run_full_oracle_experiment(
             'unique': max(old_bugs.get('unique', 0), disk_bugs['unique']),
         }
     
-    print(f"\n🔧 Final disk-based bug counts:")
-    print(f"   Random: total={random_result['bugs']['total']}, unique={random_result['bugs']['unique']}")
-    print(f"   Guided: total={guided_result['bugs']['total']}, unique={guided_result['bugs']['unique']}")
+    print(f"\nFinal disk-based bug counts:")
+    print(f"  Random: total={random_result['bugs']['total']}, unique={random_result['bugs']['unique']}")
+    print(f"  Guided: total={guided_result['bugs']['total']}, unique={guided_result['bugs']['unique']}")
     
     # ==========================================================================
     # Visualization
@@ -2595,7 +2595,7 @@ def run_full_oracle_experiment(
             guided_dedup=None
         )
     except Exception as e:
-        print(f"⚠️  Plot generation failed: {e}")
+        print(f" Plot generation failed: {e}")
         traceback.print_exc()
     
     # ==========================================================================
@@ -2637,11 +2637,11 @@ def run_full_oracle_experiment(
     with open(result_file, "w") as f:
         json.dump(results, f, indent=2)
     
-    print(f"\n💾 Results saved: {result_file}")
+    print(f"\nResults saved: {result_file}")
     
     # Final summary
     print(f"\n{'='*70}")
-    print("📊 FINAL SUMMARY")
+    print("FINAL SUMMARY")
     print(f"{'='*70}")
     print(f"Random:")
     print(f"  Iterations: {random_result.get('iterations_completed', 0)}")
@@ -2705,7 +2705,7 @@ def run_fuzzing_phase(
     """
     
     print(f"\n{'='*70}")
-    print(f"🚀 Starting {phase_name} Phase (Subprocess Isolated)")
+    print(f"Starting {phase_name} Phase (Subprocess Isolated)")
     print(f"{'='*70}")
     print(f"API: {api_name}")
     print(f"Max Iterations: {max_iterations}")
@@ -2743,11 +2743,11 @@ def run_fuzzing_phase(
             config["mongodb"]["torch_database"]
         )
         
-        print(f"✅ PyTorch Components Initialized")
+        print(f"PyTorch Components Initialized")
         
     except Exception as e:
         error_msg = f"Failed to initialize: {str(e)}\n{traceback.format_exc()}"
-        print(f"❌ {error_msg}")
+        print(f"{error_msg}")
         result = {
             'success': False,
             'error': error_msg,
@@ -2821,9 +2821,9 @@ def run_fuzzing_phase(
         try:
             with open(result_file, 'w') as f:
                 json.dump(stats, f, indent=2, default=str)
-            print(f"💾 Results saved: {result_file}")
+            print(f"Results saved: {result_file}")
         except Exception as e:
-            print(f"⚠️  Failed to save results: {e}")
+            print(f" Failed to save results: {e}")
         
         # Transmit via Queue (simplified)
         if result_queue:
@@ -2836,10 +2836,10 @@ def run_fuzzing_phase(
                 }
                 result_queue.put(queue_data, timeout=30)
             except Exception as e:
-                print(f"⚠️  Queue send failed: {e}")
+                print(f" Queue send failed: {e}")
         
         print(f"\n{'='*70}")
-        print(f"✅ {phase_name} Phase Completed")
+        print(f"{phase_name} Phase Completed")
         print(f"{'='*70}")
         print(f"Iterations: {stats['iterations_completed']}")
         print(f"Total Kernels: {stats['total_kernels']}")
@@ -2853,7 +2853,7 @@ def run_fuzzing_phase(
     
     except Exception as e:
         error_msg = f"Phase {phase_name} failed: {str(e)}\n{traceback.format_exc()}"
-        print(f"❌ {error_msg}")
+        print(f"{error_msg}")
         
         result = {
             'success': False,
@@ -2910,7 +2910,7 @@ def run_phase_with_subprocess_isolation(
         )
     )
     
-    print(f"🚀 Launching {phase_name} phase in isolated subprocess...")
+    print(f"Launching {phase_name} phase in isolated subprocess...")
     process.start()
     
     # Wait for completion or timeout
@@ -2952,7 +2952,7 @@ def run_phase_with_subprocess_isolation(
         try:
             result = result_queue.get(timeout=30)
         except Exception as e:
-            print(f"⚠️  Queue retrieval failed: {e}")
+            print(f" Queue retrieval failed: {e}")
     
     # Load full results from file
     if result is None or not result.get('success'):
@@ -2961,16 +2961,16 @@ def run_phase_with_subprocess_isolation(
             try:
                 with open(result_file, 'r') as f:
                     result = json.load(f)
-                print(f"✅ Loaded results from file: {result_file}")
+                print(f"Loaded results from file: {result_file}")
             except Exception as e:
-                print(f"❌ Failed to load from file: {e}")
+                print(f"Failed to load from file: {e}")
     
     exit_code = process.exitcode
     
     # Crash handling
     if exit_code is not None and exit_code != 0:
         print(f"\n{'='*70}")
-        print(f"🔥 {phase_name} subprocess crashed! Exit code: {exit_code}")
+        print(f"{phase_name} subprocess crashed! Exit code: {exit_code}")
         print(f"{'='*70}")
         
         if exit_code in (137, -9):
@@ -2983,7 +2983,7 @@ def run_phase_with_subprocess_isolation(
         _generate_crash_bug_file(output_dir, phase_name, api_name, exit_code, error_desc)
         recovered_bugs = _rescan_bugs_from_disk(output_dir, phase_name)
         
-        print(f"🔧 Recovered bugs from disk: {recovered_bugs}")
+        print(f"Recovered bugs from disk: {recovered_bugs}")
         
         if result is None:
             partial_result = _load_partial_result(output_dir, phase_name)

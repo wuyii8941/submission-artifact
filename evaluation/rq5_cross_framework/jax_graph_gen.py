@@ -124,7 +124,7 @@ WHERE_COND = [
     ("select_topk", "(lambda _t: jnp.where(jnp.argsort(jnp.argsort(_t, axis=-1), axis=-1) >= _t.shape[-1]//2, _t, 0.0))({x})", "same"),
 ]
 
-# --- New categories for v2 ---
+# --- Categories ---
 
 MATMUL_OPS = [
     # (name, template_fn, description)
