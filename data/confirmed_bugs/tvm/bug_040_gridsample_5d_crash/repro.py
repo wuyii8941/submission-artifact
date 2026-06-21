@@ -3,7 +3,7 @@
 # Code lifted from upstream issue body via web extraction. Not guaranteed
 # byte-identical to the original issue post; verify against upstream before
 # relying. See BUG_MAPPING.md > Reproducer Provenance Audit.
-# Verified on TVM 0.24.dev0 (LD_LIBRARY_PATH=/data1/tzh/tvm_fuzz/lib):
+# Verified on TVM 0.24.dev0 (LD_LIBRARY_PATH=${ARTIFACT_ROOT}/tvm_fuzz/lib):
 # crashes with tvm.error.InternalError 'PermuteDims expects ... tensor
 # ndim is 5 while the given number of axes is 4' — exact match.
 # ==========================================================================

@@ -14,8 +14,8 @@ import subprocess
 import tempfile
 import os
 
-IREE_IMPORT = "/data1/tzh/tvm_fuzz/bin/iree-import-onnx"
-IREE_COMPILE = "/data1/tzh/tvm_fuzz/bin/iree-compile"
+IREE_IMPORT = "${ARTIFACT_ROOT}/tvm_fuzz/bin/iree-import-onnx"
+IREE_COMPILE = "${ARTIFACT_ROOT}/tvm_fuzz/bin/iree-compile"
 
 print("=" * 60)
 print("Bug #036: Pad wrap mode compiler hang")

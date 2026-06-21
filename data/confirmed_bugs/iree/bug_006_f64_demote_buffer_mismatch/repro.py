@@ -18,7 +18,7 @@ from onnx import helper, TensorProto
 import onnxruntime as ort
 import subprocess
 
-IREE_IMPORT = "/data1/tzh/tvm_fuzz/bin/iree-import-onnx"
+IREE_IMPORT = "${ARTIFACT_ROOT}/tvm_fuzz/bin/iree-import-onnx"
 
 
 def run_iree(model, inputs):
