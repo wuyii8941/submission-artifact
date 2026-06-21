@@ -19,15 +19,46 @@ along with expected runtime on a single NVIDIA T4 / A6000 GPU class.
 
 See `data/confirmed_bugs/{pytorch, tensorflow, xla, iree, tvm}/`. Each
 subdirectory holds minimized reproducers for the bugs reported in the
-paper. To re-verify a bug, install the corresponding stack version
-(listed in each repro's header comment) and run the Python file.
+paper. Each reproducer's header comment lists the exact stack version
+that triggers it.
 
-Example:
+### Single-bug reproducer (recommended)
+
+`tools/run_repro.sh <bug-dir>` is a stack-aware dispatcher that picks the
+right interpreter, sets stack-specific environment (e.g. `LD_LIBRARY_PATH`
+for TVM, `TF_CPP_MIN_LOG_LEVEL` for TensorFlow), and runs the canonical
+`.py` in the bug directory. Set these once per shell:
 
 ```bash
-cd data/confirmed_bugs/pytorch
-python bug_007_slice_scatter_backward/minimal_repro.py
+export DOF_PT_PYTHON=/path/to/pt-nightly/venv/bin/python
+export DOF_TF_PYTHON=/path/to/tf-nightly/venv/bin/python
+export DOF_TVM_HOME=/path/to/tvm-install
+export DOF_IREE_PYTHON=/path/to/iree-venv/bin/python
 ```
+
+then:
+
+```bash
+tools/run_repro.sh data/confirmed_bugs/pytorch/bug_007_slice_scatter_backward
+tools/run_repro.sh data/confirmed_bugs/tvm/bug_001_gemv_keyerror
+```
+
+### All bugs at once
+
+`tools/run_all_repros.sh [stack]` loops over every reproducer (optionally
+filtered to one stack), writes per-bug logs and a summary CSV under
+`results/repro_run_<timestamp>/`. Each repro gets a 5-minute soft cap
+(override with `DOF_REPRO_TIMEOUT`).
+
+```bash
+tools/run_all_repros.sh                 # all 86 bugs
+tools/run_all_repros.sh pytorch         # just the PT bugs
+```
+
+Exit-code convention: `0` means the reproducer ran to completion (some
+bugs use stdout markers like "BUG CONFIRMED" / "MISMATCH" rather than a
+non-zero exit); non-zero means the bug manifested as a crash or error;
+`124` is the dispatcher timeout.
 
 ## RQ2 — Efficiency (historical benchmark)
 
