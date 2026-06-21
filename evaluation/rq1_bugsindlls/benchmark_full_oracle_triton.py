@@ -3,24 +3,24 @@
 Kernel-Guided Fuzzing Benchmark - Full Oracle Edition with Hybrid Strategy
 ==========================================================================
 
-核心增强:
-1. **混合策略**: ε-greedy (90% 微创 + 10% 探索)
-2. **动态变异**: 停滞时自动扩大变异范围
-3. **取消饱和停止**: 改为"扩大搜索"而非"终止"
-4. **全 Oracle 支持**: CRASH + CUDA + PRECISION + COMPILE(Guided only)
-5. **智能归类**: 基于错误指纹的 Bug 去重与分类
-6. **内存保护**: 防止 OOM (Exit 137)
-7. **阶段级进程隔离**: Random/Guided 阶段独立子进程运行
-8. **LOC 能量法则**: 针对算子融合挖掘黄金种子
-9. **动态重放抓取 (Dynamic Replay & Capture)**: 实时截获真实 Bug 堆栈并生成轻量级 JSON
+Headline enhancements:
+1. **Hybrid strategy**: epsilon-greedy (90% mutation + 10% exploration).
+2. **Adaptive mutation**: expand the mutation range automatically on stagnation.
+3. **Plateau-removal and stopping**: switch from 'terminate' to 'expand search'.
+4. **Full oracle support**: CRASH + CUDA + PRECISION + COMPILE (Guided only).
+5. **Smart deduplication**: dedup and classify bugs by error fingerprint.
+6. **Memory guard**: prevent OOM (Exit 137).
+7. **Phase-level process isolation**: Random/Guided phases run in separate subprocesses.
+8. **LOC energy heuristic**: mine golden seeds targeting operator fusion.
+9. **Dynamic replay & capture**: intercept real bug stacks live and emit a lightweight JSON.
 
-[修复 v14]
-- issue_ids warmup: 覆盖 API_TO_ISSUE_MAP 中所有 issue，包括 torch.compile 的 7-8 个 issue
-  原来 i % len(issue_ids) 会在 warmup_threshold//2 次迭代内轮流覆盖所有 issue，已正确
-- test_with_oracle 返回值解包: 修复为正确解包 (captured_kernels, error_info)
-- bug_traces_log 累积: error_info 直接 update 到 bug_traces_log（key 为绝对路径）
-- save_crash_code_as_bug: 同步写入 bug_traces_log，使崩溃 bug 也能被 v14 分析脚本匹配
-- Random 阶段剥离 COMPILE oracle，保持基准纯净
+[v14 fixes]
+- issue_ids warmup: covers every issue in API_TO_ISSUE_MAP, including the 7-8 issues for torch.compile.
+  The previous i % len(issue_ids) loop already cycles through every issue within warmup_threshold//2 iterations (kept).
+- test_with_oracle return-value unpacking: fixed to correctly unpack (captured_kernels, error_info).
+- bug_traces_log accumulation: error_info is updated directly into bug_traces_log (keyed by absolute path).
+- save_crash_code_as_bug: also writes into bug_traces_log so crash bugs are matched by the v14 analysis script.
+- Random phase drops the COMPILE oracle to keep the baseline clean.
 """
 
 import copy
@@ -61,7 +61,7 @@ try:
 except AttributeError:
     OracleType.COMPILE = max(OracleType.__members__.values()) + 1
 
-# BUG-DISCOVERY: 三方向增强模块
+# BUG-DISCOVERY: three-axis enhancement module
 try:
     from bug_discovery_enhancements import (
         BugDiscoveryEnhancer,
@@ -82,7 +82,7 @@ except ImportError as _e:
         def get_stats(self): return {}
         def print_stats(self): pass
 
-# Constraint Filter imports - 5维正交状态空间
+# Constraint Filter imports - 5D orthogonal state space
 try:
     from pytorch_comprehensive_filter import (
         PyTorchConstraintFilter,
@@ -93,7 +93,7 @@ except Exception:
     FILTER_AVAILABLE = False
 
     class DispatcherStateSpace:
-        """简化版状态空间管理器 - 无约束过滤"""
+        """Simplified state-space manager - no constraint filtering."""
 
         DIMENSION_DEVICE = ['cpu', 'cuda']
         DIMENSION_DTYPE = [
@@ -555,7 +555,7 @@ class ExperimentLogger:
         self.close()
 
 
-# 保存原始方法
+# Save the original method
 _ORIGINAL_DO_SELECT_FROM_DB = None
 _ORIGINAL_MUTATE_INT_VALUE = None
 _ORIGINAL_MUTATE_FLOAT_VALUE = None
@@ -1265,8 +1265,8 @@ class EnhancedFuzzer:
         self.crash_code_file = crash_code_file
         self.iterations_completed = 0
 
-        # 用于实时记录截获的报错信息（黑匣子）
-        # key = write_to_dir 返回的绝对路径，与 _save_bug_traces 的 relpath 归一化对齐
+        # Real-time log of intercepted error info (black box).
+        # key = absolute path returned by write_to_dir, aligned with the relpath normalization in _save_bug_traces.
         self.bug_traces_log = {}
 
         self.coverage = EnhancedCoverageTracker(strategy_name, enable_adaptive_saturation=enable_patches)
@@ -1275,7 +1275,7 @@ class EnhancedFuzzer:
         self.mutation_controller = AdaptiveMutationController() if enable_patches else None
         self.library = TorchLibrary(output_dir, diff_bound=diff_bound)
 
-        # [修复] Oracle 列表：Random 阶段剥离 COMPILE，保持基准纯净
+        # [fix] Oracle list: drop COMPILE in the Random phase to keep the baseline clean.
         if use_all_oracles:
             if strategy_name.lower() == "random":
                 self.oracles = [OracleType.CRASH, OracleType.CUDA, OracleType.PRECISION]
@@ -1317,11 +1317,11 @@ class EnhancedFuzzer:
         self.bug_deduplicator = RealTimeBugDeduplicator(max_signatures=1000)
         self.warmup_threshold = 0
 
-        # [修复 Q1] issue_ids warmup：加载当前 API 对应的所有 issue
-        # API_TO_ISSUE_MAP 在 DynamicScriptInjector 里，但 IssueScriptRunner 提供磁盘扫描接口
-        # 这里直接用 IssueScriptRunner.load_all_issue_ids() 加载磁盘上存在的所有 issue
-        # 对于 torch.compile 这类有 7-8 个 issue 的 API，i % len(issue_ids) 会在
-        # warmup_threshold//2 次迭代中轮流覆盖全部 issue，确保不遗漏
+        # [fix Q1] issue_ids warmup: load every issue associated with the current API.
+        # API_TO_ISSUE_MAP lives in DynamicScriptInjector, but IssueScriptRunner exposes a disk-scan interface.
+        # We use IssueScriptRunner.load_all_issue_ids() to load every issue present on disk.
+        # For APIs like torch.compile with 7-8 issues, i % len(issue_ids) will cycle
+        # through every issue within warmup_threshold//2 iterations, ensuring full coverage.
         self.issue_ids: list = []
         if enable_patches:
             self.issue_ids = IssueScriptRunner.load_all_issue_ids()
@@ -1329,7 +1329,7 @@ class EnhancedFuzzer:
                 print(f"[IssueScripts] ✅ {len(self.issue_ids)} scripts available for guided warmup")
                 print(f"[IssueScripts]    Warmup will cycle through all {len(self.issue_ids)} issues")
 
-        # BUG-DISCOVERY: 三方向增强
+        # BUG-DISCOVERY: three-axis enhancement
         self.bug_enhancer = BugDiscoveryEnhancer(
             api_name=api_name,
             enable_edge_case=True,
@@ -1353,7 +1353,7 @@ class EnhancedFuzzer:
         if self.speedometer:
             self.speedometer.start()
 
-        # 从 checkpoint 恢复
+        # Restore from checkpoint
         start_iteration = 0
         if self.checkpoint_manager and self.checkpoint_manager.exists():
             checkpoint_data = self.checkpoint_manager.load()
@@ -1384,17 +1384,17 @@ class EnhancedFuzzer:
             if self.speedometer:
                 self.speedometer.tick()
 
-            # ── 策略选择 ──────────────────────────────────────────────
+            # -- Strategy selection -----------------------------------
             source = "random"
             is_exploration = False
 
             if i < self.warmup_threshold:
                 mid = self.warmup_threshold // 2
                 if i < mid and self.issue_ids:
-                    # [修复 Q1] 用 i % len(issue_ids) 轮流覆盖所有 issue
-                    # torch.compile 有 14 个 issue，全部会在 warmup_threshold//2 次内被覆盖
+                    # [fix Q1] Use i % len(issue_ids) to cycle through all issues
+                    # torch.compile has 14 issues; all are covered within warmup_threshold//2 iterations.
                     issue_id = self.issue_ids[i % len(self.issue_ids)]
-                    mutate = (i % 3 != 0)  # 每3次中2次做变异，1次原始重放
+                    mutate = (i % 3 != 0)  # 2 of every 3 iterations mutate; 1 plays back the original.
                     try:
                         kernels, bug_found, script_src, error_info = self.library.test_with_script(
                             issue_id, mutate=mutate
@@ -1402,8 +1402,8 @@ class EnhancedFuzzer:
                         all_captured_kernels = set(kernels)
                         execution_valid = True
                         source = f"issue_replay_{issue_id}"
-                        # [修复] error_info key 已经是绝对路径（test_with_script 修复后），
-                        # 直接 update 到 bug_traces_log
+                        # [fix] error_info key is already an absolute path (after fixing test_with_script),
+                        # so update it directly into bug_traces_log.
                         if error_info:
                             self.bug_traces_log.update(error_info)
                         if bug_found:
@@ -1423,16 +1423,16 @@ class EnhancedFuzzer:
                         continue
                     except Exception as e:
                         print(f"  [IssueScript] ⚠️ issue_{issue_id} failed: {e}")
-                        # 失败时 fallthrough 到普通随机
+                        # On failure, fall through to plain random.
 
-                # 普通随机 warmup
+                # Plain random warmup
                 api = TorchAPI(self.api_name)
                 source = "warmup_random"
                 api.mutate()
                 if i == self.warmup_threshold - 1:
                     print(f"\n🚀 PHASE TRANSITION: Warm-up → Evolution (iter {i+1})")
             else:
-                # Phase 2: Evolution — ε-greedy 混合策略
+                # Phase 2: Evolution -- epsilon-greedy hybrid strategy
                 if self.mutation_controller:
                     is_exploration = self.mutation_controller.should_explore()
 
@@ -1448,7 +1448,7 @@ class EnhancedFuzzer:
                     source = "random"
                 api.mutate()
 
-            # ── 保存当前测试代码（用于崩溃恢复）──────────────────────
+            # -- Save the current test code (for crash recovery) ------
             if self.crash_code_file:
                 try:
                     crash_code = api.to_code(use_try=False)
@@ -1459,7 +1459,7 @@ class EnhancedFuzzer:
                 except Exception:
                     pass
 
-            # ── OutlierFilter 检查 ────────────────────────────────────
+            # -- OutlierFilter check ---------------------------------
             if self.outlier_filter:
                 should_filter, reason = self.outlier_filter.check_api(api)
                 if should_filter:
@@ -1472,13 +1472,13 @@ class EnhancedFuzzer:
                         gc.collect()
                     continue
 
-            # ── 执行所有 Oracle ───────────────────────────────────────
+            # -- Run all oracles -------------------------------------
             all_captured_kernels: Set[str] = set()
             execution_valid = False
 
             for oracle in self.oracles:
                 try:
-                    # [修复] test_with_oracle 返回 (captured_kernels, error_info)
+                    # [fix] test_with_oracle returns (captured_kernels, error_info).
                     result = self.library.test_with_oracle(api, oracle)
 
                     if isinstance(result, tuple) and len(result) == 2:
@@ -1489,12 +1489,12 @@ class EnhancedFuzzer:
                     all_captured_kernels.update(captured_kernels)
                     execution_valid = True
 
-                    # [修复] error_info key 是绝对路径，直接 update，
-                    # _save_bug_traces 会统一做 relpath 归一化
+                    # [fix] error_info key is an absolute path; update directly,
+                    # _save_bug_traces handles the relpath normalization uniformly.
                     if error_info:
                         self.bug_traces_log.update(error_info)
 
-                    # 实时 bug 去重记录
+                    # Real-time bug-dedup logging
                     for path, info in error_info.items():
                         msg = info.get("msg", "")
                         bug_type = info.get("type", "crash")
@@ -1510,14 +1510,14 @@ class EnhancedFuzzer:
                 except Exception:
                     pass
 
-            # ── 记录日志 ──────────────────────────────────────────────
+            # -- Record log -------------------------------------------
             if self.logger:
                 self.logger.log_iteration(
                     iteration=i, source=source, api=api,
                     valid=execution_valid, kernels=list(all_captured_kernels)
                 )
 
-            # ── 记录 DispatcherSpace 命中 ─────────────────────────────
+            # -- Record DispatcherSpace hit ---------------------------
             if self.dispatcher_space and execution_valid:
                 is_cuda = OracleType.CUDA in self.oracles
                 self.dispatcher_space.record_hit(self.api_name, api, is_cuda=is_cuda, iteration=i)
@@ -1525,7 +1525,7 @@ class EnhancedFuzzer:
             if self.dispatcher_space and i % 50 == 0:
                 self.dispatcher_space.record_coverage_snapshot(self.api_name, i)
 
-            # ── 更新覆盖率 ────────────────────────────────────────────
+            # -- Update coverage --------------------------------------
             new_count, (should_expand, expansion_msg) = self.coverage.update(all_captured_kernels, i)
 
             if should_expand and self.mutation_controller:
@@ -1535,7 +1535,7 @@ class EnhancedFuzzer:
                 if self.mutation_controller.expansion_mode:
                     self.mutation_controller.exit_expansion_mode()
 
-            # ── 更新 Corpus ───────────────────────────────────────────
+            # -- Update corpus ----------------------------------------
             if new_count > 0 and self.corpus:
                 self.corpus.add_seed(api, all_captured_kernels)
 
@@ -1551,7 +1551,7 @@ class EnhancedFuzzer:
                 if msg:
                     print(f"\n{msg}")
 
-            # ── 定期扫描 Bug ──────────────────────────────────────────
+            # -- Periodic bug scan ------------------------------------
             if (i + 1) % bug_scan_interval == 0:
                 self.bug_tracker.scan_bugs()
 
@@ -1605,9 +1605,9 @@ class EnhancedFuzzer:
 
             self.iterations_completed = i + 1
 
-        # ── 循环结束收尾 ──────────────────────────────────────────────
+        # -- End-of-loop teardown --------------------------------------
         self.bug_tracker.scan_bugs()
-        self._save_bug_traces()  # 唯一落盘点
+        self._save_bug_traces()  # The single flush point
 
         print(f"\n{'='*70}")
         print(f"✅ {self.strategy_name} fuzzing completed: {self.iterations_completed} iterations")
@@ -1619,15 +1619,15 @@ class EnhancedFuzzer:
 
     def _save_bug_traces(self):
         """
-        将黑匣子字典落盘。
+        Flush the black-box dictionary to disk.
 
-        bug_traces_log 的 key 来自两个来源：
-          1. test_with_oracle 的 error_info → key 是 write_to_dir 返回的绝对路径
-          2. test_with_script 的 error_info → key 也是 write_to_dir 返回的绝对路径（修复后）
+        bug_traces_log keys come from two sources:
+          1. error_info from test_with_oracle -> key is the absolute path returned by write_to_dir.
+          2. error_info from test_with_script -> also the absolute path returned by write_to_dir (after the fix).
 
-        统一用 os.path.relpath(k, self.output_dir) 转为相对路径，
-        格式为 "crash-oracle/potential-bug/torch_matmul/1.py"，
-        与 v14 分析脚本的 _load_traces 注册的 key 格式对齐。
+        Both are normalized to relative paths via os.path.relpath(k, self.output_dir),
+        e.g., "crash-oracle/potential-bug/torch_matmul/1.py",
+        matching the key format registered by _load_traces in the v14 analysis script.
         """
         out_file = Path(self.output_dir) / f"{self.strategy_name.lower()}_bug_traces.json"
         if not self.bug_traces_log:
@@ -1676,7 +1676,7 @@ def _run_phase_worker(phase_name: str,
                       enable_patches: bool,
                       result_file: str,
                       crash_code_file: str):
-    """在隔离的子进程中运行一个完整的 fuzzing 阶段，结果通过文件传递"""
+    """Run a full fuzzing phase in an isolated subprocess; results are passed via files."""
     import torch
     import signal
 
@@ -1821,7 +1821,7 @@ def run_phase_isolated(phase_name: str,
                        diff_bound: float,
                        enable_patches: bool,
                        timeout_minutes: int = 120) -> Dict:
-    """在独立子进程中运行一个 fuzzing 阶段。即使 OOM/SIGFPE 也不影响主进程。"""
+    """Run a fuzzing phase in an isolated subprocess. OOM/SIGFPE in the child does not affect the parent."""
 
     result_file = join(output_dir, f"{phase_name.lower()}_result.json")
     crash_code_file = join(output_dir, f"_current_test_{phase_name.lower()}.py")
@@ -1864,7 +1864,7 @@ def run_phase_isolated(phase_name: str,
     }
 
     def save_crash_code_as_bug():
-        """将导致崩溃的代码保存到 potential-bug 目录，并同步写入 bug_traces"""
+        """Persist the crashing code under potential-bug and also write to bug_traces."""
         actual_crash_file = None
         if os.path.exists(crash_code_file):
             actual_crash_file = crash_code_file
@@ -1878,7 +1878,7 @@ def run_phase_isolated(phase_name: str,
             if not content.strip():
                 return False
 
-            # [修复] 统一用下划线命名（与 write_to_dir 修复后对齐）
+            # [fix] Use underscore naming consistently (aligned with the write_to_dir fix).
             api_dir_name = api_name.replace(".", "_")
             crash_bug_dir = join(output_dir, "crash-oracle", "potential-bug", api_dir_name)
             os.makedirs(crash_bug_dir, exist_ok=True)
@@ -1899,15 +1899,15 @@ def run_phase_isolated(phase_name: str,
                 f.write(content)
             print(f"  💾 Crash code saved to: {dest_file}")
 
-            # [修复] 同步写入 bug_traces JSON，使崩溃 bug 也能被 v14 分析脚本匹配
-            # key 使用相对路径格式（与 _save_bug_traces 归一化后格式一致）
+            # [fix] Also write into bug_traces JSON so crash bugs are matched by the v14 analysis script.
+            # The key uses the relative-path format (matches the format normalized by _save_bug_traces).
             trace_file = join(output_dir, f"{phase_name.lower()}_bug_traces.json")
             try:
                 traces = {}
                 if os.path.exists(trace_file):
                     with open(trace_file, 'r', encoding='utf-8') as f:
                         traces = json.load(f)
-                # key 格式：相对于 output_dir 的路径，下划线形式
+                # Key format: path relative to output_dir, underscore form.
                 rel_key = f"crash-oracle/potential-bug/{api_dir_name}/{next_num}.py"
                 traces[rel_key] = {
                     "type": "hard_crash",
@@ -1968,7 +1968,7 @@ def run_phase_isolated(phase_name: str,
         else:
             result['error'] = "Result file not found"
 
-    # 尝试恢复部分结果
+    # Attempt to recover partial results
     if not result.get('success') and os.path.exists(result_file):
         try:
             with open(result_file, 'r') as f:
@@ -1985,7 +1985,7 @@ def run_phase_isolated(phase_name: str,
         except Exception as e:
             print(f"  ⚠️ Failed to recover partial results: {e}")
 
-    # 磁盘扫描
+    # Disk scan
     bug_tracker = BugTracker(phase_name, output_dir)
     bug_tracker.scan_bugs()
     if bug_tracker.get_total_bugs() > 0:
@@ -2008,7 +2008,7 @@ def run_phase_isolated(phase_name: str,
 
 def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
                               api_name: str, output_dir: str):
-    """绘制 Random vs Guided 对比图"""
+    """Plot the Random vs Guided comparison."""
 
     fig = plt.figure(figsize=(18, 10))
     gs = fig.add_gridspec(2, 3, hspace=0.3, wspace=0.3)
@@ -2020,7 +2020,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
         min_iter = min(iters)
         return [i - min_iter for i in iters], list(values)
 
-    # A) Kernel 覆盖率曲线
+    # A) Kernel-coverage curve
     ax1 = fig.add_subplot(gs[0, :2])
     if random_result.get('coverage_history'):
         iters, kernels = normalize_history(random_result['coverage_history'])
@@ -2038,7 +2038,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
     ax1.legend(loc="lower right", fontsize=11)
     ax1.grid(True, alpha=0.3)
 
-    # B) Bug 数量对比
+    # B) Bug-count comparison
     ax2 = fig.add_subplot(gs[0, 2])
     bug_types = ['CRASH', 'CUDA', 'PRECISION', 'COMPILE']
     random_bugs = random_result.get('bugs', {})
@@ -2077,7 +2077,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
                              xytext=(0, 3), textcoords="offset points",
                              ha='center', va='bottom', fontsize=9)
 
-    # C) 总 Bug 数饼图
+    # C) Total-bugs pie chart
     ax3 = fig.add_subplot(gs[1, 0])
     total_random = random_bugs.get('total', 0) + random_crash_extra
     total_guided = guided_bugs.get('total', 0) + guided_crash_extra
@@ -2091,7 +2091,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
         ax3.text(0.5, 0.5, "No Bugs Found", ha='center', va='center', fontsize=14)
         ax3.axis('off')
 
-    # D) 5D 状态空间覆盖
+    # D) 5D state-space coverage
     ax4 = fig.add_subplot(gs[1, 1])
     has_coverage_data = False
     for label, res, color in [("Random", random_result, "#3498db"), ("Guided", guided_result, "#e74c3c")]:
@@ -2124,7 +2124,7 @@ def plot_full_oracle_results(random_result: Dict, guided_result: Dict,
     ax4.grid(True, alpha=0.3)
     ax4.set_ylim(0, 105)
 
-    # E) 统计汇总表
+    # E) Stats summary table
     ax5 = fig.add_subplot(gs[1, 2])
     ax5.axis('off')
     random_status = "OK" if random_result.get('success') else "FAIL"
@@ -2189,7 +2189,7 @@ def run_full_oracle_experiment(api_name: str,
                                 config_file: str = "demo_torch.conf",
                                 diff_bound: float = 1e-5,
                                 timeout_minutes: int = 120):
-    """运行完整实验 - 使用阶段级进程隔离"""
+    """Run the full experiment using phase-level process isolation."""
     os.makedirs(output_dir, exist_ok=True)
 
     possible_paths = [
@@ -2207,7 +2207,7 @@ def run_full_oracle_experiment(api_name: str,
         print("❌ Config file not found")
         return None
 
-    # API 可用性预检
+    # API-availability sanity check
     try:
         parts = api_name.split(".")
         obj = __import__(parts[0])
@@ -2267,13 +2267,13 @@ def run_full_oracle_experiment(api_name: str,
         print(f"Error: {guided_result['error'][:100]}")
     print(f"{'='*70}\n")
 
-    # 可视化
+    # Visualisation
     try:
         plot_full_oracle_results(random_result, guided_result, api_name, output_dir)
     except Exception as e:
         print(f"⚠️ Plot generation failed: {e}")
 
-    # 保存综合结果
+    # Save combined results
     combined_result = {
         "api": api_name,
         "max_iterations": max_iterations,

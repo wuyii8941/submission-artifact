@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-BugsInDLLs Batch Runner v9 — HKG-Fuzz 集成版
+BugsInDLLs Batch Runner v9 -- HKG-Fuzz integrated edition
 ==============================================
 
-从 BugsInDLLs CSV 中提取所有可测 API，批量调用 benchmark_full_oracle_triton.py。
+Extract every testable API from the BugsInDLLs CSV and batch-invoke benchmark_full_oracle_triton.py.
 
---scope 选项：
-  fuzzable   : 常规 tensor API
-  compile    : torch.compile 类 API
-  both       : fuzzable + compile (默认)
-  all        : 全部
-  high-risk  : 三大雷区 (nested / linalg / distributions)
-  graph      : Graph-level fuzzing (GraphFuzzer，独立实验维度，不依赖 api_name)
+--scope options:
+  fuzzable   : regular tensor APIs
+  compile    : torch.compile-family APIs
+  both       : fuzzable + compile (default)
+  all        : everything
+  high-risk  : the three high-risk zones (nested / linalg / distributions)
+  graph      : Graph-level fuzzing (GraphFuzzer; standalone experiment, not driven by api_name)
 """
 
 import argparse
@@ -93,7 +93,7 @@ _TOOL_APIS = {
 
 
 # =============================================================================
-# 高风险雷区 API 列表
+# High-risk API list
 # =============================================================================
 
 def _hr(api_name: str, tag: str) -> tuple:
@@ -499,19 +499,19 @@ def main():
                                  'high-risk', 'graph'],
                         default='both',
                         help=(
-                            'fuzzable=常规API, compile=编译类, both=两者, '
-                            'all=全部, high-risk=三大雷区, '
-                            'graph=Graph-level fuzzing (独立实验，不需要 --csv)'
+                            'fuzzable=regular APIs, compile=compile-family, both=both, '
+                            'all=everything, high-risk=the three high-risk zones, '
+                            'graph=Graph-level fuzzing (standalone experiment, no --csv required)'
                         ))
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--no-check-mongodb', action='store_true')
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--v3', action='store_true',
-                        help='[scope=graph only] 启用 V3 Anti-Exploitation GraphFuzzer: '
+                        help='[scope=graph only] enable the V3 Anti-Exploitation GraphFuzzer: '
                              'bug basin tracking, diversity forcing, '
                              'template composition, structural dedup')
     parser.add_argument('--v4', action='store_true',
-                        help='[scope=graph only] 启用 V4 Targeted Exploration GraphFuzzer: '
+                        help='[scope=graph only] enable the V4 Targeted Exploration GraphFuzzer: '
                              'adversarial shapes (2^n±1/primes), semantic mutation, '
                              'layout disruption stages, no_cudagraph config')
     parser.add_argument('--novelty-guided', action='store_true',
@@ -540,7 +540,7 @@ def main():
     print(f"{'='*70}")
 
     # =========================================================================
-    # scope: graph — GraphFuzzer 独立实验，不需要 CSV，不依赖 api_name
+    # scope: graph -- standalone GraphFuzzer experiment; no CSV, no api_name needed.
     # =========================================================================
     if args.scope == 'graph':
         v_flags = sum([args.v3, getattr(args, 'v4', False)])
@@ -555,7 +555,7 @@ def main():
             print(f"  Please place graph_fuzzer.py in the same directory as this script.")
             return
 
-        # 解析 config 路径（与 run_full_oracle_experiment 相同逻辑）
+        # Resolve the config path (same logic as run_full_oracle_experiment).
         config_path = None
         for p in [join('config', args.conf),
                   join('..', 'config', args.conf),
@@ -665,7 +665,7 @@ def main():
         elapsed = time.time() - batch_start
         _print_graph_summary(result, args.output, elapsed)
 
-        # V3/V4 额外打印分级统计
+        # V3/V4: also print tiered statistics
         if True:
             tag = "V4" if not args.v3 else "V3"
             print(f"\n  {tag} Divergence Breakdown:")
@@ -679,7 +679,7 @@ def main():
             if by_div:
                 print(f"    by_divergence: {by_div}")
 
-        # V3/V4 额外打印 anti-exploitation 统计
+        # V3/V4: also print anti-exploitation statistics
         if True:
             print(f"\n  V3 Anti-Exploitation Stats:")
             print(f"    Novel bugs (new fingerprint)   : "
@@ -695,7 +695,7 @@ def main():
             if result.get('diversity_status'):
                 print(f"    Diversity: {result['diversity_status']}")
 
-        # V4 额外打印 targeted exploration 统计
+        # V4: also print targeted-exploration statistics
         if not args.v3:
             print(f"\n  V4 Targeted Exploration Stats:")
             print(f"    Novelty-guided programs         : "
@@ -707,7 +707,7 @@ def main():
             print(f"    CUDA crashes (saved to crash/)   : "
                   f"{result.get('total_cuda_crashes', 0)}")
 
-        # 保存完整结果
+        # Save the complete results
         summary_path = os.path.join(args.output, 'graph_batch_summary.json')
         with open(summary_path, 'w') as f:
             json.dump({
@@ -784,20 +784,20 @@ def main():
         return
 
     # =========================================================================
-    # scope: fuzzable / compile / both / all  (CSV 模式)
+    # scope: fuzzable / compile / both / all  (CSV mode)
     # =========================================================================
     if not args.csv:
         print(f"\n  --csv is required for scope '{args.scope}'")
         return
 
-    # Step 1: 提取 API
+    # Step 1: extract APIs
     print(f"\n  Extracting APIs from CSV: {args.csv}")
     api_to_issues = extract_apis_from_csv(args.csv, args.bugsindlls_dir)
     if not api_to_issues:
         print("  No APIs found")
         return
 
-    # Step 2: 分类
+    # Step 2: classify
     classified: Dict[str, list] = {'fuzzable': [], 'compile': [], 'unfuzzable': []}
     for api, issues in api_to_issues.items():
         cat = classify_api(api)
@@ -808,7 +808,7 @@ def main():
     print(f"    Compile    : {len(classified['compile'])}")
     print(f"    Unfuzzable : {len(classified['unfuzzable'])}")
 
-    # Step 3: 选择范围
+    # Step 3: pick the scope
     api_list = []
     if args.scope in ('fuzzable', 'both', 'all'):
         api_list.extend(classified['fuzzable'])
@@ -825,7 +825,7 @@ def main():
     api_list = sorted(deduped, key=lambda x: x[0])
     print(f"\n  Target APIs: {len(api_list)}")
 
-    # MongoDB 检查
+    # MongoDB check
     if not args.no_check_mongodb:
         config_candidates = [join('config', args.conf),
                              join('..', 'config', args.conf), args.conf]
@@ -848,7 +848,7 @@ def main():
             else:
                 print(f"  All {len(api_list)} APIs available")
 
-    # 打印 API 列表
+    # Print the API list
     print(f"\n{'='*70}")
     print(f"  Target API List ({len(api_list)}):")
     print(f"{'='*70}")
@@ -880,7 +880,7 @@ def main():
         resume=args.resume)
     elapsed     = time.time() - batch_start
 
-    # 汇总
+    # Summary
     succeeded   = sum(1 for r in results if r.get('success'))
     failed      = len(results) - succeeded
     print(f"\n{'='*70}")

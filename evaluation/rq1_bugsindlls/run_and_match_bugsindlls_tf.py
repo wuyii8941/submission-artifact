@@ -3,19 +3,19 @@
 """
 run_and_match_bugsindlls_tf.py  (v2 — JSON output + dir_name fix)
 ================================================================
-修改记录 v2:
-  1. [FIX] _dir_to_api_name: TF API 名中含下划线（raw_ops, is_nan 等），
-     用双下划线 __ 保护，单下划线→点。
-     旧逻辑把 tensorflow_raw_ops_GatherV2 → tensorflow.raw.ops.GatherV2（错）
-     新逻辑: 约定目录名用 __ 保护内置下划线，单 _ 为分隔符：
-       tensorflow__raw__ops__GatherV2 → tensorflow.raw_ops.GatherV2（正确）
-     同时保留旧逻辑作为 fallback（直接把 _ 换成 .），确保向后兼容。
-  2. [NEW] save_json_results(): 输出三个 JSON 文件
-       tf_new_bugs.json        — 所有 potentially_new
-       tf_guided_new_bugs.json — guided-only potentially_new (论文核心)
-       tf_known_bugs.json      — confirmed/relaxed match 已知复现
-  3. [FIX] _SKIP_REMARKS: 补充 TF CSV 里的 "todo" 前缀条目不跳过，
-     只跳过明确 "skipped" / "could not reproduce" / "incorrect usage"
+Changelog v2:
+  1. [FIX] _dir_to_api_name: TF API names contain underscores (raw_ops, is_nan, etc.);
+     protect them with double underscores '__'; single underscore -> dot.
+     The old logic mapped tensorflow_raw_ops_GatherV2 -> tensorflow.raw.ops.GatherV2 (wrong).
+     New logic: directory names protect intrinsic underscores with '__' and use single '_' as the separator:
+       tensorflow__raw__ops__GatherV2 -> tensorflow.raw_ops.GatherV2 (correct).
+     The old logic is retained as a fallback (replace '_' with '.') for backward compatibility.
+  2. [NEW] save_json_results(): emits three JSON files
+       tf_new_bugs.json        - all potentially_new entries.
+       tf_guided_new_bugs.json - guided-only potentially_new (paper headline metric).
+       tf_known_bugs.json      - confirmed/relaxed-match known reproductions.
+  3. [FIX] _SKIP_REMARKS: do not skip "todo"-prefixed entries in the TF CSV;
+     only skip explicit "skipped" / "could not reproduce" / "incorrect usage".
 """
 
 import os
@@ -32,7 +32,7 @@ from enum import Enum
 
 
 # ══════════════════════════════════════════════════════════════════
-#  BugDepth 分类（TF 适配版）
+#  BugDepth classification (TF-adapted)
 # ══════════════════════════════════════════════════════════════════
 
 class BugDepth(Enum):
@@ -98,7 +98,7 @@ class BugDepth(Enum):
 
 
 # ══════════════════════════════════════════════════════════════════
-#  辅助函数
+#  Helpers
 # ══════════════════════════════════════════════════════════════════
 
 _NORM_PATS = [
@@ -189,25 +189,25 @@ def _extract_error_msg(content: str) -> str:
 
 def _dir_to_api_name(dirname: str) -> str:
     """
-    将磁盘目录名还原为 TF API 名称。与 PyTorch v14 逻辑一致。
+    Reconstruct a TF API name from its on-disk directory name. Same logic as PyTorch v14.
 
-    约定（TF fuzzer 写目录时使用）:
-      .  → _    （点变单下划线）
-      ._ → __   （私有模块前缀 tf._xxx 变双下划线）
+    Convention (used by the TF fuzzer when writing directories):
+      .  -> _    (dot becomes single underscore)
+      ._ -> __   (private-module prefix tf._xxx becomes double underscore)
 
-    还原时:
-      __  → ._  （双下划线 → 私有模块点前缀）
-      _   → .   （单下划线 → 点分隔）
+    Inverse:
+      __  -> ._  (double underscore -> private-module dotted prefix)
+      _   -> .   (single underscore -> dot separator)
 
-    示例:
+    Examples:
       tensorflow_cast                 → tensorflow.cast
       tensorflow_keras_layers_Conv2D  → tensorflow.keras.layers.Conv2D
       tf__keras_layers_Conv2D         → tf._keras.layers.Conv2D
 
-    注意: TF APIs 含 raw_ops / is_nan 等内置下划线时，
-    fuzzer 写目录名会把 raw_ops → raw_ops（下划线保留但视为组件），
-    还原后得到 tensorflow.raw.ops.GatherV2，与 CSV 中 tensorflow.raw_ops.GatherV2
-    不完全一致，但 BugMatcher._find_issues 的最后一级宽松匹配会处理此差异。
+    Note: when TF APIs contain intrinsic underscores (raw_ops / is_nan, etc.),
+    the fuzzer writes raw_ops -> raw_ops (the underscore is retained but treated as a component),
+    yielding tensorflow.raw.ops.GatherV2 after reversal, which differs from tensorflow.raw_ops.GatherV2 in the CSV;
+    the final relaxed-matching stage in BugMatcher._find_issues accommodates this discrepancy.
     """
     result = dirname.replace("__", "\x00")
     result = result.replace("_", ".")
@@ -245,7 +245,7 @@ class BugScript:
 
 
 # ══════════════════════════════════════════════════════════════════
-#  BugScriptScanner（TF 版：无 compile-oracle）
+#  BugScriptScanner (TF version: no compile-oracle)
 # ══════════════════════════════════════════════════════════════════
 
 class BugScriptScanner:
@@ -337,8 +337,8 @@ class BugScriptScanner:
                             if added >= self.max_per_api:
                                 break
 
-                            # TF 目录名用双下划线规范，traces key 也同步使用
-                            api_under = api_dir.name  # 保留原始目录名作为 key
+                            # The TF directory naming uses the double-underscore convention; traces keys use the same.
+                            api_under = api_dir.name  # keep the original directory name as the key
                             key1 = f"{oracle_dir_name}/{sub_dir}/{api_under}/{py_file.name}"
                             key2 = py_file.name
 
@@ -443,11 +443,11 @@ class BugDeduplicator:
 
 
 # ══════════════════════════════════════════════════════════════════
-#  GroundTruthLoader（TF 版）
+#  GroundTruthLoader (TF version)
 # ══════════════════════════════════════════════════════════════════
 
-# [v2] 只跳过明确标注 skipped/could not reproduce/incorrect usage 的条目
-# "TODO" 等条目保留（可能是未完成复现但 bug 真实存在）
+# [v2] Only skip entries explicitly tagged skipped/could not reproduce/incorrect usage.
+# Entries like "TODO" are kept (the reproduction may be incomplete but the bug is real).
 _SKIP_REMARKS = [
     "skipped",
     "could not reproduce",
@@ -527,7 +527,7 @@ class GroundTruthLoader:
 
 
 # ══════════════════════════════════════════════════════════════════
-#  BugMatcher（TF 版）
+#  BugMatcher (TF version)
 # ══════════════════════════════════════════════════════════════════
 
 class MatchLabel:
@@ -729,30 +729,30 @@ class BugMatcher:
             counts_strict[enriched["match_label_strict"]] += 1
 
         print(f"\n✓ Bug matching complete ({len(results)} deep bugs analyzed):")
-        print(f"  ── 宽松口径（主报告）──────────────────────────────")
-        print(f"  ✅ CONFIRMED_MATCH  : {counts[MatchLabel.CONFIRMED_MATCH]}  (严格类型吻合)")
-        print(f"  🔶 RELAXED_MATCH    : {counts[MatchLabel.RELAXED_MATCH]}  (跨版本宽松吻合)")
-        print(f"  📋 API_MATCH_ONLY   : {counts[MatchLabel.API_MATCH_ONLY]}  (仅API命中)")
-        print(f"  🆕 POTENTIALLY_NEW  : {counts[MatchLabel.POTENTIALLY_NEW]}  (CSV无记录)")
-        print(f"  ── 严格口径（对照数据）────────────────────────────")
+        print(f"  -- Relaxed criterion (main report) -----------------")
+        print(f"  CONFIRMED_MATCH  : {counts[MatchLabel.CONFIRMED_MATCH]}  (strict type match)")
+        print(f"  RELAXED_MATCH    : {counts[MatchLabel.RELAXED_MATCH]}  (cross-version relaxed match)")
+        print(f"  API_MATCH_ONLY   : {counts[MatchLabel.API_MATCH_ONLY]}  (API match only)")
+        print(f"  POTENTIALLY_NEW  : {counts[MatchLabel.POTENTIALLY_NEW]}  (not in CSV)")
+        print(f"  -- Strict criterion (reference) --------------------")
         print(f"  ✅ CONFIRMED_MATCH  : {counts_strict[MatchLabel.CONFIRMED_MATCH]}")
         print(f"  📋 API_MATCH_ONLY   : {counts_strict[MatchLabel.API_MATCH_ONLY]}")
         return results
 
 
 # ══════════════════════════════════════════════════════════════════
-#  [NEW v2] JSON 输出
+#  [NEW v2] JSON output
 # ══════════════════════════════════════════════════════════════════
 
 def save_json_results(matched: List[Dict], output_dir: str):
     """
-    输出三个 JSON 文件，结构与 PyTorch 版保持一致：
+    Emit three JSON files, mirroring the PyTorch-version structure:
 
-      tf_new_bugs.json        — 所有 potentially_new（CSV 无记录）
-      tf_guided_new_bugs.json — guided-only potentially_new（论文核心指标）
-      tf_known_bugs.json      — confirmed + relaxed match（已知 bug 复现）
+      tf_new_bugs.json        - all potentially_new entries (not in CSV).
+      tf_guided_new_bugs.json - guided-only potentially_new (paper headline metric).
+      tf_known_bugs.json      - confirmed + relaxed match (known-bug reproductions).
 
-    每条记录包含 sig_hash / api / oracle_type / bug_depth / error_msg /
+    Each record contains sig_hash / api / oracle_type / bug_depth / error_msg /
     exception_type / crash_module / random_count / guided_count /
     match_label / match_detail / matched_issues / sample_file
     """
@@ -776,7 +776,7 @@ def save_json_results(matched: List[Dict], output_dir: str):
                 "match_detail":   r.get("match_detail", ""),
                 "sample_file":    r.get("sample_file", ""),
             }
-            # 附加 best_match 信息（序列化友好）
+            # Append best_match info (serialization-friendly)
             bm = r.get("best_match")
             if bm:
                 entry["best_match"] = {
@@ -816,7 +816,7 @@ def save_json_results(matched: List[Dict], output_dir: str):
         json.dumps(_serialize(guided_new), indent=2, ensure_ascii=False),
         encoding="utf-8"
     )
-    print(f"✓ tf_guided_new_bugs.json → {len(guided_new):3d} bugs  [{path_guided}]  ← 论文核心")
+    print(f"  tf_guided_new_bugs.json -> {len(guided_new):3d} bugs  [{path_guided}]  (paper headline)")
 
     # ── tf_known_bugs.json ────────────────────────────────────────
     path_known = out_dir / "tf_known_bugs.json"
@@ -826,7 +826,7 @@ def save_json_results(matched: List[Dict], output_dir: str):
     )
     print(f"✓ tf_known_bugs.json      → {len(known):3d} bugs  [{path_known}]")
 
-    # ── 控制台摘要 ────────────────────────────────────────────────
+    # -- Console summary -------------------------------------------
     print(f"\n{'='*55}")
     print(f"  🆕 Potentially NEW (total)   : {len(new_all)}")
     print(f"     ├ Guided-Only NEW          : {len(guided_new)}  ← key metric")
@@ -887,42 +887,42 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         f"**Raw Records**: {len(scanner.scripts)} → **Unique Signatures**: {len(dedup.unique)}  ",
         f"**APIs Fuzzed**: {len(scanner.fuzzed_apis)}",
         "", "---", "",
-        "## 🚀 核心指标：Kernel-Guided vs Random",
+        "## Headline metric: Kernel-Guided vs Random",
         "",
-        "| 策略 | 深层 Bug 总发现数 | 独家发现 (Only) |",
+        "| Strategy | Deep bugs found (total) | Exclusive finds (Only) |",
         "|---|---|---|",
         f"| Random   | {total_r} | {go_r} |",
         f"| **Guided** | **{total_g}** | **{go_g}** |",
         "",
-        "> 深层 Bug = `deep_bug`（TF Aborted/Check Failed/InternalError 等）",
+        "> Deep bug = `deep_bug` (TF Aborted/Check Failed/InternalError, etc.)",
         "", "---", "",
-        "## 📊 深层 Bug 分布",
+        "## Deep-bug distribution",
         "",
-        "| 深度分类 | Random | Guided | Both | Guided Only | Random Only |",
+        "| Depth class | Random | Guided | Both | Guided Only | Random Only |",
         "|---|---|---|---|---|---|",
         f"| Deep Bug | {deep_s['random']} | {deep_s['guided']} | {deep_s['both']} | {deep_s['guided_only']} | {deep_s['random_only']} |",
         "", "---", "",
-        "## 🔍 Ground Truth 匹配结果（对照 bug_dataset_tensorflow.csv）",
+        "## Ground-truth matching results (against bug_dataset_tensorflow.csv)",
         "",
-        "| 匹配等级 | 数量 | 含义 |",
+        "| Match level | Count | Meaning |",
         "|---|---|---|",
-        f"| ✅ CONFIRMED_MATCH  | **{len(exact)}** | API匹配 + 错误类型严格吻合 |",
-        f"| 🔶 RELAXED_MATCH    | **{len(relaxed)}** | API匹配 + 跨版本宽松吻合 |",
-        f"| 📋 API_MATCH_ONLY   | **{len(known)}** | API匹配，类型不吻合 |",
-        f"| 🆕 POTENTIALLY_NEW  | **{len(new_all)}** | CSV无记录（Guided独有：{len(ng)}） |",
+        f"| CONFIRMED_MATCH  | **{len(exact)}** | API matches and error type strictly aligned |",
+        f"| RELAXED_MATCH    | **{len(relaxed)}** | API matches with cross-version relaxed alignment |",
+        f"| API_MATCH_ONLY   | **{len(known)}** | API matches but error type does not align |",
+        f"| POTENTIALLY_NEW  | **{len(new_all)}** | Not in CSV (Guided-only: {len(ng)}) |",
         "",
         "<details>",
-        "<summary>📊 严格口径对照数据</summary>",
+        "<summary>Strict-criterion reference</summary>",
         "",
-        f"| ✅ CONFIRMED_MATCH（严格） | **{strict_confirmed}** |",
-        f"| 📋 API_MATCH_ONLY（严格）  | **{strict_api_match}** |",
+        f"| CONFIRMED_MATCH (strict) | **{strict_confirmed}** |",
+        f"| API_MATCH_ONLY (strict)  | **{strict_api_match}** |",
         "",
         "</details>",
         "",
     ]
 
     if exact:
-        lines += ["### ✅ Tier 1：错误类型严格吻合", ""]
+        lines += ["### Tier 1: strict error-type match", ""]
         for r in sorted(exact, key=lambda x: x["api"]):
             bm = r["best_match"] or {}
             lines += [
@@ -934,7 +934,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             ]
 
     if relaxed:
-        lines += ["### 🔶 Tier 1.5：跨版本宽松吻合", ""]
+        lines += ["### Tier 1.5: cross-version relaxed match", ""]
         for r in sorted(relaxed, key=lambda x: x["api"]):
             bm = r["best_match"] or {}
             lines += [
@@ -944,7 +944,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             ]
 
     if known:
-        lines += ["### 📋 Tier 2：API 匹配但类型不吻合", ""]
+        lines += ["### Tier 2: API matches but type mismatched", ""]
         for r in sorted(known, key=lambda x: x["api"]):
             bm = r["best_match"] or {}
             lines += [
@@ -954,7 +954,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             ]
 
     if new_all:
-        lines += ["### 🆕 Tier 3：CSV 无记录（疑似新 Bug）", ""]
+        lines += ["### Tier 3: not in CSV (likely new bugs)", ""]
         for r in sorted(new_all, key=lambda x: (-x["guided_count"], x["api"])):
             lines += [
                 f"- **`{r['api']}`**  |  {_strategy_label(r)}",
@@ -965,13 +965,13 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
 
     lines += [
         "---", "",
-        "## 📉 被过滤的噪音",
+        "## Filtered noise",
         "",
-        "| 分类 | Random | Guided |",
+        "| Category | Random | Guided |",
         "|---|---|---|",
-        f"| 浅层参数异常 | {shallow_s.get('random', 0)} | {shallow_s.get('guided', 0)} |",
-        f"| 脚本缺陷     | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
-        f"| 噪音与超时   | {noise_s.get('random', 0)}   | {noise_s.get('guided', 0)} |",
+        f"| Shallow argument errors | {shallow_s.get('random', 0)} | {shallow_s.get('guided', 0)} |",
+        f"| Script defects          | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
+        f"| Noise and timeouts      | {noise_s.get('random', 0)}   | {noise_s.get('guided', 0)} |",
         "",
     ]
 
@@ -991,11 +991,11 @@ def main():
     parser.add_argument("--ground-truth", "-g", required=True)
     parser.add_argument("--report",       "-r", default="report_tf.md")
     parser.add_argument("--json-dir",     "-j", default=None,
-                        help="JSON 输出目录（默认与 --report 同目录）")
+                        help="JSON output directory (defaults to the --report directory)")
     parser.add_argument("--max-per-api",  type=int, default=200)
     args = parser.parse_args()
 
-    # JSON 输出目录默认与报告文件同级
+    # The default JSON output directory is sibling to the report file.
     json_dir = args.json_dir or str(Path(args.report).parent)
 
     print("=" * 60)

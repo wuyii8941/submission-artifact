@@ -3,29 +3,37 @@
 """
 run_and_match_bugsindlls_v14.py
 ================================================================
-HKG-Fuzz 专用分析脚本 v14
+HKG-Fuzz analysis script, v14.
 
-主要修复 (vs v13):
-  1. 正确读取 random_bug_traces.json / guided_bug_traces.json
-     benchmark 写入的 key 是绝对路径，_load_traces 统一转换为相对路径后匹配
-  2. 只扫 potential-bug / compare-bug，去掉 fail（fail 不是真正的 bug）
-  3. Ground Truth 直接用 bug_dataset_pytorch.csv 做 API 级匹配，
-     放弃从 title 抠 fingerprint 的弱匹配逻辑
-  4. BugDepth 分类更精确：compile oracle 下的 RuntimeError/AssertionError → DEEP_BUG
-  5. 报告中明确标注每条 bug 对应的 CSV issue id 和 Reproduced 字段
-  6. _load_traces 同时注册绝对路径/相对路径/文件名三种 key，确保命中
+Main fixes (vs v13):
+  1. Correctly load random_bug_traces.json / guided_bug_traces.json.
+     The benchmark writes absolute paths as keys; _load_traces normalizes
+     these to relative paths before matching.
+  2. Scan only potential-bug / compare-bug; drop fail (fail is not a true bug).
+  3. Use bug_dataset_pytorch.csv directly for API-level matching against
+     ground truth, instead of the weak title-fingerprint matching.
+  4. Sharper BugDepth classification: RuntimeError/AssertionError under the
+     compile oracle is reclassified as DEEP_BUG.
+  5. Each reported bug is annotated with its corresponding CSV issue id and
+     Reproduced field.
+  6. _load_traces registers absolute-path, relative-path, and filename keys
+     simultaneously to ensure lookups hit.
 
 v13-fix:
-  7. [修复] _dir_to_api_name 正确处理双下划线目录名
-     外层批量目录用 api.replace(".", "_") 生成，其中 "._" → "__"
-     torch._dynamo.export → torch__dynamo_export
-     还原规则: "__" → "._"，"_" → "."
-  8. [修复] scan() 中 key 查找增加带点形式（write_to_dir 用原始 api 名写入子目录）
-     key1 下划线形式保留作 fallback，key2 带点形式作为主要命中路径
+  7. [fix] _dir_to_api_name handles double-underscore directory names
+     correctly. The outer batch directories are produced via
+     api.replace(".", "_"), so "._" becomes "__"
+     (torch._dynamo.export -> torch__dynamo_export). Inverse rule:
+     "__" -> "._", then "_" -> ".".
+  8. [fix] scan() also looks up keys in dotted form (write_to_dir writes
+     subdirectories using the original API name). The underscore form
+     (key1) is kept as a fallback; the dotted form (key2) is the primary
+     lookup path.
 
 v14:
-  9. [新增] export_json() 函数，在 main() 末尾自动生成 4 个 JSON 文件：
-     new_bugs.json / guided_new_bugs.json / known_bugs.json / phase_results.json
+  9. [new] export_json() automatically emits four JSON files at the end of
+     main(): new_bugs.json / guided_new_bugs.json / known_bugs.json /
+     phase_results.json.
 """
 
 import os
@@ -42,7 +50,7 @@ from enum import Enum
 
 
 # ══════════════════════════════════════════════════════════════════
-#  BugDepth 分类
+#  BugDepth classification
 # ══════════════════════════════════════════════════════════════════
 
 class BugDepth(Enum):
@@ -56,23 +64,23 @@ class BugDepth(Enum):
     def classify(error_msg: str, oracle_type: str, bug_dir_type: str) -> "BugDepth":
         c = error_msg.lower()
 
-        # 优先级 1：噪音
+        # Priority 1: noise
         if any(k in c for k in ["execution timed out", "no_crash_log_found",
                                   "invalid_snippet", "heartbeat"]):
             return BugDepth.IGNORED_NOISE
 
-        # 优先级 1.5：CUDA oracle CPU/GPU 不一致 → deep_bug
+        # Priority 1.5: CUDA oracle CPU/GPU mismatch -> deep_bug
         if "cpu_err=" in c and "gpu_err=" in c:
             return BugDepth.DEEP_BUG
 
-        # 优先级 2：脚本提取缺陷
+        # Priority 2: script extraction defects
         if any(k in c for k in ["syntaxerror", "indentationerror",
                                   "is not defined", "unexpected indent",
                                   "expected an indented block",
                                   "positional argument follows keyword"]):
             return BugDepth.SCRIPT_DEFECT
 
-        # 优先级 3：深层崩溃（必须在浅层之前判断）
+        # Priority 3: deep crashes (must be checked before shallow checks)
         deep_kw = [
             "segmentation fault", "segfault", "core dumped", "aborted",
             "internal assert", "cuda error", "cublas", "cudnn",
@@ -88,14 +96,14 @@ class BugDepth(Enum):
         if any(k in c for k in deep_kw):
             return BugDepth.DEEP_BUG
 
-        # 优先级 4：compile oracle
+        # Priority 4: compile oracle
         if oracle_type == "compile":
             if any(k in c for k in ["assertionerror", "runtimeerror",
                                      "unsupported", "dynamo error"]):
                 return BugDepth.DEEP_BUG
             return BugDepth.COMPILE_BUG
 
-        # 优先级 5：浅层参数/类型错误
+        # Priority 5: shallow parameter/type errors
         shallow_kw = [
             "typeerror", "valueerror", "indexerror", "keyerror",
             "attributeerror", "notimplementederror",
@@ -108,7 +116,7 @@ class BugDepth(Enum):
         if any(k in c for k in shallow_kw):
             return BugDepth.SHALLOW_CHECK
 
-        # 兜底：potential-bug 目录里的未识别错误视为 deep
+        # Fallback: unrecognized errors under potential-bug count as deep.
         if bug_dir_type == "potential-bug":
             return BugDepth.DEEP_BUG
 
@@ -116,7 +124,7 @@ class BugDepth(Enum):
 
 
 # ══════════════════════════════════════════════════════════════════
-#  辅助函数
+#  Helpers
 # ══════════════════════════════════════════════════════════════════
 
 _NORM_PATS = [
@@ -176,7 +184,8 @@ def _extract_error_msg(content: str) -> str:
             if "raise " not in line and not line.startswith("#"):
                 return line[:250]
 
-    # 兜底：内容是 Python 代码本体（traces 未读到真实错误）→ INVALID_SNIPPET
+    # Fallback: content is a raw Python snippet (traces did not capture a real
+    # error) -> INVALID_SNIPPET.
     stripped = content.strip()
     code_prefixes = ("import torch", "results = dict()", "import os",
                      "import numpy", "def ", "class ", "torch.")
@@ -207,13 +216,15 @@ def _extract_error_msg(content: str) -> str:
 
 def _dir_to_api_name(dirname: str) -> str:
     """
-    将磁盘上的 API 目录名还原为原始 API 名称。
+    Reconstruct the original API name from its on-disk directory name.
 
-    [修复] 外层批量调度目录用 api.replace(".", "_") 生成，其中：
-      "."  → "_"   torch.matmul         → torch_matmul
-      "._" → "__"  torch._dynamo.export → torch__dynamo_export
+    [fix] The outer batch scheduler creates directories via
+    api.replace(".", "_"), which maps:
+      "."  -> "_"   torch.matmul         -> torch_matmul
+      "._" -> "__"  torch._dynamo.export -> torch__dynamo_export
 
-    还原规则：先保护双下划线，再把单下划线还原为点，最后还原双下划线为 "._"
+    Inverse: first protect double underscores, then convert single
+    underscores back to dots, and finally restore double underscores to "._".
     """
     result = dirname.replace("__", "\x00")
     result = result.replace("_", ".")
@@ -269,12 +280,14 @@ class BugScriptScanner:
     @staticmethod
     def _load_traces(strat_dir: Path, strategy: str) -> Dict[str, str]:
         """
-        读取 {strategy}_bug_traces.json，返回多种粒度的 key → msg 映射。
-        对每个 key 同时注册四种 lookup key：
-          1. 原始 key
-          2. 从第一个含 "-oracle" 的 part 开始的相对路径（带点）
-          3. 纯文件名 N.py（最宽松 fallback）
-          4. 把相对路径中 api 子目录的点转下划线版本
+        Load {strategy}_bug_traces.json and return a key -> msg map at
+        multiple granularities. For every key, register four lookup keys:
+          1. The original key.
+          2. The relative path starting at the first part containing
+             "-oracle" (dotted form).
+          3. The bare filename N.py (loosest fallback).
+          4. A variant of the relative path where the API subdirectory's
+             dots are replaced by underscores.
         """
         traces: Dict[str, str] = {}
         for fname in [f"{strategy}_bug_traces.json", f"{strategy}_result.json"]:
@@ -298,10 +311,11 @@ class BugScriptScanner:
                 if not msg:
                     continue
 
-                # 1. 注册原始 key
+                # 1. Register the original key.
                 traces[raw_key] = msg
 
-                # 2. 注册相对路径（找第一个含 -oracle 的 part）
+                # 2. Register the relative path (locate the first part
+                #    containing "-oracle").
                 norm_key = raw_key.replace("\\", "/")
                 parts = norm_key.split("/")
                 rel_from_oracle = None
@@ -311,10 +325,10 @@ class BugScriptScanner:
                         traces[rel_from_oracle] = msg
                         break
 
-                # 3. 注册纯文件名
+                # 3. Register the bare filename.
                 traces[Path(norm_key).name] = msg
 
-                # 4. 把带点的相对路径同时注册下划线版本
+                # 4. Register the dotted relative path's underscore variant.
                 if rel_from_oracle:
                     rel_parts = rel_from_oracle.split("/")
                     if len(rel_parts) >= 3:
@@ -746,14 +760,14 @@ class BugMatcher:
             counts_strict[enriched["match_label_strict"]] += 1
 
         print(f"\n✓ Bug matching complete ({len(results)} deep bugs analyzed):")
-        print(f"  ── 宽松口径（主报告）──────────────────────────────")
-        print(f"  ✅ CONFIRMED_MATCH  : {counts[MatchLabel.CONFIRMED_MATCH]}  (严格类型吻合)")
-        print(f"  🔶 RELAXED_MATCH    : {counts[MatchLabel.RELAXED_MATCH]}  (跨版本宽松吻合)")
-        print(f"  📋 API_MATCH_ONLY   : {counts[MatchLabel.API_MATCH_ONLY]}  (仅API命中)")
-        print(f"  🆕 POTENTIALLY_NEW  : {counts[MatchLabel.POTENTIALLY_NEW]}  (CSV无记录)")
-        print(f"  ── 严格口径（对照数据）────────────────────────────")
-        print(f"  ✅ CONFIRMED_MATCH  : {counts_strict[MatchLabel.CONFIRMED_MATCH]}")
-        print(f"  📋 API_MATCH_ONLY   : {counts_strict[MatchLabel.API_MATCH_ONLY]}")
+        print(f"  -- Relaxed criterion (main report) -----------------")
+        print(f"  CONFIRMED_MATCH  : {counts[MatchLabel.CONFIRMED_MATCH]}  (strict type match)")
+        print(f"  RELAXED_MATCH    : {counts[MatchLabel.RELAXED_MATCH]}  (cross-version relaxed match)")
+        print(f"  API_MATCH_ONLY   : {counts[MatchLabel.API_MATCH_ONLY]}  (API match only)")
+        print(f"  POTENTIALLY_NEW  : {counts[MatchLabel.POTENTIALLY_NEW]}  (not in CSV)")
+        print(f"  -- Strict criterion (reference) --------------------")
+        print(f"  CONFIRMED_MATCH  : {counts_strict[MatchLabel.CONFIRMED_MATCH]}")
+        print(f"  API_MATCH_ONLY   : {counts_strict[MatchLabel.API_MATCH_ONLY]}")
         return results
 
 
@@ -809,53 +823,53 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
         f"**Raw Records**: {len(scanner.scripts)} → **Unique Signatures**: {len(dedup.unique)}  ",
         f"**APIs Fuzzed**: {len(scanner.fuzzed_apis)}",
         "", "---", "",
-        "## 🚀 核心指标：Kernel-Guided vs Random",
+        "## Headline metric: Kernel-Guided vs Random",
         "",
-        "| 策略 | 深层 Bug 总发现数 | 独家发现 (Only) |",
+        "| Strategy | Deep bugs found (total) | Exclusive finds (Only) |",
         "|---|---|---|",
         f"| Random   | {total_r} | {go_r} |",
         f"| **Guided** | **{total_g}** | **{go_g}** |",
         "",
-        "> 深层 Bug = `deep_bug` + `compile_bug`，排除浅层类型错误与环境缺陷",
+        "> Deep bug = `deep_bug` + `compile_bug`; shallow type errors and environment defects are excluded.",
         "", "---", "",
-        "## 📊 深层 Bug 分布",
+        "## Deep-bug distribution",
         "",
-        "| 深度分类 | Random | Guided | Both | Guided Only | Random Only |",
+        "| Depth class | Random | Guided | Both | Guided Only | Random Only |",
         "|---|---|---|---|---|---|",
         f"| Deep Bug    | {deep_s['random']} | {deep_s['guided']} | {deep_s['both']} | {deep_s['guided_only']} | {deep_s['random_only']} |",
         f"| Compile Bug | {compile_s['random']} | {compile_s['guided']} | {compile_s['both']} | {compile_s['guided_only']} | {compile_s['random_only']} |",
         "", "---", "",
-        "## 🔍 Ground Truth 匹配结果（对照 bug_dataset_pytorch.csv）",
+        "## Ground-truth matching results (against bug_dataset_pytorch.csv)",
         "",
-        "| 匹配等级 | 数量 | 含义 |",
+        "| Match level | Count | Meaning |",
         "|---|---|---|",
-        f"| ✅ CONFIRMED_MATCH  | **{len(exact)}** | API匹配 + 错误类型与CSV严格语义吻合 |",
-        f"| 🔶 RELAXED_MATCH    | **{len(relaxed)}** | API匹配 + 跨版本宽松吻合（同bug不同版本的不同表现） |",
-        f"| 📋 API_MATCH_ONLY   | **{len(known)}** | API匹配，但错误类型不吻合或CSV无类型信息 |",
-        f"| 🆕 POTENTIALLY_NEW  | **{len(new_all)}** | CSV中无对应API，疑似新发现（Guided独有：{len(ng)}） |",
+        f"| CONFIRMED_MATCH  | **{len(exact)}** | API matches and the error type strictly matches the CSV semantics. |",
+        f"| RELAXED_MATCH    | **{len(relaxed)}** | API matches with a cross-version relaxed match (same bug appearing differently across versions). |",
+        f"| API_MATCH_ONLY   | **{len(known)}** | API matches, but the error type does not align or the CSV lacks type info. |",
+        f"| POTENTIALLY_NEW  | **{len(new_all)}** | No corresponding API in the CSV; likely new findings (Guided-only: {len(ng)}). |",
         "",
-        "> **宽松吻合说明**：同一个 bug 在不同 PyTorch 版本下可能有不同表现。",
-        "> 例如旧版本直接 Segfault，新版本改为抛出 RuntimeError（更好地处理了错误）；",
-        "> 或旧版本静默返回错误结果，新版本改为抛出异常。",
-        "> RELAXED_MATCH 表示 fuzzer 触及了同一个有问题的代码路径，只是错误的最终形式不同。",
+        "> **Relaxed-match note**: the same bug may manifest differently across PyTorch versions.",
+        "> For example, an older version may segfault while a newer version raises RuntimeError (improved error handling);",
+        "> or an older version silently returns wrong results while a newer version raises an exception.",
+        "> RELAXED_MATCH indicates the fuzzer reached the same problematic code path, only the final error form differs.",
         "",
         "<details>",
-        "<summary>📊 严格口径对照数据（点击展开）</summary>",
+        "<summary>Strict-criterion reference (click to expand)</summary>",
         "",
-        "| 严格匹配等级 | 数量 |",
+        "| Strict match level | Count |",
         "|---|---|",
-        f"| ✅ CONFIRMED_MATCH（严格） | **{strict_confirmed}** |",
-        f"| 📋 API_MATCH_ONLY（严格）  | **{strict_api_match}** |",
+        f"| CONFIRMED_MATCH (strict) | **{strict_confirmed}** |",
+        f"| API_MATCH_ONLY (strict)  | **{strict_api_match}** |",
         "",
-        "> 严格标准：Segfault/FPE/Aborted 必须发现进程崩溃；IncorrectOutput 必须发现结果差异。",
-        "> 不接受以 RuntimeError 替代 Segfault 的情况。",
+        "> Strict criterion: Segfault/FPE/Aborted require an observed process crash; IncorrectOutput requires an observed result difference.",
+        "> Substituting RuntimeError for Segfault is not accepted.",
         "",
         "</details>",
         "",
     ]
 
     if exact:
-        lines += ["### ✅ Tier 1：错误类型严格吻合的已知 Bug", ""]
+        lines += ["### Tier 1: known bugs with strict error-type match", ""]
         for r in sorted(exact, key=lambda x: x["api"]):
             bm = r["best_match"] or {}
             lines += [
@@ -868,12 +882,12 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             ]
 
     if relaxed:
-        lines += ["### 🔶 Tier 1.5：跨版本宽松吻合的已知 Bug", ""]
+        lines += ["### Tier 1.5: known bugs with cross-version relaxed match", ""]
         lines += [
-            "> 这些 bug 在 CSV 记录的版本下表现为崩溃（Segfault/FPE）或静默错误（IncorrectOutput），",
-            "> 但 fuzzer 在当前/pt22 版本下触发了 RuntimeError 或其他异常。",
-            "> 说明 PyTorch 已将原始错误路径改为抛出异常（更好地处理了错误），",
-            "> fuzzer 触及了相同的有问题代码路径。",
+            "> These bugs manifested as crashes (Segfault/FPE) or silent errors (IncorrectOutput) in the CSV-recorded version,",
+            "> but the fuzzer triggers RuntimeError or other exceptions in the current/pt22 version.",
+            "> This indicates PyTorch has rerouted the original error path to raise an exception (improved error handling),",
+            "> and the fuzzer reached the same problematic code path.",
             "",
         ]
         for r in sorted(relaxed, key=lambda x: x["api"]):
@@ -883,12 +897,12 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
                 f"  - CSV type: `{bm.get('bug_type', '')}`  |  Device: `{bm.get('device', '')}`  |  reproduced={bm.get('reproduced', False) and 'Yes' or 'No'}",
                 f"  - CSV Title: {bm.get('title', '')[:100]}",
                 f"  - Fuzzer Error: `{r['error_msg'][:150]}`",
-                f"  - 宽松理由: CSV记录了{bm.get('bug_type','未知')}，fuzzer在新版本触发了RuntimeError（同路径不同表现）",
+                f"  - Relaxed rationale: CSV recorded {bm.get('bug_type','unknown')}; fuzzer triggered RuntimeError on a newer version (same path, different manifestation).",
                 "",
             ]
 
     if known:
-        lines += ["### 📋 Tier 2：API 匹配但错误类型不吻合或 CSV 无类型信息", ""]
+        lines += ["### Tier 2: API matches but error type mismatched or CSV has no type info", ""]
         for r in sorted(known, key=lambda x: x["api"]):
             bm = r["best_match"] or {}
             lines += [
@@ -899,7 +913,7 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
             ]
 
     if new_all:
-        lines += ["### 🆕 Tier 3：CSV 中无记录的疑似新 Bug", ""]
+        lines += ["### Tier 3: likely new bugs not present in the CSV", ""]
         for r in sorted(new_all, key=lambda x: (-x["guided_count"], x["api"])):
             lines += [
                 f"- **`{r['api']}`**  |  {_strategy_label(r)}",
@@ -911,16 +925,16 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
 
     lines += [
         "---", "",
-        "## 📉 附属统计：被过滤的噪音（不计入核心指标）",
+        "## Ancillary stats: filtered noise (excluded from headline metrics)",
         "",
-        "| 分类 | Random | Guided |",
+        "| Category | Random | Guided |",
         "|---|---|---|",
-        f"| 浅层参数异常 (TypeError/ValueError 等) | {shallow_s.get('random', 0)} | {shallow_s.get('guided', 0)} |",
-        f"| AST 提取缺陷 (SyntaxError/NameError)   | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
-        f"| 噪音与超时                              | {noise_s.get('random', 0)}   | {noise_s.get('guided', 0)} |",
+        f"| Shallow argument errors (TypeError/ValueError, etc.) | {shallow_s.get('random', 0)} | {shallow_s.get('guided', 0)} |",
+        f"| AST extraction defects (SyntaxError/NameError)        | {defect_s.get('random', 0)}  | {defect_s.get('guided', 0)} |",
+        f"| Noise and timeouts                                    | {noise_s.get('random', 0)}   | {noise_s.get('guided', 0)} |",
         "",
         "---", "",
-        "## 📁 API 覆盖详情",
+        "## API coverage details",
         "",
         "| API | Deep Bugs (R) | Deep Bugs (G) | Matched Issues |",
         "|---|---|---|---|",
@@ -942,18 +956,19 @@ def generate_report(batch_dir: str, scanner: BugScriptScanner,
 
 
 # ══════════════════════════════════════════════════════════════════
-#  JSON Export  [v14 新增]
+#  JSON export  [added in v14]
 # ══════════════════════════════════════════════════════════════════
 
 def export_json(matched: List[Dict], report_path: str):
     """
-    从已有的 matched 列表生成 4 个 JSON 文件，路径与 report 同目录。
+    Emit four JSON files from the matched list, written next to the report.
 
-    输出文件：
-      new_bugs.json         — 所有 POTENTIALLY_NEW 条目
-      guided_new_bugs.json  — 其中 Guided Only 的条目（论文核心指标）
-      known_bugs.json       — 所有已匹配条目（CONFIRMED / RELAXED / API_MATCH_ONLY）
-      phase_results.json    — 全量 matched，供调试用
+    Output files:
+      new_bugs.json         - all POTENTIALLY_NEW entries.
+      guided_new_bugs.json  - the Guided-Only subset (paper headline metric).
+      known_bugs.json       - all matched entries (CONFIRMED / RELAXED /
+                              API_MATCH_ONLY).
+      phase_results.json    - the full matched list, for debugging.
     """
     out_dir = Path(report_path).parent
 
@@ -962,7 +977,7 @@ def export_json(matched: List[Dict], report_path: str):
     known_bugs = [r for r in matched if r["match_label"] != MatchLabel.POTENTIALLY_NEW]
 
     def _serializable(obj):
-        """递归把 Enum / set 等不可序列化类型转为基础类型。"""
+        """Recursively convert non-serializable types (Enum/set/...) to basics."""
         if isinstance(obj, dict):
             return {k: _serializable(v) for k, v in obj.items()}
         if isinstance(obj, (list, tuple)):
@@ -981,7 +996,7 @@ def export_json(matched: List[Dict], report_path: str):
     }
 
     print(f"\n{'='*60}")
-    print("💾 Exporting JSON files")
+    print("Exporting JSON files")
     print(f"{'='*60}")
 
     for fname, data in files.items():
@@ -1008,7 +1023,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 60)
-    print("🚀 HKG-Fuzz Analyzer v14")
+    print("HKG-Fuzz Analyzer v14")
     print("=" * 60)
 
     scanner = BugScriptScanner(args.batch_dir, args.max_per_api).scan()
@@ -1019,7 +1034,7 @@ def main():
         [BugDepth.DEEP_BUG.value, BugDepth.COMPILE_BUG.value]
     )
     generate_report(args.batch_dir, scanner, dedup, matched, args.report)
-    export_json(matched, args.report)   # ← v14 新增
+    export_json(matched, args.report)   # v14: added
 
 
 if __name__ == "__main__":
