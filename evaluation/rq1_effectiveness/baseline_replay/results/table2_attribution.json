@@ -1,0 +1,141 @@
+{
+  "per_run": {
+    "DeepOpFuzz": {
+      "row": {
+        "FE/ctx": 1,
+        "AOT/bwd": 4,
+        "Low/IR": 3,
+        "Fusion": 1,
+        "Sched.": 1,
+        "Triton": 3,
+        "Total": 13,
+        "TotalFiles": 543,
+        "DistinctBugIds": [
+          "bug_006",
+          "bug_007",
+          "bug_013",
+          "bug_015",
+          "bug_019",
+          "bug_020",
+          "bug_032",
+          "bug_033",
+          "bug_042",
+          "bug_044",
+          "bug_045",
+          "bug_053",
+          "bug_061"
+        ]
+      },
+      "bug_to_files_count": {
+        "bug_019": 10,
+        "bug_042": 43,
+        "bug_044": 1,
+        "bug_045": 1,
+        "bug_032": 2,
+        "bug_007": 2,
+        "bug_013": 2,
+        "bug_033": 2,
+        "bug_053": 3,
+        "bug_061": 1,
+        "bug_015": 2,
+        "bug_020": 1,
+        "bug_006": 1
+      }
+    },
+    "Random": {
+      "row": {
+        "FE/ctx": 0,
+        "AOT/bwd": 1,
+        "Low/IR": 0,
+        "Fusion": 0,
+        "Sched.": 1,
+        "Triton": 3,
+        "Total": 5,
+        "TotalFiles": 404,
+        "DistinctBugIds": [
+          "bug_007",
+          "bug_011",
+          "bug_013",
+          "bug_022",
+          "bug_042"
+        ]
+      },
+      "bug_to_files_count": {
+        "bug_042": 47,
+        "bug_007": 4,
+        "bug_013": 4,
+        "bug_011": 13,
+        "bug_022": 4
+      }
+    },
+    "FreeFuzz": {
+      "row": {
+        "FE/ctx": 0,
+        "AOT/bwd": 0,
+        "Low/IR": 1,
+        "Fusion": 0,
+        "Sched.": 0,
+        "Triton": 0,
+        "Total": 1,
+        "TotalFiles": 17,
+        "DistinctBugIds": [
+          "bug_032"
+        ]
+      },
+      "bug_to_files_count": {
+        "bug_032": 1
+      }
+    },
+    "NNSmith": {
+      "row": {
+        "FE/ctx": 0,
+        "AOT/bwd": 0,
+        "Low/IR": 0,
+        "Fusion": 0,
+        "Sched.": 0,
+        "Triton": 0,
+        "Total": 0,
+        "TotalFiles": 0,
+        "DistinctBugIds": []
+      },
+      "bug_to_files_count": {}
+    },
+    "WhiteFox": {
+      "row": {
+        "FE/ctx": 0,
+        "AOT/bwd": 0,
+        "Low/IR": 0,
+        "Fusion": 0,
+        "Sched.": 1,
+        "Triton": 0,
+        "Total": 1,
+        "TotalFiles": 2,
+        "DistinctBugIds": [
+          "bug_011"
+        ]
+      },
+      "bug_to_files_count": {
+        "bug_011": 1
+      }
+    }
+  },
+  "any_baseline_union": {
+    "row": {
+      "FE/ctx": 0,
+      "AOT/bwd": 1,
+      "Low/IR": 1,
+      "Fusion": 0,
+      "Sched.": 1,
+      "Triton": 3,
+      "Total": 6
+    },
+    "distinct_bug_ids": [
+      "bug_007",
+      "bug_011",
+      "bug_013",
+      "bug_022",
+      "bug_032",
+      "bug_042"
+    ]
+  }
+}

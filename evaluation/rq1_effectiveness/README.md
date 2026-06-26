@@ -24,3 +24,17 @@ each reproducer's header comment) and run the script:
 cd ../../data/confirmed_bugs/pytorch
 python bug_007_slice_scatter_backward/minimal_repro.py
 ```
+
+## Table II — 4-hour baseline replay
+
+Table II (`tab:pipeline-gap`) compares DeepOpFuzz against four baselines
+(Random, FreeFuzz, NNSmith, WhiteFox) under a 4-hour wall-clock budget
+on PyTorch 2.11 with a shared eager-vs-compiled differential oracle.
+Each method's saved trigger programs are attributed to the 30
+PyTorch/Inductor root causes derived from the campaign bugs, and the
+table reports distinct root causes hit per Inductor stage.
+
+The driver, attribution script, cached reference results, and the
+generated LaTeX snippet live under [`baseline_replay/`](baseline_replay/).
+See `baseline_replay/README.md` for the reproduction recipe and the
+methodology footnote about NNSmith's structural ceiling.

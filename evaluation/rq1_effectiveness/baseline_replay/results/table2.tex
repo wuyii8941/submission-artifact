@@ -1,0 +1,32 @@
+\begin{table}[tbp]
+\centering
+\caption{4-hour replay coverage of the 30 PyTorch/Inductor root causes, broken down by Inductor stage. Each cell counts distinct root causes triggered (after fingerprint dedup) by the method's saved trigger programs.}
+\label{tab:pipeline-gap}
+\setlength{\tabcolsep}{3.0pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Method & FE/ctx & AOT/bwd & Low/IR & Fusion & Sched. & Triton & Total \\
+\midrule
+\emph{Root causes} & 3 & 5 & 6 & 3 & 4 & 9 & 30 \\
+\midrule
+DeepOpFuzz  & 1 & 4 & 3 & 1 & 1 & 3 & 13 \\
+Random      & 0 & 1 & 0 & 0 & 1 & 3 & 5 \\
+FreeFuzz    & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+NNSmith     & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+WhiteFox    & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+\midrule
+\emph{Any baseline} & 0 & 1 & 1 & 0 & 1 & 3 & 6 \\
+\bottomrule
+\end{tabular}
+\vspace{0.25em}
+\begin{minipage}{0.96\columnwidth}
+\footnotesize
+\emph{Any baseline} reports the union over the four baselines. 
+Each method ran for 4 hours on PyTorch~2.11 (the corresponding bug version) with a single seed. 
+All methods use the same eager-vs-compiled differential oracle. 
+bug\_051 (scheduler prologue typo) is a code-level defect not triggerable by any test program; it is included in the denominator for consistency with the bug catalog but is unreachable by all methods. 
+NNSmith's $0$ reflects a structural ceiling: its ONNX-stable opset on PT~2.11 contains no \texttt{slice\_scatter}, \texttt{diagonal\_scatter}, \texttt{cumsum}, \texttt{adaptive\_avg\_pool}, \texttt{nested\_tensor}, \texttt{inference\_mode}, backward graphs, complex dtypes, or \texttt{float8} primitives required by 17+ of the 30 root causes.
+\end{minipage}
+\vspace{-3mm}
+\end{table}

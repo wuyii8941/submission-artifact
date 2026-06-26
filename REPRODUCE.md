@@ -8,6 +8,7 @@ along with expected runtime on a single NVIDIA T4 / A6000 GPU class.
 | Paper element | Script | Approx. budget |
 |---|---|---|
 | Table 1 (bug summary) | `data/confirmed_bugs/` + paper text | (catalog only) |
+| Table 2 (RQ1 4h replay coverage of 30 PT/Inductor root causes) | `evaluation/rq1_effectiveness/baseline_replay/launch_4h_runs.sh` + `attribute_table2.py` | 4h × 5 methods in parallel |
 | Table 3 (RQ3 ablation) | `evaluation/rq2_efficiency/run_benchmark.py --modes targeted,random,...` | 4h × 5 seeds × 4 modes |
 | Table 4 (RQ3 BugsInDLLs validation) | `evaluation/rq3_ablation/bugsindlls/run_bugsindlls_batch.py` | configurable |
 | Table 5 (RQ3 per-kernel saturation) | `evaluation/rq2_efficiency/run_benchmark.py` (with worker patch) | 4h × 5 seeds × 4 modes |
