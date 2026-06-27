@@ -9,11 +9,13 @@ index of the layout under `evaluation/`.
 
 | Paper element | Directory | Driver script |
 |---|---|---|
-| RQ1 (Effectiveness, Table 1) | `rq1_effectiveness/` | (catalog only — see `data/confirmed_bugs/`) |
-| RQ2 (Efficiency, Figure 3) | `rq2_efficiency/` | `run_benchmark.py` via `launch_template_runs.sh` |
-| RQ3 (Ablation, Tables 3 + 5) | `rq2_efficiency/` (same runs as RQ2) | `run_benchmark.py` |
-| RQ3 (BugsInDLLs validation, Table 4) | `rq3_ablation/bugsindlls/` | `run_bugsindlls_batch.py` |
-| RQ4 (Portability, TF / IREE / TVM) | `rq4_portability/` + `data/confirmed_bugs/{iree,tvm}/` | `run_tf_1800s_parallel.sh` |
+| RQ1 — Table I (`tab:bug-summary`) | `rq1_effectiveness/` | (catalog only — see `data/confirmed_bugs/`) |
+| RQ1 — Table II (`tab:pipeline-gap`) | `rq1_effectiveness/baseline_replay/` | `launch_4h_runs.sh` + `attribute_table2.py` |
+| RQ2 — Table III (`tab:budget-split`) + Figure 4 (`fig:rq2-efficiency`) | `rq2_efficiency/` | `run_benchmark.py` via `launch_template_runs.sh` |
+| RQ3 — Table IV (`tab:rq3-contribution`) | `rq3_ablation/results/` (derived from RQ2 runs) | see `rq3_ablation/results/README.md` |
+| RQ3 — Table V (`tab:components`, BugsInDLLs) | `rq3_ablation/bugsindlls/` | `run_bugsindlls_batch.py` |
+| RQ3 — appendix metamorphic 6/6 + 4/4 | `rq3_ablation/metamorphic_results/` | (cached JSON; see README in that dir) |
+| RQ4 — IREE + TVM portability | `rq4_portability/` + `data/confirmed_bugs/{iree,tvm}/` | `run_tf_1800s_parallel.sh` for the TF/XLA logs |
 
 ## Baseline replays
 
@@ -25,22 +27,6 @@ benchmark for the comparative columns:
 - `baselines/nnsmith_baseline/` — runs NNSmith under the DeepOpFuzz oracle.
 - `baselines/nnsmith_native/` — runs NNSmith with its own native oracle
   (supplementary cross-check, not in the paper's main tables).
-
-## Archive
-
-`archive/` contains earlier prototypes of the experiments and
-one-off analysis scripts that are **not** invoked by `REPRODUCE.md`.
-They are retained for completeness but should not be needed to
-reproduce paper results:
-
-- `archive/time_controlled/`, `archive/rq2_coverage/`,
-  `archive/ablation/`, `archive/fusion_analysis/` — earlier prototypes
-  of the RQ2/RQ3 experiments superseded by `rq2_efficiency/`.
-- `archive/rq4_oracle/` — earlier oracle-validation prototype.
-- `archive/analysis_*.py`, `archive/dedup_analysis.py`,
-  `archive/derive_component_table.py`, `archive/extract_api_ablation.py`,
-  `archive/merge_seeds.py`, `archive/plot_causal_figures.py`,
-  `archive/retrospective_enrichment.py` — one-off analysis helpers.
 
 ## Hardware
 

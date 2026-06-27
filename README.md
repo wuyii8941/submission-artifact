@@ -14,7 +14,6 @@ evaluation/         Scripts for the experiments reported in the paper
     bugsindlls/      External API-level benchmark (Table 4)
   rq4_portability/   RQ4 — TensorFlow / IREE / TVM cross-framework
   baselines/         WhiteFox / NNSmith replay helpers for RQ2
-  archive/           Superseded prototypes (not invoked by REPRODUCE.md)
 data/
   confirmed_bugs/   Minimized reproducers for the 86 confirmed bugs reported
                     in the paper, grouped by stack (pytorch, tensorflow,
