@@ -139,14 +139,14 @@ def extract_features(code: str) -> Set[str]:
 # These overrides keep attribution honest: only conditions a test program can
 # control are required.
 OVERRIDE_REQS: Dict[str, List[str]] = {
-    # bug_011: cumsum + dim>=129 → Inductor picks SplitScan internally
-    "bug_011":    ["cumsum", "large_dim"],
-    # bug_031: cumprod backward + dim>=8193 → Inductor picks SplitDim
-    "bug_031":    ["cumprod", "backward", "large_dim"],
-    # bug_051: scheduler prologue typo → code-level bug, not user-triggerable
-    "bug_051":    [],
-    # bug_059: pick_deterministic_choice → needs determinism + extern dispatch
-    "bug_059":    ["deterministic", "matmul"],
+    # bug_004: cumsum + dim>=129 → Inductor picks SplitScan internally
+    "bug_004":    ["cumsum", "large_dim"],
+    # bug_013: cumprod backward + dim>=8193 → Inductor picks SplitDim
+    "bug_013":    ["cumprod", "backward", "large_dim"],
+    # bug_022: scheduler prologue typo → code-level bug, not user-triggerable
+    "bug_022":    [],
+    # bug_025: pick_deterministic_choice → needs determinism + extern dispatch
+    "bug_025":    ["deterministic", "matmul"],
     # paper-appendix-only bugs with thin structural specs (avoid over-counting)
     "bug_065":    [],
     "bug_066":    [],
@@ -154,7 +154,7 @@ OVERRIDE_REQS: Dict[str, List[str]] = {
 
 # Collapse duplicate root-cause IDs (paper's 30-distinct count merges variants).
 BUG_ID_COLLAPSE: Dict[str, str] = {
-    "bug_013v": "bug_013",
+    "bug_006": "bug_005",
 }
 
 REGION_TO_COL = {

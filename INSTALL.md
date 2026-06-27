@@ -97,7 +97,7 @@ reproducer:
 
 ```bash
 cd data/confirmed_bugs/pytorch
-python bug_007_slice_scatter_backward/minimal_repro.py
+python bug_003_slice_scatter_backward/minimal_repro.py
 ```
 
 A successful run prints an eager-vs-compiled gradient diff, demonstrating

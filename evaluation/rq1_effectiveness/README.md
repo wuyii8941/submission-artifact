@@ -22,7 +22,7 @@ each reproducer's header comment) and run the script:
 
 ```bash
 cd ../../data/confirmed_bugs/pytorch
-python bug_007_slice_scatter_backward/minimal_repro.py
+python bug_003_slice_scatter_backward/minimal_repro.py
 ```
 
 ## Table II — 4-hour baseline replay

@@ -2,7 +2,7 @@
 # Run a single confirmed-bug reproducer with stack-appropriate environment.
 #
 # Usage:
-#   tools/run_repro.sh data/confirmed_bugs/pytorch/bug_007_slice_scatter_backward
+#   tools/run_repro.sh data/confirmed_bugs/pytorch/bug_003_slice_scatter_backward
 #   tools/run_repro.sh data/confirmed_bugs/tvm/bug_001_gemv_keyerror
 #
 # Picks one .py from the bug directory (prefer minimal_repro.py > repro.py >

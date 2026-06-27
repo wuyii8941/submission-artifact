@@ -25,10 +25,10 @@ The PyTorch fuzzer's template registry
 generator (`kernelfuzz/random_generator.py`) cover an operator for
 every confirmed PT bug except one:
 
-- `bug_appendix_pad_mm_getitem_dead_code` — this is **not a runtime
+- `bug_030_pad_mm_getitem_dead_code` — this is **not a runtime
   bug**. It is a static-analysis finding (an `isinstance` check that
   is unreachable dead code in `pad_mm`); the reproducer in
-  `data/confirmed_bugs/pytorch/bug_appendix_pad_mm_getitem_dead_code/`
+  `data/confirmed_bugs/pytorch/bug_030_pad_mm_getitem_dead_code/`
   is explicitly tagged as a Class C "static demonstration" in
   `BUG_MAPPING.md > Reproducer Provenance Audit`. By design no fuzzer
   reaches it.

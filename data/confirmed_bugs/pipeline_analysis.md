@@ -75,37 +75,37 @@ User Python code
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_006 | [#<anon>](<upstream issue, anonymized>) | After fusing `adaptive_avg_pool2d + flatten + sum`, Inductor uses `ceil(3185/32)*32 = 3200` as the batch stride literal in the Triton source, but the buffer's real stride is `3185`. Every load with batch >= 1 is offset by 15 elements. | Silent |
-| bug_007 | [#<anon>](<upstream issue, anonymized>) | The AOTAutograd meta kernel annotates `slice_scatter` with stride-0 -> Inductor trusts this and collapses the iteration space to 132 elements (should be 1716) -> dim-1 coordinate is hard-coded to 0 -> boundary checks are constant-folded by the Triton compiler -> `x.grad` is all zero. | Silent |
-| bug_013 | [#<anon>](<upstream issue, anonymized>) | Same root-cause family as bug_007. Backward of `slice_scatter` exhibits different error patterns for different slice positions. | Silent |
-| bug_022 | [#<anon>](<upstream issue, anonymized>) | In the backward of `diagonal_scatter(...).sum()`, Inductor optimises `clone(expand(scalar,[N,N]))` into a 1-element buffer with stride-(0,0). A subsequent `diagonal_scatter` then writes zero into that element, so the entire N x N gradient becomes zero. | Silent |
-| bug_004 | [#<anon>](<upstream issue, anonymized>) | The `fp32 -> bf16 -> fp32` round-trip cast is eliminated by fusion as a no-op, so the emitted Triton kernel performs no dtype conversion and the expected precision truncation is missing. | Silent |
+| bug_002 | [#<anon>](<upstream issue, anonymized>) | After fusing `adaptive_avg_pool2d + flatten + sum`, Inductor uses `ceil(3185/32)*32 = 3200` as the batch stride literal in the Triton source, but the buffer's real stride is `3185`. Every load with batch >= 1 is offset by 15 elements. | Silent |
+| bug_003 | [#<anon>](<upstream issue, anonymized>) | The AOTAutograd meta kernel annotates `slice_scatter` with stride-0 -> Inductor trusts this and collapses the iteration space to 132 elements (should be 1716) -> dim-1 coordinate is hard-coded to 0 -> boundary checks are constant-folded by the Triton compiler -> `x.grad` is all zero. | Silent |
+| bug_005 | [#<anon>](<upstream issue, anonymized>) | Same root-cause family as bug_003. Backward of `slice_scatter` exhibits different error patterns for different slice positions. | Silent |
+| bug_010 | [#<anon>](<upstream issue, anonymized>) | In the backward of `diagonal_scatter(...).sum()`, Inductor optimises `clone(expand(scalar,[N,N]))` into a 1-element buffer with stride-(0,0). A subsequent `diagonal_scatter` then writes zero into that element, so the entire N x N gradient becomes zero. | Silent |
+| bug_001 | [#<anon>](<upstream issue, anonymized>) | The `fp32 -> bf16 -> fp32` round-trip cast is eliminated by fusion as a no-op, so the emitted Triton kernel performs no dtype conversion and the expected precision truncation is missing. | Silent |
 
 **Root-cause patterns:**
 
-1. **Broken stride trust chain** (bug_007/013/022): the AOTAutograd meta kernel returns an incorrect stride -> Inductor trusts it -> the emitted kernel has the wrong iteration space or indexing.
-2. **Wrong numerical literal** (bug_006): codegen uses `ceil_to_warp_size` instead of the real value when computing the stride of view + reduction.
-3. **Fusion semantics violation** (bug_004): the fusion pass eliminates an op with observable side effects.
+1. **Broken stride trust chain** (bug_003/013/022): the AOTAutograd meta kernel returns an incorrect stride -> Inductor trusts it -> the emitted kernel has the wrong iteration space or indexing.
+2. **Wrong numerical literal** (bug_002): codegen uses `ceil_to_warp_size` instead of the real value when computing the stride of view + reduction.
+3. **Fusion semantics violation** (bug_001): the fusion pass eliminates an op with observable side effects.
 
 #### L2: AOTAutograd (2 bugs) - autograd tracing goes wrong
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_019 | [#<anon>](<upstream issue, anonymized>) | Under `autograd.grad(create_graph=True)`, AOTAutograd silently loses `requires_grad=True` and `grad_fn` on ops such as `mm`/`relu` -> higher-order backward fails. Also reproduces under the `aot_eager` backend, so it is not Inductor-specific. | Silent |
-| bug_020 | [#<anon>](<upstream issue, anonymized>) | `inference_mode()` + 3D+ matmul + `torch.compile` -> a weakref to `UntypedStorage` in AOTAutograd's functionalisation phase cannot be resolved -> crash. | Crash |
+| bug_008 | [#<anon>](<upstream issue, anonymized>) | Under `autograd.grad(create_graph=True)`, AOTAutograd silently loses `requires_grad=True` and `grad_fn` on ops such as `mm`/`relu` -> higher-order backward fails. Also reproduces under the `aot_eager` backend, so it is not Inductor-specific. | Silent |
+| bug_009 | [#<anon>](<upstream issue, anonymized>) | `inference_mode()` + 3D+ matmul + `torch.compile` -> a weakref to `UntypedStorage` in AOTAutograd's functionalisation phase cannot be resolved -> crash. | Crash |
 
 #### L3: Inductor Scheduling (2 bugs) - kernel template selection / initialisation goes wrong
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_011 | [#<anon>](<upstream issue, anonymized>) | When scan dim >= 129, Inductor switches to SplitScan codegen -> `tensor_dim=None` is used as a list index -> crash. | Crash |
-| bug_015 | (not submitted) | `associative_scan` + `dynamic=True` + ndim >= 2 -> lifted arguments are unsupported -> codegen crash. | Crash |
+| bug_004 | [#<anon>](<upstream issue, anonymized>) | When scan dim >= 129, Inductor switches to SplitScan codegen -> `tensor_dim=None` is used as a list index -> crash. | Crash |
+| bug_007 | (not submitted) | `associative_scan` + `dynamic=True` + ndim >= 2 -> lifted arguments are unsupported -> codegen crash. | Crash |
 
 #### L4: Dynamo (1 bug) - graph capture / guard construction goes wrong
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| bug_023 | [#<anon>](<upstream issue, anonymized>) | `F.layer_norm(NestedTensor)` -> the symbolic variable has no source entry -> the guard builder raises `IndexError`. All backends crash. | Crash |
+| bug_011 | [#<anon>](<upstream issue, anonymized>) | `F.layer_norm(NestedTensor)` -> the symbolic variable has no source entry -> the guard builder raises `IndexError`. All backends crash. | Crash |
 
 ### PyTorch summary diagram
 
@@ -234,7 +234,7 @@ x       = [1, -1, -5, 2]   -> argmin = 2 (most negative)
 
 ReLU is monotonic but not **strictly** monotonic (there is a flat region where `f(x)=0`), so `ArgMin(f(x)) -> ArgMin(x)` does not preserve semantics when ties exist. The optimisation is enabled by default.
 
-**Comparison with PyTorch:** PyTorch bug_004 (bf16 cast elision) is a different surface of the same issue - the compiler optimisation removes an op with observable effect. The PyTorch defect lives in the Inductor fusion layer; the TF defect lives in the Grappler graph-optimisation layer.
+**Comparison with PyTorch:** PyTorch bug_001 (bf16 cast elision) is a different surface of the same issue - the compiler optimisation removes an op with observable effect. The PyTorch defect lives in the Inductor fusion layer; the TF defect lives in the Grappler graph-optimisation layer.
 
 #### Type C: eager <-> XLA semantic contract mismatch (4 bugs)
 
@@ -356,13 +356,13 @@ Pipeline: `ONNX model -> Frontend converter -> Relax IR -> LegalizeOps -> TIR ->
 
 | Problem type | Description | Bugs involved | Count |
 |---------|------|----------|------|
-| **Code-generation error** | Codegen emits wrong target code (stride literals, iteration space, dtype). | PT bug_004/006/007/013/022, XLA erf | 6 |
-| **Optimisation-pass semantics violation** | A compiler optimisation changes observable semantics. | PT bug_004 (fusion), TF Grappler argmin | 2 |
-| **Metadata / annotation error** | Wrong shape/stride/dtype annotations in the IR. | PT bug_007/013/022 (meta kernel), PT bug_019 | 4 |
+| **Code-generation error** | Codegen emits wrong target code (stride literals, iteration space, dtype). | PT bug_001/006/007/013/022, XLA erf | 6 |
+| **Optimisation-pass semantics violation** | A compiler optimisation changes observable semantics. | PT bug_001 (fusion), TF Grappler argmin | 2 |
+| **Metadata / annotation error** | Wrong shape/stride/dtype annotations in the IR. | PT bug_003/013/022 (meta kernel), PT bug_008 | 4 |
 | **Eager <-> compiled semantic divergence** | The same API behaves differently across execution modes. | TF NaN / check_numerics / cumsum / argmin | 4 |
 | **Eager-kernel numerical defect** | The underlying C++ kernel has an incorrect mathematical implementation. | TF expm1, TF complex sign | 2 |
 | **Frontend conversion error** | Wrong op-semantics translation at model import. | TVM softmax/cumsum, IREE reverse_seq | 3 |
-| **Lowering missing / crash** | Lowering is missing or crashes on specific input combinations. | PT bug_011/015/020/023, IREE reduceprod/segfault, TVM gemv/scatter/isnan | 9 |
+| **Lowering missing / crash** | Lowering is missing or crashes on specific input combinations. | PT bug_004/015/020/023, IREE reduceprod/segfault, TVM gemv/scatter/isnan | 9 |
 
 ### Why traditional testing misses them
 

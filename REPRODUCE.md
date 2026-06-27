@@ -40,7 +40,7 @@ export DOF_IREE_PYTHON=/path/to/iree-venv/bin/python
 then:
 
 ```bash
-tools/run_repro.sh data/confirmed_bugs/pytorch/bug_007_slice_scatter_backward
+tools/run_repro.sh data/confirmed_bugs/pytorch/bug_003_slice_scatter_backward
 tools/run_repro.sh data/confirmed_bugs/tvm/bug_001_gemv_keyerror
 ```
 

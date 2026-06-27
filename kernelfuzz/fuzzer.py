@@ -658,7 +658,7 @@ class GraphFuzzerV4(GraphFuzzerV3):
     _KNOWN_BUG_PATTERNS = [
         # bug_004: bf16/half cast elision
         # Any program that does .to(bf16/half).float() is in this family.
-        ("bug_004_bf16_cast",
+        ("bug_001_bf16_cast",
          lambda body: (".to(torch.bfloat16)" in body or ".bfloat16(" in body)
                       and ".float()" in body),
         ("bug_004_half_cast",
