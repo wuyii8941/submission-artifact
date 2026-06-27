@@ -1,0 +1,91 @@
+{
+  "findings": [
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(32, 64) diff=4.33e+01",
+      "max_diff": 43.328125,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(32, 64) diff=7.76e-03",
+      "max_diff": 0.007764577865600586,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) diff=1.87e+02",
+      "max_diff": 187.0,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) diff=7.68e-03",
+      "max_diff": 0.007681131362915039,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(8, 4096) diff=2.62e+02",
+      "max_diff": 261.75,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(8, 4096) diff=9.24e-03",
+      "max_diff": 0.009240150451660156,
+      "is_compiler_bug": true
+    }
+  ],
+  "bugs": [
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(32, 64) diff=4.33e+01",
+      "max_diff": 43.328125,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(32, 64) diff=7.76e-03",
+      "max_diff": 0.007764577865600586,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) diff=1.87e+02",
+      "max_diff": 187.0,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) diff=7.68e-03",
+      "max_diff": 0.007681131362915039,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "mixed_matmul_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(8, 4096) diff=2.62e+02",
+      "max_diff": 261.75,
+      "is_compiler_bug": true
+    },
+    {
+      "probe": "cast_chain_bf16_fp16",
+      "status": "DIVERGENCE",
+      "detail": "shape=(8, 4096) diff=9.24e-03",
+      "max_diff": 0.009240150451660156,
+      "is_compiler_bug": true
+    }
+  ],
+  "torch_version": "2.13.0.dev20260520+cu126"
+}

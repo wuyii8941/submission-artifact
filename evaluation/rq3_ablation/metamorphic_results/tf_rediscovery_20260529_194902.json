@@ -1,0 +1,173 @@
+{
+  "tf_version": "2.22.0-dev20260429",
+  "has_gpu": true,
+  "rows": [
+    {
+      "id": "int_quotient_identity",
+      "cat": "P",
+      "bug": "tf_xla_int_div_zero_silent",
+      "result": "detected",
+      "detail": {
+        "xla_floordiv_by_zero": [
+          -1,
+          -2,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "id": "unique_len_bound",
+      "cat": "P",
+      "bug": "tf_xla_unique_16bit_corrupt_output",
+      "result": "detected",
+      "detail": {
+        "float16": {
+          "n_out": 65541,
+          "n_in": 7
+        },
+        "int16": {
+          "n_out": 65541,
+          "n_in": 7
+        }
+      }
+    },
+    {
+      "id": "variance_nonneg",
+      "cat": "P",
+      "bug": "tf_moments_variance_xla_unstable",
+      "result": "fixed",
+      "detail": {
+        "min_variance": 0.0
+      }
+    },
+    {
+      "id": "floordiv_identity",
+      "cat": "E",
+      "bug": "tf_xla_floordiv_floormod_identity",
+      "result": "detected",
+      "detail": {
+        "max_abs_dev": 1024.0
+      }
+    },
+    {
+      "id": "selu_expm1_equiv",
+      "cat": "E",
+      "bug": "tf_selu_elu_expm1",
+      "result": "fixed",
+      "detail": {
+        "max_rel_err": 0.0
+      }
+    },
+    {
+      "id": "saturate_cast_equiv",
+      "cat": "E",
+      "bug": "tf_cast_saturate_xla_inconsistency",
+      "result": "fixed",
+      "detail": {
+        "mismatch": 0,
+        "xla": [
+          127,
+          -128,
+          127,
+          -128,
+          127,
+          -128
+        ],
+        "ref": [
+          127,
+          -128,
+          127,
+          -128,
+          127,
+          -128
+        ]
+      }
+    },
+    {
+      "id": "argmin_monotonic",
+      "cat": "M",
+      "bug": "tf_grappler_argmin_monotonic",
+      "result": "fixed",
+      "detail": {
+        "picked_idx": 2,
+        "picked_val": 0.0,
+        "true_min": 0.0
+      }
+    },
+    {
+      "id": "addn_reassociation",
+      "cat": "M",
+      "bug": "tf_addn_grappler_reorder",
+      "result": "fixed",
+      "detail": {
+        "max_abs_dev": 0.0
+      }
+    },
+    {
+      "id": "fma_reassociation",
+      "cat": "M",
+      "bug": "tf_xla_fma_reassociation",
+      "result": "fixed",
+      "detail": {
+        "a*x+b*x": 0.0,
+        "(a+b)*x": 0.0,
+        "dev": 0.0
+      }
+    },
+    {
+      "id": "reduce_max_grad_finite",
+      "cat": "G",
+      "bug": "tf_xla_reduce_max_grad_nan",
+      "result": "fixed",
+      "detail": {
+        "grad": [
+          [
+            0.3333333432674408,
+            0.3333333432674408,
+            0.3333333432674408,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "where_grad_dead_branch",
+      "cat": "G",
+      "bug": "tf_xla_where_gradient_dead_branch",
+      "result": "detected",
+      "detail": {
+        "grad": [
+          [
+            NaN,
+            Infinity,
+            NaN,
+            Infinity
+          ]
+        ]
+      }
+    }
+  ],
+  "by_category": {
+    "P": {
+      "detected": 2,
+      "fixed": 1,
+      "other": 0
+    },
+    "E": {
+      "detected": 1,
+      "fixed": 2,
+      "other": 0
+    },
+    "M": {
+      "detected": 0,
+      "fixed": 3,
+      "other": 0
+    },
+    "G": {
+      "detected": 1,
+      "fixed": 1,
+      "other": 0
+    }
+  }
+}

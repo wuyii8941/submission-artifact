@@ -104,5 +104,6 @@ CUDA_VISIBLE_DEVICES=1 python3 batch_runner.py \
 
 ## Paper Reference
 
-These results appear in Section 5.1.3 (State-Space Blind Spots of Existing
-Fuzzers), "Empirical validation with WhiteFox" paragraph.
+These results back the WhiteFox baseline in the paper's RQ1
+effectiveness analysis (Table~\ref{tab:pipeline-gap}) and the RQ2
+historical-benchmark comparison (Table~\ref{tab:budget-split}).

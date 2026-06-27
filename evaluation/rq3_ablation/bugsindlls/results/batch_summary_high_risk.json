@@ -1,0 +1,146 @@
+{
+  "scope": "high-risk",
+  "elapsed_seconds": 2429.5121326446533,
+  "results": [
+    {
+      "api": "torch.nested.nested_tensor",
+      "output_dir": "bugsindlls_v10_20260327/torch_nested_nested_tensor",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.nested.nested_tensor --max-iterations 2000 --output bugsindlls_v10_20260327/torch_nested_nested_tensor --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T21:57:31.663987",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 216.0228922367096,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-nested-001"
+      ]
+    },
+    {
+      "api": "torch.linalg.svd",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_svd",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.svd --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_svd --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:01:07.687826",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 292.5004460811615,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-svd"
+      ]
+    },
+    {
+      "api": "torch.linalg.eig",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_eig",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.eig --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_eig --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:06:00.189048",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 247.18975114822388,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-eig"
+      ]
+    },
+    {
+      "api": "torch.linalg.solve",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_solve",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.solve --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_solve --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:10:07.381247",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 237.73317050933838,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-solve"
+      ]
+    },
+    {
+      "api": "torch.linalg.lstsq",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_lstsq",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.lstsq --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_lstsq --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:14:05.114908",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 235.92145347595215,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-lstsq"
+      ]
+    },
+    {
+      "api": "torch.linalg.pinv",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_pinv",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.pinv --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_pinv --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:18:01.037948",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 274.96750378608704,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-pinv"
+      ]
+    },
+    {
+      "api": "torch.linalg.inv",
+      "output_dir": "bugsindlls_v10_20260327/torch_linalg_inv",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.linalg.inv --max-iterations 2000 --output bugsindlls_v10_20260327/torch_linalg_inv --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:22:36.006975",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 236.4721577167511,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-linalg-inv"
+      ]
+    },
+    {
+      "api": "torch.distributions.Normal",
+      "output_dir": "bugsindlls_v10_20260327/torch_distributions_Normal",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.distributions.Normal --max-iterations 2000 --output bugsindlls_v10_20260327/torch_distributions_Normal --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:26:32.480137",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 229.19942569732666,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-dist-normal"
+      ]
+    },
+    {
+      "api": "torch.distributions.Beta",
+      "output_dir": "bugsindlls_v10_20260327/torch_distributions_Beta",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.distributions.Beta --max-iterations 2000 --output bugsindlls_v10_20260327/torch_distributions_Beta --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:30:21.680115",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 233.07739853858948,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-dist-beta"
+      ]
+    },
+    {
+      "api": "torch.distributions.kl_divergence",
+      "output_dir": "bugsindlls_v10_20260327/torch_distributions_kl_divergence",
+      "command": "${ARTIFACT_ROOT}/python benchmark_full_oracle_triton.py --api torch.distributions.kl_divergence --max-iterations 2000 --output bugsindlls_v10_20260327/torch_distributions_kl_divergence --conf demo_torch.conf --diff-bound 1e-05 --timeout 40",
+      "start_time": "2026-03-27T22:34:14.760603",
+      "success": true,
+      "exit_code": 0,
+      "elapsed_seconds": 226.41419959068298,
+      "error": null,
+      "category": "high-risk",
+      "issue_ids": [
+        "hr-dist-kl"
+      ]
+    }
+  ]
+}

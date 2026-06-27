@@ -1,72 +1,60 @@
 # RQ4: Cross-Framework Portability
 
-> **Note:** this RQ was numbered RQ5 in earlier drafts and the directory
-> name was kept for stability. The paper refers to it as RQ4.
+> **Directory naming note:** earlier drafts numbered this RQ as RQ5 and
+> some scripts still carry the `rq5_*` prefix or `cross_framework`
+> suffix. The paper refers to it as RQ4.
 
-Demonstrates that the oracle design, adversarial shapes, and bug taxonomy
-transfer to TensorFlow/XLA, JAX/XLA, IREE, and TVM without a
-framework-specific state model.
+This directory contains the portability case studies on **IREE** and
+**TVM** plus the supporting TF/XLA time-controlled budget runs.
 
-## Scripts
+The paper's portability claim:
 
-### TensorFlow/XLA (4 bugs)
+> On IREE and TVM, the reused strategies find 24 previously unknown
+> bugs (7 on IREE, 17 on TVM).
+
+Bug reproducers and per-bug summaries live in
+`../../data/confirmed_bugs/iree/` (7 directories) and
+`../../data/confirmed_bugs/tvm/` (17 directories).
+
+## Scripts (development tree; not all needed to validate paper claims)
+
 | Script | Purpose |
-|--------|---------|
-| `tf_main.py` | Main TF fuzzer loop (eager vs tf.function vs XLA) |
-| `tf_oracles.py` | Differential oracles: eager/grappler/XLA seams |
-| `tf_graph_gen.py` | Random TF program generator with adversarial shapes |
-| `tf_coverage.py` | HLO/GraphDef coverage tracking |
-| `targeted_consistency_fuzzer.py` | Targeted consistency testing for XLA |
+|---|---|
+| `iree_runner.py` | IREE compilation + ONNX Runtime differential oracle |
+| `tf_time_controlled.py` | Budget-controlled TF/XLA fuzzer used to produce the time-curve JSON in `results/` |
+| `run_tf_1800s_parallel.sh` | Five-seed launcher around `tf_time_controlled.py` |
+| `_nnsmith_tf_worker.py`, `run_nnsmith_tf_baseline.py` | NNSmith TF baseline for the comparison logs in `results/` |
+| `tf_oracles.py`, `tf_graph_gen.py`, `tf_coverage.py` | TF-side oracle / generator / coverage hooks |
 
-### JAX/XLA (1 bug)
-| Script | Purpose |
-|--------|---------|
-| `jax_main.py` | Main JAX fuzzer loop (jit vs eager, grad, vmap) |
-| `jax_oracles.py` | Differential oracles for JAX compilation seams |
-| `jax_graph_gen.py` | Random JAX program generator |
-| `pattern_migration_test.py` | Tests PyTorch pattern transferability to JAX |
-
-### IREE (4 bugs)
-| Script | Purpose |
-|--------|---------|
-| `iree_runner.py` | IREE compilation + ONNX Runtime oracle |
-
-### TVM (5 bugs)
-Bug reproducers in `${ARTIFACT_ROOT}/data/confirmed_bugs/tvm/`
-(discovered via manual Relax/DLight schedule rule testing).
+> `tf_main.py`, the JAX scripts, `pattern_migration_test.py`, and
+> `targeted_consistency_fuzzer.py` are exploratory drivers from the
+> development tree that are not exercised by the published numbers.
 
 ## Reproducing
 
-The TensorFlow/XLA campaign that `REPRODUCE.md` runs is driven by
-`run_tf_1800s_parallel.sh` in this directory; it calls the `tf_main.py`
-fuzzer in batches and writes per-batch JSON. IREE bugs are reproduced
-from the minimized scripts under
-`${ARTIFACT_ROOT}/data/confirmed_bugs/iree/`; TVM bugs likewise under
-`${ARTIFACT_ROOT}/data/confirmed_bugs/tvm/`.
+The IREE and TVM portability bugs are reproduced from the minimized
+reproducers under `${ARTIFACT_ROOT}/data/confirmed_bugs/iree/` and
+`${ARTIFACT_ROOT}/data/confirmed_bugs/tvm/`. The TF/XLA budget-controlled
+runs use `run_tf_1800s_parallel.sh`.
 
 ```bash
-# TensorFlow/XLA fuzzer (requires TF 2.x + XLA)
+# TF/XLA budget runs (5 seeds × 3 modes × 1800 s)
 bash run_tf_1800s_parallel.sh
-
-# Pattern migration validation
-python pattern_migration_test.py
-
-# IREE (requires iree-compiler + onnxruntime)
-python iree_runner.py --model /path/to/model.onnx
 ```
 
-## Paper Claims
+## Per-Bug Counts (paper `tab:bug-summary`)
 
-- 14 cross-framework bugs total (4 TF, 1 XLA, 4 IREE, 5 TVM)
-- Oracle and adversarial-shape methodology transfers without
-  the PyTorch-specific kernel-family model
-- Bug types: silent numerical divergence, dtype demotion, shape
-  canonicalization failures, schedule rule crashes
+| Stack | Silent | Crash | Total | Fixed | Open |
+|---|---|---|---|---|---|
+| IREE | 3 | 4 | 7 | 2 | 5 |
+| TVM | 8 | 9 | 17 | 16 | 1 |
+| **Cross-framework total** | **11** | **13** | **24** | **18** | **6** |
 
-## Bug Reproducers
+The TensorFlow/XLA portability evidence is reported separately as part
+of the primary campaign (paper RQ1 / `tab:bug-summary` row for
+TensorFlow/XLA, 31 bugs).
 
-All confirmed bugs with minimal reproduction scripts:
-- `../../confirmed_bugs/tensorflow/` (12 directories)
-- `../../confirmed_bugs/iree/` (9 directories)
-- `../../confirmed_bugs/tvm/` (7 directories)
-- `../../confirmed_bugs/xla/` (1 directory)
+## Logs
+
+Per-seed JSON and log files for the TF time-controlled runs are in
+`results/`; see `results/README.md` for the file inventory.

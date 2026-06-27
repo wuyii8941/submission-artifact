@@ -14,8 +14,9 @@
 #   - DOF_PT_PYTHON pointing at a PyTorch 2.11 + Triton 3.6 env (with NNSmith,
 #     ml_dtypes, hydra-core installed for the NNSmith mode)
 #   - KF_FREEFUZZ_POOL pointing at a directory of pre-generated FreeFuzz programs
-#   - WhiteFox tests at /data1/tzh/WhiteFox/starcoder-generated/torch-inductor-generated
-#     (or edit the worker's `test_dir` constant)
+#   - WhiteFox tests under ${WHITEFOX_TEST_DIR} (default:
+#     ./whitefox-baseline/starcoder-generated/torch-inductor-generated;
+#     override via the env var or edit the worker's `test_dir` constant)
 #   - 5 CUDA GPUs available (one per run)
 #
 # Single seed by design: this is a 4h budget audit, not a statistical comparison.

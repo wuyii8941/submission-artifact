@@ -1,0 +1,79 @@
+{
+  "findings": [
+    {
+      "probe": "cumsum_last_eq_sum_xla",
+      "category": "property",
+      "shape": "(1, 2049)",
+      "trial": 0,
+      "max_dev": 1.049041748046875e-05,
+      "atol": 1e-05,
+      "is_compiler_bug": "unknown"
+    },
+    {
+      "probe": "cumsum_last_eq_sum_xla",
+      "category": "property",
+      "shape": "(8, 4096)",
+      "trial": 0,
+      "max_dev": 3.814697265625e-05,
+      "atol": 1e-05,
+      "is_compiler_bug": "unknown"
+    },
+    {
+      "probe": "layer_norm_vs_manual_xla",
+      "category": "equivalence",
+      "shape": "(4, 128)",
+      "error": "in user code:\n\n    File \"<scrubbed>", line 262, in f_keras  *\n        ln.build(x.shape)\n    File \"<scrubbed>", line 233, in build_wrapper  **\n        original_build_method(*args, **kwargs)\n    File ",
+      "traceback": "     self._initialize(lambda: initializer(self._shape, dtype=self._dtype))\n    File \"<scrubbed>", line 43, in _initialize\n        self._value = tf.Variable(\n\n    ValueError: tf.function only supports singleton tf.Variables created on the first call. Make sure the tf.Variable is only created once or created outside tf.function. See https://www.tensorflow.org/guide/function#creating_tfvariables for more information.\n\n"
+    },
+    {
+      "probe": "layer_norm_vs_manual_xla",
+      "category": "equivalence",
+      "shape": "(2, 2048)",
+      "error": "in user code:\n\n    File \"<scrubbed>", line 262, in f_keras  *\n        ln.build(x.shape)\n    File \"<scrubbed>", line 233, in build_wrapper  **\n        original_build_method(*args, **kwargs)\n    File ",
+      "traceback": "     self._initialize(lambda: initializer(self._shape, dtype=self._dtype))\n    File \"<scrubbed>", line 43, in _initialize\n        self._value = tf.Variable(\n\n    ValueError: tf.function only supports singleton tf.Variables created on the first call. Make sure the tf.Variable is only created once or created outside tf.function. See https://www.tensorflow.org/guide/function#creating_tfvariables for more information.\n\n"
+    },
+    {
+      "probe": "layer_norm_vs_manual_xla",
+      "category": "equivalence",
+      "shape": "(1, 2049)",
+      "error": "in user code:\n\n    File \"<scrubbed>", line 262, in f_keras  *\n        ln.build(x.shape)\n    File \"<scrubbed>", line 233, in build_wrapper  **\n        original_build_method(*args, **kwargs)\n    File ",
+      "traceback": "     self._initialize(lambda: initializer(self._shape, dtype=self._dtype))\n    File \"<scrubbed>", line 43, in _initialize\n        self._value = tf.Variable(\n\n    ValueError: tf.function only supports singleton tf.Variables created on the first call. Make sure the tf.Variable is only created once or created outside tf.function. See https://www.tensorflow.org/guide/function#creating_tfvariables for more information.\n\n"
+    },
+    {
+      "probe": "layer_norm_vs_manual_xla",
+      "category": "equivalence",
+      "shape": "(8, 4096)",
+      "error": "in user code:\n\n    File \"<scrubbed>", line 262, in f_keras  *\n        ln.build(x.shape)\n    File \"<scrubbed>", line 233, in build_wrapper  **\n        original_build_method(*args, **kwargs)\n    File ",
+      "traceback": "     self._initialize(lambda: initializer(self._shape, dtype=self._dtype))\n    File \"<scrubbed>", line 43, in _initialize\n        self._value = tf.Variable(\n\n    ValueError: tf.function only supports singleton tf.Variables created on the first call. Make sure the tf.Variable is only created once or created outside tf.function. See https://www.tensorflow.org/guide/function#creating_tfvariables for more information.\n\n"
+    },
+    {
+      "probe": "grappler_vs_xla_cumsum",
+      "category": "grappler_xla",
+      "shape": "(2, 2048)",
+      "trial": 0,
+      "max_dev": 2.6702880859375e-05,
+      "atol": 1e-05,
+      "is_compiler_bug": "unknown"
+    },
+    {
+      "probe": "grappler_vs_xla_cumsum",
+      "category": "grappler_xla",
+      "shape": "(1, 2049)",
+      "trial": 0,
+      "max_dev": 1.33514404296875e-05,
+      "atol": 1e-05,
+      "is_compiler_bug": "unknown"
+    },
+    {
+      "probe": "grappler_vs_xla_cumsum",
+      "category": "grappler_xla",
+      "shape": "(8, 4096)",
+      "trial": 0,
+      "max_dev": 7.62939453125e-05,
+      "atol": 1e-05,
+      "is_compiler_bug": "unknown"
+    }
+  ],
+  "bugs": [],
+  "tf_version": "2.22.0-dev20260508"
+}

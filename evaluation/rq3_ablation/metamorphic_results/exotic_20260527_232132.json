@@ -1,0 +1,1071 @@
+{
+  "bugs": [
+    {
+      "probe": "bk_cond_(4, 64)",
+      "type": "crash",
+      "error": "CppCompileError: C++ compile error\n\nCommand:\ng++ /tmp/tmptnl0h0i5/header.hpp -D TORCH_INDUCTOR_CPP_WRAPPER -D STANDALONE_TORCH_HEADER -D TORCH_INDUCTOR_PRECOMPILE_HEADERS -D C10_USING_CUSTOM_GENERATED_MACROS -O3 -DNDEBUG -fno-omit-frame-pointer -fno-trapping-math -funsafe-math-optimizations -ffinite"
+    },
+    {
+      "probe": "bk_cond_(1, 2049)",
+      "type": "crash",
+      "error": "CppCompileError: C++ compile error\n\nCommand:\ng++ /tmp/tmpr0_ish5_/header.hpp -D TORCH_INDUCTOR_CPP_WRAPPER -D STANDALONE_TORCH_HEADER -D TORCH_INDUCTOR_PRECOMPILE_HEADERS -D C10_USING_CUSTOM_GENERATED_MACROS -O3 -DNDEBUG -fno-omit-frame-pointer -fno-trapping-math -funsafe-math-optimizations -ffinite"
+    },
+    {
+      "probe": "inplace_view_chain_(4, 128)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "inplace_view_chain_(2, 2049)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "inplace_view_chain_(8, 4096)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "adam_pattern_(128,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(2049,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(4096,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(64, 128)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    }
+  ],
+  "all": [
+    {
+      "probe": "vmap_sin_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_sin_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_sin_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_sin_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_grad_sin_(4, 32)",
+      "type": "err",
+      "error": "You are attempting to call Tensor.requires_grad_() (or perhaps using torch.autograd.functional.* APIs) inside of a function being transformed by a functorch transform. This is unsupported, please attempt to use the functorch transforms (e.g. grad, vjp, jacrev, jacfwd, hessian) or call requires_grad_"
+    },
+    {
+      "probe": "vmap_grad_sin_(2, 127)",
+      "type": "err",
+      "error": "You are attempting to call Tensor.requires_grad_() (or perhaps using torch.autograd.functional.* APIs) inside of a function being transformed by a functorch transform. This is unsupported, please attempt to use the functorch transforms (e.g. grad, vjp, jacrev, jacfwd, hessian) or call requires_grad_"
+    },
+    {
+      "probe": "vmap_grad_sin_(8, 256)",
+      "type": "err",
+      "error": "You are attempting to call Tensor.requires_grad_() (or perhaps using torch.autograd.functional.* APIs) inside of a function being transformed by a functorch transform. This is unsupported, please attempt to use the functorch transforms (e.g. grad, vjp, jacrev, jacfwd, hessian) or call requires_grad_"
+    },
+    {
+      "probe": "vmap_jacrev_(4, 16)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_jacrev_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_jacrev_(4, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_jacrev_(4, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "cond_flag=True_(4,64)",
+      "type": "ok"
+    },
+    {
+      "probe": "cond_flag=False_(4,64)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_cond_(4, 64)",
+      "type": "crash",
+      "error": "CppCompileError: C++ compile error\n\nCommand:\ng++ /tmp/tmptnl0h0i5/header.hpp -D TORCH_INDUCTOR_CPP_WRAPPER -D STANDALONE_TORCH_HEADER -D TORCH_INDUCTOR_PRECOMPILE_HEADERS -D C10_USING_CUSTOM_GENERATED_MACROS -O3 -DNDEBUG -fno-omit-frame-pointer -fno-trapping-math -funsafe-math-optimizations -ffinite"
+    },
+    {
+      "probe": "bk_cond_(1, 2049)",
+      "type": "crash",
+      "error": "CppCompileError: C++ compile error\n\nCommand:\ng++ /tmp/tmpr0_ish5_/header.hpp -D TORCH_INDUCTOR_CPP_WRAPPER -D STANDALONE_TORCH_HEADER -D TORCH_INDUCTOR_PRECOMPILE_HEADERS -D C10_USING_CUSTOM_GENERATED_MACROS -O3 -DNDEBUG -fno-omit-frame-pointer -fno-trapping-math -funsafe-math-optimizations -ffinite"
+    },
+    {
+      "probe": "bk_checkpoint_(4, 128)",
+      "type": "ok",
+      "diff": 5.364418029785156e-07
+    },
+    {
+      "probe": "bk_no_ckpt_(4, 128)",
+      "type": "ok",
+      "diff": 5.364418029785156e-07
+    },
+    {
+      "probe": "bk_checkpoint_(2, 2049)",
+      "type": "ok",
+      "diff": 5.960464477539062e-07
+    },
+    {
+      "probe": "bk_no_ckpt_(2, 2049)",
+      "type": "ok",
+      "diff": 2.384185791015625e-07
+    },
+    {
+      "probe": "bk_checkpoint_(8, 4096)",
+      "type": "ok",
+      "diff": 5.960464477539062e-07
+    },
+    {
+      "probe": "bk_no_ckpt_(8, 4096)",
+      "type": "ok",
+      "diff": 5.960464477539062e-07
+    },
+    {
+      "probe": "ckpt_vs_nograd_(4, 128)",
+      "diff": 0.0
+    },
+    {
+      "probe": "ckpt_vs_nograd_(2, 2049)",
+      "diff": 5.960464477539062e-07
+    },
+    {
+      "probe": "custom_clipped_relu_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_custom_relu_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "custom_clipped_relu_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_custom_relu_(1, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "custom_clipped_relu_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_custom_relu_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "inplace_view_chain_(4, 128)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "inplace_slice_mut_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "inplace_index_fill_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "inplace_view_chain_(2, 2049)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "inplace_slice_mut_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "inplace_index_fill_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "inplace_view_chain_(8, 4096)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "inplace_slice_mut_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "inplace_index_fill_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_mm_(32, 64, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_chain_(32, 64, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_mm_(1, 2049, 512)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_chain_(1, 2049, 512)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_mm_(7, 127, 63)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_chain_(7, 127, 63)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_ln_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_ln_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "autocast_ln_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_split_rt_(4, 129)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_diff_sizes_(4, 129)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_split_rt_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_diff_sizes_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_split_rt_(8, 4098)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_diff_sizes_(8, 4098)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_split_rt_(3, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "cat_diff_sizes_(3, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "stack_unstack_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "stack_unstack_(8, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "stack_unstack_(3, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_fill_softmax_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_scatter_sum_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_select_sort_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_fill_softmax_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_scatter_sum_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_select_sort_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_fill_softmax_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_scatter_sum_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "masked_select_sort_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "strided_view_sum_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "strided_view_sum_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "strided_view_sum_(1, 65)",
+      "type": "ok"
+    },
+    {
+      "probe": "diagonal_32",
+      "type": "ok"
+    },
+    {
+      "probe": "diagonal_64",
+      "type": "ok"
+    },
+    {
+      "probe": "diagonal_127",
+      "type": "ok"
+    },
+    {
+      "probe": "diagonal_256",
+      "type": "ok"
+    },
+    {
+      "probe": "bucketize_64",
+      "type": "ok"
+    },
+    {
+      "probe": "searchsorted_64",
+      "type": "ok"
+    },
+    {
+      "probe": "bucketize_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "searchsorted_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "bucketize_4096",
+      "type": "ok"
+    },
+    {
+      "probe": "searchsorted_4096",
+      "type": "ok"
+    },
+    {
+      "probe": "complex_mul_abs_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_mul_abs_(4, 64)",
+      "type": "ok",
+      "diff": 4.76837158203125e-07
+    },
+    {
+      "probe": "complex_fft_abs_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_fft_abs_(4, 64)",
+      "type": "ok",
+      "diff": 1.9073486328125e-06
+    },
+    {
+      "probe": "complex_mul_abs_(2, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_mul_abs_(2, 128)",
+      "type": "ok",
+      "diff": 4.76837158203125e-07
+    },
+    {
+      "probe": "complex_fft_abs_(2, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_fft_abs_(2, 128)",
+      "type": "ok",
+      "diff": 3.814697265625e-06
+    },
+    {
+      "probe": "complex_mul_abs_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_mul_abs_(1, 2049)",
+      "type": "ok",
+      "diff": 4.76837158203125e-07
+    },
+    {
+      "probe": "complex_fft_abs_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_complex_fft_abs_(1, 2049)",
+      "type": "ok",
+      "diff": 3.0517578125e-05
+    },
+    {
+      "probe": "scatter_reduce_sum_64",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_sum_256",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_sum_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_prod_64",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_prod_256",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_prod_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_mean_64",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_mean_256",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_mean_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amax_64",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amax_256",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amax_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amin_64",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amin_256",
+      "type": "ok"
+    },
+    {
+      "probe": "scatter_reduce_amin_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "multinomial_32",
+      "type": "ok"
+    },
+    {
+      "probe": "multinomial_128",
+      "type": "ok"
+    },
+    {
+      "probe": "multinomial_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "adam_pattern_(128,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(2049,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(4096,)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "adam_pattern_(64, 128)",
+      "type": "fwd",
+      "diff": 0.00042635202407836914
+    },
+    {
+      "probe": "bcast_add_bk_(4, 128)+(1, 128)",
+      "diff": 0.0
+    },
+    {
+      "probe": "bcast_add_bk_(4, 128)+(128,)",
+      "diff": 0.0
+    },
+    {
+      "probe": "bcast_add_bk_(2, 3, 2049)+(1, 1, 2049)",
+      "diff": 0.0
+    },
+    {
+      "probe": "bcast_add_bk_(2, 3, 2049)+(2049,)",
+      "diff": 0.0
+    },
+    {
+      "probe": "scan_cumsum_64",
+      "type": "err",
+      "error": "scan() missing 1 required positional argument: 'xs'"
+    },
+    {
+      "probe": "scan_cumsum_128",
+      "type": "err",
+      "error": "scan() missing 1 required positional argument: 'xs'"
+    },
+    {
+      "probe": "scan_cumsum_2049",
+      "type": "err",
+      "error": "scan() missing 1 required positional argument: 'xs'"
+    },
+    {
+      "probe": "scan_cumsum_4096",
+      "type": "err",
+      "error": "scan() missing 1 required positional argument: 'xs'"
+    },
+    {
+      "probe": "assoc_scan_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_assoc_scan_(4, 64)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "assoc_scan_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_assoc_scan_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "assoc_scan_(1, 8193)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_assoc_scan_(1, 8193)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "softmax_cols=1023",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=1023",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=1024",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=1024",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=1025",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=1025",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=2047",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=2047",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=2048",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=2048",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=2049",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=2049",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=4095",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=4095",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=4096",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=4096",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=4097",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=4097",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=8191",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=8191",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=8192",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=8192",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=8193",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=8193",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=16384",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=16384",
+      "type": "ok"
+    },
+    {
+      "probe": "softmax_cols=32768",
+      "type": "ok"
+    },
+    {
+      "probe": "layernorm_cols=32768",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_softmax_cols=1024",
+      "type": "ok",
+      "diff": 1.4840979556396405e-09
+    },
+    {
+      "probe": "bk_layernorm_cols=1024",
+      "type": "ok",
+      "diff": 3.84960543442503e-08
+    },
+    {
+      "probe": "bk_softmax_cols=2048",
+      "type": "ok",
+      "diff": 5.551115123125783e-17
+    },
+    {
+      "probe": "bk_layernorm_cols=2048",
+      "type": "ok",
+      "diff": 4.455980473494492e-08
+    },
+    {
+      "probe": "bk_softmax_cols=2049",
+      "type": "ok",
+      "diff": 1.270524574437104e-09
+    },
+    {
+      "probe": "bk_layernorm_cols=2049",
+      "type": "ok",
+      "diff": 6.08753936148787e-08
+    },
+    {
+      "probe": "bk_softmax_cols=4096",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_layernorm_cols=4096",
+      "type": "ok",
+      "diff": 2.7780741262972697e-08
+    },
+    {
+      "probe": "bk_softmax_cols=8192",
+      "type": "ok",
+      "diff": 1.3877787807814457e-17
+    },
+    {
+      "probe": "bk_layernorm_cols=8192",
+      "type": "ok",
+      "diff": 4.522768826120682e-09
+    },
+    {
+      "probe": "bk_softmax_cols=8193",
+      "type": "ok",
+      "diff": 3.7698677513020584e-10
+    },
+    {
+      "probe": "bk_layernorm_cols=8193",
+      "type": "ok",
+      "diff": 5.0513509819438696e-08
+    },
+    {
+      "probe": "nested_sum",
+      "type": "err",
+      "error": "Could not run 'aten::sum.dim_IntList' with arguments from the 'NestedTensorCUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, pleas"
+    },
+    {
+      "probe": "nested_softmax",
+      "type": "err",
+      "error": "Internal error: NestedTensorImpl doesn't support sizes. Please file an issue."
+    },
+    {
+      "probe": "sparse_mm_64",
+      "type": "ok"
+    },
+    {
+      "probe": "func_grad_32",
+      "type": "ok"
+    },
+    {
+      "probe": "func_grad_128",
+      "type": "ok"
+    },
+    {
+      "probe": "func_grad_2049",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_grad_(4, 32)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_grad_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "vmap_grad_(8, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "func_grad2_32",
+      "type": "err",
+      "error": "grad_and_value(f)(*args): Expected f(*args) to return a scalar Tensor, got tensor with 1 dims. Maybe you wanted to use the vjp or jacrev APIs instead?"
+    },
+    {
+      "probe": "func_grad2_128",
+      "type": "err",
+      "error": "grad_and_value(f)(*args): Expected f(*args) to return a scalar Tensor, got tensor with 1 dims. Maybe you wanted to use the vjp or jacrev APIs instead?"
+    },
+    {
+      "probe": "while_loop_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "while_loop_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "long_chain_10_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "long_chain_20_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "mixed_chain_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_long_chain_10_(4, 128)",
+      "type": "ok",
+      "diff": 3.5762786865234375e-07
+    },
+    {
+      "probe": "bk_mixed_chain_(4, 128)",
+      "type": "ok",
+      "diff": 5.960464477539062e-07
+    },
+    {
+      "probe": "long_chain_10_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "long_chain_20_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "mixed_chain_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_long_chain_10_(2, 2049)",
+      "type": "ok",
+      "diff": 3.5762786865234375e-07
+    },
+    {
+      "probe": "bk_mixed_chain_(2, 2049)",
+      "type": "ok",
+      "diff": 1.1235475540161133e-05
+    },
+    {
+      "probe": "long_chain_10_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "long_chain_20_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "mixed_chain_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_long_chain_10_(8, 4096)",
+      "type": "ok",
+      "diff": 4.76837158203125e-07
+    },
+    {
+      "probe": "bk_mixed_chain_(8, 4096)",
+      "type": "ok",
+      "diff": 2.4616718292236328e-05
+    },
+    {
+      "probe": "arange_in_compiled_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "linspace_in_compiled_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "ones_like_in_compiled_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "arange_in_compiled_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "linspace_in_compiled_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "ones_like_in_compiled_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "arange_in_compiled_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "linspace_in_compiled_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "ones_like_in_compiled_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "embedding_(1000,64)",
+      "type": "ok"
+    },
+    {
+      "probe": "embedding_(50000,128)",
+      "type": "ok"
+    },
+    {
+      "probe": "embedding_(100,2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "topk_vals_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "min_max_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "kthvalue_(4, 64)",
+      "type": "ok"
+    },
+    {
+      "probe": "topk_vals_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "min_max_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "kthvalue_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "topk_vals_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "min_max_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "kthvalue_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "topk_vals_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "min_max_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "kthvalue_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "multi_tensor_bk_(32, 64)",
+      "diff": 0.0
+    },
+    {
+      "probe": "multi_tensor_bk_(127, 63)",
+      "diff": 0.0
+    },
+    {
+      "probe": "multi_tensor_bk_(2049, 16)",
+      "diff": 0.0
+    },
+    {
+      "probe": "mlp_d=64",
+      "diff": 1.1920928955078125e-07
+    },
+    {
+      "probe": "mlp_d=128",
+      "diff": 2.384185791015625e-07
+    },
+    {
+      "probe": "mlp_d=2049",
+      "diff": 2.980232238769531e-07
+    },
+    {
+      "probe": "cross_entropy_(4,10)",
+      "type": "ok"
+    },
+    {
+      "probe": "nll_loss_(4,10)",
+      "type": "ok"
+    },
+    {
+      "probe": "mse_loss_(4,10)",
+      "type": "ok"
+    },
+    {
+      "probe": "smooth_l1_(4,10)",
+      "type": "ok"
+    },
+    {
+      "probe": "cross_entropy_(32,1000)",
+      "type": "ok"
+    },
+    {
+      "probe": "nll_loss_(32,1000)",
+      "type": "ok"
+    },
+    {
+      "probe": "mse_loss_(32,1000)",
+      "type": "ok"
+    },
+    {
+      "probe": "smooth_l1_(32,1000)",
+      "type": "ok"
+    },
+    {
+      "probe": "cross_entropy_(1,2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "nll_loss_(1,2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "mse_loss_(1,2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "smooth_l1_(1,2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_cross_entropy_(4,10)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_cross_entropy_(32,1000)",
+      "type": "ok",
+      "diff": 1.7462298274040222e-10
+    }
+  ],
+  "timestamp": "20260527_232132",
+  "pytorch": "2.13.0.dev20260520+cu126"
+}

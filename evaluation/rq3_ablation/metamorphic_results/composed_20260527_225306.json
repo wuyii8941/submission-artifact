@@ -1,0 +1,51 @@
+{
+  "findings": [
+    {
+      "probe": "backward_grad_nonzero",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) grad=all_zeros!",
+      "max_diff": Infinity,
+      "is_compiler_bug": true,
+      "shape": [
+        1,
+        2049
+      ]
+    },
+    {
+      "probe": "cumsum_split_scan",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 8193) diff=2.67e-05",
+      "max_diff": 2.6702880859375e-05,
+      "is_compiler_bug": true,
+      "shape": [
+        1,
+        8193
+      ]
+    }
+  ],
+  "bugs": [
+    {
+      "probe": "backward_grad_nonzero",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 2049) grad=all_zeros!",
+      "max_diff": Infinity,
+      "is_compiler_bug": true,
+      "shape": [
+        1,
+        2049
+      ]
+    },
+    {
+      "probe": "cumsum_split_scan",
+      "status": "DIVERGENCE",
+      "detail": "shape=(1, 8193) diff=2.67e-05",
+      "max_diff": 2.6702880859375e-05,
+      "is_compiler_bug": true,
+      "shape": [
+        1,
+        8193
+      ]
+    }
+  ],
+  "torch_version": "2.13.0.dev20260520+cu126"
+}

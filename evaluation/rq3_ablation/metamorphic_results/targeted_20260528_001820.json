@@ -1,0 +1,1401 @@
+{
+  "bugs": [
+    {
+      "probe": "mutate_add_(4, 128)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_add_(2, 2049)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_add_(8, 4096)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_via_view_(4, 128)",
+      "type": "fwd",
+      "diff": 0.18231964111328125
+    },
+    {
+      "probe": "mutate_two_(4, 128)",
+      "type": "fwd",
+      "diff": 141.59837341308594
+    },
+    {
+      "probe": "mutate_via_view_(2, 2049)",
+      "type": "fwd",
+      "diff": 9.869701385498047
+    },
+    {
+      "probe": "mutate_two_(2, 2049)",
+      "type": "fwd",
+      "diff": 300.12713623046875
+    },
+    {
+      "probe": "ro_chain_(8, 4096)",
+      "type": "fwd",
+      "diff": 0.000244140625
+    },
+    {
+      "probe": "ca_softmax_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_softmax_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_softmax_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "dyn_cumsum_n=2048",
+      "type": "fwd",
+      "diff": 1.1444091796875e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=4096",
+      "type": "fwd",
+      "diff": 3.0517578125e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=8192",
+      "type": "fwd",
+      "diff": 3.0517578125e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=8193",
+      "type": "fwd",
+      "diff": 2.288818359375e-05
+    },
+    {
+      "probe": "bk_retain_graph_(4, 64)",
+      "type": "crash",
+      "error": "torch.compile with aot_autograd does not currently support double backward"
+    },
+    {
+      "probe": "bk_retain_graph_(2, 128)",
+      "type": "crash",
+      "error": "torch.compile with aot_autograd does not currently support double backward"
+    },
+    {
+      "probe": "bk_bf16_cast_(4, 128)",
+      "type": "grad",
+      "diff": 0.014358997344970703
+    },
+    {
+      "probe": "bk_bf16_cast_(2, 2049)",
+      "type": "grad",
+      "diff": 0.01560211181640625
+    }
+  ],
+  "all": [
+    {
+      "probe": "mutate_add_(4, 128)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_scatter_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "mutate_add_(2, 2049)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_scatter_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "mutate_add_(8, 4096)",
+      "type": "fwd",
+      "diff": 2.000000476837158
+    },
+    {
+      "probe": "mutate_scatter_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "mutate_via_view_(4, 128)",
+      "type": "fwd",
+      "diff": 0.18231964111328125
+    },
+    {
+      "probe": "mutate_two_(4, 128)",
+      "type": "fwd",
+      "diff": 141.59837341308594
+    },
+    {
+      "probe": "mutate_via_view_(2, 2049)",
+      "type": "fwd",
+      "diff": 9.869701385498047
+    },
+    {
+      "probe": "mutate_two_(2, 2049)",
+      "type": "fwd",
+      "diff": 300.12713623046875
+    },
+    {
+      "probe": "bk_view_alias_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_transpose_contig_(4, 128)",
+      "type": "ok",
+      "diff": 1.232159974051683e-07
+    },
+    {
+      "probe": "bk_reshape_noncontig_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_slice_chain_(4, 128)",
+      "type": "ok",
+      "diff": 1.4901161193847656e-08
+    },
+    {
+      "probe": "bk_view_alias_(2, 2048)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_transpose_contig_(2, 2048)",
+      "type": "ok",
+      "diff": 1.169736663086951e-07
+    },
+    {
+      "probe": "bk_reshape_noncontig_(2, 2048)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_slice_chain_(2, 2048)",
+      "type": "ok",
+      "diff": 1.862645149230957e-09
+    },
+    {
+      "probe": "bk_view_alias_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_transpose_contig_(8, 4096)",
+      "type": "ok",
+      "diff": 1.535001956654014e-07
+    },
+    {
+      "probe": "bk_reshape_noncontig_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_slice_chain_(8, 4096)",
+      "type": "ok",
+      "diff": 2.7939677238464355e-09
+    },
+    {
+      "probe": "config_softmax_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_ln_gelu_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_cumsum_sm_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_softmax_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_ln_gelu_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_cumsum_sm_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_softmax_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_ln_gelu_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_cumsum_sm_(8, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_mm_relu_(32, 64, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_mm_relu_(7, 127, 63)",
+      "type": "ok"
+    },
+    {
+      "probe": "config_mm_relu_(1, 2049, 512)",
+      "type": "ok"
+    },
+    {
+      "probe": "ro_softmax_(4, 128)",
+      "diff": 3.725290298461914e-09
+    },
+    {
+      "probe": "ro_chain_(4, 128)",
+      "diff": 3.814697265625e-06
+    },
+    {
+      "probe": "ro_softmax_(2, 2049)",
+      "diff": 9.313225746154785e-10
+    },
+    {
+      "probe": "ro_chain_(2, 2049)",
+      "diff": 0.0
+    },
+    {
+      "probe": "ro_softmax_(8, 4096)",
+      "diff": 1.3969838619232178e-09
+    },
+    {
+      "probe": "ro_chain_(8, 4096)",
+      "diff": 0.000244140625
+    },
+    {
+      "probe": "ca_softmax_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(4, 128)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_softmax_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(2, 2049)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_softmax_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_ln_gelu_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_cumsum_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "ca_silu_mul_(8, 4096)",
+      "type": "crash",
+      "error": "module 'torch._dynamo.compiled_autograd' has no attribute 'enable'"
+    },
+    {
+      "probe": "freeze_model_d=64",
+      "diff": 1.1920928955078125e-07
+    },
+    {
+      "probe": "freeze_model_d=128",
+      "diff": 2.384185791015625e-07
+    },
+    {
+      "probe": "freeze_model_d=2049",
+      "diff": 7.152557373046875e-07
+    },
+    {
+      "probe": "clip_grad_norm_(32,64)",
+      "diff": 0.0
+    },
+    {
+      "probe": "clip_grad_norm_(4,2049)",
+      "diff": 0.0
+    },
+    {
+      "probe": "clip_grad_norm_(8,127)",
+      "diff": 0.0
+    },
+    {
+      "probe": "dyn_softmax_n=64",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=128",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=255",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=256",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=257",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=1024",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=2048",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=2049",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=4096",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=8192",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_softmax_n=8193",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=64",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=128",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=255",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=256",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=257",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=1024",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=2048",
+      "type": "fwd",
+      "diff": 1.1444091796875e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=2049",
+      "type": "ok"
+    },
+    {
+      "probe": "dyn_cumsum_n=4096",
+      "type": "fwd",
+      "diff": 3.0517578125e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=8192",
+      "type": "fwd",
+      "diff": 3.0517578125e-05
+    },
+    {
+      "probe": "dyn_cumsum_n=8193",
+      "type": "fwd",
+      "diff": 2.288818359375e-05
+    },
+    {
+      "probe": "bk_inplace_slice_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_narrow_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_slice_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_narrow_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_slice_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_narrow_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_diag_32",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_diag_64",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_inplace_diag_128",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_split_return_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_split_return_(2, 2050)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_split_return_(8, 4096)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_unbind_return_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_unbind_return_(8, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_unbind_return_(3, 127)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_retain_graph_(4, 64)",
+      "type": "crash",
+      "error": "torch.compile with aot_autograd does not currently support double backward"
+    },
+    {
+      "probe": "bk_stop_grad_partial_(4, 64)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_retain_graph_(2, 128)",
+      "type": "crash",
+      "error": "torch.compile with aot_autograd does not currently support double backward"
+    },
+    {
+      "probe": "bk_stop_grad_partial_(2, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_bf16_cast_(4, 128)",
+      "type": "grad",
+      "diff": 0.014358997344970703
+    },
+    {
+      "probe": "bk_bf16_cast_(2, 2049)",
+      "type": "grad",
+      "diff": 0.01560211181640625
+    },
+    {
+      "probe": "bk_fp16_mm_(32,64)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_fp16_mm_(4,2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bn_train_d=64",
+      "diff": 3.5762786865234375e-07
+    },
+    {
+      "probe": "bn_train_d=128",
+      "diff": 3.5762786865234375e-07
+    },
+    {
+      "probe": "rng_graph_s0_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s0_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s1_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s1_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s2_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s2_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s3_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s3_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s4_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s4_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s5_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s5_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s6_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s6_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s7_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s7_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s8_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s8_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s9_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s9_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s10_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s10_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s11_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s11_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s12_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s12_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s13_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s13_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s14_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s14_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s15_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s15_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s16_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s16_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s17_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s17_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s18_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s18_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s19_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s19_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s20_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s20_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s21_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s21_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s22_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s22_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s23_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s23_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s24_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s24_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s25_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s25_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s26_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s26_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s27_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s27_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s28_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s28_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s29_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s29_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s30_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s30_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s31_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s31_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s32_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s32_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s33_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s33_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s34_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s34_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s35_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s35_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s36_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s36_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s37_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s37_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s38_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s38_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s39_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s39_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s40_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s40_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s41_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s41_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s42_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s42_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s43_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s43_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s44_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s44_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s45_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s45_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s46_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s46_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s47_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s47_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s48_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s48_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s49_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "rng_graph_s49_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_rng_graph_s0_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s0_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s1_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s1_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s2_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s2_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s3_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s3_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s4_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s4_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s5_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s5_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s6_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s6_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s7_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s7_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s8_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s8_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s9_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s9_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s10_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s10_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s11_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s11_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s12_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s12_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s13_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s13_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s14_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s14_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s15_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s15_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s16_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s16_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s17_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s17_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s18_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s18_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s19_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s19_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s20_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s20_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s21_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s21_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s22_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s22_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s23_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s23_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s24_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s24_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s25_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s25_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s26_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s26_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s27_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s27_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s28_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s28_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s29_(4, 128)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "bk_rng_graph_s29_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "reduce_all_(1, 1)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_all_(1, 1, 1)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_all_(4, 1, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_all_(1, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_all_(8, 1, 4096)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_multi_(4, 8, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_keepdim_chain_(4, 8, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_multi_(2, 3, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "reduce_keepdim_chain_(2, 3, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "var_mean_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "logsumexp_(4, 128)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_logsumexp_(4, 128)",
+      "type": "ok",
+      "diff": 4.470348358154297e-08
+    },
+    {
+      "probe": "var_mean_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "logsumexp_(2, 2049)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_logsumexp_(2, 2049)",
+      "type": "ok",
+      "diff": 0.0
+    },
+    {
+      "probe": "var_mean_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "logsumexp_(1, 127)",
+      "type": "ok"
+    },
+    {
+      "probe": "bk_logsumexp_(1, 127)",
+      "type": "ok",
+      "diff": 0.0
+    }
+  ],
+  "timestamp": "20260528_001820",
+  "pytorch": "2.13.0.dev20260520+cu126"
+}

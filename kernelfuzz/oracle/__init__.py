@@ -8,7 +8,7 @@ Three oracle classes:
 
 Implementation notes:
   - Result classification and divergence checking: oracle.result
-  - Oracle execution orchestration: embedded in fuzzer.KernelFuzzer
+  - Oracle execution orchestration: embedded in fuzzer.GraphFuzzerV3/V4
   - Bug verification (fresh-process re-run): oracle.result._verify_bug_in_fresh_process
   - Config preset sampling: oracle.result._sample_config_preset
 """

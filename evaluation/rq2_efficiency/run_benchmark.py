@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 RQ2 Benchmark: Run DeepOpFuzz vs baselines on PyTorch 2.2.0.
-Measures bugs found over time against 17 known ground-truth bugs.
+Measures distinct root causes found over time against the historical
+benchmark (48 reproducible bugs, ground_truth_bugs.csv).
 """
 import argparse
 import json
@@ -13,7 +14,7 @@ import time
 import numpy as np
 
 SEEDS = [42, 123, 456, 789, 1024]
-MODES = ['targeted', 'random', 'nnsmith']
+MODES = ['targeted', 'random', 'nnsmith', 'whitefox', 'freefuzz']
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKER = os.path.join(SCRIPT_DIR, '_benchmark_worker.py')
 
