@@ -210,8 +210,8 @@ These two bugs are entirely independent of the compilation pipeline; they are ma
 
 | Bug | Issue | Error mechanism | Type |
 |-----|-------|---------|------|
-| tf_selu_elu_expm1 | [#<anon>](<upstream issue, anonymized>) | The Eigen SELU/ELU kernel uses `exp(x) - 1` instead of `expm1(x)`. For small negatives with \|x\| <= 1e-8, `exp(x)` first rounds to `1.0`, then `1.0 - 1.0 = 0.0` (catastrophic cancellation), yielding a 100% error. **Ironically, XLA uses `expm1`, so the compiled result is correct.** | Silent |
-| tf_complex_sign | [#<anon>](<upstream issue, anonymized>) | When `tf.math.sign(z)` computes \|z\|^2 = re^2 + im^2 for complex64, the intermediate \|z\|^2 underflows to zero when \|z\| < 1.084e-19 (= sqrt(float32_tiny)), so the kernel thinks `z == 0` and returns `sign = 0`. XLA and NumPy are correct. | Silent |
+| bug_021_selu_elu_expm1 | [#<anon>](<upstream issue, anonymized>) | The Eigen SELU/ELU kernel uses `exp(x) - 1` instead of `expm1(x)`. For small negatives with \|x\| <= 1e-8, `exp(x)` first rounds to `1.0`, then `1.0 - 1.0 = 0.0` (catastrophic cancellation), yielding a 100% error. **Ironically, XLA uses `expm1`, so the compiled result is correct.** | Silent |
+| bug_005_complex_sign | [#<anon>](<upstream issue, anonymized>) | When `tf.math.sign(z)` computes \|z\|^2 = re^2 + im^2 for complex64, the intermediate \|z\|^2 underflows to zero when \|z\| < 1.084e-19 (= sqrt(float32_tiny)), so the kernel thinks `z == 0` and returns `sign = 0`. XLA and NumPy are correct. | Silent |
 
 **Characteristics:** these are **wrong numerical method choices** in the eager kernel, with no compiler optimisation involved. The fixes are direct (substitute `expm1`, use `hypot` instead of a sum of squares).
 
@@ -243,7 +243,7 @@ ReLU is monotonic but not **strictly** monotonic (there is a flat region where `
 | Bug | Issue | Specific inconsistency | Type |
 |-----|-------|----------------|------|
 | tf_xla_cpu_nan | [#<anon>](<upstream issue, anonymized>) | `reduce_max([nan, 1, 3])`: eager returns `nan` (IEEE 754 NaN propagation); CPU XLA returns `3` (drops NaN). NumPy and JAX propagate NaN. | Silent |
-| tf_check_numerics | [#<anon>](<upstream issue, anonymized>) | `check_numerics(nan_tensor)`: eager raises `InvalidArgumentError`; XLA passes silently (the check is skipped). Users who rely on `check_numerics` as a numerical guard lose it after switching to XLA. | Silent |
+| bug_003_check_numerics | [#<anon>](<upstream issue, anonymized>) | `check_numerics(nan_tensor)`: eager raises `InvalidArgumentError`; XLA passes silently (the check is skipped). Users who rely on `check_numerics` as a numerical guard lose it after switching to XLA. | Silent |
 | tf_cumsum_complex | [#<anon>](<upstream issue, anonymized>) | `cumsum(complex_tensor)`: eager computes normally; XLA compilation crashes (HLO lowering does not implement complex scan). | Crash |
 | tf_argmin_dead_code | [#<anon>](<upstream issue, anonymized>) | `argmin(empty_dim_tensor)`: eager handles it normally; XLA compilation crashes (the dead-code path is not handled by XLA). | Crash |
 

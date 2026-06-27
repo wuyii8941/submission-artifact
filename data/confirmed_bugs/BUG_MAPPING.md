@@ -49,37 +49,37 @@ name under `data/confirmed_bugs/tensorflow/`.
 
 | Reproducer | Root Cause | Status |
 |----|----|----|
-| tf_grappler_argmin_monotonic | Grappler incorrectly strips non-strictly-monotonic ops from ArgMin/ArgMax | `type:bug`, `awaiting PR merge`; upstream fix PR open |
-| tf_selu_elu_expm1 | Eigen SELU/ELU eager kernels catastrophic cancellation for small negative fp32 | `type:bug`, `awaiting PR merge`; upstream fix PR open |
-| tf_complex_sign_eager | Eager `tf.math.sign` returns 0 for small nonzero complex numbers | `type:bug`, assigned |
-| tf_xla_cpu_nan_minmax | CPU XLA silently drops NaN in `reduce_max`/`reduce_min`/`maximum`/`minimum` | `type:bug`, `awaiting PR merge`; upstream fix PR open |
-| tf_check_numerics_xla_silent | `tf.debugging.check_numerics` silently passes NaN/Inf under XLA `jit_compile=True` | `type:bug`, assigned |
-| tf_xla_cumsum_cumprod_complex_crash | `tf.math.cumsum`/`tf.math.cumprod` crash with `jit_compile=True` on complex dtypes | `type:bug`, assigned |
-| tf_xla_argmin_dead_code_crash | `tf.argmin`/`tf.argmax` crash XLA on empty-dimension tensor dead code | `type:bug`, `comp:xla`, assigned <maintainer> |
-| tf_complex_pow_zero | Eager `tf.pow(0+0j, 0+0j)` returns NaN+NaNj via `exp(b*log(a))`; NumPy/XLA return 1+0j | `type:bug`, confirmed/reproduced by maintainer |
-| tf_resize_bilinear_nan_xla | `tf.image.resize` bilinear under XLA over-propagates NaN to entire channel | `type:bug`, confirmed/reproduced by maintainer |
-| tf_searchsorted_nan_xla | `tf.searchsorted(side='right')` returns wrong position for NaN under XLA | `type:bug`, `comp:xla`; upstream fix PR in progress |
-| tf_eigvalsh_large_xla | `tf.linalg.eigvalsh` returns wrong eigenvalues under XLA for large-magnitude matrices | `type:bug`, confirmed/reproduced by maintainer |
-| tf_segment_min_max_nan_position | `segment_min`/`segment_max` CPU kernel NaN-position-dependent results | `type:bug`, assigned <maintainer> `stat:contribution welcome` |
-| tf_eigvalsh_complex_xla | `tf.linalg.eigvalsh`/`eigh` returns wrong results for complex input under XLA — real eigenvalue buffer reinterpreted as complex | `type:bug`, `comp:xla`; community reproduced |
-| tf_fake_quant_nudge_rounding | `fake_quant_with_min_max_vars` XLA rounding divergence (half-to-even vs half-away-from-zero) | `type:bug`, `comp:xla`, assigned <maintainer> |
-| tf_xla_floordiv_floormod_identity | XLA `floordiv(x,y)*y + floormod(x,y)` violates division identity for float32 at large magnitudes | `type:bug`, assigned <maintainer> |
-| tf_atan2_subnormal_nan | `tf.math.atan2` returns NaN on CPU for subnormal float32 inputs — intermediate underflow | `type:bug`, assigned <maintainer> |
-| tf_rsqrt_subnormal_inf | `tf.math.rsqrt` returns inf for subnormal float32 inputs on CPU and GPU | `type:bug`, `comp:ops`, assigned <maintainer> |
-| tf_gpu_reciprocal_ftz | GPU `x * reciprocal(x)` returns 0 for normal float32 `x=1e38` — GPU FTZ flushes subnormal intermediate | `type:bug`, `comp:ops`, assigned <maintainer> |
-| tf_xla_argmax_nan_nonpow2 | XLA `argmax`/`argmin` returns wrong index when NaN present for non-power-of-2 sizes | `type:bug`, `comp:xla`, assigned <maintainer> |
-| tf_xla_reduce_max_grad_nan | XLA gradient of `reduce_max`/`reduce_min` silently returns 0 instead of NaN for NaN input | `2.21.0`, assigned <maintainer> |
-| tf_xla_where_gradient_dead_branch | XLA gradient of `tf.where` evaluates dead branch, leaking NaN/inf via `NaN*0=NaN` | `type:bug`, `comp:xla`, assigned <maintainer> |
-| tf_grappler_monotonic_saturation | Grappler strips strictly-monotonic ops (tanh, exp, sigmoid) from ArgMax/ArgMin — float32 saturation breaks injectivity | `type:bug`, `comp:ops`, assigned <maintainer> |
-| tf_xla_fused_batchnorm_negative_variance | XLA `FusedBatchNormV3` one-pass variance formula produces negative variance and NaN output | `type:bug`, `comp:xla`, assigned <maintainer> |
-| tf_xlogy_xlog1py_gradient_zero | `tf.math.xlogy` and `tf.math.xlog1py` gradient w.r.t. x incorrectly zero when x=0 — zero-mask from forward applied to backward | `type:bug`, `comp:ops`, assigned <maintainer> |
-| xla/xla_erf_shape_dependent_lowering | `erf` scalar-vs-vector lowering divergence in XLA (reproduces in both TF and JAX) | **Merged** |
-| tf_grappler_mul_zero_nan | Grappler constant folding suppresses NaN for `x * 0` with Inf/NaN inputs | `type:bug`, assigned |
-| tf_grappler_reciprocal_involution | Grappler ArithmeticOptimizer treats `reciprocal(reciprocal(x))` as an exact involution | `type:bug`, assigned |
-| tf_det_gradient_singular_crash | `tf.linalg.det` gradient crashes on singular matrices — backward calls `matrix_inverse` on non-invertible input | `type:bug`, assigned <maintainer> |
-| tf_cumprod_gradient_zero | `tf.math.cumprod` gradient incorrect when input contains zeros — `cumprod/x[i]` produces silent `0/0` | `type:bug`, assigned <maintainer>; upstream fix PR open |
-| tf_bessel_i1_gradient_zero | `tf.math.bessel_i1` gradient at x=0 returns 1.0 instead of correct 0.5 — removable singularity I₁(x)/x mishandled in gradient computation; companion `bessel_j1` is correct | `type:bug`, `comp:core`, `2.21.0`; upstream fix PR awaiting merge |
-| tf_erfinv_eager_precision | `tf.math.erfinv` eager fp32 kernel (Eigen, `cwise_op_erfinv.cc`) loses ~4 digits of precision near `x = ±1` while XLA `jit_compile=True` matches fp64 to ~2e-7 — eager kernel never updated to match modernized XLA `math.cc::Erfinv` | `type:bug`, assigned <maintainer>; upstream fix PR open; developer confirmed |
+| bug_013_grappler_argmin_monotonic | Grappler incorrectly strips non-strictly-monotonic ops from ArgMin/ArgMax | `type:bug`, `awaiting PR merge`; upstream fix PR open |
+| bug_021_selu_elu_expm1 | Eigen SELU/ELU eager kernels catastrophic cancellation for small negative fp32 | `type:bug`, `awaiting PR merge`; upstream fix PR open |
+| bug_005_complex_sign_eager | Eager `tf.math.sign` returns 0 for small nonzero complex numbers | `type:bug`, assigned |
+| bug_024_xla_cpu_nan_minmax | CPU XLA silently drops NaN in `reduce_max`/`reduce_min`/`maximum`/`minimum` | `type:bug`, `awaiting PR merge`; upstream fix PR open |
+| bug_003_check_numerics_xla_silent | `tf.debugging.check_numerics` silently passes NaN/Inf under XLA `jit_compile=True` | `type:bug`, assigned |
+| bug_025_xla_cumsum_cumprod_complex_crash | `tf.math.cumsum`/`tf.math.cumprod` crash with `jit_compile=True` on complex dtypes | `type:bug`, assigned |
+| bug_023_xla_argmin_dead_code_crash | `tf.argmin`/`tf.argmax` crash XLA on empty-dimension tensor dead code | `type:bug`, `comp:xla`, assigned <maintainer> |
+| bug_004_complex_pow_zero | Eager `tf.pow(0+0j, 0+0j)` returns NaN+NaNj via `exp(b*log(a))`; NumPy/XLA return 1+0j | `type:bug`, confirmed/reproduced by maintainer |
+| bug_017_resize_bilinear_nan_xla | `tf.image.resize` bilinear under XLA over-propagates NaN to entire channel | `type:bug`, confirmed/reproduced by maintainer |
+| bug_019_searchsorted_nan_xla | `tf.searchsorted(side='right')` returns wrong position for NaN under XLA | `type:bug`, `comp:xla`; upstream fix PR in progress |
+| bug_009_eigvalsh_large_xla | `tf.linalg.eigvalsh` returns wrong eigenvalues under XLA for large-magnitude matrices | `type:bug`, confirmed/reproduced by maintainer |
+| bug_020_segment_min_max_nan_position | `segment_min`/`segment_max` CPU kernel NaN-position-dependent results | `type:bug`, assigned <maintainer> `stat:contribution welcome` |
+| bug_008_eigvalsh_complex_xla | `tf.linalg.eigvalsh`/`eigh` returns wrong results for complex input under XLA — real eigenvalue buffer reinterpreted as complex | `type:bug`, `comp:xla`; community reproduced |
+| bug_011_fake_quant_nudge_rounding | `fake_quant_with_min_max_vars` XLA rounding divergence (half-to-even vs half-away-from-zero) | `type:bug`, `comp:xla`, assigned <maintainer> |
+| bug_026_xla_floordiv_floormod_identity | XLA `floordiv(x,y)*y + floormod(x,y)` violates division identity for float32 at large magnitudes | `type:bug`, assigned <maintainer> |
+| bug_001_atan2_subnormal_nan | `tf.math.atan2` returns NaN on CPU for subnormal float32 inputs — intermediate underflow | `type:bug`, assigned <maintainer> |
+| bug_018_rsqrt_subnormal_inf | `tf.math.rsqrt` returns inf for subnormal float32 inputs on CPU and GPU | `type:bug`, `comp:ops`, assigned <maintainer> |
+| bug_012_gpu_reciprocal_ftz | GPU `x * reciprocal(x)` returns 0 for normal float32 `x=1e38` — GPU FTZ flushes subnormal intermediate | `type:bug`, `comp:ops`, assigned <maintainer> |
+| bug_022_xla_argmax_nan_nonpow2 | XLA `argmax`/`argmin` returns wrong index when NaN present for non-power-of-2 sizes | `type:bug`, `comp:xla`, assigned <maintainer> |
+| bug_028_xla_reduce_max_grad_nan | XLA gradient of `reduce_max`/`reduce_min` silently returns 0 instead of NaN for NaN input | `2.21.0`, assigned <maintainer> |
+| bug_029_xla_where_gradient_dead_branch | XLA gradient of `tf.where` evaluates dead branch, leaking NaN/inf via `NaN*0=NaN` | `type:bug`, `comp:xla`, assigned <maintainer> |
+| bug_014_grappler_monotonic_saturation | Grappler strips strictly-monotonic ops (tanh, exp, sigmoid) from ArgMax/ArgMin — float32 saturation breaks injectivity | `type:bug`, `comp:ops`, assigned <maintainer> |
+| bug_027_xla_fused_batchnorm_negative_variance | XLA `FusedBatchNormV3` one-pass variance formula produces negative variance and NaN output | `type:bug`, `comp:xla`, assigned <maintainer> |
+| bug_030_xlogy_xlog1py_gradient_zero | `tf.math.xlogy` and `tf.math.xlog1py` gradient w.r.t. x incorrectly zero when x=0 — zero-mask from forward applied to backward | `type:bug`, `comp:ops`, assigned <maintainer> |
+| xla/bug_001_erf_shape_dependent_lowering | `erf` scalar-vs-vector lowering divergence in XLA (reproduces in both TF and JAX) | **Merged** |
+| bug_015_grappler_mul_zero_nan | Grappler constant folding suppresses NaN for `x * 0` with Inf/NaN inputs | `type:bug`, assigned |
+| bug_016_grappler_reciprocal_involution | Grappler ArithmeticOptimizer treats `reciprocal(reciprocal(x))` as an exact involution | `type:bug`, assigned |
+| bug_007_det_gradient_singular_crash | `tf.linalg.det` gradient crashes on singular matrices — backward calls `matrix_inverse` on non-invertible input | `type:bug`, assigned <maintainer> |
+| bug_006_cumprod_gradient_zero | `tf.math.cumprod` gradient incorrect when input contains zeros — `cumprod/x[i]` produces silent `0/0` | `type:bug`, assigned <maintainer>; upstream fix PR open |
+| bug_002_bessel_i1_gradient_zero | `tf.math.bessel_i1` gradient at x=0 returns 1.0 instead of correct 0.5 — removable singularity I₁(x)/x mishandled in gradient computation; companion `bessel_j1` is correct | `type:bug`, `comp:core`, `2.21.0`; upstream fix PR awaiting merge |
+| bug_010_erfinv_eager_precision | `tf.math.erfinv` eager fp32 kernel (Eigen, `cwise_op_erfinv.cc`) loses ~4 digits of precision near `x = ±1` while XLA `jit_compile=True` matches fp64 to ~2e-7 — eager kernel never updated to match modernized XLA `math.cc::Erfinv` | `type:bug`, assigned <maintainer>; upstream fix PR open; developer confirmed |
 
 ## IREE: 7 Counted Bugs
 
@@ -87,10 +87,10 @@ name under `data/confirmed_bugs/tensorflow/`.
 |----|----|----|
 | bug_006_f64_demote_buffer_mismatch | `DemoteF64ToF32Pass` f64/f32 buffer-size mismatch → silent f64 output corruption | Open; labeled `bug`; developer confirmed |
 | bug_002_reduceprod_keepdims0 | ReduceProd keepdims=0 shape/lowering crash | Closed / Fixed (upstream torch-mlir PR merged) |
-| iree_bug_004_sceloss_weight_mean | SoftmaxCrossEntropyLoss with weights divides by N instead of weight sum | Open; labeled `bug`; developer confirmed (fix patch provided) |
+| bug_004_sceloss_weight_mean | SoftmaxCrossEntropyLoss with weights divides by N instead of weight sum | Open; labeled `bug`; developer confirmed (fix patch provided) |
 | bug_005_reverse_sequence | ReverseSequence wrong results when batch_axis=1, time_axis=0 | Closed / Fixed |
-| iree_bug_006_unique_segfault | Unique op torch lowering causes compiler SEGFAULT | Open; labeled `bug`; developer confirmed (fix patch provided) |
-| iree_bug_009_reduce_segfault | ReduceMax/ReduceMin multi-axis + negative index SEGFAULT | Open; labeled `bug`; developer confirmed |
+| bug_008_unique_segfault | Unique op torch lowering causes compiler SEGFAULT | Open; labeled `bug`; developer confirmed (fix patch provided) |
+| bug_009_reduce_segfault | ReduceMax/ReduceMin multi-axis + negative index SEGFAULT | Open; labeled `bug`; developer confirmed |
 | bug_007_pad_wrap_hang | ONNX `Pad` with `mode="wrap"` causes IREE compiler to hang in an infinite loop; other padding modes (constant/reflect/edge) compile successfully — triggered by PyTorch circular padding exported as ONNX `Pad(mode='wrap')` | Open; labeled `bug` |
 
 ## TVM: 17 Counted Bugs
@@ -119,7 +119,7 @@ name under `data/confirmed_bugs/tensorflow/`.
 
 9 bugs were filed/confirmed after the 2026-06-04 freeze. They are **included** in the 86 total above. Stack, count, and the Internal IDs that point into the tables above:
 
-- **TF/XLA (2):** tf_bessel_i1_gradient_zero, tf_erfinv_eager_precision
+- **TF/XLA (2):** bug_002_bessel_i1_gradient_zero, bug_010_erfinv_eager_precision
 - **IREE (1):** bug_007_pad_wrap_hang
 - **TVM (6):** bug_037_relu_sign_nan_propagation, bug_038_batchnorm_legalize_training, bug_040_gridsample_5d_crash, bug_041_layernorm_bias_shape, bug_039_cumsum_exclusive, bug_042_attention_symbolic_batch
 
