@@ -148,7 +148,11 @@ All satisfy the same counting policy (upstream issue submitted + developer-confi
 - IREE: 7 (Silent 3, Crash 4; 2 fixed / 5 open)
 - TVM: 17 (Silent 8, Crash 9; 16 fixed / 1 open)
 
-**Counting policy for "fixed":** A bug is counted as fixed when an upstream fix has been accepted (PR merged or issue closed as fixed). Bugs whose fix PR has been reviewed and approved but not yet merged at submission time are also counted as fixed (status "awaiting PR merge" in the per-row Status column above). This accounts for the TF fixed count (5) being higher than the number of fully-merged PRs visible in the table.
+**Counting policy for "fixed":** A bug is counted as fixed when an upstream fix has been accepted (PR merged or issue closed as fixed). Bugs whose fix PR has been reviewed and approved but not yet merged at submission time are also counted as fixed. This applies across all stacks:
+- **PyTorch (20 fixed):** 14 rows show "Closed / Fixed" or "Closed (PR merged)"; additionally bug_008 ("fix PR open"), bug_010 ("fix commit ready"), bug_023 ("fix PR open") each have an accepted upstream fix awaiting merge, and the three appendix entries (appendix-A/B/C = bug_029/bug_012/bug_031) are all confirmed fixed by upstream maintainers = 14 + 3 + 3 = 20.
+- **TensorFlow (5 fixed):** 1 merged PR + 4 "awaiting PR merge" = 5.
+- **IREE (2 fixed):** 2 rows "Closed / Fixed (upstream torch-mlir PR merged)".
+- **TVM (16 fixed):** 16 rows "Closed / Fixed".
 
 ---
 

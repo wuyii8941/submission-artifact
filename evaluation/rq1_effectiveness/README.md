@@ -4,7 +4,7 @@ RQ1 reports previously unknown bugs found by DeepOpFuzz's two primary
 campaigns (PyTorch/Inductor and TensorFlow/XLA) plus the IREE and TVM
 portability campaigns. There is no driver script here — the evidence is
 the catalog of minimized reproducers under
-`../../data/confirmed_bugs/{pytorch,tensorflow,xla,iree,tvm}/`.
+`../../data/confirmed_bugs/{pytorch,tensorflow,iree,tvm}/`.
 
 | Stack | Counted bugs |
 |---|---|

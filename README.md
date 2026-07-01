@@ -11,13 +11,13 @@ evaluation/         Scripts for the experiments reported in the paper
   rq1_effectiveness/ RQ1 — index pointing to the 86-bug catalog (no script)
   rq2_efficiency/    RQ2 — historical benchmark (5 seeds × 4 modes × 4h)
   rq3_ablation/      RQ3 — reuses rq2_efficiency runs + BugsInDLLs
-    bugsindlls/      External API-level benchmark (Table 4)
+    bugsindlls/      External API-level benchmark (Table V, tab:components)
   rq4_portability/   RQ4 — TensorFlow / IREE / TVM cross-framework
   baselines/         WhiteFox / NNSmith replay helpers for RQ2
 data/
   confirmed_bugs/   Minimized reproducers for the 86 confirmed bugs reported
                     in the paper, grouped by stack (pytorch, tensorflow,
-                    xla, iree, tvm). Upstream issue links are anonymized
+                    iree, tvm). Upstream issue links are anonymized
                     for double-blind review.
 ```
 

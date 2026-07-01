@@ -76,6 +76,13 @@ Inductor scheduling decision that any sufficiently large `cumsum` will
 trigger). bug_051 (a scheduler prologue typo) is a code-level defect not
 triggerable by any test program and is marked unreachable.
 
+Three root causes in `bug_classification.py` (`bug_054`, `bug_065`,
+`bug_066`) have `directory=""` because they are campaign-level root
+causes with no standalone minimized reproducer bundled in this artifact.
+Their triggers were found during the DeepOpFuzz PT campaign and classified
+into the 30-root-cause taxonomy; the attributor skips directory lookup for
+them and relies solely on the `structural_reqs` field when assigning credit.
+
 ## Diagnostic numbers
 
 The reference run produced:

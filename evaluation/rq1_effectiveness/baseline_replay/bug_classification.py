@@ -81,7 +81,7 @@ BUGS: List[BugSpec] = [
             "Lowering/IR", "specific lowering path",
             silent=True,
             structural_reqs=["div", "rounding_mode"]),
-    BugSpec("bug_054", "",
+    BugSpec("bug_054", "",  # campaign root cause; no standalone minimized reproducer bundled
             "Lowering/IR", "specific lowering path",
             silent=True,
             structural_reqs=["lowering"]),
@@ -159,11 +159,11 @@ BUGS: List[BugSpec] = [
             "Triton codegen", "generated-kernel feature",
             silent=False,
             structural_reqs=["cat", "axis_sink"]),
-    BugSpec("bug_065", "",
+    BugSpec("bug_065", "",  # campaign root cause; no standalone minimized reproducer bundled
             "Triton codegen", "generated-kernel feature",
             silent=False,
             structural_reqs=["backward"]),
-    BugSpec("bug_066", "",
+    BugSpec("bug_066", "",  # campaign root cause; no standalone minimized reproducer bundled
             "Triton codegen", "generated-kernel feature",
             silent=False,
             structural_reqs=["context"]),

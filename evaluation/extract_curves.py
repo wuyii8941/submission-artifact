@@ -2,6 +2,23 @@
 """
 Extract time-to-bug and KSS coverage curves from ablation and NNSmith results.
 Produces JSON data suitable for LaTeX/pgfplots figures.
+
+NOTE FOR ARTIFACT REVIEWERS
+----------------------------
+This script reads per-seed run JSON files from the development tree
+(evaluation/results/ablation_5seed_merged.json and
+evaluation/baselines/nnsmith_baseline/nnsmith_baseline_results.json)
+that are not bundled in this artifact to keep the package size manageable.
+
+To regenerate Figure 4 from the pre-computed data that IS bundled:
+  cd evaluation/rq2_efficiency
+  python plot_kd_rootcause.py          # reads data_kd_5seed.csv / data_kd.csv
+
+To regenerate from scratch (requires completing the full RQ2 runs):
+  cd evaluation/rq2_efficiency
+  ./launch_template_runs.sh            # 5 seeds × 4 modes × 4 h
+  python build_timecurve.py            # writes data_rootcause_5seed.csv
+  python plot_kd_rootcause.py          # plots Figure 4
 """
 
 import json
