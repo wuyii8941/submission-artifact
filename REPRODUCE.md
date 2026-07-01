@@ -76,6 +76,16 @@ Random worker is wrapped with restart-on-crash logic
 (`launch_random_restart.sh`) because random sampling occasionally
 triggers CUDA illegal memory access in the generated programs.
 
+**Pre-computed data for Table III columns:**
+
+| Column | Source file |
+|---|---|
+| Bugs reached (2 h / 4 h) | `data_rootcause_5seed.csv` (5-seed mean) |
+| Kernels reached | `results_sat_pilot/*_seed42.json` → `timeseries[-1]["sat"]["1"]` |
+| Kernels stressed | `results_sat_pilot/*_seed42.json` → `timeseries[-1]["sat"]["10"]` |
+
+See `evaluation/rq2_efficiency/README.md` for the full data-source map.
+
 ## RQ3 — Ablation (generation + oracle contribution)
 
 The component ablation (Table IV / `tab:rq3-contribution`) is derived
