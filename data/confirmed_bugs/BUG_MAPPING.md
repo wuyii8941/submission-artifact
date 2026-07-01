@@ -73,7 +73,7 @@ name under `data/confirmed_bugs/tensorflow/`.
 | bug_014_grappler_monotonic_saturation | Grappler strips strictly-monotonic ops (tanh, exp, sigmoid) from ArgMax/ArgMin — float32 saturation breaks injectivity | `type:bug`, `comp:ops`, assigned <maintainer> |
 | bug_027_xla_fused_batchnorm_negative_variance | XLA `FusedBatchNormV3` one-pass variance formula produces negative variance and NaN output | `type:bug`, `comp:xla`, assigned <maintainer> |
 | bug_030_xlogy_xlog1py_gradient_zero | `tf.math.xlogy` and `tf.math.xlog1py` gradient w.r.t. x incorrectly zero when x=0 — zero-mask from forward applied to backward | `type:bug`, `comp:ops`, assigned <maintainer> |
-| xla/bug_001_erf_shape_dependent_lowering | `erf` scalar-vs-vector lowering divergence in XLA (reproduces in both TF and JAX) | **Merged** |
+| bug_001_erf_shape_dependent_lowering | `erf` scalar-vs-vector lowering divergence in XLA (reproduces in both TF and JAX) | **Merged** |
 | bug_015_grappler_mul_zero_nan | Grappler constant folding suppresses NaN for `x * 0` with Inf/NaN inputs | `type:bug`, assigned |
 | bug_016_grappler_reciprocal_involution | Grappler ArithmeticOptimizer treats `reciprocal(reciprocal(x))` as an exact involution | `type:bug`, assigned |
 | bug_007_det_gradient_singular_crash | `tf.linalg.det` gradient crashes on singular matrices — backward calls `matrix_inverse` on non-invertible input | `type:bug`, assigned <maintainer> |

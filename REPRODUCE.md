@@ -80,9 +80,23 @@ triggers CUDA illegal memory access in the generated programs.
 
 | Column | Source file |
 |---|---|
-| Bugs reached (2 h / 4 h) | `data_rootcause_5seed.csv` (5-seed mean) |
+| Bugs reached (2 h / 4 h) — targeted / random / nnsmith / whitefox | `data_rootcause_5seed.csv` (5-seed mean) |
+| Bugs reached (2 h / 4 h) — FreeFuzz | see note below |
 | Kernels reached | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["1"]` |
 | Kernels stressed | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["10"]` |
+
+> **FreeFuzz bugs-reached (2.6 / 2.0):** The raw FreeFuzz runs are in
+> `results_freefuzz_5seed/`; per-seed JSON files track how many programs
+> triggered new kernel fingerprints, not root-cause–matched bug counts.
+> Converting fingerprints to the same root-cause denominator used by the
+> other columns requires the FreeFuzz API-model library to map triggered
+> APIs to the benchmark's 48 ground-truth bug signatures.
+> To reproduce: (1) clone the FreeFuzz repository and set
+> `KERNELFUZZ_FREEFUZZ_SRC` to its source root, (2) run
+> `evaluation/rq2_efficiency/match_freefuzz_rootcause.py` against the
+> per-seed JSONs. Without this library, the raw `unique_bugs` field in
+> the FreeFuzz JSONs reflects fingerprint-level counts, not the
+> root-cause–matched 2.6 / 2.0 values in the paper.
 
 See `evaluation/rq2_efficiency/README.md` for the full data-source map.
 

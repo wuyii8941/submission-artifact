@@ -43,10 +43,18 @@ strategy, a crash-only oracle cannot detect silent correctness bugs.
 
 ### Notes on the targeted-mode numbers
 
-- The "Full system" row in the paper is written as a min--max range
-  (11--15), reflecting the per-seed spread across five fixed seeds (the
-  same seeds used in RQ2). The two snapshots in this file (16 on PT 2.2.0,
-  11 on PT 2.13 nightly) provide complementary evidence spanning versions.
+- The `n_root_causes` values in this JSON are **cross-seed unions** (bugs
+  found by at least one of the five seeds), not per-seed counts. The
+  per-seed counts and their 5-seed spread (min–max 11–15, mean 13.0 at 4 h)
+  are reported in Table III (`tab:budget-split`, RQ2) and live in
+  `../data_rootcause_5seed.csv`. Table IV (`tab:rq3-contribution`) references
+  the same 5-seed range; this file provides two additional cross-seed-union
+  snapshots across PyTorch versions (2.2.0 and nightly) for robustness
+  evidence only.
+- The two union snapshots (16 on PT 2.2.0, 11 on PT 2.13 nightly) are
+  consistent with each other and with the 5-seed spread: a union of 16
+  is expected when individual seeds vary 11–15, and the nightly union of
+  11 reflects an earlier-stage nightly build with fewer triggerable conditions.
 - The `targeted_fwd_only` numbers (16 / 13) show that dropping
   gradient and configuration checks alone does not yet floor detection
   on this benchmark: many bugs are caught by forward-output differential

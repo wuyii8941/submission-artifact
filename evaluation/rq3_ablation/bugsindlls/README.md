@@ -33,9 +33,17 @@ combined with crash-only and full oracles, on a known-bug corpus.
 | API mutation + full oracle | 14/39 (35.9%) | 9/28 (32.1%) |
 | Operation-guided + full oracle | 20/39 (51.3%) | 21/28 (75.0%) |
 
-The PyTorch row "20/39" decomposes into 14 strict-hit matches + 6
+The PyTorch row "20/39" decomposes into 14 strict root-cause matches + 6
 lenient API-family matches; TF "21/28" decomposes into 9 strict + 12
 API-family. The matcher scripts above implement both modes.
+
+> **Reproducibility note:** The strict-match row is reproducible standalone.
+> The lenient API-family match requires the FreeFuzz API-model library
+> (loaded via `KERNELFUZZ_FREEFUZZ_SRC`; see Dependencies below) to determine
+> API family membership. Without it, the verifiable lower bound is
+> PT 14/39 (35.9%) strict and TF 9/28 (32.1%) strict — identical to the
+> "API mutation + full oracle" row above and confirming that operation
+> guidance adds coverage beyond API mutation alone.
 
 ## Reproducing
 
