@@ -22,7 +22,7 @@ csv="$out_dir/repro_results.csv"
 echo "stack,bug,status,exit_code,log" > "$csv"
 
 total=0; ok=0; bug=0; err=0
-for bug_dir in data/confirmed_bugs/*/bug_* data/confirmed_bugs/*/tf_* data/confirmed_bugs/*/iree_* data/confirmed_bugs/xla/xla_*; do
+for bug_dir in data/confirmed_bugs/*/bug_* data/confirmed_bugs/*/tf_* data/confirmed_bugs/*/iree_*; do
     [ -d "$bug_dir" ] || continue
     # Skip _uncounted/ stubs
     case "$bug_dir" in *_uncounted/*) continue ;; esac

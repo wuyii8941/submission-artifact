@@ -8,8 +8,8 @@
 # Picks one .py from the bug directory (prefer minimal_repro.py > repro.py >
 # reproducer.py > reproduce.py > the only .py present), then runs it with:
 #   - the right interpreter, selected from these env vars (set them once):
-#       DOF_PT_PYTHON     # PyTorch nightly venv python   (pytorch/, xla/)
-#       DOF_TF_PYTHON     # TensorFlow nightly venv python (tensorflow/, xla/)
+#       DOF_PT_PYTHON     # PyTorch nightly venv python   (pytorch/)
+#       DOF_TF_PYTHON     # TensorFlow nightly venv python (tensorflow/)
 #       DOF_TVM_HOME      # TVM install root (TVM_HOME/bin/python + lib/)
 #       DOF_IREE_PYTHON   # IREE+ORT venv python          (iree/)
 #     If a variable is unset the dispatcher falls back to `python3` on $PATH.
@@ -75,7 +75,8 @@ case "$stack" in
         export TF_CPP_MIN_LOG_LEVEL=2
         ;;
     xla)
-        # xla/ holds the single TF+JAX 'erf shape-dependent' bug
+        # xla/ no longer exists; the erf shape-dependent bug was moved to
+        # tensorflow/bug_001_erf_shape_dependent_lowering — run that path instead
         PY="${DOF_TF_PYTHON:-python3}"
         export TF_CPP_MIN_LOG_LEVEL=2
         ;;

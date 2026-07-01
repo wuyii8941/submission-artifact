@@ -4,7 +4,7 @@
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-TF_PYTHON="${ARTIFACT_ROOT}/tf_nightly_env/bin/python3"
+TF_PYTHON="${DOF_TF_PYTHON:-${ARTIFACT_ROOT}/.venv-tf/bin/python3}"
 RESULTS="$SCRIPT_DIR/results"
 mkdir -p "$RESULTS"
 
