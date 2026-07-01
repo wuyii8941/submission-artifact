@@ -16,7 +16,7 @@ combined with crash-only and full oracles, on a known-bug corpus.
 | `bug_discovery_enhancement.py` | Kernel-guided mutation strategy (ε-greedy) |
 | `kernel_state_space.py` | API-mode kernel state-space tracker |
 | `ground_truth/bug_dataset_pytorch.csv` | PyTorch BugsInDLLs ground truth (39 reproducible bugs) |
-| `ground_truth/bug_dataset_tensorflow.csv` | TensorFlow BugsInDLLs ground truth (28 reproducible bugs; CSV header shows 29 because one `Reproduced=Yes` entry has Status=Open with no merged fix and is excluded from the benchmark denominator; three other `Reproduced=Yes` entries also have a blank PR# column but are Status=Closed and are counted) |
+| `ground_truth/bug_dataset_tensorflow.csv` | TensorFlow BugsInDLLs ground truth (28 reproducible bugs; CSV has 29 `Reproduced=Yes` rows but the denominator is 28 because one entry — issue 64576, `Status=Open`, no PR — has no accepted fix and is excluded. A second `Status=Open` entry (issue 64256) is retained because it carries an active fix PR (PR 64587) and is therefore considered confirmed-and-fixable; three other `Reproduced=Yes` entries have a blank PR# but are `Status=Closed` and are counted.) |
 | `results/batch_summary_high_risk.json` | Per-API run summary backing the operation-guided row of `tab:components` (paths anonymized) |
 
 > The driver scripts above call into the FreeFuzz API-model library

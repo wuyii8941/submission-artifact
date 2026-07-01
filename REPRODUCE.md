@@ -19,7 +19,7 @@ along with expected runtime on a single NVIDIA T4 / A6000 GPU class.
 
 ## RQ1 — Effectiveness (campaign bugs)
 
-See `data/confirmed_bugs/{pytorch, tensorflow, xla, iree, tvm}/`. Each
+See `data/confirmed_bugs/{pytorch, tensorflow, iree, tvm}/`. Each
 subdirectory holds minimized reproducers for the bugs reported in the
 paper. Each reproducer's header comment lists the exact stack version
 that triggers it.
@@ -82,8 +82,10 @@ triggers CUDA illegal memory access in the generated programs.
 |---|---|
 | Bugs reached (2 h / 4 h) — targeted / random / nnsmith / whitefox | `data_rootcause_5seed.csv` (5-seed mean) |
 | Bugs reached (2 h / 4 h) — FreeFuzz | see note below |
-| Kernels reached | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["1"]` |
-| Kernels stressed | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["10"]` |
+| Kernels reached (2 h) | `results_sat_pilot/*_seed42.json` → first `timeseries` entry where `time_sec ≥ 7200` → `["sat"]["1"]` |
+| Kernels reached (4 h) | `results_sat_pilot/*_seed42.json` → last `timeseries` entry where `time_sec ≤ 14400` → `["sat"]["1"]` |
+| Kernels stressed (2 h) | same entries as above → `["sat"]["10"]` |
+| Kernels stressed (4 h) | same entries as above → `["sat"]["10"]` |
 
 > **FreeFuzz bugs-reached (2.6 / 2.0):** The raw FreeFuzz runs are in
 > `results_freefuzz_5seed/`; per-seed JSON files track how many programs
@@ -100,6 +102,23 @@ triggers CUDA illegal memory access in the generated programs.
 > Without this library, the raw `unique_bugs` field in the FreeFuzz JSONs
 > reflects fingerprint-level counts, not the root-cause–matched
 > 2.6 / 2.0 values in the paper.
+
+> **Checkpoint-timing note:** The `results_sat_pilot/` JSON files record
+> one checkpoint every ~10 s, so the first checkpoint at or after 7200 s
+> and the last at or before 14400 s may land a few seconds off the boundary.
+> Paper values were read from these same checkpoints; expected deviation
+> is ≤ 4 kernels (e.g., FreeFuzz 4 h kernels-reached: artifact 367 vs.
+> paper 366 — the FreeFuzz run finished at t=14339 s, one checkpoint before
+> the 4 h mark, so the paper rounds to the nearest available checkpoint).
+
+> **"8 bugs not reached by any baseline" (evaluation §RQ2):** This count
+> is computed as `targeted_union(4h) − baseline_union(4h)` = 16 − 8 = 8,
+> where `baseline_union` is the union of Random, NNSmith, and WhiteFox
+> (verified in `data_rootcause_union.csv`). FreeFuzz is also a baseline
+> but its root-cause–matched bugs are a subset of Random's coverage:
+> FreeFuzz finds at most 3 bugs (2.6 mean), all of which trigger APIs that
+> Random also exercises across its 8 matched root causes, so including
+> FreeFuzz does not change the union count of 8.
 
 See `evaluation/rq2_efficiency/README.md` for the full data-source map.
 
