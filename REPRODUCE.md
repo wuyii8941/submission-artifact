@@ -92,11 +92,14 @@ triggers CUDA illegal memory access in the generated programs.
 > other columns requires the FreeFuzz API-model library to map triggered
 > APIs to the benchmark's 48 ground-truth bug signatures.
 > To reproduce: (1) clone the FreeFuzz repository and set
-> `KERNELFUZZ_FREEFUZZ_SRC` to its source root, (2) run
-> `evaluation/rq2_efficiency/match_freefuzz_rootcause.py` against the
-> per-seed JSONs. Without this library, the raw `unique_bugs` field in
-> the FreeFuzz JSONs reflects fingerprint-level counts, not the
-> root-cause–matched 2.6 / 2.0 values in the paper.
+> `KERNELFUZZ_FREEFUZZ_SRC` to its source root; (2) use the root-cause
+> matcher bundled in that project (analogous to
+> `evaluation/rq3_ablation/bugsindlls/run_and_match_bugsindlls.py` but
+> targeting the RQ2 benchmark's `ground_truth_bugs.csv` denominator)
+> to map each seed's triggered APIs to the 48 ground-truth bug signatures.
+> Without this library, the raw `unique_bugs` field in the FreeFuzz JSONs
+> reflects fingerprint-level counts, not the root-cause–matched
+> 2.6 / 2.0 values in the paper.
 
 See `evaluation/rq2_efficiency/README.md` for the full data-source map.
 

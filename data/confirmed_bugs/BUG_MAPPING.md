@@ -2,8 +2,23 @@
 
 All 86 bugs counted in the paper, anonymized for double-blind review. Upstream
 issue/PR numbers and tracker URLs are stripped; they will be restored in the
-camera-ready version. The Internal ID column matches the reproducer directory
-under `data/confirmed_bugs/<stack>/`, which is the stable handle for review.
+camera-ready version.
+
+**Directory layout notes:**
+- The Internal ID column matches the reproducer directory under
+  `data/confirmed_bugs/<stack>/`. Four PyTorch table rows use non-directory
+  IDs (`bug_005 variant`, `appendix-A`, `appendix-B`, `appendix-C`); their
+  filesystem counterparts are `bug_006_slice_scatter_backward_variant`,
+  `bug_012_while_loop_backward_stride`, `bug_029_fft_backward_stride_crash`,
+  and `bug_031_vmap_hessian_crash`. The appendix entries are described only in
+  the paper appendix rather than the main body; the total directory count (31,
+  verified by `ls pytorch/ | grep -v _uncounted | wc -l`) therefore matches
+  the claimed bug count.
+- Each stack subdirectory contains an `_uncounted/` folder for candidate
+  bugs that were found during the campaign but ultimately excluded from the
+  paper count (e.g., duplicates, upstream-disputed, or version-specific
+  non-issues). These do **not** contribute to any paper total; running
+  `ls | grep -v _uncounted | wc -l` gives the correct per-stack count.
 
 ## PyTorch/Inductor: 31 Counted Bugs
 
