@@ -133,6 +133,8 @@ All satisfy the same counting policy (upstream issue submitted + developer-confi
 - IREE: 7 (Silent 3, Crash 4; 2 fixed / 5 open)
 - TVM: 17 (Silent 8, Crash 9; 16 fixed / 1 open)
 
+**Counting policy for "fixed":** A bug is counted as fixed when an upstream fix has been accepted (PR merged or issue closed as fixed). Bugs whose fix PR has been reviewed and approved but not yet merged at submission time are also counted as fixed (status "awaiting PR merge" in the per-row Status column above). This accounts for the TF fixed count (5) being higher than the number of fully-merged PRs visible in the table.
+
 ---
 
 ## Reproducer Provenance Audit

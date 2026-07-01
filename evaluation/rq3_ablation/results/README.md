@@ -2,7 +2,7 @@
 
 ## `ablation_rootcause_summary.json`
 
-Source of the four-cell ablation table (paper Table 3 / `tab:rq3-contribution`).
+Source of the four-cell ablation table (paper Table IV / `tab:rq3-contribution`).
 Eight conditions are reported (two PyTorch versions × four ablations):
 
 | Key | Mode | Oracle | Paper row | n_root_causes (220 / nightly) |
@@ -19,7 +19,7 @@ oracle performs.
 
 ### Derivation of the paper's "crash-only" rows
 
-Paper Table 3 reports **0** for both *w/o full oracle* (crash-only) and
+Paper Table IV reports **0** for both *w/o full oracle* (crash-only) and
 *w/o both* (random + crash-only). These do not have dedicated runs in
 `ablation_rootcause_summary.json`, but the numbers follow directly from
 how the historical benchmark is constructed:

@@ -16,11 +16,21 @@ venv/
 results_*/
 !evaluation/rq2_efficiency/results_sat_pilot/
 !evaluation/rq2_efficiency/results_freefuzz_5seed/
+
+# Allow log files inside the above curated result dirs
+evaluation/rq2_efficiency/results_sat_pilot/**
+evaluation/rq2_efficiency/results_freefuzz_5seed/**
+!evaluation/rq2_efficiency/results_sat_pilot/*.json
+!evaluation/rq2_efficiency/results_freefuzz_5seed/*.json
+!evaluation/rq2_efficiency/results_freefuzz_5seed/*.log
+!evaluation/rq2_efficiency/results_freefuzz_5seed/README.md
 triggers/
-*.log
 *.err
 .cache/
 cache/
+*.log
+# Re-allow logs inside curated result dirs (overrides the *.log rule above)
+!evaluation/rq2_efficiency/results_freefuzz_5seed/*.log
 
 # Caches and tmp
 .coverage

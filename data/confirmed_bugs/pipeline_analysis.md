@@ -1,4 +1,6 @@
-# Compiler-Pipeline Analysis of 27 Bugs
+# Compiler-Pipeline Analysis (early-draft reference document)
+
+> **Note:** This document was written during an early draft when 27 PyTorch/Inductor bugs had been confirmed. The final paper reports 31 PyTorch/Inductor bugs. The pipeline-stage mapping below is for reference only; authoritative counts are in `BUG_MAPPING.md` and Table II of the paper (`tab:pipeline-gap`).
 
 ## Official architecture references
 

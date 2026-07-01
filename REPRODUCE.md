@@ -15,7 +15,7 @@ along with expected runtime on a single NVIDIA T4 / A6000 GPU class.
 | Figure 1 (`fig:inductor-regions`) | static (paper) | – |
 | Figure 2 (`fig:behavior-gap`) | static (paper) | – |
 | Figure 3 (`fig:overview`) | static (paper) | – |
-| Figure 4 (`fig:rq2-efficiency`) | `evaluation/rq2_efficiency/run_benchmark.py` + `extract_curves.py` | RQ2 budget |
+| Figure 4 (`fig:rq2-efficiency`) | `evaluation/rq2_efficiency/run_benchmark.py` + `evaluation/extract_curves.py` | RQ2 budget |
 
 ## RQ1 — Effectiveness (campaign bugs)
 
@@ -81,8 +81,8 @@ triggers CUDA illegal memory access in the generated programs.
 | Column | Source file |
 |---|---|
 | Bugs reached (2 h / 4 h) | `data_rootcause_5seed.csv` (5-seed mean) |
-| Kernels reached | `results_sat_pilot/*_seed42.json` → `timeseries[-1]["sat"]["1"]` |
-| Kernels stressed | `results_sat_pilot/*_seed42.json` → `timeseries[-1]["sat"]["10"]` |
+| Kernels reached | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["1"]` |
+| Kernels stressed | `results_sat_pilot/*_seed42.json` → last timeseries entry containing a `sat` field → `["sat"]["10"]` |
 
 See `evaluation/rq2_efficiency/README.md` for the full data-source map.
 
