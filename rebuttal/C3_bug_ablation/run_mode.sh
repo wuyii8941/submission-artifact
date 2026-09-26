@@ -2,6 +2,7 @@
 set -u
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd "$HERE/../.." && pwd)"
+if [ $# -lt 1 ]; then echo "usage: run_mode.sh baseline|nested_whole|per_op [nightly|pt2130|pt2121|pt2110]" >&2; exit 2; fi
 MODE=$1; BUILD=${2:-nightly}
 PY=$(cd "$HERE" && python3 -c "import oracle; print(oracle.PY['$BUILD'])")
 OUT=$HERE/runs/$([ "$BUILD" = nightly ] && echo "$MODE" || echo "$BUILD/$MODE"); mkdir -p "$OUT"

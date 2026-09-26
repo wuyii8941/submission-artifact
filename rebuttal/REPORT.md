@@ -97,3 +97,15 @@ with all three. Main effects: path entries 6.3, conditions 0.5, composition cons
 Confirmed PyTorch bugs, each reproducer run as is, with the whole captured graph compiled, and with each operator
 compiled on its own (`run_mode.sh`, PyTorch 2.11–2.13): 24 of 31 reproduce; of the 21 that run per operator, 11 need
 their operators compiled together.
+
+## Commands
+
+Inductor's C++ steps need a g++ with C++20 support (set `CXX` if the system compiler is older).
+
+| Directory | Command |
+|---|---|
+| `A3_oatest_tvm/` | `./setup_oatest.sh`, then `TVM_HOME=<TVM 292ecfd, CPU build in build/> PY=<python> ./run_formal.sh [OUT]` (default `results/runs`), then `python3 a3_numbers.py OUT/formal_primary` |
+| `B3_filtering/` | `PT_PY=<python with PyTorch 2.2.0> GPUS=0,1 ./run.sh`, then `python3 filtering_audit.py` |
+| `target_extraction/` | `PT_PY=<python with PyTorch 2.13 nightly and expecttest> TF_PY=<python with TensorFlow 2.22 nightly> GPUS=0,1,2 ./build_targets.sh` (output in `build_out/`, or `OUT`) |
+| `C3_bug_ablation/` | with `PT_NIGHTLY`, `PT_2130`, `PT_2121`, `PT_2110` set to the four interpreters and `GPUS=0,1,2,3`: `./run_mode.sh baseline BUILD` for each of `nightly`, `pt2130`, `pt2121`, `pt2110`; `./run_mode.sh nested_whole BUILD` and `./run_mode.sh per_op BUILD` for `nightly`, `pt2121`, `pt2110`; then `python3 attribution.py` |
+| `A1_feedback/`, `C2_coverage/`, `C3_components/` | from run records: `python3 analyze.py RUN_DIR`, `python3 analysis/c2_numbers.py RUN_DIR`, `C3_RUNS=RUN_DIR python3 factorial.py` |
