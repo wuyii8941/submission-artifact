@@ -1,0 +1,184 @@
+{
+ "bugs": 31,
+ "runtime_bugs_reproduced": 24,
+ "composition_dependent": 11,
+ "not_composition_dependent": 10,
+ "not_applicable": 3,
+ "excluded": 7,
+ "per_bug": [
+  {
+   "bug": "bug_014_frac_maxpool_random_compile",
+   "build": "nightly",
+   "per_op_kernels": 3,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_015_index_family_expanded_wrong_result",
+   "build": "nightly",
+   "per_op_kernels": 45,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_017_randperm_index_pattern_crash",
+   "build": "nightly",
+   "per_op_kernels": 1,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_021_complex_abs_transpose_backward",
+   "build": "nightly",
+   "per_op_kernels": 6,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_023_div_trunc_approximate_division",
+   "build": "nightly",
+   "per_op_kernels": 3,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_029_fft_backward_stride_crash",
+   "build": "nightly",
+   "per_op_kernels": 13,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_031_vmap_hessian_crash",
+   "build": "nightly",
+   "per_op_kernels": 0,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_002_adaptive_avgpool_flatten_sum",
+   "build": "pt2121",
+   "per_op_kernels": 25,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_004_cumsum_splitscan_crash",
+   "build": "pt2121",
+   "per_op_kernels": 3,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_007_associative_scan_dynamic",
+   "build": "pt2121",
+   "per_op_kernels": 0,
+   "result": "not applicable (per-operator run failed: AssertionError: output spec mismatch: [<function aot_stage1_)"
+  },
+  {
+   "bug": "bug_008_create_graph_requires_grad_dropped",
+   "build": "pt2121",
+   "per_op_kernels": 2,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_009_inference_mode_batched_matmul",
+   "build": "pt2121",
+   "per_op_kernels": 2,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_010_diagonal_scatter_backward",
+   "build": "pt2121",
+   "per_op_kernels": 59,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_012_while_loop_backward_stride",
+   "build": "pt2121",
+   "per_op_kernels": 1,
+   "result": "not applicable (per-operator run failed: CRASH \u2014 BackendCompilerFailed: backend='per_op_backend' rais)"
+  },
+  {
+   "bug": "bug_016_addcmul_addcdiv_inplace_bwd_crash",
+   "build": "pt2121",
+   "per_op_kernels": 2,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_018_expand_backward_aot_crash",
+   "build": "pt2121",
+   "per_op_kernels": 1,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_019_flip_0d_inductor_crash",
+   "build": "pt2121",
+   "per_op_kernels": 0,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_013_cumprod_splitdim_bwd_crash",
+   "build": "pt2121",
+   "per_op_kernels": 4,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_020_complex_scalar_backward_crash",
+   "build": "pt2121",
+   "per_op_kernels": 0,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_024_foreach_sub_alpha_ignored",
+   "build": "pt2121",
+   "per_op_kernels": 0,
+   "result": "not applicable (per-operator run failed: AssertionError: output spec mismatch: [<function aot_stage1_)"
+  },
+  {
+   "bug": "bug_026_float8_cast_arch_crash",
+   "build": "pt2121",
+   "per_op_kernels": 1,
+   "result": "not composition-dependent"
+  },
+  {
+   "bug": "bug_027_cat_axis_sink_crash",
+   "build": "pt2121",
+   "per_op_kernels": 8,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_003_slice_scatter_backward",
+   "build": "pt2110",
+   "per_op_kernels": 18,
+   "result": "composition-dependent"
+  },
+  {
+   "bug": "bug_005_slice_scatter_backward",
+   "build": "pt2110",
+   "per_op_kernels": 15,
+   "result": "composition-dependent"
+  }
+ ],
+ "excluded_bugs": [
+  {
+   "bug": "bug_001_bf16_cast_elided",
+   "reason": "no canonical reproducer (two scripts, neither named as in tools/run_repro.sh)"
+  },
+  {
+   "bug": "bug_006_slice_scatter_backward_variant",
+   "reason": "the reproducer stops before its check on the builds used here (x1.grad is None)"
+  },
+  {
+   "bug": "bug_011_layer_norm_nestedtensor_guard_crash",
+   "reason": "does not manifest on the builds used here"
+  },
+  {
+   "bug": "bug_028_hardtanh_bf16_boundary_grad",
+   "reason": "needs BF16 kernels; the T4 has none"
+  },
+  {
+   "bug": "bug_022_scheduler_prologue_fusion_typo",
+   "reason": "static source check (not a program to compile)"
+  },
+  {
+   "bug": "bug_025_deterministic_extern_kernel",
+   "reason": "static source check (not a program to compile)"
+  },
+  {
+   "bug": "bug_030_pad_mm_getitem_dead_code",
+   "reason": "static source check (not a program to compile)"
+  }
+ ]
+}

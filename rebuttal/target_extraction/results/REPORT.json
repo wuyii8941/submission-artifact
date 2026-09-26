@@ -1,0 +1,163 @@
+{
+ "pt_families": {
+  "artifact": [
+   "pointwise",
+   "reduction",
+   "persistent_reduction",
+   "cooperative_reduction",
+   "split_scan",
+   "scan",
+   "extern_gemm",
+   "extern_conv"
+  ],
+  "derived": [
+   "cooperative_reduction",
+   "extern_conv",
+   "extern_gemm",
+   "persistent_reduction",
+   "pointwise",
+   "reduction",
+   "scan",
+   "split_scan"
+  ],
+  "same": true,
+  "feature_flag": [
+   "cooperative_reduction"
+  ],
+  "no_generator": [
+   "foreach",
+   "sort"
+  ]
+ },
+ "tracer_views_agree": [
+  708,
+  708
+ ],
+ "pt_target_states": {
+  "derived": 43,
+  "artifact": 46,
+  "derived_subset": true,
+  "artifact_not_derived": [
+   [
+    "pointwise",
+    "bfloat16",
+    "1"
+   ],
+   [
+    "pointwise",
+    "bfloat16",
+    "2-3"
+   ],
+   [
+    "pointwise",
+    "bfloat16",
+    "4+"
+   ]
+  ],
+  "all_missing_not_produced_on_gpu": true
+ },
+ "pt_entries": {
+  "targeted_generator.FAMILY_OPS": {
+   "inside": 44,
+   "total": 44,
+   "outside": []
+  },
+  "generation/ops.FAMILY_OPS": {
+   "inside": 44,
+   "total": 44,
+   "outside": []
+  }
+ },
+ "pt_switch_points": {
+  "persistent_inner": [
+   1024,
+   1025
+  ],
+  "persistent_outer": [
+   8192,
+   8193
+  ],
+  "split_scan_length": [
+   8192,
+   8193
+  ],
+  "split_reduction": [
+   8192,
+   8193
+  ],
+  "split_scan_rows": [
+   79,
+   80
+  ],
+  "cooperative_rows1": [
+   32767,
+   32768
+  ],
+  "cooperative_rows2": [
+   65535,
+   65536
+  ],
+  "cooperative_rows4": [
+   131071,
+   131072
+  ]
+ },
+ "pt_composition": {
+  "fuse": [
+   "pointwise->pointwise",
+   "pointwise->reduction",
+   "reduction->pointwise",
+   "pointwise->scan",
+   "scan->pointwise"
+  ],
+  "separate": [
+   "reduction->reduction",
+   "pointwise->extern_gemm",
+   "extern_gemm->pointwise",
+   "pointwise->extern_conv",
+   "extern_conv->pointwise"
+  ]
+ },
+ "pt_composition_patterns": {
+  "linear_chain": {
+   "derived_as": "direct pointwise\u2192pointwise",
+   "fuses": true
+  },
+  "reduce_after_pw": {
+   "derived_as": "direct pointwise\u2192reduction",
+   "fuses": true
+  },
+  "branch_merge": {
+   "derived_as": "fan-out and merge pointwise+pointwise",
+   "fuses": true
+  },
+  "with_backward": {
+   "derived_as": null
+  },
+  "pool_flatten_reduce": {
+   "derived_as": "nn.functional.adaptive_avg_pool2d (a shape-changing entry) through a view into a reduction",
+   "fuses": true
+  }
+ },
+ "tf_families": {
+  "agree": 95,
+  "total": 124,
+  "differences": {
+   "normalize->activation": 1,
+   "structural->activation": 26,
+   "structural->linalg": 1,
+   "structural->not traced": 1
+  }
+ },
+ "tf_catalog": {
+  "dtype_classes_identical": true,
+  "execution_seams_identical": true,
+  "input_regimes_identical": true
+ },
+ "tf_target_states": {
+  "combinations": 480,
+  "derived": 396,
+  "artifact": 396,
+  "same": true
+ }
+}

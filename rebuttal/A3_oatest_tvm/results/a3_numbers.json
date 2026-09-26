@@ -1,0 +1,235 @@
+{
+ "passes": 35,
+ "tvm_commit": "292ecfd",
+ "seeds": [
+  42,
+  123,
+  456
+ ],
+ "budget_seconds": 7200,
+ "targets": [
+  "AllocateWorkspace",
+  "AnnotateTIROpPattern",
+  "AttachGlobalSymbol",
+  "BundleModelParams",
+  "CanonicalizeBindings",
+  "ComputePrimValue",
+  "ConvertToDataflow",
+  "DeadCodeElimination",
+  "DecomposeOpsForInference",
+  "DecomposeOpsForTraining",
+  "EliminateCommonSubexpr",
+  "ExpandMatmulOfSum",
+  "ExpandTupleArguments",
+  "FoldConstant",
+  "FuseOps",
+  "FuseTIR",
+  "InlinePrivateFunctions",
+  "KillAfterLastUse",
+  "LambdaLift",
+  "LazyGetInput",
+  "LazySetOutput",
+  "LegalizeOps",
+  "LiftTransformParams",
+  "LowerAllocTensor",
+  "MergeCompositeFunctions",
+  "RealizeVDevice",
+  "RemoveUnusedParameters",
+  "ReorderPermuteDimsAfterConcat",
+  "ReorderTakeAfterMatmul",
+  "RewriteCUDAGraph",
+  "RewriteDataflowReshape",
+  "StaticPlanBlockMemory",
+  "ToMixedPrecision",
+  "TopologicalSort",
+  "VMBuiltinLower"
+ ],
+ "passes_hit": {
+  "pattern_uniform": {
+   "ge1": {
+    "mean": 31.3,
+    "sd": 0.6,
+    "per_seed": [
+     31,
+     31,
+     32
+    ]
+   },
+   "ge10": {
+    "mean": 24.3,
+    "sd": 0.6,
+    "per_seed": [
+     25,
+     24,
+     24
+    ]
+   }
+  },
+  "pass_uniform": {
+   "ge1": {
+    "mean": 34,
+    "sd": 0.0,
+    "per_seed": [
+     34,
+     34,
+     34
+    ]
+   },
+   "ge10": {
+    "mean": 32,
+    "sd": 0.0,
+    "per_seed": [
+     32,
+     32,
+     32
+    ]
+   }
+  },
+  "hit_feedback": {
+   "ge1": {
+    "mean": 35,
+    "sd": 0.0,
+    "per_seed": [
+     35,
+     35,
+     35
+    ]
+   },
+   "ge10": {
+    "mean": 33,
+    "sd": 0.0,
+    "per_seed": [
+     33,
+     33,
+     33
+    ]
+   }
+  }
+ },
+ "passes_hit_equal_attempts": [
+  {
+   "seed": 42,
+   "attempts": 8337,
+   "pattern_uniform": {
+    "ge1": 31,
+    "ge10": 25
+   },
+   "pass_uniform": {
+    "ge1": 34,
+    "ge10": 32
+   },
+   "hit_feedback": {
+    "ge1": 35,
+    "ge10": 33
+   }
+  },
+  {
+   "seed": 123,
+   "attempts": 8102,
+   "pattern_uniform": {
+    "ge1": 31,
+    "ge10": 24
+   },
+   "pass_uniform": {
+    "ge1": 34,
+    "ge10": 32
+   },
+   "hit_feedback": {
+    "ge1": 35,
+    "ge10": 33
+   }
+  },
+  {
+   "seed": 456,
+   "attempts": 8011,
+   "pattern_uniform": {
+    "ge1": 32,
+    "ge10": 24
+   },
+   "pass_uniform": {
+    "ge1": 34,
+    "ge10": 32
+   },
+   "hit_feedback": {
+    "ge1": 35,
+    "ge10": 33
+   }
+  }
+ ],
+ "hit_feedback_vs_pattern_uniform": [
+  {
+   "seed": 42,
+   "covers_all_ge1": true,
+   "extra_ge1": 4,
+   "covers_all_ge10": true,
+   "extra_ge10": 8
+  },
+  {
+   "seed": 123,
+   "covers_all_ge1": true,
+   "extra_ge1": 4,
+   "covers_all_ge10": true,
+   "extra_ge10": 9
+  },
+  {
+   "seed": 456,
+   "covers_all_ge1": true,
+   "extra_ge1": 3,
+   "covers_all_ge10": true,
+   "extra_ge10": 9
+  }
+ ],
+ "hard_passes_hits_sum_of_seeds": {
+  "ComputePrimValue": {
+   "pattern_uniform": 0,
+   "pass_uniform": 18,
+   "hit_feedback": 44
+  },
+  "RealizeVDevice": {
+   "pattern_uniform": 0,
+   "pass_uniform": 1,
+   "hit_feedback": 12
+  },
+  "MergeCompositeFunctions": {
+   "pattern_uniform": 2,
+   "pass_uniform": 6,
+   "hit_feedback": 17
+  }
+ },
+ "RealizeVDevice": {
+  "pattern_uniform": {
+   "selected": 170,
+   "programs_generated": 31,
+   "rewritten_declares_vdevice": 0,
+   "rewritten_no_vdevice": 0,
+   "not_rewritten_declares_vdevice": 0,
+   "not_rewritten_no_vdevice": 31
+  },
+  "pass_uniform": {
+   "selected": 679,
+   "programs_generated": 102,
+   "rewritten_declares_vdevice": 1,
+   "rewritten_no_vdevice": 0,
+   "not_rewritten_declares_vdevice": 0,
+   "not_rewritten_no_vdevice": 101
+  },
+  "hit_feedback": {
+   "selected": 6540,
+   "programs_generated": 1045,
+   "rewritten_declares_vdevice": 12,
+   "rewritten_no_vdevice": 0,
+   "not_rewritten_declares_vdevice": 0,
+   "not_rewritten_no_vdevice": 1033
+  }
+ },
+ "pattern_uniform_budget": {
+  "attempts": 25088,
+  "LegalizeOps_attempts": 11616,
+  "LegalizeOps_share": 0.463,
+  "passes_never_rewritten": [
+   "ComputePrimValue",
+   "RealizeVDevice",
+   "VMBuiltinLower"
+  ]
+ }
+}

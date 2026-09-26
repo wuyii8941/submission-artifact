@@ -1,0 +1,451 @@
+{
+ "as_of": "2026-09-24",
+ "confirmed": 86,
+ "fixed": {
+  "PyTorch": 23,
+  "TF/XLA": 9,
+  "TVM": 16,
+  "IREE": 2,
+  "total": 50
+ },
+ "fixed_at_submission": {
+  "PyTorch": 20,
+  "TF/XLA": 5,
+  "TVM": 16,
+  "IREE": 2,
+  "total": 43
+ },
+ "policy": "PyTorch, TVM and IREE: the upstream issue is closed as completed. XLA: the pull request is merged. TensorFlow: the issue is closed by the repository commit bot; closures by the stale bot are not counted.",
+ "bugs": [
+  {
+   "stack": "iree",
+   "bug": "bug_001_reduceprod_keepdims0",
+   "fixed": true
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_002_sceloss_weight_mean",
+   "fixed": false
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_003_reverse_sequence",
+   "fixed": true
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_004_f64_demote_buffer_mismatch",
+   "fixed": false
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_005_pad_wrap_hang",
+   "fixed": false
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_006_unique_segfault",
+   "fixed": false
+  },
+  {
+   "stack": "iree",
+   "bug": "bug_007_reduce_segfault",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_001_bf16_cast_elided",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_002_adaptive_avgpool_flatten_sum",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_003_slice_scatter_backward",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_004_cumsum_splitscan_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_005_slice_scatter_backward",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_006_slice_scatter_backward_variant",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_007_associative_scan_dynamic",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_008_create_graph_requires_grad_dropped",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_009_inference_mode_batched_matmul",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_010_diagonal_scatter_backward",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_011_layer_norm_nestedtensor_guard_crash",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_012_while_loop_backward_stride",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_013_cumprod_splitdim_bwd_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_014_frac_maxpool_random_compile",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_015_index_family_expanded_wrong_result",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_016_addcmul_addcdiv_inplace_bwd_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_017_randperm_index_pattern_crash",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_018_expand_backward_aot_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_019_flip_0d_inductor_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_020_complex_scalar_backward_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_021_complex_abs_transpose_backward",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_022_scheduler_prologue_fusion_typo",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_023_div_trunc_approximate_division",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_024_foreach_sub_alpha_ignored",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_025_deterministic_extern_kernel",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_026_float8_cast_arch_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_027_cat_axis_sink_crash",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_028_hardtanh_bf16_boundary_grad",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_029_fft_backward_stride_crash",
+   "fixed": false
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_030_pad_mm_getitem_dead_code",
+   "fixed": true
+  },
+  {
+   "stack": "pytorch",
+   "bug": "bug_031_vmap_hessian_crash",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_001_atan2_subnormal_nan",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_001_erf_shape_dependent_lowering",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_002_bessel_i1_gradient_zero",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_003_check_numerics_xla_silent",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_004_complex_pow_zero",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_005_complex_sign_eager",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_006_cumprod_gradient_zero",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_007_det_gradient_singular_crash",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_008_eigvalsh_complex_xla",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_009_eigvalsh_large_xla",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_010_erfinv_eager_precision",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_011_fake_quant_nudge_rounding",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_012_gpu_reciprocal_ftz",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_013_grappler_argmin_monotonic",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_014_grappler_monotonic_saturation",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_015_grappler_mul_zero_nan",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_016_grappler_reciprocal_involution",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_017_resize_bilinear_nan_xla",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_018_rsqrt_subnormal_inf",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_019_searchsorted_nan_xla",
+   "fixed": true
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_020_segment_min_max_nan_position",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_021_selu_elu_expm1",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_022_xla_argmax_nan_nonpow2",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_023_xla_argmin_dead_code_crash",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_024_xla_cpu_nan_minmax",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_025_xla_cumsum_cumprod_complex_crash",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_026_xla_floordiv_floormod_identity",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_027_xla_fused_batchnorm_negative_variance",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_028_xla_reduce_max_grad_nan",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_029_xla_where_gradient_dead_branch",
+   "fixed": false
+  },
+  {
+   "stack": "tensorflow",
+   "bug": "bug_030_xlogy_xlog1py_gradient_zero",
+   "fixed": false
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_001_gemv_keyerror",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_002_softmax_opset11",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_003_scatter_reduction",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_004_gather_negative_idx",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_005_cumsum_axis",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_006_scatter_elements_cuda",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_007_isnan_isinf_not_implemented",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_008_topk_crash",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_009_reorder_permute_concat_neg_axis",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_010_dataflow_inplace_liveness",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_011_nan_propagation",
+   "fixed": false
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_012_relu_sign_nan_propagation",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_013_batchnorm_legalize_training",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_014_cumsum_exclusive",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_015_gridsample_5d_crash",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_016_layernorm_bias_shape",
+   "fixed": true
+  },
+  {
+   "stack": "tvm",
+   "bug": "bug_017_attention_symbolic_batch",
+   "fixed": true
+  }
+ ]
+}

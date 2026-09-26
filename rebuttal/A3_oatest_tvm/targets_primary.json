@@ -1,0 +1,107 @@
+{
+ "rule": "generatable and confirmable in calibration",
+ "targets": [
+  "AllocateWorkspace",
+  "AnnotateTIROpPattern",
+  "AttachGlobalSymbol",
+  "BundleModelParams",
+  "CanonicalizeBindings",
+  "ComputePrimValue",
+  "ConvertToDataflow",
+  "DeadCodeElimination",
+  "DecomposeOpsForInference",
+  "DecomposeOpsForTraining",
+  "EliminateCommonSubexpr",
+  "ExpandMatmulOfSum",
+  "ExpandTupleArguments",
+  "FoldConstant",
+  "FuseOps",
+  "FuseTIR",
+  "InlinePrivateFunctions",
+  "KillAfterLastUse",
+  "LambdaLift",
+  "LazyGetInput",
+  "LazySetOutput",
+  "LegalizeOps",
+  "LiftTransformParams",
+  "LowerAllocTensor",
+  "MergeCompositeFunctions",
+  "RealizeVDevice",
+  "RemoveUnusedParameters",
+  "ReorderPermuteDimsAfterConcat",
+  "ReorderTakeAfterMatmul",
+  "RewriteCUDAGraph",
+  "RewriteDataflowReshape",
+  "StaticPlanBlockMemory",
+  "ToMixedPrecision",
+  "TopologicalSort",
+  "VMBuiltinLower"
+ ],
+ "name": "primary",
+ "calibration": "results/calibration_seed2024.json",
+ "seed": 2024,
+ "min_attempts": 300,
+ "bases_per_donor": 10,
+ "excluded": {
+  "AdjustMatmulOrder": {
+   "patterns": 18,
+   "attempts": 306,
+   "generated": 0,
+   "confirmed": 0,
+   "status": {
+    "invalid": 261,
+    "no_connection": 45
+   }
+  },
+  "CombineParallelMatmul": {
+   "patterns": 18,
+   "attempts": 306,
+   "generated": 158,
+   "confirmed": 0,
+   "status": {
+    "generated": 158,
+    "invalid": 11,
+    "no_connection": 137
+   }
+  },
+  "FewShotTuning": {
+   "patterns": 4,
+   "attempts": 300,
+   "generated": 0,
+   "confirmed": 0,
+   "status": {
+    "no_connection": 300
+   }
+  },
+  "Normalize": {
+   "patterns": 42,
+   "attempts": 420,
+   "generated": 223,
+   "confirmed": 0,
+   "status": {
+    "exception": 1,
+    "generated": 223,
+    "invalid": 33,
+    "no_connection": 163
+   }
+  },
+  "RemovePurityChecking": {
+   "patterns": 1,
+   "attempts": 300,
+   "generated": 0,
+   "confirmed": 0,
+   "status": {
+    "no_connection": 300
+   }
+  },
+  "RemoveUnusedOutputs": {
+   "patterns": 3,
+   "attempts": 300,
+   "generated": 0,
+   "confirmed": 0,
+   "status": {
+    "no_connection": 300
+   }
+  }
+ }
+}

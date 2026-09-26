@@ -1,0 +1,758 @@
+{
+ "deepopfuzz_seed42": {
+  "4010": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 154,
+    "num_statements": 279,
+    "percent_covered": 49.62406015037594,
+    "percent_covered_display": "50",
+    "missing_lines": 125,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 44,
+    "missing_branches": 76
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1780,
+    "num_statements": 3377,
+    "percent_covered": 49.32626463441573,
+    "percent_covered_display": "49",
+    "missing_lines": 1597,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 193,
+    "covered_branches": 453,
+    "missing_branches": 697
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_boundary_seed42": {
+  "4010": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 174,
+    "num_statements": 279,
+    "percent_covered": 57.142857142857146,
+    "percent_covered_display": "57",
+    "missing_lines": 105,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 54,
+    "missing_branches": 66
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1763,
+    "num_statements": 3377,
+    "percent_covered": 48.72984316324276,
+    "percent_covered_display": "49",
+    "missing_lines": 1614,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 189,
+    "covered_branches": 443,
+    "missing_branches": 707
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_seed42": {
+  "4010": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 169,
+    "num_statements": 279,
+    "percent_covered": 54.88721804511278,
+    "percent_covered_display": "55",
+    "missing_lines": 110,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 32,
+    "covered_branches": 50,
+    "missing_branches": 70
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1704,
+    "num_statements": 3377,
+    "percent_covered": 46.98475811795891,
+    "percent_covered_display": "47",
+    "missing_lines": 1673,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 199,
+    "covered_branches": 423,
+    "missing_branches": 727
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "deepopfuzz_seed123": {
+  "4065": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 154,
+    "num_statements": 279,
+    "percent_covered": 49.62406015037594,
+    "percent_covered_display": "50",
+    "missing_lines": 125,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 44,
+    "missing_branches": 76
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1780,
+    "num_statements": 3377,
+    "percent_covered": 49.32626463441573,
+    "percent_covered_display": "49",
+    "missing_lines": 1597,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 193,
+    "covered_branches": 453,
+    "missing_branches": 697
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_boundary_seed123": {
+  "4065": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 174,
+    "num_statements": 279,
+    "percent_covered": 57.142857142857146,
+    "percent_covered_display": "57",
+    "missing_lines": 105,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 54,
+    "missing_branches": 66
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1762,
+    "num_statements": 3377,
+    "percent_covered": 48.70775347912525,
+    "percent_covered_display": "49",
+    "missing_lines": 1615,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 189,
+    "covered_branches": 443,
+    "missing_branches": 707
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_seed123": {
+  "4065": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 169,
+    "num_statements": 279,
+    "percent_covered": 54.88721804511278,
+    "percent_covered_display": "55",
+    "missing_lines": 110,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 32,
+    "covered_branches": 50,
+    "missing_branches": 70
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1708,
+    "num_statements": 3377,
+    "percent_covered": 47.11729622266402,
+    "percent_covered_display": "47",
+    "missing_lines": 1669,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 197,
+    "covered_branches": 425,
+    "missing_branches": 725
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "deepopfuzz_seed456": {
+  "4162": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 154,
+    "num_statements": 279,
+    "percent_covered": 49.62406015037594,
+    "percent_covered_display": "50",
+    "missing_lines": 125,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 44,
+    "missing_branches": 76
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1780,
+    "num_statements": 3377,
+    "percent_covered": 49.32626463441573,
+    "percent_covered_display": "49",
+    "missing_lines": 1597,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 193,
+    "covered_branches": 453,
+    "missing_branches": 697
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_boundary_seed456": {
+  "4162": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 174,
+    "num_statements": 279,
+    "percent_covered": 57.142857142857146,
+    "percent_covered_display": "57",
+    "missing_lines": 105,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 30,
+    "covered_branches": 54,
+    "missing_branches": 66
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1769,
+    "num_statements": 3377,
+    "percent_covered": 48.9065606361829,
+    "percent_covered_display": "49",
+    "missing_lines": 1608,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 187,
+    "covered_branches": 445,
+    "missing_branches": 705
+   },
+   "torch/_inductor/codegen/triton_split_scan.py": {
+    "covered_lines": 78,
+    "num_statements": 81,
+    "percent_covered": 95.40229885057471,
+    "percent_covered_display": "95",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "num_branches": 6,
+    "num_partial_branches": 1,
+    "covered_branches": 5,
+    "missing_branches": 1
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ },
+ "random_seed456": {
+  "4162": {
+   "torch/_inductor/choices.py": {
+    "covered_lines": 172,
+    "num_statements": 279,
+    "percent_covered": 56.14035087719298,
+    "percent_covered_display": "56",
+    "missing_lines": 107,
+    "excluded_lines": 0,
+    "num_branches": 120,
+    "num_partial_branches": 32,
+    "covered_branches": 52,
+    "missing_branches": 68
+   },
+   "torch/_inductor/codegen/triton.py": {
+    "covered_lines": 1706,
+    "num_statements": 3377,
+    "percent_covered": 47.028937486193946,
+    "percent_covered_display": "47",
+    "missing_lines": 1671,
+    "excluded_lines": 0,
+    "num_branches": 1150,
+    "num_partial_branches": 199,
+    "covered_branches": 423,
+    "missing_branches": 727
+   },
+   "torch/_inductor/kernel/bmm.py": {
+    "covered_lines": 29,
+    "num_statements": 141,
+    "percent_covered": 16.216216216216218,
+    "percent_covered_display": "16",
+    "missing_lines": 112,
+    "excluded_lines": 0,
+    "num_branches": 44,
+    "num_partial_branches": 1,
+    "covered_branches": 1,
+    "missing_branches": 43
+   },
+   "torch/_inductor/kernel/conv.py": {
+    "covered_lines": 112,
+    "num_statements": 299,
+    "percent_covered": 32.37597911227154,
+    "percent_covered_display": "32",
+    "missing_lines": 187,
+    "excluded_lines": 0,
+    "num_branches": 84,
+    "num_partial_branches": 12,
+    "covered_branches": 12,
+    "missing_branches": 72
+   },
+   "torch/_inductor/kernel/mm.py": {
+    "covered_lines": 129,
+    "num_statements": 481,
+    "percent_covered": 22.41112828438949,
+    "percent_covered_display": "22",
+    "missing_lines": 352,
+    "excluded_lines": 0,
+    "num_branches": 166,
+    "num_partial_branches": 16,
+    "covered_branches": 16,
+    "missing_branches": 150
+   },
+   "torch/_inductor/select_algorithm.py": {
+    "covered_lines": 469,
+    "num_statements": 2408,
+    "percent_covered": 15.630885122410547,
+    "percent_covered_display": "16",
+    "missing_lines": 1939,
+    "excluded_lines": 0,
+    "num_branches": 778,
+    "num_partial_branches": 17,
+    "covered_branches": 29,
+    "missing_branches": 749
+   }
+  }
+ }
+}

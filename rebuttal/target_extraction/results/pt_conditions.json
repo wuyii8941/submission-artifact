@@ -1,0 +1,58 @@
+{
+ "persistent_inner": {
+  "description": "persistent -> non-persistent reduction, inner, rows=128 (no split)",
+  "switch": [
+   1024,
+   1025
+  ]
+ },
+ "persistent_outer": {
+  "description": "persistent -> non-persistent reduction, outer, cols=64",
+  "switch": [
+   8192,
+   8193
+  ]
+ },
+ "split_scan_length": {
+  "description": "scan -> split scan, length, rows=4",
+  "switch": [
+   8192,
+   8193
+  ]
+ },
+ "split_reduction": {
+  "description": "single reduction -> split reduction (two kernels), inner, rows=1",
+  "switch": [
+   8192,
+   8193
+  ]
+ },
+ "split_scan_rows": {
+  "description": "split scan -> scan, rows, length=16384",
+  "switch": [
+   79,
+   80
+  ]
+ },
+ "cooperative_rows1": {
+  "description": "reduction -> cooperative reduction, length, rows=1, feature flag on",
+  "switch": [
+   32767,
+   32768
+  ]
+ },
+ "cooperative_rows2": {
+  "description": "reduction -> cooperative reduction, length, rows=2, feature flag on",
+  "switch": [
+   65535,
+   65536
+  ]
+ },
+ "cooperative_rows4": {
+  "description": "reduction -> cooperative reduction, length, rows=4, feature flag on",
+  "switch": [
+   131071,
+   131072
+  ]
+ }
+}

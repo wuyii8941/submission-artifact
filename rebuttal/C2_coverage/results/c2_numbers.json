@@ -1,0 +1,176 @@
+{
+ "arms": [
+  "deepopfuzz",
+  "random_boundary",
+  "random"
+ ],
+ "seeds": [
+  42,
+  123,
+  456
+ ],
+ "targets": 43,
+ "runs": [
+  {
+   "seed": 42,
+   "arm": "deepopfuzz",
+   "programs": 8186,
+   "targets_reached": 43,
+   "programs_at_switch_point": 1773,
+   "share_at_switch_point": 0.21659,
+   "switch_points": 9,
+   "switch_points_ge10_programs": 9,
+   "coverage_programs": 4010,
+   "selection_code_branches": [
+    560,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.238501
+  },
+  {
+   "seed": 42,
+   "arm": "random_boundary",
+   "programs": 4218,
+   "targets_reached": 39,
+   "programs_at_switch_point": 127,
+   "share_at_switch_point": 0.03011,
+   "switch_points": 11,
+   "switch_points_ge10_programs": 3,
+   "coverage_programs": 4010,
+   "selection_code_branches": [
+    560,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.238501
+  },
+  {
+   "seed": 42,
+   "arm": "random",
+   "programs": 4010,
+   "targets_reached": 30,
+   "programs_at_switch_point": 4,
+   "share_at_switch_point": 0.001,
+   "switch_points": 2,
+   "switch_points_ge10_programs": 0,
+   "coverage_programs": 4010,
+   "selection_code_branches": [
+    531,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.22615
+  },
+  {
+   "seed": 123,
+   "arm": "deepopfuzz",
+   "programs": 8009,
+   "targets_reached": 43,
+   "programs_at_switch_point": 1795,
+   "share_at_switch_point": 0.22412,
+   "switch_points": 9,
+   "switch_points_ge10_programs": 9,
+   "coverage_programs": 4065,
+   "selection_code_branches": [
+    560,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.238501
+  },
+  {
+   "seed": 123,
+   "arm": "random_boundary",
+   "programs": 4340,
+   "targets_reached": 37,
+   "programs_at_switch_point": 115,
+   "share_at_switch_point": 0.0265,
+   "switch_points": 9,
+   "switch_points_ge10_programs": 3,
+   "coverage_programs": 4065,
+   "selection_code_branches": [
+    560,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.238501
+  },
+  {
+   "seed": 123,
+   "arm": "random",
+   "programs": 4065,
+   "targets_reached": 31,
+   "programs_at_switch_point": 2,
+   "share_at_switch_point": 0.00049,
+   "switch_points": 1,
+   "switch_points_ge10_programs": 0,
+   "coverage_programs": 4065,
+   "selection_code_branches": [
+    533,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.227002
+  },
+  {
+   "seed": 456,
+   "arm": "deepopfuzz",
+   "programs": 8126,
+   "targets_reached": 43,
+   "programs_at_switch_point": 1788,
+   "share_at_switch_point": 0.22003,
+   "switch_points": 9,
+   "switch_points_ge10_programs": 9,
+   "coverage_programs": 4162,
+   "selection_code_branches": [
+    560,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.238501
+  },
+  {
+   "seed": 456,
+   "arm": "random_boundary",
+   "programs": 4364,
+   "targets_reached": 38,
+   "programs_at_switch_point": 108,
+   "share_at_switch_point": 0.02475,
+   "switch_points": 11,
+   "switch_points_ge10_programs": 3,
+   "coverage_programs": 4162,
+   "selection_code_branches": [
+    562,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.239353
+  },
+  {
+   "seed": 456,
+   "arm": "random",
+   "programs": 4162,
+   "targets_reached": 31,
+   "programs_at_switch_point": 0,
+   "share_at_switch_point": 0.0,
+   "switch_points": 0,
+   "switch_points_ge10_programs": 0,
+   "coverage_programs": 4162,
+   "selection_code_branches": [
+    533,
+    2348
+   ],
+   "selection_code_branch_coverage": 0.227002
+  }
+ ],
+ "mean": {
+  "deepopfuzz": {
+   "targets_reached_share": 1.0,
+   "share_at_switch_point": 0.22025,
+   "selection_code_branch_coverage": 0.238501
+  },
+  "random_boundary": {
+   "targets_reached_share": 0.8837,
+   "share_at_switch_point": 0.02712,
+   "selection_code_branch_coverage": 0.238785
+  },
+  "random": {
+   "targets_reached_share": 0.7132,
+   "share_at_switch_point": 0.0005,
+   "selection_code_branch_coverage": 0.226718
+  }
+ }
+}

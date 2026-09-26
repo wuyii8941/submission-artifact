@@ -1,0 +1,89 @@
+{
+ "pytorch": "2.2.0",
+ "seeds": [
+  42,
+  123,
+  456
+ ],
+ "budget_seconds": 14400,
+ "classifier": "evaluation/rq2_efficiency/plot_kd_rootcause.py",
+ "runs": [
+  {
+   "generator": "DeepOpFuzz",
+   "seed": 42,
+   "attempts": 22436,
+   "candidate_failures": 1324,
+   "deduplicated_candidates": 527,
+   "bug_labeled": 164,
+   "fp_labeled": 363
+  },
+  {
+   "generator": "DeepOpFuzz",
+   "seed": 123,
+   "attempts": 13444,
+   "candidate_failures": 834,
+   "deduplicated_candidates": 364,
+   "bug_labeled": 106,
+   "fp_labeled": 258
+  },
+  {
+   "generator": "DeepOpFuzz",
+   "seed": 456,
+   "attempts": 13620,
+   "candidate_failures": 803,
+   "deduplicated_candidates": 312,
+   "bug_labeled": 92,
+   "fp_labeled": 220
+  },
+  {
+   "generator": "Random",
+   "seed": 42,
+   "attempts": 18437,
+   "candidate_failures": 3155,
+   "deduplicated_candidates": 2327,
+   "bug_labeled": 189,
+   "fp_labeled": 2138
+  },
+  {
+   "generator": "Random",
+   "seed": 123,
+   "attempts": 13385,
+   "candidate_failures": 2297,
+   "deduplicated_candidates": 1751,
+   "bug_labeled": 137,
+   "fp_labeled": 1614
+  },
+  {
+   "generator": "Random",
+   "seed": 456,
+   "attempts": 10777,
+   "candidate_failures": 1858,
+   "deduplicated_candidates": 1428,
+   "bug_labeled": 113,
+   "fp_labeled": 1315
+  }
+ ],
+ "mean_over_seeds": {
+  "DeepOpFuzz": {
+   "attempts": 16500.0,
+   "candidate_failures": 987.0,
+   "deduplicated_candidates": 401.0,
+   "bug_labeled": 120.7,
+   "fp_labeled": 280.3,
+   "filtered_as_false_positives": 0.699
+  },
+  "Random": {
+   "attempts": 14199.7,
+   "candidate_failures": 2436.7,
+   "deduplicated_candidates": 1835.3,
+   "bug_labeled": 146.3,
+   "fp_labeled": 1689.0,
+   "filtered_as_false_positives": 0.92
+  }
+ },
+ "deepopfuzz_false_positives": {
+  "total": 841,
+  "fp16_bf16_numerical": 790,
+  "share": 0.939
+ }
+}

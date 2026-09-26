@@ -1,0 +1,522 @@
+{
+ "criteria": {
+  "condition": "the failure requires a specific shape (size threshold, rank, 0-d or empty dimension), dtype (bf16, fp8, complex) or layout (stride-0/expanded, transposed), and a regular value does not fail. Runtime tensor values (NaN, zero, subnormal, large magnitude) are not conditions (§III-A), and neither are execution modes or API arguments.",
+  "backward": "the forward result is correct, and the failure shows only in gradients, gradient metadata or a crash during the backward pass."
+ },
+ "totals": {
+  "bugs": 62,
+  "condition": 18,
+  "backward": 19,
+  "both": 4
+ },
+ "pytorch": {
+  "bugs": 31,
+  "condition": 12,
+  "backward": 13,
+  "both": 4
+ },
+ "tensorflow": {
+  "bugs": 31,
+  "condition": 6,
+  "backward": 6,
+  "both": 0
+ },
+ "bugs": [
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_001_bf16_cast_elided",
+   "failure": "bf16 round-trip cast elided during fusion",
+   "condition": true,
+   "backward": false,
+   "basis": "bf16"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_002_adaptive_avgpool_flatten_sum",
+   "failure": "fused pool-flatten-sum wrong for later batches",
+   "condition": true,
+   "backward": false,
+   "basis": "channel count 65 (64 is correct)"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_003_slice_scatter_backward",
+   "failure": "slice_scatter backward zeroes x.grad",
+   "condition": false,
+   "backward": true,
+   "basis": "reproduces across shapes and dtypes"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_004_cumsum_splitscan_crash",
+   "failure": "cumsum with broadcast bias crashes",
+   "condition": true,
+   "backward": false,
+   "basis": "scan dimension ≥ 129"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_005_slice_scatter_backward",
+   "failure": "slice_scatter backward gradient wrong",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_006_slice_scatter_backward_variant",
+   "failure": "slice_scatter backward gradient scaling wrong",
+   "condition": false,
+   "backward": true,
+   "basis": "depends on the slice range, an API argument"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_007_associative_scan_dynamic",
+   "failure": "associative_scan with dynamic=True crashes",
+   "condition": true,
+   "backward": false,
+   "basis": "ndim ≥ 2"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_008_create_graph_requires_grad_dropped",
+   "failure": "create_graph=True gradient loses requires_grad and grad_fn",
+   "condition": false,
+   "backward": true,
+   "basis": "gradient context"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_009_inference_mode_batched_matmul",
+   "failure": "matmul under inference_mode crashes",
+   "condition": true,
+   "backward": false,
+   "basis": "3D input (2D is correct)"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_010_diagonal_scatter_backward",
+   "failure": "diagonal_scatter backward zeroes x.grad",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_011_layer_norm_nestedtensor_guard_crash",
+   "failure": "layer_norm on a NestedTensor crashes",
+   "condition": false,
+   "backward": false,
+   "basis": "not counted: jagged tensor type rather than a stride layout"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_012_while_loop_backward_stride",
+   "failure": "while_loop backward stride mismatch crash",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_013_cumprod_splitdim_bwd_crash",
+   "failure": "cumprod backward crashes",
+   "condition": true,
+   "backward": true,
+   "basis": "scan dimension ≥ 8193"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_014_frac_maxpool_random_compile",
+   "failure": "fractional_max_pool2d indices differ",
+   "condition": false,
+   "backward": false,
+   "basis": "random sampling"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_015_index_family_expanded_wrong_result",
+   "failure": "index_add/copy/fill/put wrong on expanded input",
+   "condition": true,
+   "backward": false,
+   "basis": "stride-0 layout"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_016_addcmul_addcdiv_inplace_bwd_crash",
+   "failure": "addcmul_/addcdiv_ backward crashes",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_017_randperm_index_pattern_crash",
+   "failure": "x[randperm(n)] crashes in a pattern pass",
+   "condition": false,
+   "backward": false,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_018_expand_backward_aot_crash",
+   "failure": "backward crashes when the output is expanded",
+   "condition": false,
+   "backward": true,
+   "basis": "not counted for condition: the program itself creates the stride-0 output"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_019_flip_0d_inductor_crash",
+   "failure": "flip on a 0-d tensor crashes",
+   "condition": true,
+   "backward": false,
+   "basis": "0-d shape"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_020_complex_scalar_backward_crash",
+   "failure": "complex times Python complex literal, backward crashes",
+   "condition": true,
+   "backward": true,
+   "basis": "complex dtype"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_021_complex_abs_transpose_backward",
+   "failure": "abs/angle on transposed complex input, backward crashes",
+   "condition": true,
+   "backward": true,
+   "basis": "complex dtype, transposed layout"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_022_scheduler_prologue_fusion_typo",
+   "failure": "prologue fusion guard checks one node twice",
+   "condition": false,
+   "backward": false,
+   "basis": "source-level"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_023_div_trunc_approximate_division",
+   "failure": "div(rounding_mode='trunc') off by one",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_024_foreach_sub_alpha_ignored",
+   "failure": "_foreach_sub ignores alpha",
+   "condition": false,
+   "backward": false,
+   "basis": "API argument"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_025_deterministic_extern_kernel",
+   "failure": "deterministic mode never prefers extern kernels",
+   "condition": false,
+   "backward": false,
+   "basis": "configuration"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_026_float8_cast_arch_crash",
+   "failure": "float8_e4m3fn cast crashes without FP8 hardware",
+   "condition": true,
+   "backward": false,
+   "basis": "fp8 dtype"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_027_cat_axis_sink_crash",
+   "failure": "cat(axis=) crashes in a pattern pass",
+   "condition": false,
+   "backward": false,
+   "basis": "API argument"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_028_hardtanh_bf16_boundary_grad",
+   "failure": "hardtanh backward drops the gradient at bounds",
+   "condition": true,
+   "backward": true,
+   "basis": "bf16"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_029_fft_backward_stride_crash",
+   "failure": "FFT family backward stride mismatch crash",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_030_pad_mm_getitem_dead_code",
+   "failure": "pad_mm cannot look through getitem",
+   "condition": false,
+   "backward": false,
+   "basis": "source-level, performance only"
+  },
+  {
+   "stack": "pytorch",
+   "reproducer": "bug_031_vmap_hessian_crash",
+   "failure": "compiled vmap(hessian) crashes",
+   "condition": false,
+   "backward": false,
+   "basis": "not counted for backward: crash while compiling nested differentiation"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_001_atan2_subnormal_nan",
+   "failure": "atan2 returns NaN for subnormal inputs",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_001_erf_shape_dependent_lowering",
+   "failure": "erf differs between scalar and vector lowering",
+   "condition": true,
+   "backward": false,
+   "basis": "scalar versus vector shape"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_002_bessel_i1_gradient_zero",
+   "failure": "bessel_i1 gradient wrong at x=0",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_003_check_numerics_xla_silent",
+   "failure": "check_numerics passes NaN/Inf under XLA",
+   "condition": false,
+   "backward": false,
+   "basis": "execution mode"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_004_complex_pow_zero",
+   "failure": "pow(0+0j, 0+0j) returns NaN",
+   "condition": false,
+   "backward": false,
+   "basis": "not counted: needs complex, but the trigger is the value 0"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_005_complex_sign_eager",
+   "failure": "sign returns 0 for small complex numbers",
+   "condition": true,
+   "backward": false,
+   "basis": "complex dtype"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_006_cumprod_gradient_zero",
+   "failure": "cumprod gradient wrong with zeros",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_007_det_gradient_singular_crash",
+   "failure": "det gradient crashes on singular matrices",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_008_eigvalsh_complex_xla",
+   "failure": "eigvalsh wrong for complex input under XLA",
+   "condition": true,
+   "backward": false,
+   "basis": "complex dtype"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_009_eigvalsh_large_xla",
+   "failure": "eigvalsh wrong for large-magnitude matrices",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_010_erfinv_eager_precision",
+   "failure": "erfinv loses precision near ±1",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_011_fake_quant_nudge_rounding",
+   "failure": "fake_quant rounding differs under XLA",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_012_gpu_reciprocal_ftz",
+   "failure": "x * reciprocal(x) returns 0 on GPU",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_013_grappler_argmin_monotonic",
+   "failure": "Grappler removes non-strictly-monotonic ops before ArgMin/ArgMax",
+   "condition": false,
+   "backward": false,
+   "basis": "graph rewrite"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_014_grappler_monotonic_saturation",
+   "failure": "Grappler removes saturating monotonic ops before ArgMax/ArgMin",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_015_grappler_mul_zero_nan",
+   "failure": "constant folding hides NaN in x * 0",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_016_grappler_reciprocal_involution",
+   "failure": "reciprocal(reciprocal(x)) folded to x",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_017_resize_bilinear_nan_xla",
+   "failure": "bilinear resize spreads NaN under XLA",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_018_rsqrt_subnormal_inf",
+   "failure": "rsqrt returns inf for subnormal inputs",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_019_searchsorted_nan_xla",
+   "failure": "searchsorted wrong for NaN under XLA",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_020_segment_min_max_nan_position",
+   "failure": "segment_min/max depends on NaN position",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_021_selu_elu_expm1",
+   "failure": "SELU/ELU cancellation for small negative inputs",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_022_xla_argmax_nan_nonpow2",
+   "failure": "argmax/argmin wrong index with NaN",
+   "condition": true,
+   "backward": false,
+   "basis": "non-power-of-2 length"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_023_xla_argmin_dead_code_crash",
+   "failure": "argmin/argmax crashes on an empty dimension",
+   "condition": true,
+   "backward": false,
+   "basis": "empty dimension"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_024_xla_cpu_nan_minmax",
+   "failure": "CPU XLA drops NaN in min/max",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_025_xla_cumsum_cumprod_complex_crash",
+   "failure": "cumsum/cumprod crash under XLA",
+   "condition": true,
+   "backward": false,
+   "basis": "complex dtype"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_026_xla_floordiv_floormod_identity",
+   "failure": "floordiv/floormod identity fails at large magnitude",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_027_xla_fused_batchnorm_negative_variance",
+   "failure": "fused batch norm gives negative variance",
+   "condition": false,
+   "backward": false,
+   "basis": "input values"
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_028_xla_reduce_max_grad_nan",
+   "failure": "reduce_max/min gradient returns 0 for NaN",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_029_xla_where_gradient_dead_branch",
+   "failure": "where gradient leaks NaN from the dead branch",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  },
+  {
+   "stack": "tensorflow",
+   "reproducer": "bug_030_xlogy_xlog1py_gradient_zero",
+   "failure": "xlogy/xlog1py gradient zero at x=0",
+   "condition": false,
+   "backward": true,
+   "basis": ""
+  }
+ ]
+}

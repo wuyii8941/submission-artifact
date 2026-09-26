@@ -1,0 +1,116 @@
+[
+ {
+  "first": "pointwise",
+  "second": "pointwise",
+  "fused": true,
+  "triton_kernels": 1,
+  "extern_calls": 0,
+  "kinds": [
+   "pointwise"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "pointwise",
+  "second": "reduction",
+  "fused": true,
+  "triton_kernels": 1,
+  "extern_calls": 0,
+  "kinds": [
+   "persistent_reduction"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "reduction",
+  "second": "pointwise",
+  "fused": true,
+  "triton_kernels": 1,
+  "extern_calls": 0,
+  "kinds": [
+   "persistent_reduction"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "pointwise",
+  "second": "scan",
+  "fused": true,
+  "triton_kernels": 1,
+  "extern_calls": 0,
+  "kinds": [
+   "scan"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "scan",
+  "second": "pointwise",
+  "fused": true,
+  "triton_kernels": 1,
+  "extern_calls": 0,
+  "kinds": [
+   "scan"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "reduction",
+  "second": "reduction",
+  "fused": false,
+  "triton_kernels": 2,
+  "extern_calls": 0,
+  "kinds": [
+   "persistent_reduction"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "pointwise",
+  "second": "extern_gemm",
+  "fused": false,
+  "triton_kernels": 1,
+  "extern_calls": 1,
+  "kinds": [
+   "extern_gemm",
+   "pointwise"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "extern_gemm",
+  "second": "pointwise",
+  "fused": false,
+  "triton_kernels": 1,
+  "extern_calls": 1,
+  "kinds": [
+   "extern_gemm",
+   "pointwise"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "pointwise",
+  "second": "extern_conv",
+  "fused": false,
+  "triton_kernels": 3,
+  "extern_calls": 1,
+  "kinds": [
+   "extern_conv",
+   "pointwise"
+  ],
+  "views_agree": true
+ },
+ {
+  "first": "extern_conv",
+  "second": "pointwise",
+  "fused": false,
+  "triton_kernels": 3,
+  "extern_calls": 1,
+  "kinds": [
+   "extern_conv",
+   "pointwise"
+  ],
+  "views_agree": true
+ }
+]

@@ -1,0 +1,169 @@
+{
+ "pytorch": "2.2.0",
+ "triton": "2.2.0",
+ "device": "Tesla T4",
+ "seeds": [
+  42,
+  123,
+  456
+ ],
+ "programs_per_seed": [
+  22437,
+  13445,
+  13621
+ ],
+ "benchmark_bugs": {
+  "none": {
+   "per_seed": [
+    6,
+    6,
+    5
+   ],
+   "mean": 5.67
+  },
+  "E": {
+   "per_seed": [
+    11,
+    12,
+    12
+   ],
+   "mean": 11.67
+  },
+  "C": {
+   "per_seed": [
+    5,
+    4,
+    7
+   ],
+   "mean": 5.33
+  },
+  "P": {
+   "per_seed": [
+    6,
+    7,
+    7
+   ],
+   "mean": 6.67
+  },
+  "E+C": {
+   "per_seed": [
+    13,
+    14,
+    12
+   ],
+   "mean": 13
+  },
+  "E+P": {
+   "per_seed": [
+    13,
+    13,
+    12
+   ],
+   "mean": 12.67
+  },
+  "C+P": {
+   "per_seed": [
+    8,
+    7,
+    7
+   ],
+   "mean": 7.33
+  },
+  "E+C+P": {
+   "per_seed": [
+    14,
+    13,
+    12
+   ],
+   "mean": 13
+  }
+ },
+ "component_added": {
+  "Path entries": {
+   "alone": 6.0,
+   "with_C": 7.67,
+   "with_P": 6.0,
+   "with_both": 5.67,
+   "average": 6.33
+  },
+  "Conditions": {
+   "alone": -0.33,
+   "with_E": 1.33,
+   "with_P": 0.67,
+   "with_both": 0.33,
+   "average": 0.5
+  },
+  "Composition constraints": {
+   "alone": 1.0,
+   "with_E": 1.0,
+   "with_C": 2.0,
+   "with_both": 0,
+   "average": 1.0
+  }
+ },
+ "effects": {
+  "E": {
+   "per_seed": [
+    6.5,
+    7,
+    5.5
+   ],
+   "mean": 6.33,
+   "sd": 0.76
+  },
+  "C": {
+   "per_seed": [
+    1,
+    0.0,
+    0.5
+   ],
+   "mean": 0.5,
+   "sd": 0.5
+  },
+  "P": {
+   "per_seed": [
+    1.5,
+    1,
+    0.5
+   ],
+   "mean": 1.0,
+   "sd": 0.5
+  },
+  "E\u00d7C": {
+   "per_seed": [
+    0.5,
+    1,
+    -0.5
+   ],
+   "mean": 0.33,
+   "sd": 0.76
+  },
+  "E\u00d7P": {
+   "per_seed": [
+    0.0,
+    -1,
+    -0.5
+   ],
+   "mean": -0.5,
+   "sd": 0.5
+  },
+  "C\u00d7P": {
+   "per_seed": [
+    0.5,
+    0.0,
+    -0.5
+   ],
+   "mean": 0.0,
+   "sd": 0.5
+  },
+  "E\u00d7C\u00d7P": {
+   "per_seed": [
+    -1,
+    -1,
+    0.5
+   ],
+   "mean": -0.5,
+   "sd": 0.87
+  }
+ }
+}

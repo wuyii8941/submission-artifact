@@ -1,0 +1,21 @@
+--- a/TVM/splice_graph.py
++++ b/TVM/splice_graph.py
+@@ -64,13 +64,16 @@
+ 
+     for cnt, donor_para in enumerate(donor_func_input_constraints):
+         para_list_str += f'para{cnt},'
+-        donor_para_shape = parse_utils._get_para_shape(donor_para)
++        # A3 patch: entries are [name, shape, dtype] (as unpacked in splice.py);
++        # the released code passed the whole entry to _get_para_shape, which
++        # always returned False, so every subgraph-level synthesis returned None.
++        _, donor_para_shape, donor_para_dtype = donor_para
+         print("This_shape_from_donor:", donor_para_shape)
+         if not donor_para_shape:  # todo: support this special case
+             return None
+ 
+         # Retype
+-        donor_para_dtype = donor_para.dtype if (hasattr(donor_para, 'dtype') and donor_para.dtype != '') else "float32"
++        donor_para_dtype = donor_para_dtype if donor_para_dtype else "float32"
+         seed_output_dtype = seed_output_constraint.dtype if seed_output_constraint.dtype != '' else "float32"
+         if donor_para_dtype != seed_output_constraint.dtype:
+             connection_str += f"{indent}{seed_ret_var_name} = R.astype({seed_ret_var_name}, dtype='{donor_para_dtype}')\n"

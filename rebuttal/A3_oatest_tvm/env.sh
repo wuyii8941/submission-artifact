@@ -1,0 +1,5 @@
+: "${TVM_HOME:?set TVM_HOME to a TVM checkout at commit 292ecfd with a CPU build in build/}"
+export TVM_LIBRARY_PATH=${TVM_LIBRARY_PATH:-$TVM_HOME/build}
+export PYTHONPATH=$TVM_HOME/python${PYTHONPATH:+:$PYTHONPATH}
+export PYTHONNOUSERSITE=1 OMP_NUM_THREADS=1 TVM_NUM_THREADS=1 MKL_NUM_THREADS=1
+PY=${PY:-python3}

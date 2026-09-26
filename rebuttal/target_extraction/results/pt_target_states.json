@@ -1,0 +1,373 @@
+{
+ "device": "Tesla T4",
+ "compute_capability": [
+  7,
+  5
+ ],
+ "fusion_sizes": [
+  "1",
+  "2-3",
+  "4+"
+ ],
+ "fusing_groups": [
+  "pointwise",
+  "reduction",
+  "scan"
+ ],
+ "gpu_dtypes": {
+  "pointwise": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "persistent_reduction": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "reduction": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "cooperative_reduction": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "scan": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "split_scan": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "extern_gemm": [
+   "float16",
+   "float32",
+   "float64"
+  ],
+  "extern_conv": [
+   "float16",
+   "float32",
+   "float64"
+  ]
+ },
+ "generator_input_dtypes": [
+  "float32",
+  "float64"
+ ],
+ "generator_family_dtypes": {
+  "pointwise": [
+   "bfloat16",
+   "float16"
+  ]
+ },
+ "per_family": {
+  "cooperative_reduction": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  },
+  "extern_conv": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1"
+   ]
+  },
+  "extern_gemm": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1"
+   ]
+  },
+  "persistent_reduction": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  },
+  "pointwise": {
+   "dtypes": [
+    "float16",
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  },
+  "reduction": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  },
+  "scan": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  },
+  "split_scan": {
+   "dtypes": [
+    "float32",
+    "float64"
+   ],
+   "sizes": [
+    "1",
+    "2-3",
+    "4+"
+   ]
+  }
+ },
+ "states": [
+  [
+   "cooperative_reduction",
+   "float32",
+   "1"
+  ],
+  [
+   "cooperative_reduction",
+   "float32",
+   "2-3"
+  ],
+  [
+   "cooperative_reduction",
+   "float32",
+   "4+"
+  ],
+  [
+   "cooperative_reduction",
+   "float64",
+   "1"
+  ],
+  [
+   "cooperative_reduction",
+   "float64",
+   "2-3"
+  ],
+  [
+   "cooperative_reduction",
+   "float64",
+   "4+"
+  ],
+  [
+   "extern_conv",
+   "float32",
+   "1"
+  ],
+  [
+   "extern_conv",
+   "float64",
+   "1"
+  ],
+  [
+   "extern_gemm",
+   "float32",
+   "1"
+  ],
+  [
+   "extern_gemm",
+   "float64",
+   "1"
+  ],
+  [
+   "persistent_reduction",
+   "float32",
+   "1"
+  ],
+  [
+   "persistent_reduction",
+   "float32",
+   "2-3"
+  ],
+  [
+   "persistent_reduction",
+   "float32",
+   "4+"
+  ],
+  [
+   "persistent_reduction",
+   "float64",
+   "1"
+  ],
+  [
+   "persistent_reduction",
+   "float64",
+   "2-3"
+  ],
+  [
+   "persistent_reduction",
+   "float64",
+   "4+"
+  ],
+  [
+   "pointwise",
+   "float16",
+   "1"
+  ],
+  [
+   "pointwise",
+   "float16",
+   "2-3"
+  ],
+  [
+   "pointwise",
+   "float16",
+   "4+"
+  ],
+  [
+   "pointwise",
+   "float32",
+   "1"
+  ],
+  [
+   "pointwise",
+   "float32",
+   "2-3"
+  ],
+  [
+   "pointwise",
+   "float32",
+   "4+"
+  ],
+  [
+   "pointwise",
+   "float64",
+   "1"
+  ],
+  [
+   "pointwise",
+   "float64",
+   "2-3"
+  ],
+  [
+   "pointwise",
+   "float64",
+   "4+"
+  ],
+  [
+   "reduction",
+   "float32",
+   "1"
+  ],
+  [
+   "reduction",
+   "float32",
+   "2-3"
+  ],
+  [
+   "reduction",
+   "float32",
+   "4+"
+  ],
+  [
+   "reduction",
+   "float64",
+   "1"
+  ],
+  [
+   "reduction",
+   "float64",
+   "2-3"
+  ],
+  [
+   "reduction",
+   "float64",
+   "4+"
+  ],
+  [
+   "scan",
+   "float32",
+   "1"
+  ],
+  [
+   "scan",
+   "float32",
+   "2-3"
+  ],
+  [
+   "scan",
+   "float32",
+   "4+"
+  ],
+  [
+   "scan",
+   "float64",
+   "1"
+  ],
+  [
+   "scan",
+   "float64",
+   "2-3"
+  ],
+  [
+   "scan",
+   "float64",
+   "4+"
+  ],
+  [
+   "split_scan",
+   "float32",
+   "1"
+  ],
+  [
+   "split_scan",
+   "float32",
+   "2-3"
+  ],
+  [
+   "split_scan",
+   "float32",
+   "4+"
+  ],
+  [
+   "split_scan",
+   "float64",
+   "1"
+  ],
+  [
+   "split_scan",
+   "float64",
+   "2-3"
+  ],
+  [
+   "split_scan",
+   "float64",
+   "4+"
+  ]
+ ]
+}

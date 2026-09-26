@@ -1,0 +1,290 @@
+{
+ "torch_version": "2.13.0.dev20260609+cu126",
+ "rows": [
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonKernel:cooperative_reduction",
+   "decision": "include (feature flag)",
+   "family": "cooperative_reduction",
+   "rule": "C1 only with the documented flag triton.cooperative_reductions (default False); C2-C4 hold: chosen from sizes, visible per kernel"
+  },
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonKernel:fixed_config",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: fixed launch config of user-defined Triton kernels fused with epilogues; not chosen from program conditions"
+  },
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonKernel:persistent_reduction",
+   "decision": "include",
+   "family": "persistent_reduction",
+   "rule": "C1-C4: returned by the selector from sizes and program structure"
+  },
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonKernel:pointwise",
+   "decision": "include",
+   "family": "pointwise",
+   "rule": "C1-C4: returned by the selector from sizes and program structure"
+  },
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonKernel:reduction",
+   "decision": "include",
+   "family": "reduction",
+   "rule": "C1-C4: returned by the selector from sizes and program structure"
+  },
+  {
+   "unit": "kernel heuristic",
+   "candidate": "TritonSplitScanKernel:split_scan",
+   "decision": "include",
+   "family": "split_scan",
+   "rule": "C1-C4: returned by the selector from sizes and program structure"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "ArgReduction",
+   "decision": "merge",
+   "family": "reduction / persistent / cooperative",
+   "rule": "C3: same reduction code generator; implementation chosen by the reduction heuristics above"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "MultiOutputReduction",
+   "decision": "merge",
+   "family": "reduction / persistent / cooperative",
+   "rule": "C3: same reduction code generator; implementation chosen by the reduction heuristics above"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "OnlineSoftmaxReduction",
+   "decision": "merge",
+   "family": "reduction / persistent / cooperative",
+   "rule": "C3: same reduction code generator; implementation chosen by the reduction heuristics above"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "Pointwise",
+   "decision": "merge",
+   "family": "pointwise",
+   "rule": "C3: pointwise code generator (heuristic \"pointwise\")"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "Reduction",
+   "decision": "merge",
+   "family": "reduction / persistent / cooperative",
+   "rule": "C3: same reduction code generator; implementation chosen by the reduction heuristics above"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "Scan",
+   "decision": "include",
+   "family": "scan",
+   "rule": "C1-C4: single-block scan kernel, distinct from reductions"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "Scatter",
+   "decision": "merge",
+   "family": "pointwise",
+   "rule": "C3: pointwise code generator (heuristic \"pointwise\")"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "Sort",
+   "decision": "include (no generator)",
+   "family": "sort",
+   "rule": "C1-C4 hold (Triton sort for dims <= 512 by default); no generator in the artifact"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "SplitScan",
+   "decision": "include",
+   "family": "split_scan",
+   "rule": "C1-C4: TritonSplitScanKernel; chosen from scan length and rows"
+  },
+  {
+   "unit": "IR loop node",
+   "candidate": "WelfordReduction",
+   "decision": "merge",
+   "family": "reduction / persistent / cooperative",
+   "rule": "C3: same reduction code generator; implementation chosen by the reduction heuristics above"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "baddbmm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "bmm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "bmm_dtype",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "call_aten_dw",
+   "decision": "merge",
+   "family": "extern_conv",
+   "rule": "C3: cuDNN convolution dispatch (backward variants reached through the backward context)"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "call_aten_dx",
+   "decision": "merge",
+   "family": "extern_conv",
+   "rule": "C3: cuDNN convolution dispatch (backward variants reached through the backward context)"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "conv1x1_via_mm",
+   "decision": "merge",
+   "family": "extern_conv",
+   "rule": "C3: cuDNN convolution dispatch (backward variants reached through the backward context)"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "convolution",
+   "decision": "merge",
+   "family": "extern_conv",
+   "rule": "C3: cuDNN convolution dispatch (backward variants reached through the backward context)"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_int_mm",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: int8 GEMM (integer dtype, outside the floating-point targets)"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_scaled_mm",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: fp8 GEMM, compute capability >= 8.9"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_sparse_semi_structured_mm",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: 2:4 sparse GEMM, compute capability >= 8.0"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "addmm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "bias_addmm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "mm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "mm_dtype",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_grouped_mm",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: grouped GEMM, compute capability >= 9.0"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_scaled_grouped_mm",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: fp8 grouped GEMM, compute capability >= 9.0"
+  },
+  {
+   "unit": "extern choice",
+   "candidate": "_mm_plus_mm",
+   "decision": "merge",
+   "family": "extern_gemm",
+   "rule": "C3: cuBLAS GEMM dispatch"
+  },
+  {
+   "unit": "Triton template",
+   "candidate": "18 templates",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C1: considered only when max_autotune is on (default False) and chosen by timing, not by program conditions"
+  },
+  {
+   "unit": "ATen fallback",
+   "candidate": "357 operator overloads",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C2: fixed per operator at registration; no implementation choice to steer (their operators are still used as entries and contexts)"
+  },
+  {
+   "unit": "code generator",
+   "candidate": "26 non-default modules",
+   "decision": "exclude",
+   "family": null,
+   "rule": "C1: CPU, Halide, MPS, Pallas, MTIA, XPU, ROCm, CUTLASS/CuTe backends are not the default CUDA Triton path"
+  },
+  {
+   "unit": "kernel class",
+   "candidate": "ComboKernel (foreach)",
+   "decision": "include (no generator)",
+   "family": "foreach",
+   "rule": "C1-C4 hold for _foreach operators (horizontal fusion); no generator in the artifact"
+  }
+ ],
+ "default_path_families": [
+  "extern_conv",
+  "extern_gemm",
+  "persistent_reduction",
+  "pointwise",
+  "reduction",
+  "scan",
+  "split_scan"
+ ],
+ "feature_flag_families": [
+  "cooperative_reduction"
+ ],
+ "families": [
+  "cooperative_reduction",
+  "extern_conv",
+  "extern_gemm",
+  "persistent_reduction",
+  "pointwise",
+  "reduction",
+  "scan",
+  "split_scan"
+ ],
+ "no_generator": [
+  "foreach",
+  "sort"
+ ]
+}

@@ -1,0 +1,119 @@
+{
+ "bugs_total": 17,
+ "onnx_frontend": 8,
+ "by_stage": {
+  "GPU scheduling": 1,
+  "ONNX frontend": 8,
+  "lowering to TIR": 3,
+  "code generation": 1,
+  "Relax pass": 4
+ },
+ "bugs": [
+  {
+   "bug": "bug_001_gemv_keyerror",
+   "stage": "GPU scheduling",
+   "location": "DLight GEMV rule queries a target attribute that the auto-detected CUDA target lacks",
+   "root_cause": "DLight GEMV schedule rule crashes with KeyError on auto-detected CUDA"
+  },
+  {
+   "bug": "bug_002_softmax_opset11",
+   "stage": "ONNX frontend",
+   "location": "Softmax/LogSoftmax/Hardmax converters in onnx_frontend.py",
+   "root_cause": "ONNX Softmax/LogSoftmax/Hardmax frontend ignores opset <13 semantics"
+  },
+  {
+   "bug": "bug_003_scatter_reduction",
+   "stage": "ONNX frontend",
+   "location": "ScatterElements._impl_v11 in onnx_frontend.py",
+   "root_cause": "ONNX ScatterElements ignores `reduction` attribute, silently produces wrong results"
+  },
+  {
+   "bug": "bug_004_gather_negative_idx",
+   "stage": "ONNX frontend",
+   "location": "Gather._impl_v13 in onnx_frontend.py",
+   "root_cause": "ONNX Gather with negative indices reads out-of-bounds memory (garbage values)"
+  },
+  {
+   "bug": "bug_005_cumsum_axis",
+   "stage": "ONNX frontend",
+   "location": "CumSum._impl_v14 in onnx_frontend.py",
+   "root_cause": "CumSum ignores axis parameter, always reduces along axis 0"
+  },
+  {
+   "bug": "bug_006_scatter_elements_cuda",
+   "stage": "lowering to TIR",
+   "location": "scatter_elements / scatter_nd TIR for CUDA",
+   "root_cause": "scatter_elements / scatter_nd fail to compile for CUDA target"
+  },
+  {
+   "bug": "bug_007_isnan_isinf_not_implemented",
+   "stage": "code generation",
+   "location": "CodeGenVM intrinsic for isnan / isinf / isfinite",
+   "root_cause": "`R.isnan`, `R.isinf`, `R.isfinite` crash at build time"
+  },
+  {
+   "bug": "bug_008_topk_crash",
+   "stage": "ONNX frontend",
+   "location": "TopK converter in onnx_frontend.py (from_onnx)",
+   "root_cause": "ONNX TopK operator crashes during `from_onnx()` — K tensor scalar extraction failure"
+  },
+  {
+   "bug": "bug_009_reorder_permute_concat_neg_axis",
+   "stage": "Relax pass",
+   "location": "ReorderPermuteDimsAfterConcat",
+   "root_cause": "`ReorderPermuteDimsAfterConcat` pass crashes with negative concat axis — missing index normalization"
+  },
+  {
+   "bug": "bug_010_dataflow_inplace_liveness",
+   "stage": "Relax pass",
+   "location": "DataflowUseInplaceCalls",
+   "root_cause": "`DataflowUseInplaceCalls` corrupts concat input via incorrect liveness analysis — in-place buffer reuse on still-live value"
+  },
+  {
+   "bug": "bug_011_nan_propagation",
+   "stage": "lowering to TIR",
+   "location": "NaN semantics of maximum / minimum / relu / clip",
+   "root_cause": "`maximum`/`minimum`/`relu`/`clip` do not propagate NaN (IEEE 754 violation) — LLVM `maxss`/`maxps` semantics"
+  },
+  {
+   "bug": "bug_012_relu_sign_nan_propagation",
+   "stage": "lowering to TIR",
+   "location": "NaN semantics of Relu / Sign / ReduceMax / ReduceMin",
+   "root_cause": "Relax/ONNX `Relu`, `Sign` convert NaN to 0 instead of preserving it; `ReduceMax`/`ReduceMin` exhibit position-dependent NaN behavior — improper `fmax`/`fmin` semantics + comparison chains failing to propagate NaN"
+  },
+  {
+   "bug": "bug_013_batchnorm_legalize_training",
+   "stage": "Relax pass",
+   "location": "LegalizeOps lowering of relax.nn.batch_norm",
+   "root_cause": "`LegalizeOps` lowering of `relax.nn.batch_norm` recomputes mean/variance from input data instead of using supplied `running_mean`/`running_var`, producing training-mode behavior under inference — repro shows max error ~60 vs ground truth"
+  },
+  {
+   "bug": "bug_014_cumsum_exclusive",
+   "stage": "ONNX frontend",
+   "location": "CumSum converter in onnx_frontend.py",
+   "root_cause": "Relax/ONNX `CumSum` with `exclusive=1` hits a bare `AssertionError` in `CumSum._impl_v14` — `topi.cumsum`/`relax.op.cumsum` only implement the inclusive variant"
+  },
+  {
+   "bug": "bug_015_gridsample_5d_crash",
+   "stage": "ONNX frontend",
+   "location": "GridSample._impl_v16 in onnx_frontend.py",
+   "root_cause": "Relax/ONNX `GridSample._impl_v16` unconditionally permutes grid from `[N,H,W,2]` to `[N,2,H,W]` and dispatches to 2D `image.grid_sample`, crashing on 5D volumetric inputs (`PermuteDims` expects 4 axes but tensor ndim=5)"
+  },
+  {
+   "bug": "bug_016_layernorm_bias_shape",
+   "stage": "ONNX frontend",
+   "location": "LayerNormalization converter in onnx_frontend.py",
+   "root_cause": "Relax/ONNX `LayerNormalization` without optional bias synthesizes a zero bias of shape `data.shape[1]` instead of `gamma_shape`, causing dimension mismatch in `relax.nn.layer_norm` (breaks PyTorch transformers exported with `LayerNorm(bias=False)`)"
+  },
+  {
+   "bug": "bug_017_attention_symbolic_batch",
+   "stage": "Relax pass",
+   "location": "LegalizeOps lowering of relax.op.nn.attention",
+   "root_cause": "`relax.op.nn.attention` fails to legalize when batch dim is a symbolic `tir.Var` — `_te_attention` builds two `Mul(B, num_head)` exprs, and `topi.nn.batch_matmul` compares them with Python `==` which returns a deferred `PrimExpr` instead of `True`, tripping the batch-dim assertion"
+  }
+ ],
+ "oatest_missed_bugs": {
+  "source": "Shen et al., Optimization-Aware Test Generation for Deep Learning Compilers, ICSE 2026, arXiv:2511.18918, Section 4.3 (RQ2)",
+  "quote": "Among those bugs detected by baselines, only three are not detected by OATest, all of which occur in the model loading stage rather than compiler optimizations."
+ }
+}
