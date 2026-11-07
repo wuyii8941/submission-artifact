@@ -1,0 +1,20 @@
+{
+  "desired_dtype": "torch.float32",
+  "inputs": [
+    {
+      "type": "TensorSpec",
+      "dtype": "torch.bfloat16",
+      "shape": [],
+      "constant": null
+    },
+    {
+      "type": "ScalarSpec",
+      "dtype": "torch.float32",
+      "shape": null,
+      "constant": null
+    }
+  ],
+  "cpu_result_dtype": "torch.bfloat16",
+  "cpu_result_shape": [],
+  "interpretation": "input-spec proposal fails requested output dtype under actual weak scalar promotion; preserve operator, reject this illegal spec combination, do not cast output to hide mismatch"
+}

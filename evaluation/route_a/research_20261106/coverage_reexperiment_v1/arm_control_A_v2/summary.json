@@ -1,0 +1,1228 @@
+{
+  "purpose": "control",
+  "arm": "A",
+  "master_seed": 202611060,
+  "wall_budget_seconds": 100.0,
+  "elapsed_seconds": 45.19728358928114,
+  "generation": [
+    {
+      "ordinal": 0,
+      "seed": 1576524615,
+      "status": "generated",
+      "skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+      "provenance": {
+        "generator_version": "frozen_general_dag_v1",
+        "profile": "reconvergent",
+        "profile_spec": {
+          "name": "reconvergent",
+          "min_nodes": 7,
+          "min_multiuser": 0,
+          "min_reconvergence": 1,
+          "require_noncontiguous_tensor": false,
+          "max_depth": 8,
+          "reuse_probability": 0.9
+        },
+        "attempts": 5,
+        "attempt_trace": [
+          {
+            "attempt": 1,
+            "sample_seed": 1590713336535,
+            "accepted": false,
+            "facts": {
+              "node_count": 1,
+              "multiuser_nodes": 0,
+              "reconvergent_nodes": 0,
+              "tensor_leaf_count": 1,
+              "noncontiguous_tensor_nodes": 0,
+              "layout_scope": "meta_observed_any_tensor_node"
+            },
+            "semantic_validation": "meta_valid",
+            "argument_layout_choices": [
+              {
+                "node_id": "node_0",
+                "layout": "contiguous"
+              }
+            ],
+            "elapsed_seconds": 0.0026200711727142334
+          },
+          {
+            "attempt": 2,
+            "sample_seed": 1590713336536,
+            "accepted": false,
+            "facts": {
+              "node_count": 1,
+              "multiuser_nodes": 0,
+              "reconvergent_nodes": 0,
+              "tensor_leaf_count": 1,
+              "noncontiguous_tensor_nodes": 0,
+              "layout_scope": "meta_observed_any_tensor_node"
+            },
+            "semantic_validation": "meta_valid",
+            "argument_layout_choices": [],
+            "elapsed_seconds": 0.005640295334160328
+          },
+          {
+            "attempt": 3,
+            "sample_seed": 1590713336537,
+            "accepted": false,
+            "error_type": "ValueError",
+            "error": "emitted_spec_mismatch:node_2:expected=TensorSpec(size=(1,), stride=(1,), dtype=torch.int64):actual=((1,), 'torch.int32')",
+            "elapsed_seconds": 0.0033173132687807083
+          },
+          {
+            "attempt": 4,
+            "sample_seed": 1590713336538,
+            "accepted": false,
+            "facts": {
+              "node_count": 1,
+              "multiuser_nodes": 0,
+              "reconvergent_nodes": 0,
+              "tensor_leaf_count": 1,
+              "noncontiguous_tensor_nodes": 0,
+              "layout_scope": "meta_observed_any_tensor_node"
+            },
+            "semantic_validation": "meta_valid",
+            "argument_layout_choices": [],
+            "elapsed_seconds": 0.002283550798892975
+          },
+          {
+            "attempt": 5,
+            "sample_seed": 1590713336539,
+            "accepted": true,
+            "facts": {
+              "node_count": 12,
+              "multiuser_nodes": 4,
+              "reconvergent_nodes": 5,
+              "tensor_leaf_count": 1,
+              "noncontiguous_tensor_nodes": 0,
+              "layout_scope": "meta_observed_any_tensor_node"
+            },
+            "semantic_validation": "meta_valid",
+            "argument_layout_choices": [],
+            "elapsed_seconds": 0.010277497582137585
+          }
+        ],
+        "accepted_topology": {
+          "node_count": 12,
+          "multiuser_nodes": 4,
+          "reconvergent_nodes": 5,
+          "tensor_leaf_count": 1,
+          "noncontiguous_tensor_nodes": 0,
+          "layout_scope": "meta_observed_any_tensor_node"
+        },
+        "meta": {
+          "status": "meta_valid",
+          "node_facts": {
+            "node_4": {
+              "kind": "tensor",
+              "size": [
+                6,
+                26
+              ],
+              "dtype": "torch.int32",
+              "stride": [
+                26,
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_3": {
+              "kind": "tensor",
+              "size": [
+                1,
+                26
+              ],
+              "dtype": "torch.int32",
+              "stride": [
+                26,
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_10": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_11": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_9": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_8": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_7": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_6": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_5": {
+              "kind": "python_scalar",
+              "python_type": "int"
+            },
+            "node_2": {
+              "kind": "tensor",
+              "size": [
+                1,
+                26
+              ],
+              "dtype": "torch.int32",
+              "stride": [
+                26,
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_1": {
+              "kind": "tensor",
+              "size": [
+                1,
+                26
+              ],
+              "dtype": "torch.int32",
+              "stride": [
+                26,
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_0": {
+              "kind": "tensor",
+              "size": [
+                1,
+                26
+              ],
+              "dtype": "torch.int32",
+              "stride": [
+                26,
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            }
+          },
+          "argument_nodes": [],
+          "scalar_fixture": "typed_unit_values_not_full_value_domain",
+          "intermediate_layouts_require_runtime_confirmation": true
+        },
+        "template": "default",
+        "registry_pool": [
+          {
+            "key": "torch.nn.functional.hardswish",
+            "public_operator": "torch.nn.functional.hardswish"
+          },
+          {
+            "key": "torch.nn.functional.mish",
+            "public_operator": "torch.nn.functional.mish"
+          },
+          {
+            "key": "torch.nn.functional.softplus",
+            "public_operator": "torch.nn.functional.softplus"
+          },
+          {
+            "key": "arg",
+            "public_operator": null
+          },
+          {
+            "key": "constant",
+            "public_operator": null
+          },
+          {
+            "key": "torch.abs",
+            "public_operator": "torch.abs"
+          },
+          {
+            "key": "torch.asinh",
+            "public_operator": "torch.asinh"
+          },
+          {
+            "key": "torch.atan",
+            "public_operator": "torch.atan"
+          },
+          {
+            "key": "torch.ceil",
+            "public_operator": "torch.ceil"
+          },
+          {
+            "key": "torch.cos",
+            "public_operator": "torch.cos"
+          },
+          {
+            "key": "torch.cosh",
+            "public_operator": "torch.cosh"
+          },
+          {
+            "key": "torch.erf",
+            "public_operator": "torch.erf"
+          },
+          {
+            "key": "torch.erfc",
+            "public_operator": "torch.erfc"
+          },
+          {
+            "key": "torch.exp2",
+            "public_operator": "torch.exp2"
+          },
+          {
+            "key": "torch.exp",
+            "public_operator": "torch.exp"
+          },
+          {
+            "key": "torch.expm1",
+            "public_operator": "torch.expm1"
+          },
+          {
+            "key": "torch.floor",
+            "public_operator": "torch.floor"
+          },
+          {
+            "key": "torch.fmod",
+            "public_operator": "torch.fmod"
+          },
+          {
+            "key": "torch.hypot",
+            "public_operator": "torch.hypot"
+          },
+          {
+            "key": "torch.log10",
+            "public_operator": "torch.log10"
+          },
+          {
+            "key": "torch.log1p",
+            "public_operator": "torch.log1p"
+          },
+          {
+            "key": "torch.log2",
+            "public_operator": "torch.log2"
+          },
+          {
+            "key": "torch.log",
+            "public_operator": "torch.log"
+          },
+          {
+            "key": "torch.logaddexp",
+            "public_operator": "torch.logaddexp"
+          },
+          {
+            "key": "torch.maximum",
+            "public_operator": "torch.maximum"
+          },
+          {
+            "key": "torch.minimum",
+            "public_operator": "torch.minimum"
+          },
+          {
+            "key": "torch.neg",
+            "public_operator": "torch.neg"
+          },
+          {
+            "key": "torch.pow",
+            "public_operator": "torch.pow"
+          },
+          {
+            "key": "torch.reciprocal",
+            "public_operator": "torch.reciprocal"
+          },
+          {
+            "key": "torch.remainder",
+            "public_operator": "torch.remainder"
+          },
+          {
+            "key": "torch.round",
+            "public_operator": "torch.round"
+          },
+          {
+            "key": "torch.rsqrt",
+            "public_operator": "torch.rsqrt"
+          },
+          {
+            "key": "torch.sign",
+            "public_operator": "torch.sign"
+          },
+          {
+            "key": "torch.sin",
+            "public_operator": "torch.sin"
+          },
+          {
+            "key": "torch.sinh",
+            "public_operator": "torch.sinh"
+          },
+          {
+            "key": "torch.sqrt",
+            "public_operator": "torch.sqrt"
+          },
+          {
+            "key": "torch.square",
+            "public_operator": "torch.square"
+          },
+          {
+            "key": "torch.trunc",
+            "public_operator": "torch.trunc"
+          },
+          {
+            "key": "item",
+            "public_operator": null
+          },
+          {
+            "key": "addmm",
+            "public_operator": "torch.addmm"
+          },
+          {
+            "key": "bmm",
+            "public_operator": "torch.bmm"
+          },
+          {
+            "key": "mm",
+            "public_operator": "torch.mm"
+          },
+          {
+            "key": "matmul",
+            "public_operator": "torch.matmul"
+          },
+          {
+            "key": "torch.nn.functional.elu",
+            "public_operator": "torch.nn.functional.elu"
+          },
+          {
+            "key": "torch.nn.functional.gelu",
+            "public_operator": "torch.nn.functional.gelu"
+          },
+          {
+            "key": "torch.nn.functional.leaky_relu",
+            "public_operator": "torch.nn.functional.leaky_relu"
+          },
+          {
+            "key": "torch.nn.functional.silu",
+            "public_operator": "torch.nn.functional.silu"
+          },
+          {
+            "key": "torch.sigmoid",
+            "public_operator": "torch.sigmoid"
+          },
+          {
+            "key": "torch.nn.functional.softmax",
+            "public_operator": "torch.nn.functional.softmax"
+          },
+          {
+            "key": "torch.tanh",
+            "public_operator": "torch.tanh"
+          },
+          {
+            "key": "torch.amax",
+            "public_operator": "torch.amax"
+          },
+          {
+            "key": "torch.amin",
+            "public_operator": "torch.amin"
+          },
+          {
+            "key": "torch.mean",
+            "public_operator": "torch.mean"
+          },
+          {
+            "key": "torch.sum",
+            "public_operator": "torch.sum"
+          },
+          {
+            "key": "scalar_add",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_div",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_mul",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_sub",
+            "public_operator": null
+          },
+          {
+            "key": "add",
+            "public_operator": "torch.add"
+          },
+          {
+            "key": "div",
+            "public_operator": "torch.div"
+          },
+          {
+            "key": "mul",
+            "public_operator": "torch.mul"
+          },
+          {
+            "key": "sub",
+            "public_operator": "torch.sub"
+          }
+        ],
+        "elapsed_seconds": 0.02436303999274969
+      },
+      "full_wall_seconds": 0.2975903498008847
+    },
+    {
+      "ordinal": 1,
+      "seed": 2946354919,
+      "status": "generated",
+      "skeleton_sha256": "65da96ca2a3802569c08d733c6ba76fe1a65f00e071f62cae1fcc33338c2ae04",
+      "provenance": {
+        "generator_version": "frozen_general_dag_v1",
+        "profile": "reconvergent",
+        "profile_spec": {
+          "name": "reconvergent",
+          "min_nodes": 7,
+          "min_multiuser": 0,
+          "min_reconvergence": 1,
+          "require_noncontiguous_tensor": false,
+          "max_depth": 8,
+          "reuse_probability": 0.9
+        },
+        "attempts": 2,
+        "attempt_trace": [
+          {
+            "attempt": 1,
+            "sample_seed": 2972872113271,
+            "accepted": false,
+            "error_type": "ValueError",
+            "error": "emitted_spec_mismatch:node_1:expected=TensorSpec(size=(3,), stride=(1,), dtype=torch.float16):actual=((3,), 'torch.float32')",
+            "elapsed_seconds": 0.01650009397417307
+          },
+          {
+            "attempt": 2,
+            "sample_seed": 2972872113272,
+            "accepted": true,
+            "facts": {
+              "node_count": 10,
+              "multiuser_nodes": 3,
+              "reconvergent_nodes": 3,
+              "tensor_leaf_count": 2,
+              "noncontiguous_tensor_nodes": 0,
+              "layout_scope": "meta_observed_any_tensor_node"
+            },
+            "semantic_validation": "meta_valid",
+            "argument_layout_choices": [
+              {
+                "node_id": "node_8",
+                "layout": "column_major"
+              }
+            ],
+            "elapsed_seconds": 0.009007791057229042
+          }
+        ],
+        "accepted_topology": {
+          "node_count": 10,
+          "multiuser_nodes": 3,
+          "reconvergent_nodes": 3,
+          "tensor_leaf_count": 2,
+          "noncontiguous_tensor_nodes": 0,
+          "layout_scope": "meta_observed_any_tensor_node"
+        },
+        "meta": {
+          "status": "meta_valid",
+          "node_facts": {
+            "node_8": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_9": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_7": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_6": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_5": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_4": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_3": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_2": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_1": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            },
+            "node_0": {
+              "kind": "tensor",
+              "size": [
+                1
+              ],
+              "dtype": "torch.int8",
+              "stride": [
+                1
+              ],
+              "contiguous": true,
+              "layout_evidence": "meta_execution_not_output_spec"
+            }
+          },
+          "argument_nodes": [
+            "node_8"
+          ],
+          "scalar_fixture": "typed_unit_values_not_full_value_domain",
+          "intermediate_layouts_require_runtime_confirmation": true
+        },
+        "template": "default",
+        "registry_pool": [
+          {
+            "key": "torch.nn.functional.hardswish",
+            "public_operator": "torch.nn.functional.hardswish"
+          },
+          {
+            "key": "torch.nn.functional.mish",
+            "public_operator": "torch.nn.functional.mish"
+          },
+          {
+            "key": "torch.nn.functional.softplus",
+            "public_operator": "torch.nn.functional.softplus"
+          },
+          {
+            "key": "arg",
+            "public_operator": null
+          },
+          {
+            "key": "constant",
+            "public_operator": null
+          },
+          {
+            "key": "torch.abs",
+            "public_operator": "torch.abs"
+          },
+          {
+            "key": "torch.asinh",
+            "public_operator": "torch.asinh"
+          },
+          {
+            "key": "torch.atan",
+            "public_operator": "torch.atan"
+          },
+          {
+            "key": "torch.ceil",
+            "public_operator": "torch.ceil"
+          },
+          {
+            "key": "torch.cos",
+            "public_operator": "torch.cos"
+          },
+          {
+            "key": "torch.cosh",
+            "public_operator": "torch.cosh"
+          },
+          {
+            "key": "torch.erf",
+            "public_operator": "torch.erf"
+          },
+          {
+            "key": "torch.erfc",
+            "public_operator": "torch.erfc"
+          },
+          {
+            "key": "torch.exp2",
+            "public_operator": "torch.exp2"
+          },
+          {
+            "key": "torch.exp",
+            "public_operator": "torch.exp"
+          },
+          {
+            "key": "torch.expm1",
+            "public_operator": "torch.expm1"
+          },
+          {
+            "key": "torch.floor",
+            "public_operator": "torch.floor"
+          },
+          {
+            "key": "torch.fmod",
+            "public_operator": "torch.fmod"
+          },
+          {
+            "key": "torch.hypot",
+            "public_operator": "torch.hypot"
+          },
+          {
+            "key": "torch.log10",
+            "public_operator": "torch.log10"
+          },
+          {
+            "key": "torch.log1p",
+            "public_operator": "torch.log1p"
+          },
+          {
+            "key": "torch.log2",
+            "public_operator": "torch.log2"
+          },
+          {
+            "key": "torch.log",
+            "public_operator": "torch.log"
+          },
+          {
+            "key": "torch.logaddexp",
+            "public_operator": "torch.logaddexp"
+          },
+          {
+            "key": "torch.maximum",
+            "public_operator": "torch.maximum"
+          },
+          {
+            "key": "torch.minimum",
+            "public_operator": "torch.minimum"
+          },
+          {
+            "key": "torch.neg",
+            "public_operator": "torch.neg"
+          },
+          {
+            "key": "torch.pow",
+            "public_operator": "torch.pow"
+          },
+          {
+            "key": "torch.reciprocal",
+            "public_operator": "torch.reciprocal"
+          },
+          {
+            "key": "torch.remainder",
+            "public_operator": "torch.remainder"
+          },
+          {
+            "key": "torch.round",
+            "public_operator": "torch.round"
+          },
+          {
+            "key": "torch.rsqrt",
+            "public_operator": "torch.rsqrt"
+          },
+          {
+            "key": "torch.sign",
+            "public_operator": "torch.sign"
+          },
+          {
+            "key": "torch.sin",
+            "public_operator": "torch.sin"
+          },
+          {
+            "key": "torch.sinh",
+            "public_operator": "torch.sinh"
+          },
+          {
+            "key": "torch.sqrt",
+            "public_operator": "torch.sqrt"
+          },
+          {
+            "key": "torch.square",
+            "public_operator": "torch.square"
+          },
+          {
+            "key": "torch.trunc",
+            "public_operator": "torch.trunc"
+          },
+          {
+            "key": "item",
+            "public_operator": null
+          },
+          {
+            "key": "addmm",
+            "public_operator": "torch.addmm"
+          },
+          {
+            "key": "bmm",
+            "public_operator": "torch.bmm"
+          },
+          {
+            "key": "mm",
+            "public_operator": "torch.mm"
+          },
+          {
+            "key": "matmul",
+            "public_operator": "torch.matmul"
+          },
+          {
+            "key": "torch.nn.functional.elu",
+            "public_operator": "torch.nn.functional.elu"
+          },
+          {
+            "key": "torch.nn.functional.gelu",
+            "public_operator": "torch.nn.functional.gelu"
+          },
+          {
+            "key": "torch.nn.functional.leaky_relu",
+            "public_operator": "torch.nn.functional.leaky_relu"
+          },
+          {
+            "key": "torch.nn.functional.silu",
+            "public_operator": "torch.nn.functional.silu"
+          },
+          {
+            "key": "torch.sigmoid",
+            "public_operator": "torch.sigmoid"
+          },
+          {
+            "key": "torch.nn.functional.softmax",
+            "public_operator": "torch.nn.functional.softmax"
+          },
+          {
+            "key": "torch.tanh",
+            "public_operator": "torch.tanh"
+          },
+          {
+            "key": "torch.amax",
+            "public_operator": "torch.amax"
+          },
+          {
+            "key": "torch.amin",
+            "public_operator": "torch.amin"
+          },
+          {
+            "key": "torch.mean",
+            "public_operator": "torch.mean"
+          },
+          {
+            "key": "torch.sum",
+            "public_operator": "torch.sum"
+          },
+          {
+            "key": "scalar_add",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_div",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_mul",
+            "public_operator": null
+          },
+          {
+            "key": "scalar_sub",
+            "public_operator": null
+          },
+          {
+            "key": "add",
+            "public_operator": "torch.add"
+          },
+          {
+            "key": "div",
+            "public_operator": "torch.div"
+          },
+          {
+            "key": "mul",
+            "public_operator": "torch.mul"
+          },
+          {
+            "key": "sub",
+            "public_operator": "torch.sub"
+          }
+        ],
+        "elapsed_seconds": 0.025721915997564793
+      },
+      "full_wall_seconds": 0.21722385194152594
+    }
+  ],
+  "materialization": [
+    {
+      "skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+      "target_id": "b012bde34af533a287b06ea0",
+      "node_id": "node_0",
+      "attempts": 26,
+      "legal_candidates": 12,
+      "failures": 14,
+      "full_wall_seconds": 0.22997764218598604,
+      "stopped_at_deadline": false,
+      "generation_ordinal": 0,
+      "targets_found": [],
+      "rejected": []
+    },
+    {
+      "skeleton_sha256": "65da96ca2a3802569c08d733c6ba76fe1a65f00e071f62cae1fcc33338c2ae04",
+      "target_id": "b012bde34af533a287b06ea0",
+      "node_id": "node_0",
+      "attempts": 19,
+      "legal_candidates": 6,
+      "failures": 13,
+      "full_wall_seconds": 0.13934521563351154,
+      "stopped_at_deadline": false,
+      "generation_ordinal": 1,
+      "targets_found": [],
+      "rejected": []
+    }
+  ],
+  "executions": [
+    {
+      "ordinal": 0,
+      "target_id": "b012bde34af533a287b06ea0",
+      "round": 0,
+      "selection": {
+        "kind": "select",
+        "target_id": "b012bde34af533a287b06ea0",
+        "id": "7e027dbb8e12fb6ab9a809f0fbf2a814726899a04f23167b562c35d7f16cda2d",
+        "baseline_id": "7e027dbb8e12fb6ab9a809f0fbf2a814726899a04f23167b562c35d7f16cda2d",
+        "arm": "A",
+        "baseline_skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+        "selected_skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+        "desired_outcome": "true",
+        "desired_outcome_available": false,
+        "reason": "random_legal_input",
+        "verified_feedback_available": false,
+        "pending_ids": [
+          "019d6c43e2dff2874242efac6578e8e7e9b586b76a6dc495ea5bd54133c9a015",
+          "03895f8dcb14527facc97c4c616d52f237161ac9021a22517a98193380001a67",
+          "03a5a7e5a89c16317c7e2c7c01d4053101adbbe081f5b694d0e69a14df3e38d0",
+          "171b2b6be812b6a8005eb870901226542c1c27b5a509b44e8c2a609f3dd68f11",
+          "19667603badae0a16e4f8f77528a11ebca8f2cfa19693fd7a7cea005a15c197a",
+          "395095baabdc9cc0aa7d9ba374c936b215b9df6697b738a827004e3103806593",
+          "45271cdd3bd43fe2b8912935f40309bd3c0d7805bdbc3bbe1241663b2a15fcc1",
+          "687bb019bef270425e1fda7b695f7bc93e25dad4dc866623188b8c00a35b709f",
+          "72390f8c28efd06e1b9532f9faa6241d5986a0ea9fc04099e861365bf11c913c",
+          "7b2e7b68fb198186d719c023332ad5bcedce534b623f11c25717bf16dd6be95f",
+          "7e027dbb8e12fb6ab9a809f0fbf2a814726899a04f23167b562c35d7f16cda2d",
+          "824689111243dec7ad6407f61cc9c12e23a5d93125284c39d2aec7747bcc6a85",
+          "82ba7fb7aa3e1fc5f5c3abeef25a1f0ba10c75bc494045a5d66c19c1fb2dcccb",
+          "a643be49c9b5a76685806717e4154a6837bde991647467adb6dcd68f2b555d78",
+          "b7858c49710b12dbc7e14af3a636f95b55b7690f1096bfd6f269fcfff5bfb047",
+          "bdbd8fb33627690acbf20145a8461e237fdbeb105662738ffb989eee74f39c57",
+          "c881a564bb3021433f5fba0d6004eda409e4f2f8bf0354c328ac233412315782",
+          "d5df982c493b3f4b3e3f2988856dfa4d6497891985ebfc4814a2e5c1eec5ecc3"
+        ],
+        "elapsed_seconds": 5.712825804948807e-05
+      },
+      "selected_graph_sha256": "6897304f441c87af7e8937af042cf99e94dc8992479a18bb823f193a1c451f26",
+      "target_applicable": false,
+      "action": {
+        "attribute": "shape",
+        "value": 16,
+        "input_index": 0,
+        "axis": 1,
+        "node_id": "node_0"
+      },
+      "returncode": 0,
+      "full_wall_seconds": 16.761069714091718,
+      "status": "executed",
+      "metrics": {
+        "receipt_status": "executed",
+        "verified_target_ids": [],
+        "successful_execution_target_ids": [],
+        "operator_kinds_at_backend_entry": [
+          "torch.mul",
+          "torch.neg",
+          "torch.pow",
+          "torch.sum"
+        ],
+        "observation": {
+          "status": "unknown",
+          "reason": "no_unique_actual_source_exit",
+          "observed_outcomes": []
+        },
+        "domain_validation": {
+          "checks": [],
+          "failures": [],
+          "valid": true,
+          "fixed_domain_calls_checked": 0
+        },
+        "protocol_valid": true,
+        "excluded_hits": [],
+        "raw_calls": 709,
+        "unattributed_reasons": {
+          "missing_actual_aten": 498,
+          "source_registration_does_not_match_actual_aten": 209,
+          "missing_or_ambiguous_original_dag_node": 2
+        }
+      },
+      "observation": {
+        "status": "unknown",
+        "reason": "no_unique_actual_source_exit",
+        "observed_outcomes": []
+      }
+    },
+    {
+      "ordinal": 1,
+      "target_id": "c6172ddb5f3a0651fcb23678",
+      "round": 0,
+      "selection": {
+        "kind": "select",
+        "target_id": "c6172ddb5f3a0651fcb23678",
+        "id": "7cee706918e0a373d4d2c62769906492e1ceaab930cb534342898eafa69c4c5e",
+        "baseline_id": "7cee706918e0a373d4d2c62769906492e1ceaab930cb534342898eafa69c4c5e",
+        "arm": "A",
+        "baseline_skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+        "selected_skeleton_sha256": "20e6b645251b53b2744cbcc65b813284a6d13ef6b97b79987fc9d2e74d0f7109",
+        "desired_outcome": "true",
+        "desired_outcome_available": false,
+        "reason": "random_legal_input",
+        "verified_feedback_available": false,
+        "pending_ids": [
+          "0295a1a32c653bafae06175e76a3d907b08660e85a2cdc3153e3da6ce700a329",
+          "19db40df61b5312667043ce55b739c986106fe3652220ddb809b4694aca660e7",
+          "24a72f66011f5c8bb8565c983578a93371d2922aaf7ee461fcd727dffd87b4d6",
+          "487b39c854273e2261bcb38ef2881c8e81303be909751b5bfd01278a0f2ba8aa",
+          "49f9196756d66c3028f1ae6832a5359a5ba105d79ad5a2b78b1edafa9a998169",
+          "608e0350eabcc8ba1bcfb4c5ea64e725b9cb893da2f30a81fd77c81c71db9d5f",
+          "6ced792308dcf36c3462ddfb7e950f9769ef8004d06ace85951f9b5c0890cc9d",
+          "6dcf5453f8ec476e1e5382d706c82b8b5db904870bd20fd298622baba609a2bd",
+          "714883956834825bfb51919725089a3a836eabe676824a8b69c7bcd2ae788c0d",
+          "76d950e5ed6721d5f278ccdb6c98ec05d864d3b744595350997bbdae39daa029",
+          "7cee706918e0a373d4d2c62769906492e1ceaab930cb534342898eafa69c4c5e",
+          "80fa4d653b2a95ad5ea73cdfc5e53049ee7a37e92b41e8c3a3089c06ec3f04c8",
+          "a9340d200bc8a1409e4d531f566b4d00c24fd1d3d0c6e57d007a3d1717beba93",
+          "b6cba87ec1ca4c9df9f10392807d769709fc3afec71534852fcaf86db9a955c9",
+          "b8cf9b3b815a7f3605d117ba7de9013710bdee2bee14ef844baea80365f46a70",
+          "e23ffaad41111481e734596d0bf7bbfe88e7f4f48c42107f78ff59bf578dfb2b",
+          "f25a9996a17af49642e508ec584171f25218518bf56d42e7b67513d9920a2433",
+          "fa72670b6eba693bfe92644556936bcc5cba598c90bd975ff797ca15ab105db7"
+        ],
+        "elapsed_seconds": 9.308569133281708e-05
+      },
+      "selected_graph_sha256": "172ea21e4f7e017647c05aec1c313fa5ff7f233a8608547426195c20ce2c5a7f",
+      "target_applicable": false,
+      "action": {
+        "attribute": "shape",
+        "value": 17,
+        "input_index": 0,
+        "axis": 1,
+        "node_id": "node_0"
+      },
+      "returncode": 0,
+      "full_wall_seconds": 16.61493335943669,
+      "status": "executed",
+      "metrics": {
+        "receipt_status": "executed",
+        "verified_target_ids": [],
+        "successful_execution_target_ids": [],
+        "operator_kinds_at_backend_entry": [
+          "torch.mul",
+          "torch.neg",
+          "torch.pow",
+          "torch.sum"
+        ],
+        "observation": {
+          "status": "unknown",
+          "reason": "no_unique_actual_source_exit",
+          "observed_outcomes": []
+        },
+        "domain_validation": {
+          "checks": [],
+          "failures": [],
+          "valid": true,
+          "fixed_domain_calls_checked": 0
+        },
+        "protocol_valid": true,
+        "excluded_hits": [],
+        "raw_calls": 709,
+        "unattributed_reasons": {
+          "missing_actual_aten": 498,
+          "source_registration_does_not_match_actual_aten": 209,
+          "missing_or_ambiguous_original_dag_node": 2
+        }
+      },
+      "observation": {
+        "status": "unknown",
+        "reason": "no_unique_actual_source_exit",
+        "observed_outcomes": []
+      }
+    },
+    {
+      "ordinal": 2,
+      "target_id": "17ef21952460b4ff15610170",
+      "round": 0,
+      "selection": {
+        "kind": "select",
+        "target_id": "17ef21952460b4ff15610170",
+        "id": "676e24d1ef732dcabdb90644a4f19f2b9e49371836073da3733a5559e6164dca",
+        "baseline_id": "676e24d1ef732dcabdb90644a4f19f2b9e49371836073da3733a5559e6164dca",
+        "arm": "A",
+        "baseline_skeleton_sha256": "65da96ca2a3802569c08d733c6ba76fe1a65f00e071f62cae1fcc33338c2ae04",
+        "selected_skeleton_sha256": "65da96ca2a3802569c08d733c6ba76fe1a65f00e071f62cae1fcc33338c2ae04",
+        "desired_outcome": "true",
+        "desired_outcome_available": false,
+        "reason": "random_legal_input",
+        "verified_feedback_available": false,
+        "pending_ids": [
+          "1b363f6eab63c256f65f56b7cfed0ef33abd5f00ab8e74afcc5d9bf49134d9ef",
+          "1f834a462d2ce5ee551842ae5e900fd4d2bf34f37cb0619c429dbfecb8a8f473",
+          "31f6cbda36df0194f25892bb7715d5e9175758508c3d357d93e001216866df8d",
+          "33b1ec8d2e70567bd9cdf33ea1d7f5f8a0478e07b21c0ae9c7d898400507b26c",
+          "653ef6ec5807c6f98010d6c36bb33a080c1614c76fd544679273f9fb151fee26",
+          "676e24d1ef732dcabdb90644a4f19f2b9e49371836073da3733a5559e6164dca",
+          "6a95c84760c42e574d6ab2784965fd836546d45fec4841100cf6069061708d4d",
+          "6f8f2ea2ec0910c37057e4bcea2b73e57be664e2d7e42ac4c631468753378642",
+          "6f9c1bcf9ca8ce4b44edae059642078752ce2ffaae5b195bf679ca736682fb5e",
+          "81b87439f73d909c48e2cef551c9ba5d5fcb17af7f079e8c5180b7a811b460b0",
+          "827e128feef20783bed20f06c91758b42f951745aa45a532d0c3c581c08513ae",
+          "8bd026cc5423ea60c59691337fec21a0b2120caeaf267280281e58fa0c74b0de",
+          "9fba0e9008631985647bee017c5a1f7d238befb50a7a669c9d71b159e8359e5e",
+          "c2b7af6c1990438a0a01db4c179049310d5c097c2551a8891b4eebd015172b95",
+          "eb4931dc224a6857c61a8a236c827e3cbde5eb5a733198910897ab1a5631c293",
+          "f180458133a25b6171820b262ae541069d8d20f5ab0b3e0edcdd6c14e7516271",
+          "f5a5101591ba9c15abf8b421344a10f57060de758310a0a2062bfa86f7667f6b",
+          "fb582720f8bfbb6fc516e431d9e749ac6994335765946db60647192a502aac0b"
+        ],
+        "elapsed_seconds": 7.612910121679306e-05
+      },
+      "selected_graph_sha256": "65da96ca2a3802569c08d733c6ba76fe1a65f00e071f62cae1fcc33338c2ae04",
+      "target_applicable": false,
+      "action": {
+        "attribute": "shape",
+        "value": 1,
+        "input_index": 0,
+        "axis": 0,
+        "node_id": "node_0"
+      },
+      "returncode": 0,
+      "full_wall_seconds": 7.53581753000617,
+      "status": "value_domain_rejected",
+      "metrics": {
+        "receipt_status": "value_domain_rejected",
+        "verified_target_ids": [],
+        "successful_execution_target_ids": [],
+        "operator_kinds_at_backend_entry": [],
+        "observation": {
+          "status": "unknown",
+          "reason": "no_unique_actual_source_exit",
+          "observed_outcomes": []
+        },
+        "domain_validation": {
+          "checks": [],
+          "failures": [],
+          "valid": true,
+          "fixed_domain_calls_checked": 0
+        },
+        "protocol_valid": true,
+        "excluded_hits": [],
+        "raw_calls": 0,
+        "unattributed_reasons": {}
+      },
+      "observation": {
+        "status": "unknown",
+        "reason": "no_unique_actual_source_exit",
+        "observed_outcomes": []
+      }
+    }
+  ],
+  "covered_target_ids": [],
+  "successful_execution_target_ids": [],
+  "operator_kinds_at_backend_entry": [
+    "torch.mul",
+    "torch.neg",
+    "torch.pow",
+    "torch.sum"
+  ],
+  "protocol_valid": true,
+  "stop_reason": "execution_limit_control",
+  "primary_denominator": 642,
+  "primary_coverage": 0.0,
+  "control_only": true,
+  "source_sha256": {
+    "experiment_arm.py": "4fa1f6f143ee2333f11cdd925f8f93f4bd324e89ab19a99f2fd21c8377e9da8f",
+    "experiment_runtime.py": "8c4ac591224ce03025f33c63fa7170ba39ecfad8d8ad2fdb57d1ec7b15ad98f2",
+    "experiment_queue.py": "8221645325e830713f230162ee01d3d78425cfada09dfda79c170b76c731ca1f",
+    "experiment_metrics.py": "e3ab00c29c18fd9cdeaaecec9a249eaabf8580bcdb624c30c5a01c16f48ea3ca",
+    "action_candidates.py": "32fdcbc48889248c93ca693fe8bc9db0a7434279d308b865b119084c3bf954bd",
+    "graph_context.py": "945fe9cf5a0d0c905038608787f1dce3e678b1ccf03536bd83b64e09acea4793",
+    "experiment_supervisor.py": "7ad81f9f1ea2695ba9cd945b1e702e0f117cda0d8f06ce432968c2d616b6f96a",
+    "input_regions.py": "f798eaf0bd3150dbfffd0dba8653c2904549c5c8f2f427fe594fc190ce195074",
+    "dag_generator.py": "7f6c3319b4afddbbc9a5dfe4139162b8eb372131a3fe5dd097596f38a7e235e2",
+    "dag_binding.py": "211d673953f964a030b154239a55aa97a25885edd799f354a48465be20504b99",
+    "dag_render.py": "4ffed78071f557380d2e065ec8735045e6ba403d23ba154b51ed073add580807",
+    "common_domain.py": "277c450c122bb46cda08dd93e8ae27ada0c46ad3ef672ee94895e7d9d73e9d77",
+    "functional_domain.py": "8b87ade226888316f23c2eb23ca0edbf97e53fa6d75844412a6be58b7238f833",
+    "source_conditions.py": "6819254026f6362b1a4f21b0064ba52eed9596c00401bd02ca11b1ed279f3b14",
+    "candidate_queue.py": "7670322a53fb133b02c9c0161b101898b6d1502cb1ae872f776f8d6371c72b7e",
+    "opcode_offsets.py": "a13b6017ed13a4c16c2768d8d83b6b15d5c7438c40f6cc9d1ccf09bb96166792"
+  },
+  "source_unchanged": true
+}

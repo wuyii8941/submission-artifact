@@ -1,0 +1,207 @@
+{
+  "requested": 8,
+  "selection": "fixed ordinal prefix, not selected for execution success or coverage",
+  "statuses": {
+    "value_domain_rejected": 2,
+    "executed": 6
+  },
+  "rows": [
+    {
+      "ordinal": 0,
+      "seed": 202611060,
+      "case_sha256": "b13e9a5c97f89f2881c682aff67d50266cbf89e08d65b483580990b263e1a408",
+      "profile": "shared_fanout",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "value_domain_rejected",
+      "oracle": null,
+      "status": "value_domain_rejected",
+      "full_wall_seconds": 7.386767844669521
+    },
+    {
+      "ordinal": 1,
+      "seed": 202611061,
+      "case_sha256": "6433b8a494c77eb29acdad874a617c752bc4d8431a70d68afaa290ab3b5725e4",
+      "profile": "deep_general",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [],
+        "actual_shape": [],
+        "reference_dtype": "torch.int16",
+        "actual_dtype": "torch.int16",
+        "numel": 1,
+        "status": "pass"
+      },
+      "status": "executed",
+      "full_wall_seconds": 14.507573038339615
+    },
+    {
+      "ordinal": 2,
+      "seed": 202611062,
+      "case_sha256": "9e26ef97aae12605dccdc46e7694109e0fe42b96ec7a971b4563dd88a3762a64",
+      "profile": "noncontiguous_tensor",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          28,
+          18
+        ],
+        "actual_shape": [
+          28,
+          18
+        ],
+        "reference_dtype": "torch.float32",
+        "actual_dtype": "torch.float32",
+        "numel": 504,
+        "reference_finite": false,
+        "compiled_finite": false,
+        "status": "oracle_inapplicable_nonfinite_reference"
+      },
+      "status": "executed",
+      "full_wall_seconds": 16.46409434452653
+    },
+    {
+      "ordinal": 3,
+      "seed": 202611063,
+      "case_sha256": "746f3fe4a245c4304dbd53bd7b4cf35361f6cdea678cf408e327a429b4be1658",
+      "profile": "reconvergent",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "value_domain_rejected",
+      "oracle": null,
+      "status": "value_domain_rejected",
+      "full_wall_seconds": 7.387073296122253
+    },
+    {
+      "ordinal": 4,
+      "seed": 202611064,
+      "case_sha256": "63eaee86ea8da4efa36d36a9598e241c88413af64cf6e81a6a198f97d4c725ce",
+      "profile": "shared_fanout",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          6,
+          4,
+          1
+        ],
+        "actual_shape": [
+          6,
+          4,
+          1
+        ],
+        "reference_dtype": "torch.float16",
+        "actual_dtype": "torch.float16",
+        "numel": 24,
+        "reference_finite": false,
+        "compiled_finite": false,
+        "status": "oracle_inapplicable_nonfinite_reference"
+      },
+      "status": "executed",
+      "full_wall_seconds": 15.059318239800632
+    },
+    {
+      "ordinal": 5,
+      "seed": 202611065,
+      "case_sha256": "723df4c45ff92fd68880124d7cb1b27dfc96ef3711250fbafbfe1dacf954f401",
+      "profile": "deep_general",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          14,
+          0
+        ],
+        "actual_shape": [
+          14,
+          0
+        ],
+        "reference_dtype": "torch.float64",
+        "actual_dtype": "torch.float64",
+        "numel": 0,
+        "reference_finite": true,
+        "compiled_finite": true,
+        "atol": 1e-05,
+        "rtol": 0.0001,
+        "status": "pass"
+      },
+      "status": "executed",
+      "full_wall_seconds": 14.558245055377483
+    },
+    {
+      "ordinal": 6,
+      "seed": 202611066,
+      "case_sha256": "d1b4eda06958002e73f7a9d804717997e62830cd993a1ec20381f3f5e1d4482d",
+      "profile": "noncontiguous_tensor",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          23,
+          8,
+          3
+        ],
+        "actual_shape": [
+          23,
+          8,
+          3
+        ],
+        "reference_dtype": "torch.int16",
+        "actual_dtype": "torch.int16",
+        "numel": 552,
+        "status": "pass"
+      },
+      "status": "executed",
+      "full_wall_seconds": 14.45794821716845
+    },
+    {
+      "ordinal": 7,
+      "seed": 202611067,
+      "case_sha256": "2a163dcded6fd06b60a2529532ac8465bc96415aaa9b758a59ab65edb8061480",
+      "profile": "reconvergent",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          1,
+          0,
+          2
+        ],
+        "actual_shape": [
+          1,
+          0,
+          2
+        ],
+        "reference_dtype": "torch.int16",
+        "actual_dtype": "torch.int16",
+        "numel": 0,
+        "status": "pass"
+      },
+      "status": "executed",
+      "full_wall_seconds": 14.457486789673567
+    }
+  ],
+  "full_wall_seconds": 104.31766362674534,
+  "excluded_from_discovery_and_effect_comparison": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": {
+    "runtime_audit.py": "70cdafb9991253b53da9b089f749aa6264103305609c15eae49200dfdede65b8",
+    "value_domain.py": "f80ae64a0015f4bcbd9b0763c4a8f1dc413ec9411943e8adafc279cc314c286e",
+    "qualify_cuda_dags.py": "a8bb264941b74cc4c174615243573f3d797275cd9f6c192aa9110bdb123801d9"
+  }
+}

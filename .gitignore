@@ -38,6 +38,10 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 
+# Route-A formal runs: keep curated summaries in Git, not multi-GB raw traces.
+evaluation/route_a/research_20261106/coverage_reexperiment_v1/formal_effect_run_v1/seed_*/*
+!evaluation/route_a/research_20261106/coverage_reexperiment_v1/formal_effect_run_v1/seed_*/summary.json
+
 # Local environment overrides
 .env
 *.local

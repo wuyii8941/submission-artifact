@@ -1,0 +1,15 @@
+{
+  "source_outcome_candidates": 712,
+  "proposed_domain_exclusions": 12,
+  "fully_supported_direct_proofs": 6,
+  "unsupported_proofs": {
+    "mm": [
+      "ValueError:unsupported_opcode:STORE_SUBSCR"
+    ],
+    "addmm": [
+      "ValueError:unsupported_opcode:STORE_SUBSCR"
+    ]
+  },
+  "primary_denominator_committed": false,
+  "independent_qualification_required": true
+}

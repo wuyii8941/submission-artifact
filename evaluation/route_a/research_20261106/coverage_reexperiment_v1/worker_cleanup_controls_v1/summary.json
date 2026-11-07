@@ -1,0 +1,6 @@
+{
+  "control_only": true,
+  "wrong_process_start_refused": true,
+  "verified_real_worker_group_terminated": true,
+  "returncode": -9
+}

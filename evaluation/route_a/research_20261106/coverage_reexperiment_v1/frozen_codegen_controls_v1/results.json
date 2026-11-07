@@ -1,0 +1,2301 @@
+{
+  "qualified_for_stable_reemission": true,
+  "not_qualified_for_graph_binding_or_full_domain": true,
+  "excluded_from_discovery": true,
+  "rows": [
+    {
+      "operator": "torch.add",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "add",
+          "class": "torchfuzz.operators.tensor_pointwise.AddOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "add",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": "+"
+            }
+          },
+          "render_seed": 202611066000,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "0cedc453d0356549be440b7bf0a1eee2414f75ba8e03ef4f9879e1330073714f"
+      },
+      "code": "probe_output = torch.add(input_0, input_1, alpha=-2.6132)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sub",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "sub",
+          "class": "torchfuzz.operators.tensor_pointwise.SubOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "sub",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": "-"
+            }
+          },
+          "render_seed": 202611066001,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "d18cffc68d5479ad7ed370aa3ef82ec22742be4083f29b34f34cb095710c6572"
+      },
+      "code": "probe_output = torch.sub(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.mul",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "mul",
+          "class": "torchfuzz.operators.tensor_pointwise.MulOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "mul",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": "*"
+            }
+          },
+          "render_seed": 202611066002,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "a5d0fc658a5f33364e7829a8d34e50534228d68c689d78c757e5b61bdb259fce"
+      },
+      "code": "probe_output = torch.mul(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.div",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "div",
+          "class": "torchfuzz.operators.tensor_pointwise.DivOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "div",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": "/"
+            }
+          },
+          "render_seed": 202611066003,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "237addfa0a3376e4ee19fae8451edc1d569dc25438dd9e096970a1f98b86872d"
+      },
+      "code": "probe_output = torch.div(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sigmoid",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sigmoid",
+          "class": "torchfuzz.operators.nn_functional.SigmoidOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sigmoid",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066004,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "2b945176e6677c536271eb4310546abaad60d2aae7ff8de32f4d27ff64800a10"
+      },
+      "code": "probe_output = torch.sigmoid(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.tanh",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.tanh",
+          "class": "torchfuzz.operators.nn_functional.TanhOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.tanh",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066005,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "4e6d07779d107ad8e5152166f39df7bd98d214b46e91964a1b38e4942b177154"
+      },
+      "code": "probe_output = torch.tanh(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.exp",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.exp",
+          "class": "torchfuzz.operators.elementwise_math.ExpOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.exp",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066006,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "82a02896fd1f68bbaaa10385604f958371de999cd7e70e19780b1191c10cebcf"
+      },
+      "code": "probe_output = torch.exp(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sqrt",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sqrt",
+          "class": "torchfuzz.operators.elementwise_math.SqrtOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sqrt",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066007,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "1e5c80fbdc9fe9bc53cc83d867f597acf023485eb307b8b55fa9b2a7b0244faf"
+      },
+      "code": "probe_output = torch.sqrt(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.abs",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.abs",
+          "class": "torchfuzz.operators.elementwise_math.AbsOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.abs",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066008,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "5f6f688cd8470e4c0e85a9a18f423e0846c500e7157f2db95980ecb9cd1d75b3"
+      },
+      "code": "probe_output = torch.abs(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sin",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sin",
+          "class": "torchfuzz.operators.elementwise_math.SinOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sin",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066009,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "e924384b42d36fb84e250d8198213f0a2d2ae57237dc4b19875a69eec1c02050"
+      },
+      "code": "probe_output = torch.sin(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.cos",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.cos",
+          "class": "torchfuzz.operators.elementwise_math.CosOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.cos",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066010,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "d877500e45f253afadab598d1cbf952329725db84f046fcb986e0cfef1e99ffb"
+      },
+      "code": "probe_output = torch.cos(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sum",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sum",
+          "class": "torchfuzz.operators.reduction.SumOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sum",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_mode": "scalar",
+              "_dim": null,
+              "_keepdim": null,
+              "_input_size": {
+                "tag": "tuple",
+                "values": [
+                  1,
+                  2
+                ]
+              },
+              "_input_dtype": {
+                "tag": "dtype",
+                "name": "float32"
+              }
+            }
+          },
+          "render_seed": 202611066011,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/reduction.py",
+          "codegen_source_sha256": "860fbcad134b5f549d9d911d4f767ba56b0aa71d5cb3452f631776d4af590a64",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ce6a289a660eecd5b4505c770d9f01e7ccf6e24e2e60e51bea4de99d1293fcbc"
+      },
+      "code": "probe_output = torch.sum(input_0, dtype=torch.float32)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.mean",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.mean",
+          "class": "torchfuzz.operators.reduction.MeanOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.mean",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_mode": "scalar",
+              "_dim": null,
+              "_keepdim": null,
+              "_input_size": {
+                "tag": "tuple",
+                "values": [
+                  4,
+                  5
+                ]
+              },
+              "_input_dtype": {
+                "tag": "dtype",
+                "name": "float32"
+              }
+            }
+          },
+          "render_seed": 202611066012,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/reduction.py",
+          "codegen_source_sha256": "860fbcad134b5f549d9d911d4f767ba56b0aa71d5cb3452f631776d4af590a64",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "39f86acf875c8ecd069e574e592fdf79865c2ab0adacd5cb46b8406562a7b4c1"
+      },
+      "code": "probe_output = torch.mean(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.amax",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.amax",
+          "class": "torchfuzz.operators.reduction.AmaxOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.amax",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_mode": "scalar",
+              "_dim": null,
+              "_keepdim": null,
+              "_input_size": {
+                "tag": "tuple",
+                "values": [
+                  1
+                ]
+              },
+              "_input_dtype": {
+                "tag": "dtype",
+                "name": "float32"
+              }
+            }
+          },
+          "render_seed": 202611066013,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/reduction.py",
+          "codegen_source_sha256": "860fbcad134b5f549d9d911d4f767ba56b0aa71d5cb3452f631776d4af590a64",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "260b553c329d053fa5139a618d20e53cc11fc1372d6644983551f9cef86c2911"
+      },
+      "code": "probe_output = torch.amax(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.amin",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.amin",
+          "class": "torchfuzz.operators.reduction.AminOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.amin",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_mode": "scalar",
+              "_dim": null,
+              "_keepdim": null,
+              "_input_size": {
+                "tag": "tuple",
+                "values": [
+                  6,
+                  1,
+                  5
+                ]
+              },
+              "_input_dtype": {
+                "tag": "dtype",
+                "name": "float32"
+              }
+            }
+          },
+          "render_seed": 202611066014,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/reduction.py",
+          "codegen_source_sha256": "860fbcad134b5f549d9d911d4f767ba56b0aa71d5cb3452f631776d4af590a64",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "2b32b8416389cfc170a5903d78a0e6f54f9e6baa8b63bce4f41839b68b444740"
+      },
+      "code": "probe_output = torch.amin(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.matmul",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "matmul",
+          "class": "torchfuzz.operators.matrix_multiply.MatmulOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "matmul",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.f400000000000p+8"
+              }
+            }
+          },
+          "render_seed": 202611066015,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/matrix_multiply.py",
+          "codegen_source_sha256": "2474cbc86b9d3d94bd375ada177c42add6fd1d946cb651a48068924ae45b58c6",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "31b4f7484f48e19c66d79dd07003e872c454bd3f7e9b8ca7ef87172e43adc1b5"
+      },
+      "code": "probe_output = torch.matmul(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.mm",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "mm",
+          "class": "torchfuzz.operators.matrix_multiply.MMOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "mm",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.4000000000000p+2"
+              }
+            }
+          },
+          "render_seed": 202611066016,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/matrix_multiply.py",
+          "codegen_source_sha256": "2474cbc86b9d3d94bd375ada177c42add6fd1d946cb651a48068924ae45b58c6",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "c0059561ccf9928d129b5ca5ebcefadda4b2f14a1bf899db16425ea48d74e0f2"
+      },
+      "code": "probe_output = torch.mm(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.bmm",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "bmm",
+          "class": "torchfuzz.operators.matrix_multiply.BmmOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "bmm",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.4000000000000p+2"
+              }
+            }
+          },
+          "render_seed": 202611066017,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/matrix_multiply.py",
+          "codegen_source_sha256": "2474cbc86b9d3d94bd375ada177c42add6fd1d946cb651a48068924ae45b58c6",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "8d406f909ecf256a3cf221710d52af3ffb20b8a425f87da13c6bdca0594f851f"
+      },
+      "code": "probe_output = torch.bmm(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.gelu",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.gelu",
+          "class": "torchfuzz.operators.nn_functional.GELUOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.gelu",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066018,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ef3cfa6c45358fb53407d326397ca95f036e437905b9142ff66fb340f1d7f9f5"
+      },
+      "code": "probe_output = torch.nn.functional.gelu(input_0, approximate='tanh')",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.silu",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.silu",
+          "class": "torchfuzz.operators.nn_functional.SiLUOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.silu",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066019,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "1cba4d5b1d4101700a52a9f022fec5b952d0af451ffb0b61f6b661c230e68398"
+      },
+      "code": "probe_output = torch.nn.functional.silu(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.softmax",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.softmax",
+          "class": "torchfuzz.operators.nn_functional.SoftmaxOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.softmax",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066020,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "abcfba28677dd848005eb44aa2bdc3e233a78ab15539b79a1a216cb4f9043155"
+      },
+      "code": "probe_output = torch.nn.functional.softmax(input_0, dim=-1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.neg",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.neg",
+          "class": "torchfuzz.operators.elementwise_math.NegOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.neg",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066021,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "3af8cb2afbc25432b4533bbd796eec7839dfb14e80016f049e4487bfbc763407"
+      },
+      "code": "probe_output = torch.neg(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.square",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.square",
+          "class": "torchfuzz.operators.elementwise_math.SquareOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.square",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066022,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "a6d4dbfd0b4d4ad11d99714aae2a2857e385e401803f391668cacb63327e5896"
+      },
+      "code": "probe_output = torch.square(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.reciprocal",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.reciprocal",
+          "class": "torchfuzz.operators.elementwise_math.ReciprocalOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.reciprocal",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066023,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "1aab55bd57616457d3575892edc48b94c44407a99ef130b2026e0f6cf524c1fd"
+      },
+      "code": "probe_output = torch.reciprocal(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.rsqrt",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.rsqrt",
+          "class": "torchfuzz.operators.elementwise_math.RsqrtOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.rsqrt",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066024,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "090bead3d07d6030d14499593fb9e6367bd752005c46f955b35516b536cb2c28"
+      },
+      "code": "probe_output = torch.rsqrt(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.exp2",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.exp2",
+          "class": "torchfuzz.operators.elementwise_math.Exp2Operator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.exp2",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066025,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "d62087c012e936ec781a40fc64b5975e94417755f29ac341c81240951354fcb8"
+      },
+      "code": "probe_output = torch.exp2(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.expm1",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.expm1",
+          "class": "torchfuzz.operators.elementwise_math.Expm1Operator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.expm1",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066026,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "6636d2575a4cefa81a0879aa28e3dd15f41023056ea9f3c1e2e6ed5f04f59a7d"
+      },
+      "code": "probe_output = torch.expm1(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.log",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.log",
+          "class": "torchfuzz.operators.elementwise_math.LogOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.log",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066027,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "90dab41e6789fb8524d9847a03952dd9f64c0766ebfb8057b2b847e11093865e"
+      },
+      "code": "probe_output = torch.log(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.log2",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.log2",
+          "class": "torchfuzz.operators.elementwise_math.Log2Operator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.log2",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066028,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "edcd4d906583bad90793cfd786c7aab49ca2890401f2e94276c0be3f5048f00c"
+      },
+      "code": "probe_output = torch.log2(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.log10",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.log10",
+          "class": "torchfuzz.operators.elementwise_math.Log10Operator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.log10",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066029,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "0fca0719cfc7afba221317dc6e2d875872d3f08403eb79854b9ba02008ffa245"
+      },
+      "code": "probe_output = torch.log10(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.log1p",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.log1p",
+          "class": "torchfuzz.operators.elementwise_math.Log1pOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.log1p",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066030,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "784860e22ebe5829eabb645c974aaa1903cdf70d4054ca804385d58a8a2f755e"
+      },
+      "code": "probe_output = torch.log1p(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.erf",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.erf",
+          "class": "torchfuzz.operators.elementwise_math.ErfOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.erf",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066031,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "db0a3dacdb26a3e2fd005e12272ad9110f653840f3b5a155f1d752540556ed8f"
+      },
+      "code": "probe_output = torch.erf(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.erfc",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.erfc",
+          "class": "torchfuzz.operators.elementwise_math.ErfcOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.erfc",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066032,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "90b0b0cc86f2f712496fd241a912ad54cc7160404310c517f4bb4dff23254e86"
+      },
+      "code": "probe_output = torch.erfc(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.floor",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.floor",
+          "class": "torchfuzz.operators.elementwise_math.FloorOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.floor",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066033,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "f274e8baa399d95f692bccdfdc1c92968a3097d52048fa75e9e4621078be72ef"
+      },
+      "code": "probe_output = torch.floor(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.ceil",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.ceil",
+          "class": "torchfuzz.operators.elementwise_math.CeilOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.ceil",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066034,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "f7db8ae11a34d40cafca7b807c766601bd66df7f0b73833c3c695bdcb1f388d3"
+      },
+      "code": "probe_output = torch.ceil(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.round",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.round",
+          "class": "torchfuzz.operators.elementwise_math.RoundOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.round",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_decimals": 2
+            }
+          },
+          "render_seed": 202611066035,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "d204fcac2fd72219082b4a2de3ca8118ec257436e35211a4f261963fdf136192"
+      },
+      "code": "probe_output = torch.round(input_0, decimals=2)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.trunc",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.trunc",
+          "class": "torchfuzz.operators.elementwise_math.TruncOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.trunc",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066036,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "aa51e4fbdf46437ad25c0510eb096dc105250eac5b93fd1ac546ddef2fc3fb0e"
+      },
+      "code": "probe_output = torch.trunc(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sign",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sign",
+          "class": "torchfuzz.operators.elementwise_math.SignOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sign",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066037,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "3a58e1a7632fec151f6122082d82809169f0d794049b8d58a2598c73b9d5e987"
+      },
+      "code": "probe_output = torch.sign(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.sinh",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.sinh",
+          "class": "torchfuzz.operators.elementwise_math.SinhOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.sinh",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066038,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "1b2a4c5a6d57b6ee4169f0267815b4f36fbcc7317fec0c130b48afe12b594484"
+      },
+      "code": "probe_output = torch.sinh(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.cosh",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.cosh",
+          "class": "torchfuzz.operators.elementwise_math.CoshOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.cosh",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066039,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "2bdbbad712f18dac37fb43cb54c064870dad9e5309ed5a78efefc635822bd851"
+      },
+      "code": "probe_output = torch.cosh(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.atan",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.atan",
+          "class": "torchfuzz.operators.elementwise_math.AtanOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.atan",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066040,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ef048fa04c953df65431c59bb866485fc25153210a8f74e438ccc2a853adf21b"
+      },
+      "code": "probe_output = torch.atan(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.asinh",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.asinh",
+          "class": "torchfuzz.operators.elementwise_math.AsinhOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.asinh",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066041,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "cd581e559f6437bf6982a22c66fa2de84d4c3ec844c10b6b53dd00e208750b68"
+      },
+      "code": "probe_output = torch.asinh(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.maximum",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.maximum",
+          "class": "torchfuzz.operators.elementwise_math.MaximumOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.maximum",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066042,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "706733bbebf139b8157e46176f34aeac8229c55aee5f5ab5ec6450981d05f9aa"
+      },
+      "code": "probe_output = torch.maximum(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.minimum",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.minimum",
+          "class": "torchfuzz.operators.elementwise_math.MinimumOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.minimum",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066043,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "4e0c67447bd62657b25d29f77454521a5f3c9ff88b99fde83e9894aa1b463618"
+      },
+      "code": "probe_output = torch.minimum(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.pow",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.pow",
+          "class": "torchfuzz.operators.elementwise_math.PowOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.pow",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066044,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "4e8b8242ce242e82d692db588947ca43a5021830811c0de3c1854087ce676e72"
+      },
+      "code": "probe_output = torch.pow(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.remainder",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.remainder",
+          "class": "torchfuzz.operators.elementwise_math.RemainderOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.remainder",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066045,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "a5fde87a4c245549f3994141c7316d37e5f77396d0e610b3371ef8d4ca13d88b"
+      },
+      "code": "probe_output = torch.remainder(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.bfloat16",
+        "matches_output": false
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.fmod",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.fmod",
+          "class": "torchfuzz.operators.elementwise_math.FmodOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.fmod",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066046,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ec3e67b676715c8a308bb08f3b9f46c4498cacba1af9a95ccee8128a6d9c687c"
+      },
+      "code": "probe_output = torch.fmod(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.hypot",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.hypot",
+          "class": "torchfuzz.operators.elementwise_math.HypotOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.hypot",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066047,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "4e35a2d1804f8874dfe93845f0864b1c0a2f031587811b3a8af4e5fe15c75bc7"
+      },
+      "code": "probe_output = torch.hypot(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.logaddexp",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.logaddexp",
+          "class": "torchfuzz.operators.elementwise_math.LogaddexpOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.logaddexp",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "symbol": ""
+            }
+          },
+          "render_seed": 202611066048,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/tensor_pointwise.py",
+          "codegen_source_sha256": "9ac42044e85108cefacb7d5a0fd4344f1a4782381dc277446300759282cdcd6f",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "c171269ac0647a5dba8132b96e6bbcc5b231d0b6962bbca225157e12a70aa11a"
+      },
+      "code": "probe_output = torch.logaddexp(input_0, input_1)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.elu",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.elu",
+          "class": "torchfuzz.operators.nn_functional.ELUOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.elu",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066049,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "335aed2e60f0dddee64d683bffaf1cc4bb6bf04229467dec5b0a2d54414c7a9a"
+      },
+      "code": "probe_output = torch.nn.functional.elu(input_0, alpha=1.6949)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.leaky_relu",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.leaky_relu",
+          "class": "torchfuzz.operators.nn_functional.LeakyReLUOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.leaky_relu",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066050,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/nn_functional.py",
+          "codegen_source_sha256": "983a55329c5063affd7dbfd3f3304ce5ed4fb2c06af4c5e356dbc74f93e2a07b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "75bfb807011c5ae3134c0d508082def10dbebb3983d691dbbcd67475fe5a4b4b"
+      },
+      "code": "probe_output = torch.nn.functional.leaky_relu(input_0, negative_slope=0.047)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.softplus",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.softplus",
+          "class": "torchfuzz.operators.activations.SoftplusOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.softplus",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              },
+              "_beta": {
+                "tag": "float",
+                "value": "0x1.37f62b6ae7d56p-1"
+              },
+              "_threshold": {
+                "tag": "float",
+                "value": "0x1.8fb2fec56d5d0p+3"
+              }
+            }
+          },
+          "render_seed": 202611066051,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/activations.py",
+          "codegen_source_sha256": "95bd40e52db42b901c4f87a047c2a3ef32398236b4ce18da3e08c39ef9c9ec5b",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ca07fa9a4931f84274f649cafc96c1a8e1623ab3bb9703364fc0313ad48c55f3"
+      },
+      "code": "probe_output = torch.nn.functional.softplus(input_0, beta=0.6093, threshold=12.4906)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.hardswish",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.hardswish",
+          "class": "torchfuzz.operators.activations.HardswishOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.hardswish",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066052,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "f9263915c9b6d517ff1cb0fb39093dd86a1a5640d61aa442639deb0ffcbc0502"
+      },
+      "code": "probe_output = torch.nn.functional.hardswish(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.nn.functional.mish",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "torch.nn.functional.mish",
+          "class": "torchfuzz.operators.activations.MishOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "torch.nn.functional.mish",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.0000000000000p+0"
+              }
+            }
+          },
+          "render_seed": 202611066053,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/elementwise_math.py",
+          "codegen_source_sha256": "d1c52e82f796af7f7aa69c78b334944de0597b27832324f58641d1b9aab56687",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "c1789d0f35cc0dfe4e77efa6dd9be890d396896bdb2ac14972fb2daa59a12ead"
+      },
+      "code": "probe_output = torch.nn.functional.mish(input_0)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    },
+    {
+      "operator": "torch.addmm",
+      "control_only": true,
+      "status": "probed",
+      "snapshot": {
+        "payload": {
+          "registry_key": "addmm",
+          "class": "torchfuzz.operators.matrix_multiply.AddmmOperator",
+          "state": {
+            "tag": "dict",
+            "values": {
+              "name": "addmm",
+              "weight": {
+                "tag": "float",
+                "value": "0x1.4000000000000p+2"
+              }
+            }
+          },
+          "render_seed": 202611066054,
+          "codegen_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/operators/matrix_multiply.py",
+          "codegen_source_sha256": "2474cbc86b9d3d94bd375ada177c42add6fd1d946cb651a48068924ae45b58c6",
+          "excluded_operational_attributes": []
+        },
+        "sha256": "ecf5aa640a650d6261702502b0c3cf81497588194cd43fcbb04858279c156d53"
+      },
+      "code": "probe_output = torch.addmm(input_0, input_1, input_2)",
+      "meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "checks": {
+        "first_emission_preserved": true,
+        "interleaved_repeat_identical": true,
+        "snapshot_unchanged": true,
+        "rng_preserved_during_render": true,
+        "tampered_snapshot_rejected": true
+      }
+    }
+  ],
+  "source_hashes": {
+    "frozen_codegen.py": "a5a392d976ed88d15863045c72e7d9f21cae1787db12f4889988fac698823adf",
+    "qualify_frozen_codegen.py": "7ab4677e3b728e5b38374fcf5be6939da5357d49046adc134165a61a4b6cfb8d"
+  }
+}

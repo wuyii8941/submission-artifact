@@ -1,0 +1,8 @@
+{
+  "all55isolated_emissions_pass_functional_domain": true,
+  "unique_targets": 642,
+  "excluded": 70,
+  "manifest_unchanged": true,
+  "effect_experiment_started": false,
+  "scope": "frozen target-set consistency, not effect evidence"
+}

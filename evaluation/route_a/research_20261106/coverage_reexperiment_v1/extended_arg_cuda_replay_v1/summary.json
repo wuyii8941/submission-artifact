@@ -1,0 +1,16 @@
+{
+  "control_only": true,
+  "fixed_prior_cases": 3,
+  "identical_graphs_and_inputs": true,
+  "all_logical_exits_observed": true,
+  "source_unchanged_all": true,
+  "full_wall_seconds": 51.01539871376008,
+  "scope": "measurement correction only, not method coverage improvement",
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": {
+    "runtime_audit.py": "d082e5bf4f2ac07fe2afe7ea2d35b10cbea08bdc1e299bf82ddba80c97be4639",
+    "opcode_offsets.py": "a13b6017ed13a4c16c2768d8d83b6b15d5c7438c40f6cc9d1ccf09bb96166792",
+    "qualify_trace_replay.py": "6943d46f6a57691228e98deaa9c71ab2b0bfe35adeea73cd513f74a4aad0aa47"
+  }
+}

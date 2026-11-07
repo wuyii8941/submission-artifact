@@ -1,0 +1,52 @@
+{
+  "scope": "formal B binding identity audit only,no effect analysis",
+  "requests_checked": 9,
+  "checks": [
+    {
+      "ordinal": 0,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "486a15e87451ee3cb04d6c6a0833f5e44b346d5fd9de947f33dc42ef2e759745"
+    },
+    {
+      "ordinal": 1,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "1fa301f7ae1e584863b3fffd6482e8ee1173b97462af2c366324a0c46279384a"
+    },
+    {
+      "ordinal": 2,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "85a5719e6eca138abab6025d760d07b05c45c6e88b641997a794e29ec5797b8c"
+    },
+    {
+      "ordinal": 3,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "7b5f49f2b27dfdec6ebf7c186258c9bfd096a2d8f70479450b0da26182d80983"
+    },
+    {
+      "ordinal": 4,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "08577a31ef4d7719154174a046a3361353e3be24d3424151ce44a7cf434dd0aa"
+    },
+    {
+      "ordinal": 5,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "b360be382fc158809a50078abcbf363af29e554343dc34d586d4605fad3d71b3"
+    },
+    {
+      "ordinal": 6,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "9a2fd535ddbecbf5b2aa02946d368c6d61c6fed25bf6280f7ca4bac253bdc4c8"
+    },
+    {
+      "ordinal": 7,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "a6d506d50a7f25e54efbd203c90223435519d76b3745bd917779ef91e08c6168"
+    },
+    {
+      "ordinal": 8,
+      "topology_and_operator_semantics_unchanged": true,
+      "bound_graph_sha256": "59a5eb3d93671055559d771e9368ad14adcc8af433dd391108a08b3ec035c7fb"
+    }
+  ],
+  "audit_utc": "2026-11-06T12:04:24Z"
+}

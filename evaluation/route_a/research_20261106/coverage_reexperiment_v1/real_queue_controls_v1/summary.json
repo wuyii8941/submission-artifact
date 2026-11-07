@@ -1,0 +1,227 @@
+{
+  "control_only": true,
+  "domain": {
+    "schema": 1,
+    "template": "default",
+    "device": "cuda",
+    "mode": "forward_static_fullgraph",
+    "dtypes": [
+      "torch.float32",
+      "torch.float64",
+      "torch.float16",
+      "torch.bfloat16",
+      "torch.int8",
+      "torch.int16",
+      "torch.int32",
+      "torch.int64",
+      "torch.bool"
+    ],
+    "layout_actions": [
+      "contiguous",
+      "column_major"
+    ],
+    "shape_actions": [
+      0,
+      1,
+      2,
+      7,
+      16,
+      17,
+      32
+    ],
+    "zero_dimensions_legal": true,
+    "shape_zero_binding_currently_supported": false,
+    "max_storage_elements": 4000000,
+    "generator_shapes": "unchanged upstream semantic specifications; no decision-specific shape generator",
+    "input_values": "per-sample seeded normal floating/complex,0..1 integral/bool; shared value-domain screen rejects unsafe combinations without repair",
+    "binding_parameters": "only registered shape,dtype,layout actions; topology and other semantic parameters frozen",
+    "source_sha256": "2c914dc45da954900dde988b5cc0cd918d7ba4195ad4b91fb74489e47648f434",
+    "template_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/cuda/_codegen.py",
+    "template_source_sha256": "6bf2c587fb339081116f4b7265e3c24fdab5df82a2dbbe66638ae2c482679628"
+  },
+  "decision": {
+    "decision_id": "mm_outer_product_v4",
+    "source_location": "torch/_inductor/decomposition.py:444",
+    "source_function": "mm",
+    "target_ops": [
+      "mm",
+      "matmul"
+    ],
+    "applicability": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.0.rank"
+              ]
+            },
+            2
+          ]
+        },
+        {
+          "op": "eq",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.1.rank"
+              ]
+            },
+            2
+          ]
+        }
+      ]
+    },
+    "predicate": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.0.size.1"
+              ]
+            },
+            1
+          ]
+        },
+        {
+          "op": "ne",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.0.size.0"
+              ]
+            },
+            1
+          ]
+        },
+        {
+          "op": "ne",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.1.size.1"
+              ]
+            },
+            1
+          ]
+        }
+      ]
+    },
+    "controllable_variables": [
+      {
+        "attribute": "shape",
+        "axis": -1,
+        "values": [
+          1,
+          2,
+          16,
+          17
+        ]
+      }
+    ],
+    "input_regions": [
+      {
+        "region_id": "contract_eq_1",
+        "predicate": {
+          "op": "eq",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.0.size.1"
+              ]
+            },
+            1
+          ]
+        }
+      },
+      {
+        "region_id": "contract_gt_1",
+        "predicate": {
+          "op": "gt",
+          "args": [
+            {
+              "op": "fact",
+              "args": [
+                "input.0.size.1"
+              ]
+            },
+            1
+          ]
+        }
+      }
+    ],
+    "observation": {
+      "kind": "source_line_branch",
+      "original_aten": "aten.mm.default",
+      "input_names": [
+        "self",
+        "input2"
+      ],
+      "true_anchor": "return self * input2",
+      "false_anchor": "if self.device.type == \"cpu\":"
+    },
+    "partition": "development",
+    "source_sha256": "22cc9ad902624b669807b06fbf6b8105cbfcb6f6a97c0d928bf9bdd73aa7aea3",
+    "if_line": 444,
+    "original_aten": "aten.mm.default",
+    "resolved": {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "if_expression": "statically_known_true(self.size(-1) == 1) and statically_known_true(self.size(0) != 1) and statically_known_true(input2.size(1) != 1)",
+      "edges": [
+        {
+          "edge": [
+            376,
+            954
+          ],
+          "outcome": "false"
+        },
+        {
+          "edge": [
+            452,
+            954
+          ],
+          "outcome": "false"
+        },
+        {
+          "edge": [
+            528,
+            954
+          ],
+          "outcome": "false"
+        },
+        {
+          "edge": [
+            528,
+            530
+          ],
+          "outcome": "true"
+        }
+      ]
+    }
+  },
+  "original_general_graph_sha256": "e08202ce5acce2ca38f219c6d5d0debdbe9162224a09a0c9dd652f7b59a6d844",
+  "candidate_count": 4,
+  "binding_failures": 0,
+  "real_observed_feedback": 1,
+  "post_feedback_selections": 0,
+  "feedback_changed_next_action": false,
+  "full_wall_seconds": 50.85518652573228,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "not_effect_evidence": "one control sequence only; no full A/B/C comparison or positive-effect claim"
+}

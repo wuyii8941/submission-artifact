@@ -1,0 +1,131 @@
+{
+  "audit_utc": "2026-11-06T11:54:52Z",
+  "run": "seed_00_A",
+  "scope": "request accounting and unknown-event audit only, no effect comparison",
+  "source_unchanged_at_checkpoint": true,
+  "protocol_valid_at_checkpoint": true,
+  "requests": [
+    {
+      "ordinal": 0,
+      "status": "value_domain_rejected",
+      "worker_wall_seconds": 7.756973636336625,
+      "full_request_wall_seconds": 7.899352503940463,
+      "failure_type": "ValueDomainViolation",
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 1,
+      "status": "execution_error",
+      "worker_wall_seconds": 14.957019069232047,
+      "full_request_wall_seconds": 15.310093957930803,
+      "failure_type": "InductorError",
+      "expected_bf16_support_rejection": true,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": false
+    },
+    {
+      "ordinal": 2,
+      "status": "executed",
+      "worker_wall_seconds": 11.247150643728673,
+      "full_request_wall_seconds": 11.38755930121988,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 3,
+      "status": "executed",
+      "worker_wall_seconds": 14.80873189214617,
+      "full_request_wall_seconds": 14.94708878081292,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 4,
+      "status": "executed",
+      "worker_wall_seconds": 16.01209308486432,
+      "full_request_wall_seconds": 16.30628293659538,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 5,
+      "status": "executed",
+      "worker_wall_seconds": 14.659055452793837,
+      "full_request_wall_seconds": 14.793476019054651,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 6,
+      "status": "executed",
+      "worker_wall_seconds": 14.764370524324477,
+      "full_request_wall_seconds": 14.909230367280543,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 7,
+      "status": "executed",
+      "worker_wall_seconds": 14.708518453873694,
+      "full_request_wall_seconds": 14.993947985582054,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 8,
+      "status": "executed",
+      "worker_wall_seconds": 11.148407716304064,
+      "full_request_wall_seconds": 11.291055501438677,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 9,
+      "status": "executed",
+      "worker_wall_seconds": 16.31205377075821,
+      "full_request_wall_seconds": 16.474151241593063,
+      "failure_type": null,
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    },
+    {
+      "ordinal": 10,
+      "status": "value_domain_rejected",
+      "worker_wall_seconds": 7.687916307710111,
+      "full_request_wall_seconds": 7.8329889010638,
+      "failure_type": "ValueDomainViolation",
+      "expected_bf16_support_rejection": false,
+      "scope_failures": [],
+      "excluded_hits": [],
+      "unknown_observation": true
+    }
+  ],
+  "effects_not_analyzed": true
+}

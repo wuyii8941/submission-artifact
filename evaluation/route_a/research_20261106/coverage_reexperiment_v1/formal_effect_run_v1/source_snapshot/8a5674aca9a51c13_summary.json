@@ -1,0 +1,23 @@
+{
+  "control_only": true,
+  "AB_end_to_end_shared_skeletons": true,
+  "A_ignores_predicate_and_no_feedback_B_equals_C": true,
+  "name_independent_contexts": true,
+  "supported_and_heldout_actual_post_feedback_execution": true,
+  "identity_safe_worker_cleanup": true,
+  "imports_in_wall_deadline": true,
+  "scope_drift_rejected": true,
+  "feedback_does_not_stall_on_consumed_baseline_skeleton": true,
+  "analysis_ties_sign_test_and_bootstrap_controls": true,
+  "primary_denominator": 642,
+  "formal_effects_started": false,
+  "evidence": [
+    "experiment_component_controls_v5/summary.json",
+    "live_feedback_controls_v2/summary.json",
+    "scope_controls_v1/summary.json",
+    "arm_control_A_v2/summary.json",
+    "arm_control_B_v2/summary.json",
+    "worker_cleanup_controls_v1/summary.json",
+    "hard_deadline_control_v1.supervisor.json"
+  ]
+}

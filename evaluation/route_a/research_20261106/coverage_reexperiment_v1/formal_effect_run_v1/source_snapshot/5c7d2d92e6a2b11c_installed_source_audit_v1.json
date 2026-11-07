@@ -1,0 +1,67 @@
+{
+  "record": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch-2.13.0.dev20260609+cu126.dist-info/RECORD",
+  "all_registered_source_files_match_build_record": true,
+  "rows": [
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_compile.py",
+      "wheel_recorded_hash": "sha256=ssdSFpLJtFRF2DcQ3gPhYgV40s7ypu6T7Ao_rj3B0nc",
+      "observed_hash": "sha256=ssdSFpLJtFRF2DcQ3gPhYgV40s7ypu6T7Ao_rj3B0nc",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+      "wheel_recorded_hash": "sha256=ueTPc12-FxZ9dHW7KM1i2j1LVfoR_iGeHd6O715xeAk",
+      "observed_hash": "sha256=ueTPc12-FxZ9dHW7KM1i2j1LVfoR_iGeHd6O715xeAk",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_export/utils.py",
+      "wheel_recorded_hash": "sha256=-8WngPQQaGDQYbQ8AtSplV61ly1PrKp-9aVwdUWgU2k",
+      "observed_hash": "sha256=-8WngPQQaGDQYbQ8AtSplV61ly1PrKp-9aVwdUWgU2k",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "wheel_recorded_hash": "sha256=Isya2QJiS2aYB7Bvv2uBBcv8tvapfA2Si_m91zqnrqM",
+      "observed_hash": "sha256=Isya2QJiS2aYB7Bvv2uBBcv8tvapfA2Si_m91zqnrqM",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+      "wheel_recorded_hash": "sha256=h_2dgWva8SUkIvdpCh5PenFlMx68Bl7srRBzTcskL30",
+      "observed_hash": "sha256=h_2dgWva8SUkIvdpCh5PenFlMx68Bl7srRBzTcskL30",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+      "wheel_recorded_hash": "sha256=2SyYpoisoR-IhS7NElvh5rAAVuWNPOh9lpLX2jaHF4M",
+      "observed_hash": "sha256=2SyYpoisoR-IhS7NElvh5rAAVuWNPOh9lpLX2jaHF4M",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+      "wheel_recorded_hash": "sha256=wrA7rwN0GhrcZk3dTsbi3mQtb2RX7ZgI-j9-P5IwD8M",
+      "observed_hash": "sha256=wrA7rwN0GhrcZk3dTsbi3mQtb2RX7ZgI-j9-P5IwD8M",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+      "wheel_recorded_hash": "sha256=DNHmUZj_z66M8atuh7OrvVUSaOBb6WBdvSOD2PcwJcI",
+      "observed_hash": "sha256=DNHmUZj_z66M8atuh7OrvVUSaOBb6WBdvSOD2PcwJcI",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/__init__.py",
+      "wheel_recorded_hash": "sha256=OwKp5KkEqWj46xnIRYJossh2sspvW53Jbjd6DC6Fnl4",
+      "observed_hash": "sha256=OwKp5KkEqWj46xnIRYJossh2sspvW53Jbjd6DC6Fnl4",
+      "matches_current_build_wheel_record": true
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+      "wheel_recorded_hash": "sha256=ItvnwAWDk8i0R7dSlWPeSHk70wGVtQQZIEYSayJBBsE",
+      "observed_hash": "sha256=ItvnwAWDk8i0R7dSlWPeSHk70wGVtQQZIEYSayJBBsE",
+      "matches_current_build_wheel_record": true
+    }
+  ],
+  "not_network_authentication_of_wheel": true
+}

@@ -1,0 +1,19 @@
+{
+  "audit_utc": "2026-11-06T11:53:39Z",
+  "scope": "read-only snapshot and running invariant audit; no effect analysis",
+  "snapshot_files_checked": 157,
+  "snapshot_hash_mismatches": [],
+  "protocol_copy_identical": true,
+  "running_summaries": [
+    {
+      "run": "seed_00_A",
+      "prepared_skeletons": 24,
+      "requests_so_far": 6,
+      "protocol_valid_so_far": true,
+      "source_unchanged_at_last_checkpoint": true,
+      "elapsed_seconds_at_checkpoint": 122.16236250195652
+    }
+  ],
+  "no_algorithm_or_watched_source_modified": true,
+  "effect_inference": "withheld until complete protocol"
+}

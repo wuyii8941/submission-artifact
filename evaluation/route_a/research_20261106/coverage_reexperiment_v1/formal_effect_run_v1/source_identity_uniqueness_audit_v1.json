@@ -1,0 +1,7 @@
+{
+  "scope": "source identity uniqueness audit only,no outcome comparison",
+  "selected_code_objects": 63,
+  "distinct_full_code_objects_with_same_selected_identity": [],
+  "missing_selected_code_objects": [],
+  "audit_utc": "2026-11-06T13:04:19Z"
+}

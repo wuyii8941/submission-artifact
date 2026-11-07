@@ -1,0 +1,27 @@
+{
+  "control_only": true,
+  "cases": [
+    {
+      "case": "case_000",
+      "status": "value_domain_rejected",
+      "all_node_specs_verified": null
+    },
+    {
+      "case": "case_001",
+      "status": "executed",
+      "all_node_specs_verified": true,
+      "attributed_nested_calls": 0,
+      "attributed_nested_outcome_union": 0
+    },
+    {
+      "case": "case_002",
+      "status": "executed",
+      "all_node_specs_verified": true,
+      "attributed_nested_calls": 82,
+      "attributed_nested_outcome_union": 12
+    }
+  ],
+  "source_unchanged_all": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false
+}

@@ -1,0 +1,26 @@
+{
+  "control_only": true,
+  "canonical_context_renaming_and_dictionary_reordering": true,
+  "common_action_ids_all_arms": true,
+  "A_ignores_condition_goal": true,
+  "AB_same_skeleton": true,
+  "no_feedback_B_equals_C": true,
+  "candidate_receipt": {
+    "skeleton_sha256": "e08202ce5acce2ca38f219c6d5d0debdbe9162224a09a0c9dd652f7b59a6d844",
+    "target_id": "17ef21952460b4ff15610170",
+    "node_id": "node_9",
+    "attempts": 42,
+    "legal_candidates": 29,
+    "failures": 13,
+    "full_wall_seconds": 1.6464870953932405,
+    "stopped_at_deadline": false
+  },
+  "source_sha256": {
+    "graph_context.py": "6514009ca38944c2ee3325e99bff89f2254651484ee721c5deed4b0f9910e719",
+    "experiment_queue.py": "2fbda0c2934446ddd47695b8e81045c29e240110534efbde0f7c6cac25a6e751",
+    "action_candidates.py": "4126947752e7f0070d412480a8233e0043af70596306014a7bc2c39f57c2c7cf",
+    "input_regions.py": "f798eaf0bd3150dbfffd0dba8653c2904549c5c8f2f427fe594fc190ce195074"
+  },
+  "primary_denominator": 642,
+  "effect_experiment_started": false
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "backend": "pytorch_inductor",
+  "torch_version": "2.2",
+  "observer_version": "origins-and-computation-v4",
+  "scope": "route_a_qualification_targets",
+  "scope_note": "A version-scoped qualification catalog, not an enumeration of the complete Inductor operation space.",
+  "targets": [
+    {
+      "target_id": "pointwise",
+      "operation_tokens": ["relu", "sigmoid", "tanh", "add", "sub", "mul", "div", "exp", "sqrt", "abs", "sin", "cos", "gelu", "silu"],
+      "operation_names": ["add", "sub", "mul", "div", "relu", "sigmoid", "tanh", "exp", "sqrt", "abs", "sin", "cos", "gelu", "silu", "torch.add", "torch.sub", "torch.mul", "torch.div", "torch.relu", "torch.sigmoid", "torch.tanh", "torch.exp", "torch.sqrt", "torch.abs", "torch.sin", "torch.cos", "torch.nn.functional.gelu", "torch.nn.functional.silu"],
+      "aten_ops": ["add", "sub", "mul", "div", "relu", "sigmoid", "tanh", "exp", "sqrt", "abs", "sin", "cos", "gelu", "silu"],
+      "lowered_ops": ["add", "sub", "mul", "div", "relu", "sigmoid", "tanh", "exp", "sqrt", "abs", "sin", "cos", "gelu", "silu", "erf", "maximum", "neg", "reciprocal"],
+      "kernel_families": ["pointwise", "reduction", "persistent_reduction"],
+      "reduction_marker": "",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [7, 8, 15, 16, 31, 32, 33, 63, 64, 65],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    },
+    {
+      "target_id": "reduction_sum",
+      "operation_tokens": ["sum"],
+      "operation_names": ["torch.sum", "sum"],
+      "aten_ops": ["sum"],
+      "lowered_ops": ["sum"],
+      "kernel_families": ["reduction", "persistent_reduction"],
+      "reduction_marker": "tl\\.sum\\(",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [31, 32, 33, 63, 64, 65, 127, 128, 129, 511, 512, 513],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    },
+    {
+      "target_id": "reduction_mean",
+      "operation_tokens": ["mean"],
+      "operation_names": ["torch.mean", "mean"],
+      "aten_ops": ["mean"],
+      "lowered_ops": ["sum", "mean"],
+      "kernel_families": ["reduction", "persistent_reduction"],
+      "reduction_marker": "tl\\.sum\\(",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [31, 32, 33, 63, 64, 65, 127, 128, 129, 511, 512, 513],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    },
+    {
+      "target_id": "reduction_amax",
+      "operation_tokens": ["amax"],
+      "operation_names": ["torch.amax", "amax"],
+      "aten_ops": ["amax"],
+      "lowered_ops": ["amax"],
+      "kernel_families": ["reduction", "persistent_reduction"],
+      "reduction_marker": "(?:tl\\.max|triton_helpers\\.max2)\\(",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [31, 32, 33, 63, 64, 65, 127, 128, 129, 511, 512, 513],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    },
+    {
+      "target_id": "reduction_amin",
+      "operation_tokens": ["amin"],
+      "operation_names": ["torch.amin", "amin"],
+      "aten_ops": ["amin"],
+      "lowered_ops": ["amin"],
+      "kernel_families": ["reduction", "persistent_reduction"],
+      "reduction_marker": "(?:tl\\.min|triton_helpers\\.min2)\\(",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [31, 32, 33, 63, 64, 65, 127, 128, 129, 511, 512, 513],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    },
+    {
+      "target_id": "matmul",
+      "operation_tokens": ["matmul", "mm", "bmm"],
+      "operation_names": ["matmul", "mm", "bmm", "torch.matmul", "torch.mm", "torch.bmm"],
+      "aten_ops": ["matmul", "mm", "bmm", "addmm"],
+      "lowered_ops": ["matmul", "mm", "bmm", "addmm"],
+      "kernel_families": ["extern_gemm"],
+      "reduction_marker": "",
+      "condition_attributes": ["shape", "dtype"],
+      "shape_cells": [7, 8, 15, 16, 31, 32, 33, 63, 64, 65, 127, 128],
+      "dtype_cells": ["torch.float32", "torch.float64"]
+    }
+  ]
+}

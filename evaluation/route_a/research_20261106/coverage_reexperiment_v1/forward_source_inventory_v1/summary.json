@@ -1,0 +1,10 @@
+{
+  "operators": 55,
+  "nominal_and_alias_overloads": 313,
+  "mutating_schema_exclusions": 82,
+  "root_code_objects": 44,
+  "total_code_objects": 86,
+  "source_outcomes": 712,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false
+}

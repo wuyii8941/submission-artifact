@@ -1,0 +1,10 @@
+{
+  "operators": 55,
+  "stable_reemission_qualified": true,
+  "errors": [],
+  "remaining_output_spec_mismatches": [
+    "torch.remainder"
+  ],
+  "domain_fully_qualified": false,
+  "effect_experiment_started": false
+}

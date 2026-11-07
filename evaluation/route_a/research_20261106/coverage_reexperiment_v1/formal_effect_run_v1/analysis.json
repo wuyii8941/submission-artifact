@@ -1,0 +1,865 @@
+{
+  "status": "complete",
+  "rows": [
+    {
+      "master_seed": 3072749904,
+      "arm": "A",
+      "branch_outcomes": 69,
+      "branch_fraction": 0.10747663551401869,
+      "successful_execution_branch_outcomes": 67,
+      "operator_kinds": 47,
+      "operator_kind_fraction": 0.8545454545454545,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 2068,
+      "binding_failures": 916,
+      "status_counts": {
+        "value_domain_rejected": 6,
+        "execution_error": 5,
+        "executed": 28,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "not_available": 12,
+        "pass": 22,
+        "oracle_inapplicable_nonfinite_reference": 6
+      },
+      "actual_outcome_contexts": 9,
+      "requests": 40,
+      "observed_feedback": 9,
+      "post_feedback_selections": 13,
+      "supervisor_wall_seconds": 600.0014385795221,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3072749904,
+      "arm": "B",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 63,
+      "operator_kinds": 47,
+      "operator_kind_fraction": 0.8545454545454545,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 2068,
+      "binding_failures": 916,
+      "status_counts": {
+        "value_domain_rejected": 6,
+        "execution_error": 5,
+        "executed": 28,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "not_available": 12,
+        "pass": 22,
+        "oracle_inapplicable_nonfinite_reference": 6
+      },
+      "actual_outcome_contexts": 9,
+      "requests": 40,
+      "observed_feedback": 9,
+      "post_feedback_selections": 13,
+      "supervisor_wall_seconds": 600.0261975796893,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3072749904,
+      "arm": "C",
+      "branch_outcomes": 73,
+      "branch_fraction": 0.11370716510903427,
+      "successful_execution_branch_outcomes": 67,
+      "operator_kinds": 47,
+      "operator_kind_fraction": 0.8545454545454545,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 2068,
+      "binding_failures": 916,
+      "status_counts": {
+        "value_domain_rejected": 5,
+        "execution_error": 5,
+        "executed": 29,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "not_available": 11,
+        "pass": 23,
+        "oracle_inapplicable_nonfinite_reference": 6
+      },
+      "actual_outcome_contexts": 14,
+      "requests": 40,
+      "observed_feedback": 14,
+      "post_feedback_selections": 13,
+      "supervisor_wall_seconds": 599.038454006426,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 611391528,
+      "arm": "A",
+      "branch_outcomes": 66,
+      "branch_fraction": 0.102803738317757,
+      "successful_execution_branch_outcomes": 66,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 2186,
+      "binding_failures": 958,
+      "status_counts": {
+        "executed": 29,
+        "execution_error": 7,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 21,
+        "oracle_inapplicable_nonfinite_reference": 6,
+        "not_available": 8,
+        "candidate": 2
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 37,
+      "observed_feedback": 6,
+      "post_feedback_selections": 16,
+      "supervisor_wall_seconds": 599.9472428206354,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 611391528,
+      "arm": "C",
+      "branch_outcomes": 68,
+      "branch_fraction": 0.1059190031152648,
+      "successful_execution_branch_outcomes": 68,
+      "operator_kinds": 47,
+      "operator_kind_fraction": 0.8545454545454545,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 2186,
+      "binding_failures": 958,
+      "status_counts": {
+        "executed": 27,
+        "execution_error": 7,
+        "value_domain_rejected": 2,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 21,
+        "oracle_inapplicable_nonfinite_reference": 4,
+        "not_available": 10,
+        "candidate": 2
+      },
+      "actual_outcome_contexts": 13,
+      "requests": 37,
+      "observed_feedback": 13,
+      "post_feedback_selections": 16,
+      "supervisor_wall_seconds": 599.3587462715805,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 611391528,
+      "arm": "B",
+      "branch_outcomes": 68,
+      "branch_fraction": 0.1059190031152648,
+      "successful_execution_branch_outcomes": 68,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 2186,
+      "binding_failures": 958,
+      "status_counts": {
+        "executed": 29,
+        "execution_error": 7,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 20,
+        "oracle_inapplicable_nonfinite_reference": 6,
+        "not_available": 8,
+        "candidate": 3
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 37,
+      "observed_feedback": 6,
+      "post_feedback_selections": 16,
+      "supervisor_wall_seconds": 599.9798522423953,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3540550185,
+      "arm": "B",
+      "branch_outcomes": 63,
+      "branch_fraction": 0.09813084112149532,
+      "successful_execution_branch_outcomes": 63,
+      "operator_kinds": 46,
+      "operator_kind_fraction": 0.8363636363636363,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 1657,
+      "binding_failures": 706,
+      "status_counts": {
+        "executed": 30,
+        "value_domain_rejected": 7,
+        "execution_error": 2,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 2,
+      "oracle_statuses": {
+        "candidate": 4,
+        "pass": 12,
+        "not_available": 10,
+        "oracle_inapplicable_nonfinite_reference": 14
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 40,
+      "observed_feedback": 6,
+      "post_feedback_selections": 11,
+      "supervisor_wall_seconds": 599.0697950916365,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3540550185,
+      "arm": "A",
+      "branch_outcomes": 60,
+      "branch_fraction": 0.09345794392523364,
+      "successful_execution_branch_outcomes": 60,
+      "operator_kinds": 46,
+      "operator_kind_fraction": 0.8363636363636363,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 1657,
+      "binding_failures": 706,
+      "status_counts": {
+        "executed": 30,
+        "value_domain_rejected": 7,
+        "execution_error": 2,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 2,
+      "oracle_statuses": {
+        "candidate": 3,
+        "pass": 13,
+        "not_available": 10,
+        "oracle_inapplicable_nonfinite_reference": 14
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 40,
+      "observed_feedback": 6,
+      "post_feedback_selections": 11,
+      "supervisor_wall_seconds": 599.561215704307,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3540550185,
+      "arm": "C",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 72,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 1657,
+      "binding_failures": 706,
+      "status_counts": {
+        "executed": 29,
+        "value_domain_rejected": 6,
+        "execution_error": 4,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 4,
+      "oracle_statuses": {
+        "candidate": 4,
+        "pass": 12,
+        "not_available": 11,
+        "oracle_inapplicable_nonfinite_reference": 13
+      },
+      "actual_outcome_contexts": 12,
+      "requests": 40,
+      "observed_feedback": 12,
+      "post_feedback_selections": 11,
+      "supervisor_wall_seconds": 599.0217101722956,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2487031236,
+      "arm": "B",
+      "branch_outcomes": 75,
+      "branch_fraction": 0.11682242990654206,
+      "successful_execution_branch_outcomes": 72,
+      "operator_kinds": 52,
+      "operator_kind_fraction": 0.9454545454545454,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 3114,
+      "binding_failures": 1289,
+      "status_counts": {
+        "executed": 27,
+        "execution_error": 5,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 8,
+        "pass": 19,
+        "not_available": 6
+      },
+      "actual_outcome_contexts": 5,
+      "requests": 33,
+      "observed_feedback": 5,
+      "post_feedback_selections": 4,
+      "supervisor_wall_seconds": 599.0855251979083,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2487031236,
+      "arm": "C",
+      "branch_outcomes": 75,
+      "branch_fraction": 0.11682242990654206,
+      "successful_execution_branch_outcomes": 72,
+      "operator_kinds": 54,
+      "operator_kind_fraction": 0.9818181818181818,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 3114,
+      "binding_failures": 1289,
+      "status_counts": {
+        "executed": 25,
+        "execution_error": 5,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 6,
+        "pass": 19,
+        "not_available": 6
+      },
+      "actual_outcome_contexts": 5,
+      "requests": 31,
+      "observed_feedback": 5,
+      "post_feedback_selections": 4,
+      "supervisor_wall_seconds": 600.0076236594468,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2487031236,
+      "arm": "A",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 72,
+      "operator_kinds": 52,
+      "operator_kind_fraction": 0.9454545454545454,
+      "generation_attempts": 24,
+      "generation_failures": 3,
+      "binding_attempts": 3114,
+      "binding_failures": 1289,
+      "status_counts": {
+        "executed": 26,
+        "execution_error": 5,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 7,
+        "pass": 19,
+        "not_available": 6
+      },
+      "actual_outcome_contexts": 4,
+      "requests": 32,
+      "observed_feedback": 4,
+      "post_feedback_selections": 4,
+      "supervisor_wall_seconds": 600.0015311911702,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3313031328,
+      "arm": "C",
+      "branch_outcomes": 64,
+      "branch_fraction": 0.09968847352024922,
+      "successful_execution_branch_outcomes": 61,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 2,
+      "binding_attempts": 1807,
+      "binding_failures": 787,
+      "status_counts": {
+        "executed": 27,
+        "execution_error": 7,
+        "value_domain_rejected": 3,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 18,
+        "oracle_inapplicable_nonfinite_reference": 8,
+        "not_available": 11,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 12,
+      "requests": 38,
+      "observed_feedback": 12,
+      "post_feedback_selections": 10,
+      "supervisor_wall_seconds": 599.0600778060034,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3313031328,
+      "arm": "A",
+      "branch_outcomes": 64,
+      "branch_fraction": 0.09968847352024922,
+      "successful_execution_branch_outcomes": 61,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 2,
+      "binding_attempts": 1807,
+      "binding_failures": 787,
+      "status_counts": {
+        "executed": 29,
+        "execution_error": 4,
+        "value_domain_rejected": 3,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 4,
+      "oracle_statuses": {
+        "pass": 20,
+        "oracle_inapplicable_nonfinite_reference": 8,
+        "not_available": 8,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 11,
+      "requests": 37,
+      "observed_feedback": 11,
+      "post_feedback_selections": 9,
+      "supervisor_wall_seconds": 599.9499512193725,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 3313031328,
+      "arm": "B",
+      "branch_outcomes": 64,
+      "branch_fraction": 0.09968847352024922,
+      "successful_execution_branch_outcomes": 57,
+      "operator_kinds": 48,
+      "operator_kind_fraction": 0.8727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 2,
+      "binding_attempts": 1807,
+      "binding_failures": 787,
+      "status_counts": {
+        "executed": 28,
+        "execution_error": 5,
+        "value_domain_rejected": 3,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 5,
+      "oracle_statuses": {
+        "pass": 20,
+        "oracle_inapplicable_nonfinite_reference": 7,
+        "not_available": 9,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 11,
+      "requests": 37,
+      "observed_feedback": 11,
+      "post_feedback_selections": 9,
+      "supervisor_wall_seconds": 599.7546271374449,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2436924015,
+      "arm": "C",
+      "branch_outcomes": 66,
+      "branch_fraction": 0.102803738317757,
+      "successful_execution_branch_outcomes": 60,
+      "operator_kinds": 37,
+      "operator_kind_fraction": 0.6727272727272727,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 1847,
+      "binding_failures": 751,
+      "status_counts": {
+        "executed": 22,
+        "execution_error": 8,
+        "value_domain_rejected": 12,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 8,
+      "oracle_statuses": {
+        "pass": 21,
+        "not_available": 21,
+        "oracle_inapplicable_nonfinite_reference": 1
+      },
+      "actual_outcome_contexts": 7,
+      "requests": 43,
+      "observed_feedback": 7,
+      "post_feedback_selections": 10,
+      "supervisor_wall_seconds": 599.954022266902,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2436924015,
+      "arm": "B",
+      "branch_outcomes": 61,
+      "branch_fraction": 0.09501557632398754,
+      "successful_execution_branch_outcomes": 58,
+      "operator_kinds": 38,
+      "operator_kind_fraction": 0.6909090909090909,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 1847,
+      "binding_failures": 751,
+      "status_counts": {
+        "executed": 24,
+        "execution_error": 7,
+        "value_domain_rejected": 11,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 23,
+        "not_available": 19,
+        "oracle_inapplicable_nonfinite_reference": 1
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 43,
+      "observed_feedback": 6,
+      "post_feedback_selections": 10,
+      "supervisor_wall_seconds": 599.8537890193984,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2436924015,
+      "arm": "A",
+      "branch_outcomes": 61,
+      "branch_fraction": 0.09501557632398754,
+      "successful_execution_branch_outcomes": 58,
+      "operator_kinds": 38,
+      "operator_kind_fraction": 0.6909090909090909,
+      "generation_attempts": 24,
+      "generation_failures": 1,
+      "binding_attempts": 1847,
+      "binding_failures": 751,
+      "status_counts": {
+        "executed": 24,
+        "execution_error": 7,
+        "value_domain_rejected": 11,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "pass": 23,
+        "not_available": 19,
+        "oracle_inapplicable_nonfinite_reference": 1
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 43,
+      "observed_feedback": 6,
+      "post_feedback_selections": 10,
+      "supervisor_wall_seconds": 599.722494399175,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 809160771,
+      "arm": "A",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 62,
+      "operator_kinds": 50,
+      "operator_kind_fraction": 0.9090909090909091,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1899,
+      "binding_failures": 756,
+      "status_counts": {
+        "executed": 25,
+        "execution_error": 8,
+        "value_domain_rejected": 6,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 7,
+        "not_available": 15,
+        "pass": 18
+      },
+      "actual_outcome_contexts": 7,
+      "requests": 40,
+      "observed_feedback": 7,
+      "post_feedback_selections": 9,
+      "supervisor_wall_seconds": 599.5096741467714,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 809160771,
+      "arm": "B",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 66,
+      "operator_kinds": 50,
+      "operator_kind_fraction": 0.9090909090909091,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1899,
+      "binding_failures": 756,
+      "status_counts": {
+        "executed": 25,
+        "execution_error": 8,
+        "value_domain_rejected": 6,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 7,
+        "not_available": 15,
+        "pass": 18
+      },
+      "actual_outcome_contexts": 7,
+      "requests": 40,
+      "observed_feedback": 7,
+      "post_feedback_selections": 9,
+      "supervisor_wall_seconds": 599.045907410793,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 809160771,
+      "arm": "C",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 66,
+      "operator_kinds": 50,
+      "operator_kind_fraction": 0.9090909090909091,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1899,
+      "binding_failures": 756,
+      "status_counts": {
+        "executed": 26,
+        "execution_error": 8,
+        "value_domain_rejected": 3,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 7,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 8,
+        "not_available": 12,
+        "pass": 18
+      },
+      "actual_outcome_contexts": 10,
+      "requests": 38,
+      "observed_feedback": 10,
+      "post_feedback_selections": 8,
+      "supervisor_wall_seconds": 600.0015194034204,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2341637125,
+      "arm": "B",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 71,
+      "operator_kinds": 51,
+      "operator_kind_fraction": 0.9272727272727272,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1859,
+      "binding_failures": 766,
+      "status_counts": {
+        "executed": 32,
+        "value_domain_rejected": 2,
+        "execution_error": 1,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 1,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 13,
+        "not_available": 4,
+        "pass": 18,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 36,
+      "observed_feedback": 6,
+      "post_feedback_selections": 8,
+      "supervisor_wall_seconds": 599.8377689188346,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2341637125,
+      "arm": "C",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 71,
+      "operator_kinds": 51,
+      "operator_kind_fraction": 0.9272727272727272,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1859,
+      "binding_failures": 766,
+      "status_counts": {
+        "executed": 32,
+        "value_domain_rejected": 2,
+        "execution_error": 1,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 1,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 13,
+        "not_available": 4,
+        "pass": 18,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 10,
+      "requests": 36,
+      "observed_feedback": 10,
+      "post_feedback_selections": 8,
+      "supervisor_wall_seconds": 599.0601882310584,
+      "protocol_valid": true
+    },
+    {
+      "master_seed": 2341637125,
+      "arm": "A",
+      "branch_outcomes": 72,
+      "branch_fraction": 0.11214953271028037,
+      "successful_execution_branch_outcomes": 71,
+      "operator_kinds": 51,
+      "operator_kind_fraction": 0.9272727272727272,
+      "generation_attempts": 24,
+      "generation_failures": 4,
+      "binding_attempts": 1859,
+      "binding_failures": 766,
+      "status_counts": {
+        "executed": 32,
+        "value_domain_rejected": 2,
+        "execution_error": 1,
+        "timeout": 1
+      },
+      "bf16_support_rejections": 1,
+      "oracle_statuses": {
+        "oracle_inapplicable_nonfinite_reference": 13,
+        "not_available": 4,
+        "pass": 18,
+        "candidate": 1
+      },
+      "actual_outcome_contexts": 6,
+      "requests": 36,
+      "observed_feedback": 6,
+      "post_feedback_selections": 8,
+      "supervisor_wall_seconds": 599.940650220029,
+      "protocol_valid": true
+    }
+  ],
+  "denominator": 642,
+  "operator_kind_denominator": 55,
+  "scope": "registered source-implementation branch observations, not all compiler/kernel paths",
+  "comparisons": [
+    {
+      "name": "B-A",
+      "paired_count_differences": [
+        3,
+        2,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mean_difference": 1.375,
+      "mean_fraction_difference": 0.002141744548286604,
+      "bootstrap95_count_difference": [
+        0.375,
+        2.375
+      ],
+      "sign_test_p": 0.125,
+      "holm_p": 0.25,
+      "stable_positive_evidence": false
+    },
+    {
+      "name": "C-B",
+      "paired_count_differences": [
+        1,
+        0,
+        9,
+        0,
+        0,
+        5,
+        0,
+        0
+      ],
+      "mean_difference": 1.875,
+      "mean_fraction_difference": 0.0029205607476635513,
+      "bootstrap95_count_difference": [
+        0.0,
+        4.25
+      ],
+      "sign_test_p": 0.25,
+      "holm_p": 0.25,
+      "stable_positive_evidence": false
+    }
+  ],
+  "positive_claim": false,
+  "AB_matched_prefixes": [
+    {
+      "master_seed": 3072749904,
+      "paired_skeleton_requests": 40,
+      "A_outcomes": 69,
+      "B_outcomes": 72,
+      "B_minus_A": 3
+    },
+    {
+      "master_seed": 611391528,
+      "paired_skeleton_requests": 37,
+      "A_outcomes": 66,
+      "B_outcomes": 68,
+      "B_minus_A": 2
+    },
+    {
+      "master_seed": 3540550185,
+      "paired_skeleton_requests": 40,
+      "A_outcomes": 60,
+      "B_outcomes": 63,
+      "B_minus_A": 3
+    },
+    {
+      "master_seed": 2487031236,
+      "paired_skeleton_requests": 32,
+      "A_outcomes": 72,
+      "B_outcomes": 75,
+      "B_minus_A": 3
+    },
+    {
+      "master_seed": 3313031328,
+      "paired_skeleton_requests": 37,
+      "A_outcomes": 64,
+      "B_outcomes": 64,
+      "B_minus_A": 0
+    },
+    {
+      "master_seed": 2436924015,
+      "paired_skeleton_requests": 43,
+      "A_outcomes": 61,
+      "B_outcomes": 61,
+      "B_minus_A": 0
+    },
+    {
+      "master_seed": 809160771,
+      "paired_skeleton_requests": 40,
+      "A_outcomes": 72,
+      "B_outcomes": 72,
+      "B_minus_A": 0
+    },
+    {
+      "master_seed": 2341637125,
+      "paired_skeleton_requests": 36,
+      "A_outcomes": 72,
+      "B_outcomes": 72,
+      "B_minus_A": 0
+    }
+  ],
+  "operator_kind_claim": "descriptive separate metric; branch gains never imply operator-kind gains"
+}

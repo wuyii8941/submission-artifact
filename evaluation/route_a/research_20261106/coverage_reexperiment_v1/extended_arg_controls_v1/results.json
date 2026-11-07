@@ -1,0 +1,92 @@
+{
+  "control_only": true,
+  "mm_expected_previously_missing_edges": [
+    [
+      376,
+      954
+    ]
+  ],
+  "legacy_mm_hits": [
+    [
+      24,
+      300
+    ],
+    [
+      984,
+      1358
+    ]
+  ],
+  "fixed_mm_hits": [
+    [
+      24,
+      300
+    ],
+    [
+      376,
+      954
+    ],
+    [
+      984,
+      1358
+    ]
+  ],
+  "legacy_collector_undercount_confirmed": true,
+  "synthetic_both_sides": [
+    {
+      "body_statements": 100,
+      "prefix_count": 0,
+      "expected_edges": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          410
+        ]
+      ],
+      "observed_edges": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          410
+        ]
+      ]
+    },
+    {
+      "body_statements": 35000,
+      "prefix_count": 2,
+      "expected_edges": [
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          140014
+        ]
+      ],
+      "observed_edges": [
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          140014
+        ]
+      ]
+    }
+  ],
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "legacy_source_sha256": "0b33e119f078904faa506d7c603bc409c49bf40e5393a187ceb4e5e363f8940a",
+  "source_sha256": {
+    "runtime_audit.py": "d082e5bf4f2ac07fe2afe7ea2d35b10cbea08bdc1e299bf82ddba80c97be4639",
+    "opcode_offsets.py": "a13b6017ed13a4c16c2768d8d83b6b15d5c7438c40f6cc9d1ccf09bb96166792",
+    "qualify_extended_arg.py": "1e8074518122df209f4e161927ee09f9ba38dbbc3941d7dd9e3ec24f5317dcae"
+  }
+}

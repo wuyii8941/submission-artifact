@@ -1,0 +1,28 @@
+{
+  "scope": "fairness/integrity only,no effect estimates",
+  "audit_utc": "2026-11-06T12:53:13Z",
+  "seeds": [
+    {
+      "seed_index": 0,
+      "identical_initial_ABC_candidate_ids": 2688,
+      "AB_matched_request_prefix": 40,
+      "all_source_and_domain_checks_passed": true,
+      "requests": {
+        "A": 40,
+        "B": 40,
+        "C": 40
+      }
+    },
+    {
+      "seed_index": 1,
+      "identical_initial_ABC_candidate_ids": 2713,
+      "AB_matched_request_prefix": 37,
+      "all_source_and_domain_checks_passed": true,
+      "requests": {
+        "A": 37,
+        "B": 37,
+        "C": 37
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "operators": 55,
+  "registered_torchfuzz_operators": 47,
+  "nominal_overloads": 286,
+  "operators_without_nominal_mapping": [],
+  "operators_without_inductor_provider": [],
+  "denominator_committed": false,
+  "effect_experiment_started": false
+}

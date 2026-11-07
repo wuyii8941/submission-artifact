@@ -1,0 +1,28 @@
+{
+  "cases": 3,
+  "executed_cases": 2,
+  "per_case": [
+    {
+      "case": "case_000",
+      "status": "value_domain_rejected"
+    },
+    {
+      "case": "case_001",
+      "status": "executed",
+      "raw_call_count": 827,
+      "attributed_call_count": 0,
+      "direct_decomposition_source_outcome_count": 0
+    },
+    {
+      "case": "case_002",
+      "status": "executed",
+      "raw_call_count": 4872,
+      "attributed_call_count": 162,
+      "direct_decomposition_source_outcome_count": 4
+    }
+  ],
+  "coverage_percentage": null,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": "8b316186e1424a333f7339f6561b3546dbe02670c2bc0801a33483474f2219eb"
+}

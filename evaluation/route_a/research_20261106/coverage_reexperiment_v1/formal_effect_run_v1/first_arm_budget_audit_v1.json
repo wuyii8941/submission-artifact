@@ -1,0 +1,14 @@
+{
+  "completed_arm": "seed_00_A",
+  "requested_budget_seconds": 600,
+  "actual_process_wall_seconds": 600.0014385795221,
+  "driver_elapsed_seconds": 599.1015875600278,
+  "cleanup": {
+    "status": "worker_already_terminal"
+  },
+  "source_unchanged": true,
+  "protocol_valid": true,
+  "request_count": 40,
+  "terminal_reason": "wall_budget_timeout",
+  "effects_not_compared": true
+}

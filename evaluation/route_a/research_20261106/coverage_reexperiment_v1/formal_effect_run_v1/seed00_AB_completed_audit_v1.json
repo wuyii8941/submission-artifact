@@ -1,0 +1,11 @@
+{
+  "scope": "completed seed00 AB fairness and budget audit only, not an effect conclusion",
+  "matched_request_pairs": 40,
+  "both_protocol_valid": true,
+  "both_sources_unchanged": true,
+  "process_wall_seconds": {
+    "A": 600.0014385795221,
+    "B": 600.0261975796893
+  },
+  "all8seeds_required_for_effect_inference": true
+}

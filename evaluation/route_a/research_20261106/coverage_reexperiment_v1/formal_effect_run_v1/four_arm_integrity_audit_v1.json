@@ -1,0 +1,31 @@
+{
+  "scope": "completed-arm integrity only,not effect comparison",
+  "audit_utc": "2026-11-06T12:32:26Z",
+  "completed_runs": [
+    {
+      "run": "seed_00_A",
+      "process_wall_seconds": 600.0014385795221,
+      "protocol_valid": true,
+      "source_unchanged": true
+    },
+    {
+      "run": "seed_00_B",
+      "process_wall_seconds": 600.0261975796893,
+      "protocol_valid": true,
+      "source_unchanged": true
+    },
+    {
+      "run": "seed_00_C",
+      "process_wall_seconds": 599.038454006426,
+      "protocol_valid": true,
+      "source_unchanged": true
+    },
+    {
+      "run": "seed_01_A",
+      "process_wall_seconds": 599.9472428206354,
+      "protocol_valid": true,
+      "source_unchanged": true
+    }
+  ],
+  "invalidations": []
+}

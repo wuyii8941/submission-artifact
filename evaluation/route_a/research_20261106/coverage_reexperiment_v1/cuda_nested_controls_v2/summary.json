@@ -1,0 +1,79 @@
+{
+  "requested": 3,
+  "selection": "fixed ordinal prefix, not selected for execution success or coverage",
+  "statuses": {
+    "value_domain_rejected": 1,
+    "executed": 2
+  },
+  "rows": [
+    {
+      "ordinal": 0,
+      "seed": 202611060,
+      "case_sha256": "b13e9a5c97f89f2881c682aff67d50266cbf89e08d65b483580990b263e1a408",
+      "profile": "shared_fanout",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "value_domain_rejected",
+      "oracle": null,
+      "status": "value_domain_rejected",
+      "full_wall_seconds": 7.336466597393155
+    },
+    {
+      "ordinal": 1,
+      "seed": 202611061,
+      "case_sha256": "6433b8a494c77eb29acdad874a617c752bc4d8431a70d68afaa290ab3b5725e4",
+      "profile": "deep_general",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [],
+        "actual_shape": [],
+        "reference_dtype": "torch.int16",
+        "actual_dtype": "torch.int16",
+        "numel": 1,
+        "status": "pass"
+      },
+      "status": "executed",
+      "full_wall_seconds": 14.505669789388776
+    },
+    {
+      "ordinal": 2,
+      "seed": 202611062,
+      "case_sha256": "9e26ef97aae12605dccdc46e7694109e0fe42b96ec7a971b4563dd88a3762a64",
+      "profile": "noncontiguous_tensor",
+      "control_only": true,
+      "returncode": 0,
+      "receipt_status": "executed",
+      "oracle": {
+        "kind": "tensor",
+        "reference_shape": [
+          28,
+          18
+        ],
+        "actual_shape": [
+          28,
+          18
+        ],
+        "reference_dtype": "torch.float32",
+        "actual_dtype": "torch.float32",
+        "numel": 504,
+        "reference_finite": false,
+        "compiled_finite": false,
+        "status": "oracle_inapplicable_nonfinite_reference"
+      },
+      "status": "executed",
+      "full_wall_seconds": 15.962266181595623
+    }
+  ],
+  "full_wall_seconds": 37.82242625486106,
+  "excluded_from_discovery_and_effect_comparison": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": {
+    "runtime_audit.py": "8306bfd20f8de04dfc5bb7cc0d7973ea057c6b4d81bd4f56741a03826f630cde",
+    "value_domain.py": "f80ae64a0015f4bcbd9b0763c4a8f1dc413ec9411943e8adafc279cc314c286e",
+    "qualify_cuda_dags.py": "a8bb264941b74cc4c174615243573f3d797275cd9f6c192aa9110bdb123801d9"
+  }
+}

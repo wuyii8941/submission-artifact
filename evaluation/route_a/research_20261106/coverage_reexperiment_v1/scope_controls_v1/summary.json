@@ -1,0 +1,31 @@
+{
+  "control_only": true,
+  "scope_checks": [
+    {
+      "label": "same_scope",
+      "protocol_valid": true,
+      "scope_failures": []
+    },
+    {
+      "label": "wrong_compiler",
+      "protocol_valid": false,
+      "scope_failures": [
+        "commit"
+      ]
+    },
+    {
+      "label": "wrong_hardware",
+      "protocol_valid": false,
+      "scope_failures": [
+        "capability"
+      ]
+    },
+    {
+      "label": "wrong_domain",
+      "protocol_valid": false,
+      "scope_failures": [
+        "common_domain"
+      ]
+    }
+  ]
+}

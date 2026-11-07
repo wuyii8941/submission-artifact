@@ -1,0 +1,9 @@
+{
+  "project": "pytorch",
+  "path": "tools/experimental/torchfuzz",
+  "revision": "1aa1528f66debd0fd1cd893a3ac73fa49cbfa52f",
+  "retrieved_via": "https://github.com/pytorch/pytorch",
+  "retrieved_at": "2026-10-27",
+  "files": 42,
+  "purpose": "Route A generator adapter; upstream source is kept unchanged"
+}

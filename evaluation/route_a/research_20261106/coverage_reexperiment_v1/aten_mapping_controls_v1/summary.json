@@ -1,0 +1,18 @@
+{
+  "operators": 55,
+  "observed": 55,
+  "errors": [],
+  "nominal_mapping_mismatches": {
+    "torch.matmul": [
+      "aten.mv.default"
+    ],
+    "torch.square": [
+      "aten.pow.Tensor_Scalar"
+    ]
+  },
+  "invalid_fixture_proposals": [
+    "torch.remainder"
+  ],
+  "denominator_committed": false,
+  "effect_experiment_started": false
+}

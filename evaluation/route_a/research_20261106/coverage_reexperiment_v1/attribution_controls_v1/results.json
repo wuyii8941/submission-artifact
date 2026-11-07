@@ -1,0 +1,355 @@
+{
+  "controls": [
+    {
+      "label": "exact provenance positive",
+      "pass": true,
+      "expected_attributed_outcomes": 1,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [
+          {
+            "source_identity": [
+              "/fixture/torch/_inductor/decomposition.py",
+              10,
+              "synthetic-code-identity"
+            ],
+            "original_aten": "aten.add.Tensor",
+            "dag_node": "node_0",
+            "generated_registry_operator": "torch.add",
+            "dynamo_node_target": "fixture.add",
+            "provenance_sources": [
+              {
+                "name": "var_node_0",
+                "target": "fixture.add",
+                "graph_id": 123,
+                "from_node": []
+              }
+            ],
+            "hit_outcomes": [
+              [
+                2,
+                4
+              ]
+            ],
+            "scope": "direct_inductor_decomposition_body"
+          }
+        ],
+        "unattributed_call_reasons": {},
+        "raw_call_count": 1,
+        "attributed_call_count": 1,
+        "entered_source_functions": 1,
+        "attributed_source_outcome_count": 1,
+        "direct_decomposition_source_outcome_count": 1,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "wrong graph identity",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "dynamo_node_target_or_graph_identity_not_confirmed": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "missing receipt graph identity",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "dynamo_node_target_or_graph_identity_not_confirmed": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "wrong source target",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "dynamo_node_target_or_graph_identity_not_confirmed": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "wrong actual ATen",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "source_registration_does_not_match_actual_aten": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "missing actual ATen",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "missing_actual_aten": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "missing source provenance",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "missing_or_ambiguous_original_dag_node": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "ambiguous two generated nodes",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "missing_or_ambiguous_original_dag_node": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "invented branch event",
+      "pass": true,
+      "expected_attributed_outcomes": 0,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [],
+        "unattributed_call_reasons": {
+          "outcome_not_registered_in_source": 1
+        },
+        "raw_call_count": 1,
+        "attributed_call_count": 0,
+        "entered_source_functions": 0,
+        "attributed_source_outcome_count": 0,
+        "direct_decomposition_source_outcome_count": 0,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "duplicate calls do not inflate outcome union",
+      "pass": true,
+      "expected_attributed_outcomes": 1,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [
+          {
+            "source_identity": [
+              "/fixture/torch/_inductor/decomposition.py",
+              10,
+              "synthetic-code-identity"
+            ],
+            "original_aten": "aten.add.Tensor",
+            "dag_node": "node_0",
+            "generated_registry_operator": "torch.add",
+            "dynamo_node_target": "fixture.add",
+            "provenance_sources": [
+              {
+                "name": "var_node_0",
+                "target": "fixture.add",
+                "graph_id": 123,
+                "from_node": []
+              }
+            ],
+            "hit_outcomes": [
+              [
+                2,
+                4
+              ]
+            ],
+            "scope": "direct_inductor_decomposition_body"
+          },
+          {
+            "source_identity": [
+              "/fixture/torch/_inductor/decomposition.py",
+              10,
+              "synthetic-code-identity"
+            ],
+            "original_aten": "aten.add.Tensor",
+            "dag_node": "node_0",
+            "generated_registry_operator": "torch.add",
+            "dynamo_node_target": "fixture.add",
+            "provenance_sources": [
+              {
+                "name": "var_node_0",
+                "target": "fixture.add",
+                "graph_id": 123,
+                "from_node": []
+              }
+            ],
+            "hit_outcomes": [
+              [
+                2,
+                4
+              ]
+            ],
+            "scope": "direct_inductor_decomposition_body"
+          }
+        ],
+        "unattributed_call_reasons": {},
+        "raw_call_count": 2,
+        "attributed_call_count": 2,
+        "entered_source_functions": 1,
+        "attributed_source_outcome_count": 1,
+        "direct_decomposition_source_outcome_count": 1,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    },
+    {
+      "label": "nested provenance positive",
+      "pass": true,
+      "expected_attributed_outcomes": 1,
+      "report": {
+        "status": "executed",
+        "source_observation_started": true,
+        "attributed_calls": [
+          {
+            "source_identity": [
+              "/fixture/torch/_inductor/decomposition.py",
+              10,
+              "synthetic-code-identity"
+            ],
+            "original_aten": "aten.add.Tensor",
+            "dag_node": "node_0",
+            "generated_registry_operator": "torch.add",
+            "dynamo_node_target": "fixture.add",
+            "provenance_sources": [
+              {
+                "name": "var_node_0",
+                "target": "fixture.add",
+                "graph_id": 123,
+                "from_node": []
+              }
+            ],
+            "hit_outcomes": [
+              [
+                2,
+                4
+              ]
+            ],
+            "scope": "direct_inductor_decomposition_body"
+          }
+        ],
+        "unattributed_call_reasons": {},
+        "raw_call_count": 1,
+        "attributed_call_count": 1,
+        "entered_source_functions": 1,
+        "attributed_source_outcome_count": 1,
+        "direct_decomposition_source_outcome_count": 1,
+        "unit": "exact Python conditional jump outcomes, globally deduplicated by source code identity",
+        "primary_denominator_committed": false,
+        "coverage_percentage": null,
+        "scope_not_all_compiler_stages_or_device_kernels": true
+      }
+    }
+  ],
+  "passed": 11,
+  "control_only": true,
+  "effect_experiment_started": false,
+  "primary_denominator_committed": false,
+  "source_sha256": {
+    "qualify_attribution.py": "d4dbb98ebb50cfa5dc36063081c23910df535fac32d54f76c3c5154ef212c21b",
+    "attribute_source_audit.py": "7fae20ae193afc1db5c0e1960f8a874bf5e4ea38d03f85b4659b50d69f741730"
+  }
+}

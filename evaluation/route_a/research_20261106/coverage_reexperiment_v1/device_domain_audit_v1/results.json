@@ -1,0 +1,62 @@
+{
+  "control_only": true,
+  "torch": "2.13.0.dev20260609+cu126",
+  "commit": "11ff36ef30d23635f4e9bfe414ae027471901134",
+  "device": "Tesla T4",
+  "capability": [
+    7,
+    5
+  ],
+  "bf16_supported_native": false,
+  "bf16_supported_including_emulation": true,
+  "compiler_support_guard": {
+    "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/compile_fx.py",
+    "line": 3145,
+    "text": "def _check_triton_bf16_support(graph: GraphLowering) -> None:\n    def warn_and_skip(device: torch.device | None) -> Never:\n        from torch._dynamo.exc import SkipFrame\n\n        assert device is not None\n        device_interface = get_interface_for_device(device.type)\n        device_props = device_interface.get_device_properties(device)\n        warnings.warn(\n            f\"{device_props.name} does not support bfloat16 compilation natively, skipping\"\n        )\n        raise SkipFrame(\"BF16 is not supported\")\n\n    for node in itertools.chain(graph.graph_inputs.values(), graph.graph_outputs):\n        if not isinstance(node, IRNode):\n            continue\n        device_type = get_device_type(node)\n        if (\n            not device_type\n            or not is_gpu(device_type)\n            or node.get_dtype() != torch.bfloat16\n        ):\n            continue\n        device_interface = get_interface_for_device(device_type)\n        if device_interface.is_bf16_supported(including_emulation=False):\n            return\n        warn_and_skip(node.get_device())\n",
+    "source_sha256": "a9b68fb1e93a95d8ea01f12c53fd65232007679ff14a51d52814e5d85c1c5b67"
+  },
+  "common_eager_semantic_domain": {
+    "schema": 1,
+    "template": "default",
+    "device": "cuda",
+    "mode": "forward_static_fullgraph",
+    "dtypes": [
+      "torch.float32",
+      "torch.float64",
+      "torch.float16",
+      "torch.bfloat16",
+      "torch.int8",
+      "torch.int16",
+      "torch.int32",
+      "torch.int64",
+      "torch.bool"
+    ],
+    "layout_actions": [
+      "contiguous",
+      "column_major"
+    ],
+    "shape_actions": [
+      0,
+      1,
+      2,
+      7,
+      16,
+      17,
+      32
+    ],
+    "zero_dimensions_legal": true,
+    "shape_zero_binding_currently_supported": false,
+    "max_storage_elements": 4000000,
+    "generator_shapes": "unchanged upstream semantic specifications; no decision-specific shape generator",
+    "input_values": "per-sample seeded normal floating/complex,0..1 integral/bool; shared value-domain screen rejects unsafe combinations without repair",
+    "binding_parameters": "only registered shape,dtype,layout actions; topology and other semantic parameters frozen",
+    "source_sha256": "2c914dc45da954900dde988b5cc0cd918d7ba4195ad4b91fb74489e47648f434",
+    "template_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/cuda/_codegen.py",
+    "template_source_sha256": "6bf2c587fb339081116f4b7265e3c24fdab5df82a2dbbe66638ae2c482679628"
+  },
+  "coordinate_descent_tuning": false,
+  "classification": "BF16 compile support is separate from eager legality; retain requests and costs, do not treat support rejection as a discovered bug",
+  "no_dtype_removed_from_generator_or_primary_denominator_by_this_audit": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false
+}

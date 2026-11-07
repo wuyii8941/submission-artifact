@@ -1,0 +1,15 @@
+{
+  "control_only": true,
+  "fixed_prefix": 8,
+  "valid": true,
+  "fixed_domain_calls_checked": 13,
+  "executed_cases": 6,
+  "full_wall_seconds": 103.65603430382907,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": {
+    "runtime_audit.py": "f0937157fe76860e5f39c1f15d33072b980fd472b1e21a51322a82a4f2e43421",
+    "attribute_source_audit.py": "cede4df3f5b9c26199f272445fa765e5d89ab004cf19a279eb0d7569fd99b647",
+    "qualify_denominator_calls.py": "4ba9225a9bbe8bf62d214a555c71a413cd5933ec7c976fd81fe12adb4a5a95c8"
+  }
+}

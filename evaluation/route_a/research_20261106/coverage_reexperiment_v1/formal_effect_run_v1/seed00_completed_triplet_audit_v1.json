@@ -1,0 +1,19 @@
+{
+  "scope": "completed first-triplet fairness and feedback audit,not effect analysis",
+  "audit_utc": "2026-11-06T12:22:46Z",
+  "same_target_quotas_ABC": true,
+  "request_counts": {
+    "A": 40,
+    "B": 40,
+    "C": 40
+  },
+  "post_feedback_selections_C": 13,
+  "C_choices_changed_from_own_fixed_baseline": 9,
+  "all_protocol_and_source_checks_passed": true,
+  "process_wall_seconds": {
+    "A": 600.0014385795221,
+    "B": 600.0261975796893,
+    "C": 599.038454006426
+  },
+  "no_seed_level_effect_claim": true
+}

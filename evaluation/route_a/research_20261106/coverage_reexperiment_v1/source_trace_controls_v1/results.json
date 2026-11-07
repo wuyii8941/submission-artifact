@@ -1,0 +1,24 @@
+{
+  "control_only": true,
+  "counts": {
+    "ordinary": {
+      "calls": 2,
+      "distinct_outcomes": 2
+    },
+    "catches": {
+      "calls": 2,
+      "distinct_outcomes": 3
+    },
+    "generator": {
+      "calls": 4,
+      "distinct_outcomes": 2
+    }
+  },
+  "caught_exception_trace_survives": true,
+  "generator_resumption_trace_survives": true,
+  "coverage_percentage": null,
+  "source_sha256": {
+    "runtime_audit.py": "5c6a33d6427b3995b68241dad5e4f49befdc6e38d3661e7bcec65f9999d9a008",
+    "qualify_source_trace.py": "32829f6c73d1a7b69985e148dfbf04b9976dffdb200a622355e9a24e58083607"
+  }
+}

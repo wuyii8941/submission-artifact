@@ -1,0 +1,36 @@
+{
+  "audit_utc": "2026-11-06T12:17:32Z",
+  "scope": "formal triplet capability and actual-feedback chronology,not effect inference",
+  "identical_initial_action_ids_all_three_arms": 2688,
+  "verified_observation_ordinals": [
+    1,
+    8,
+    12,
+    15,
+    18,
+    19
+  ],
+  "post_feedback_selections": [
+    {
+      "target_id": "c6172ddb5f3a0651fcb23678",
+      "reason": "unobserved_outcome",
+      "changed_from_own_fixed_baseline": true
+    },
+    {
+      "target_id": "c6172ddb5f3a0651fcb23678",
+      "reason": "new_input_region",
+      "changed_from_own_fixed_baseline": true
+    },
+    {
+      "target_id": "3acb7eec562b0fc96b881a52",
+      "reason": "new_input_region",
+      "changed_from_own_fixed_baseline": true
+    },
+    {
+      "target_id": "c6172ddb5f3a0651fcb23678",
+      "reason": "new_input_region",
+      "changed_from_own_fixed_baseline": true
+    }
+  ],
+  "protocol_valid_at_checkpoint": true
+}

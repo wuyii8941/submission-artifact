@@ -1,0 +1,14 @@
+{
+  "registered_entry_code_objects": 42,
+  "missing_code_objects": 0,
+  "registered_entry_outcomes": 620,
+  "scope_counts": {
+    "other_registered_provider_or_wrapper": 34,
+    "direct_inductor_decomposition_body": 8
+  },
+  "nested_code_objects": 42,
+  "nested_outcomes_not_tracked": 84,
+  "all_reachability_unknown": true,
+  "coverage_percentage": null,
+  "primary_denominator_committed": false
+}

@@ -1,0 +1,13 @@
+{
+  "arm": "B",
+  "master_seed": 3313031328,
+  "requested_wall_seconds": 600,
+  "full_process_wall_seconds": 599.7546271374449,
+  "hard_deadline_triggered": false,
+  "returncode": 0,
+  "cleanup": {
+    "status": "worker_already_terminal"
+  },
+  "purpose": "formal",
+  "command_sha256": "9286fd2eec9f363bf0bcda83137b872c6b13456e0dc182bbb1d0544a997e51d9"
+}

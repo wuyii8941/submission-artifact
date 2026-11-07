@@ -1,0 +1,7062 @@
+{
+  "control_only": true,
+  "domain": {
+    "schema": 1,
+    "template": "default",
+    "device": "cuda",
+    "mode": "forward_static_fullgraph",
+    "emitted_calls": "forward_functional; out= and mutation rejected by functional_domain.py",
+    "fixed_compiler_config": {
+      "coordinate_descent_tuning": false
+    },
+    "dtype_domain_meaning": "eager semantic candidates; device compilation support recorded separately,not silently filtered",
+    "dtypes": [
+      "torch.float32",
+      "torch.float64",
+      "torch.float16",
+      "torch.bfloat16",
+      "torch.int8",
+      "torch.int16",
+      "torch.int32",
+      "torch.int64",
+      "torch.bool"
+    ],
+    "layout_actions": [
+      "contiguous",
+      "column_major"
+    ],
+    "shape_actions": [
+      0,
+      1,
+      2,
+      7,
+      16,
+      17,
+      32
+    ],
+    "zero_dimensions_legal": true,
+    "shape_zero_binding_currently_supported": false,
+    "max_storage_elements": 4000000,
+    "generator_shapes": "unchanged upstream semantic specifications; no decision-specific shape generator",
+    "input_values": "per-sample seeded normal floating/complex,0..1 integral/bool; shared value-domain screen rejects unsafe combinations without repair",
+    "binding_parameters": "only registered shape,dtype,layout actions; topology and other semantic parameters frozen",
+    "source_sha256": "277c450c122bb46cda08dd93e8ae27ada0c46ad3ef672ee94895e7d9d73e9d77",
+    "template_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/cuda/_codegen.py",
+    "template_source_sha256": "6bf2c587fb339081116f4b7265e3c24fdab5df82a2dbbe66638ae2c482679628"
+  },
+  "fixed_config": {
+    "coordinate_descent_tuning": false
+  },
+  "rows": [
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "qualname": "add",
+      "outcomes": [
+        {
+          "edge": [
+            40,
+            42
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            40,
+            80
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            120,
+            122
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            120,
+            160
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            164,
+            166
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            164,
+            170
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            168,
+            170
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            168,
+            184
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            254,
+            256
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            254,
+            282
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            276,
+            278
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            276,
+            282
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            302,
+            304
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            302,
+            346
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            366,
+            368
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            366,
+            410
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            416,
+            418
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            416,
+            428
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            510,
+            512
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            510,
+            534
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            532,
+            534
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            532,
+            548
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            874,
+            876
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            874,
+            892
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            40,
+            42
+          ],
+          [
+            40,
+            80
+          ],
+          [
+            120,
+            122
+          ],
+          [
+            120,
+            160
+          ],
+          [
+            164,
+            170
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 27,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        500,
+        "e47dca1736708a1774395c843b6bbf4e8d8193878f559b7c3ff55925e5564142"
+      ],
+      "qualname": "_register_lowering.<locals>.wrapped",
+      "outcomes": [
+        {
+          "edge": [
+            104,
+            106
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            104,
+            220
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            172,
+            174
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            172,
+            220
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            268,
+            270
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            268,
+            340
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            318,
+            320
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            318,
+            340
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            386,
+            388
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            386,
+            394
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        721,
+        "164f3bad1c730308507ea9ff718ad68e83393560b808e6d7f81fb32f2bf227f8"
+      ],
+      "qualname": "make_pointwise.<locals>.inner",
+      "outcomes": [
+        {
+          "edge": [
+            20,
+            22
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            20,
+            90
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            70,
+            72
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            70,
+            90
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            74,
+            76
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            74,
+            80
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            124,
+            126
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            124,
+            514
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            128,
+            130
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            128,
+            512
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            140,
+            142
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            140,
+            512
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            144,
+            146
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            144,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            198,
+            200
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            198,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            312,
+            314
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            312,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            346,
+            348
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            346,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            350,
+            352
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            350,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            372,
+            374
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            372,
+            432
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            516,
+            518
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            516,
+            522
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            600,
+            602
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            600,
+            652
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            674,
+            676
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            674,
+            906
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            728,
+            730
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            728,
+            904
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            828,
+            830
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            828,
+            904
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            976,
+            978
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            976,
+            1032
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1042,
+            1044
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1042,
+            1114
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1060,
+            1062
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1060,
+            1114
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1138,
+            1140
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1138,
+            1182
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1144,
+            1146
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1144,
+            1182
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1152,
+            1154
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1152,
+            1182
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1186,
+            1188
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1186,
+            1190
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1190,
+            1192
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1190,
+            1198
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1228,
+            1230
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1228,
+            1420
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1238,
+            1240
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1238,
+            1364
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1316,
+            1318
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1316,
+            1362
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1366,
+            1368
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1366,
+            1420
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1422,
+            1424
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1422,
+            1426
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7375,
+        "674988468f053decf5fd5880ab1db72bd22976f4b347cdba610f5bfaf1574007"
+      ],
+      "qualname": "mul",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            60
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            64,
+            66
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            64,
+            98
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7441,
+        "c2f4c030ea2f01d4896f17d2ebc5a26f774ab76b8fcf403fc956be23064d8bc8"
+      ],
+      "qualname": "div",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7355,
+        "8042517dfa8e5e2d6c2a3e75bb4fb30e56e54689244fddc39e625b4ce193d23d"
+      ],
+      "qualname": "div_mode",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            60
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            90,
+            92
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            90,
+            120
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            252
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            138
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            158
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            160,
+            162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            160,
+            194
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            262,
+            264
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            262,
+            382
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            266,
+            268
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            266,
+            288
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            290,
+            292
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            290,
+            324
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7470,
+        "eade7cd800e1f4c9e4007c190490fd14892d73426e6e62cc1cdde237a08354e7"
+      ],
+      "qualname": "sum_",
+      "outcomes": [
+        {
+          "edge": [
+            66,
+            68
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            66,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            138
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            162
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7034,
+        "d5e4482c909b790aa36bbdf7d7d1d09cf27961e07bd4766b4f02835977bc0e4d"
+      ],
+      "qualname": "mean",
+      "outcomes": [
+        {
+          "edge": [
+            6,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            6,
+            40
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            202,
+            204
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            202,
+            256
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        645,
+        "a6ecbe460e1324cb92a451050bc565fb227ec342718deac4b45b74f38ca5924f"
+      ],
+      "qualname": "amax",
+      "outcomes": [
+        {
+          "edge": [
+            42,
+            44
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            42,
+            90
+          ],
+          "status": "unknown_or_possible_retained"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            42,
+            44
+          ],
+          [
+            42,
+            90
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 18,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        6972,
+        "e0cddeba05f9d1242dd131357ac5e81d16f36815ba220ee89b488e7e0aa86e8b"
+      ],
+      "qualname": "make_reduction.<locals>.inner",
+      "outcomes": [
+        {
+          "edge": [
+            10,
+            12
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            10,
+            162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            78,
+            80
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            78,
+            162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            110
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            304,
+            306
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            304,
+            346
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        656,
+        "a6ecbe460e1324cb92a451050bc565fb227ec342718deac4b45b74f38ca5924f"
+      ],
+      "qualname": "amin",
+      "outcomes": [
+        {
+          "edge": [
+            42,
+            44
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            42,
+            90
+          ],
+          "status": "unknown_or_possible_retained"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            42,
+            44
+          ],
+          [
+            42,
+            90
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 18,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        291,
+        "f94f40ca5fe600fec7278ab83b9ab09c925a87ce9b53a5fc634d4e96ce04010f"
+      ],
+      "qualname": "out_wrapper.<locals>._out_wrapper.<locals>._fn",
+      "outcomes": [
+        {
+          "edge": [
+            56,
+            58
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            56,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            60,
+            62
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            60,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            66,
+            68
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            66,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            110
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            120
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            186,
+            188
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            186,
+            222
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            192,
+            194
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            192,
+            220
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            246,
+            248
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            246,
+            274
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            306,
+            308
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            306,
+            322
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            362,
+            364
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            362,
+            368
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            366,
+            368
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            366,
+            626
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            408,
+            410
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            408,
+            474
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            472,
+            474
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            472,
+            626
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            494,
+            496
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            494,
+            552
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            550,
+            552
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            550,
+            626
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            630,
+            632
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            630,
+            1362
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            634,
+            636
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            634,
+            862
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            656,
+            658
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            656,
+            862
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            698,
+            700
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            698,
+            762
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            882,
+            884
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            882,
+            990
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            924,
+            926
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            924,
+            988
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1044,
+            1046
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1044,
+            1108
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1250,
+            1252
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1250,
+            1360
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1368,
+            1370
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1368,
+            1374
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        5197,
+        "ab22027ec7481fd757b3d6273ac2f8997d30ef18c9519f78270d2fbfffd3fa1b"
+      ],
+      "qualname": "matmul",
+      "outcomes": [
+        {
+          "edge": [
+            108,
+            110
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            120,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            120,
+            164
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            174,
+            176
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            174,
+            230
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            186,
+            188
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            186,
+            230
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            240,
+            242
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            240,
+            296
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            252,
+            254
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            252,
+            296
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            306,
+            308
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            306,
+            438
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            318,
+            320
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            318,
+            438
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            448,
+            450
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            448,
+            504
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            460,
+            462
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            460,
+            504
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            538,
+            540
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            538,
+            1208
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            554,
+            556
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            554,
+            570
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            576,
+            578
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            576,
+            582
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            592,
+            594
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            592,
+            634
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            802
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            866
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            924,
+            926
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            924,
+            1096
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1040,
+            1042
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1040,
+            1092
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1220,
+            1222
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1220,
+            2734
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1234,
+            1236
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1234,
+            2734
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1246,
+            1248
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1246,
+            1290
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1376,
+            1378
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1376,
+            1420
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1472,
+            1474
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1472,
+            1516
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1560,
+            1562
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1560,
+            1646
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1656,
+            1658
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1656,
+            1976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1668,
+            1670
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1668,
+            1976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1722,
+            1724
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1722,
+            1976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1764,
+            1766
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1764,
+            1850
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1778,
+            1780
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1778,
+            1850
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1890,
+            1892
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1890,
+            1976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1904,
+            1906
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1904,
+            1976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2186,
+            2188
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2186,
+            2322
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2434,
+            2436
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2434,
+            2478
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2488,
+            2490
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2488,
+            2532
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2534,
+            2536
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2534,
+            2654
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/__init__.py",
+        6615,
+        "55fe853d48df96421b3a0336d246e802dcc961838d5161cfd6587d4f76cb1b71"
+      ],
+      "qualname": "_dot_check_wrapper.<locals>.wrapper",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_compile.py",
+        42,
+        "281f685fa0473fb9551159c1a6cd9f492c23210635450e1d9026248a264a4869"
+      ],
+      "qualname": "_disable_dynamo.<locals>.inner",
+      "outcomes": [
+        {
+          "edge": [
+            40,
+            42
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            40,
+            122
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        128,
+        "d370557c5344fe0a7dcb47f43cdcba408a73155e045f6ef9713bc901afe0d195"
+      ],
+      "qualname": "elementwise_type_promotion_wrapper.__call__.<locals>._fn",
+      "outcomes": [
+        {
+          "edge": [
+            318,
+            320
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            318,
+            354
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            348,
+            350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            348,
+            354
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            394,
+            396
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            394,
+            428
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            468,
+            470
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            468,
+            524
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/__init__.py",
+        6623,
+        "988c6781e2e866eea14ec97e4990bcc19d68e3b11d43d6379b23a5375c4f5cd2"
+      ],
+      "qualname": "dot",
+      "outcomes": [
+        {
+          "edge": [
+            40,
+            42
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            40,
+            468
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            80,
+            82
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            80,
+            350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            120,
+            122
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            120,
+            272
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            388,
+            390
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            388,
+            468
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        64,
+        "8f0286ec2bd42c418352399f10c6b3c0084bcac3f413af4befa7b89b3eae7985"
+      ],
+      "qualname": "type_casts.<locals>.inner",
+      "outcomes": [
+        {
+          "edge": [
+            12,
+            14
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            12,
+            62
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            270,
+            272
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            270,
+            276
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        5130,
+        "82e4728f883afdd4436f1eb005d4ce708f579ac0d65482b91bc4a1a0fb82716e"
+      ],
+      "qualname": "mv",
+      "outcomes": [
+        {
+          "edge": [
+            74,
+            76
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            74,
+            122
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "qualname": "mm",
+      "outcomes": [
+        {
+          "edge": [
+            24,
+            26
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            24,
+            300
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            52,
+            54
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            52,
+            300
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            112,
+            114
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            112,
+            174
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            172,
+            174
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            172,
+            300
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            376,
+            378
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            376,
+            954
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            452,
+            454
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            452,
+            954
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            528,
+            530
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            528,
+            954
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            556,
+            558
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            556,
+            890
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            588,
+            590
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            588,
+            954
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            664,
+            666
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            664,
+            954
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            740,
+            742
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            740,
+            954
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            772,
+            774
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            772,
+            954
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            888,
+            890
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            888,
+            954
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            984,
+            986
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            984,
+            1358
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            1060,
+            1062
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            1060,
+            1358
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            1136,
+            1138
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            1136,
+            1358
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            24,
+            300
+          ],
+          [
+            376,
+            378
+          ],
+          [
+            376,
+            954
+          ],
+          [
+            452,
+            454
+          ],
+          [
+            452,
+            954
+          ],
+          [
+            528,
+            530
+          ],
+          [
+            528,
+            954
+          ],
+          [
+            556,
+            890
+          ],
+          [
+            984,
+            1358
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 68,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        313,
+        "776d89c8b61cd3a152486fa040ec148976e8090a0a837bc2d58cfc5dc127fd99"
+      ],
+      "qualname": "tuned_mm",
+      "outcomes": [
+        {
+          "edge": [
+            10,
+            12
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            10,
+            370
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            266,
+            268
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            266,
+            350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            298,
+            300
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            298,
+            350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            400,
+            402
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            400,
+            824
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            612,
+            614
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            612,
+            714
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            674,
+            676
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            674,
+            714
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1222,
+            1224
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1222,
+            1246
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1280,
+            1282
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1280,
+            1348
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1326,
+            1328
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1326,
+            1348
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1352,
+            1354
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1352,
+            1930
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1358,
+            1360
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1358,
+            1930
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1394,
+            1396
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1394,
+            1930
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1428,
+            1430
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1428,
+            1482
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1516,
+            1518
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1516,
+            1556
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1554,
+            1556
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1554,
+            1878
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1644,
+            1646
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1644,
+            1700
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1736,
+            1738
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1736,
+            1878
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1770,
+            1772
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1770,
+            1826
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2040,
+            2042
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2040,
+            2192
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2044,
+            2046
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2044,
+            2192
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2080,
+            2082
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2080,
+            2192
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2110,
+            2112
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2110,
+            2192
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2194,
+            2196
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2194,
+            2316
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2198,
+            2200
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2198,
+            2316
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2234,
+            2236
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2234,
+            2316
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2318,
+            2320
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2318,
+            2440
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2322,
+            2324
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2322,
+            2440
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2358,
+            2360
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2358,
+            2440
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2442,
+            2444
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2442,
+            2526
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2446,
+            2448
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2446,
+            2526
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2486,
+            2488
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2486,
+            2526
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2528,
+            2530
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2528,
+            2644
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2562,
+            2564
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2562,
+            2644
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2656,
+            2658
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2656,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2662,
+            2664
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2662,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2694,
+            2696
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2694,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2766,
+            2768
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2766,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2796,
+            2798
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2796,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2828,
+            2830
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2828,
+            2872
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3166,
+            3168
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3166,
+            3260
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3170,
+            3172
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3170,
+            3240
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3208,
+            3210
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3208,
+            3240
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3262,
+            3264
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3262,
+            3438
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3288,
+            3290
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3288,
+            3438
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3444,
+            3446
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3444,
+            3522
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3488,
+            3490
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3488,
+            3522
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3606,
+            3608
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3606,
+            3612
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "qualname": "bmm",
+      "outcomes": [
+        {
+          "edge": [
+            60,
+            62
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            60,
+            168
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            120,
+            122
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            120,
+            168
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            190,
+            192
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            190,
+            470
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            218,
+            220
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            218,
+            470
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            278,
+            280
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            278,
+            340
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            338,
+            340
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            338,
+            470
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            500,
+            502
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            500,
+            874
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            576,
+            578
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            576,
+            874
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            652,
+            654
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            652,
+            874
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            60,
+            62
+          ],
+          [
+            60,
+            168
+          ],
+          [
+            120,
+            122
+          ],
+          [
+            120,
+            168
+          ],
+          [
+            190,
+            470
+          ],
+          [
+            500,
+            874
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 39,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        91,
+        "e5d7a34aac6fb8ff3e6dc00b20360ce8c305852a2c1920f633cbe28f8be486f9"
+      ],
+      "qualname": "tuned_bmm",
+      "outcomes": [
+        {
+          "edge": [
+            158,
+            160
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            158,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            168,
+            170
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            168,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            226,
+            228
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            226,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            274,
+            276
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            274,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            292,
+            294
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            292,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            362,
+            364
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            362,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            432,
+            434
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            432,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            514,
+            516
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            514,
+            682
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            736,
+            738
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            736,
+            1250
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            796,
+            798
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            796,
+            858
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            856,
+            858
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            856,
+            1024
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1066,
+            1068
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1066,
+            1148
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1168,
+            1170
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1168,
+            1250
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1280,
+            1282
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1280,
+            1704
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1492,
+            1494
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1492,
+            1594
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1554,
+            1556
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1554,
+            1594
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2086,
+            2088
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2086,
+            2184
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2140,
+            2142
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2140,
+            2162
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2222,
+            2224
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2222,
+            2286
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2318,
+            2320
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2318,
+            2372
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2552,
+            2554
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2552,
+            2718
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2556,
+            2558
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2556,
+            2718
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2592,
+            2594
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2592,
+            2718
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2622,
+            2624
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2622,
+            2718
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2750,
+            2752
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2750,
+            2846
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2880,
+            2882
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2880,
+            2962
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2964,
+            2966
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2964,
+            3044
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3004,
+            3006
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            3004,
+            3044
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        491,
+        "9accf8637110f7f487f513ba0635e861fb3549ebb47761486d5cc07b361c59c2"
+      ],
+      "qualname": "elementwise_unary_scalar_wrapper.<locals>._fn",
+      "outcomes": [
+        {
+          "edge": [
+            40,
+            42
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            40,
+            436
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            94,
+            96
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            94,
+            436
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            332,
+            334
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            332,
+            396
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        1100,
+        "2f34534b4cd95e5bfb5deab8981d570946fe590e1da159fb1cd514510439aeb6"
+      ],
+      "qualname": "gelu",
+      "outcomes": [
+        {
+          "edge": [
+            42,
+            44
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            42,
+            74
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            96,
+            98
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            96,
+            214
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            224,
+            226
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            224,
+            294
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        250,
+        "2c2dcb530fd04236b2860f3ea24b186b66730249aef3fd6f1967ec21bdd5c041"
+      ],
+      "qualname": "silu",
+      "outcomes": [],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [],
+        "created_nested_identities": [],
+        "abstract_states": 13,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        1295,
+        "5ca7bf839e6ac09ddd8eef3957c2e464861c948b551bb7cb81142a35e6663c23"
+      ],
+      "qualname": "_softmax",
+      "outcomes": [
+        {
+          "edge": [
+            44,
+            46
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            136
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            86,
+            88
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            86,
+            136
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            390,
+            392
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            390,
+            434
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_export/utils.py",
+        1424,
+        "fc64ea197eb72c5e468d76a99968c8bf74599205397b426e11dc3f49e9ea647e"
+      ],
+      "qualname": "_get_decomp_for_cia.<locals>._special_op_to_decompose_cia",
+      "outcomes": [
+        {
+          "edge": [
+            206,
+            208
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            206,
+            242
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7238,
+        "cb5029efd50eedcdcad92198aa9a8a991780ed5b68cd8d57455d8b0aacb96e61"
+      ],
+      "qualname": "pow",
+      "outcomes": [
+        {
+          "edge": [
+            48,
+            50
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            48,
+            148
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            88,
+            90
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            88,
+            148
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            188,
+            190
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            188,
+            232
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            200,
+            202
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            200,
+            232
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            272,
+            274
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            272,
+            316
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            284,
+            286
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            284,
+            316
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            440,
+            442
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            440,
+            488
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            456,
+            458
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            456,
+            468
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            472,
+            474
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            472,
+            488
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            476,
+            478
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            476,
+            488
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            492,
+            494
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            492,
+            704
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            744,
+            746
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            744,
+            898
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            756,
+            758
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            756,
+            790
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            802
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            898
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            866,
+            868
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            866,
+            898
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            900,
+            902
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            900,
+            1082
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            942,
+            944
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            942,
+            976
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1016,
+            1018
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1016,
+            1050
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        1316,
+        "87c49987e81ab16948fe4fead3640186200a595b858b9eba2b089706f0e0413e"
+      ],
+      "qualname": "floor",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        1308,
+        "87c49987e81ab16948fe4fead3640186200a595b858b9eba2b089706f0e0413e"
+      ],
+      "qualname": "ceil",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        1324,
+        "87c49987e81ab16948fe4fead3640186200a595b858b9eba2b089706f0e0413e"
+      ],
+      "qualname": "round",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        347,
+        "38e0acac96d4020035c3799256632e2e7d02f63b0725a3575071805582ed5224"
+      ],
+      "qualname": "round_dec",
+      "outcomes": [],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [],
+        "created_nested_identities": [],
+        "abstract_states": 17,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        1333,
+        "87c49987e81ab16948fe4fead3640186200a595b858b9eba2b089706f0e0413e"
+      ],
+      "qualname": "trunc",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7453,
+        "bf1fe12ffa7c0b7eee54af350709d5c761d62bf7d98b25989a9167feef7b16a6"
+      ],
+      "qualname": "fmod",
+      "outcomes": [
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            60
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            64,
+            66
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            64,
+            74
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/__init__.py",
+        1684,
+        "9562c8c776fcbf664475fe282218744df1997ad624cccd28bbd7e51f7b8d109a"
+      ],
+      "qualname": "logaddexp",
+      "outcomes": [
+        {
+          "edge": [
+            452,
+            454
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            452,
+            504
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            502,
+            504
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            502,
+            1002
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        148,
+        "c18453fdac473fe657b06f0a35bec00e33ef4c51e68db07f0cc828119e231cb8"
+      ],
+      "qualname": "_inplace_wrapper.<locals>._fn",
+      "outcomes": [
+        {
+          "edge": [
+            26,
+            28
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            26,
+            38
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            52,
+            54
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            52,
+            138
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        228,
+        "a74a838be5fec21edcff78762642af00d4b1c03bde5eb9ffc22cfdfedc1dc0b5"
+      ],
+      "qualname": "elu",
+      "outcomes": [
+        {
+          "edge": [
+            12,
+            14
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            12,
+            28
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        388,
+        "036b9d2a4987689c881d4c2f24fee848a90c7df725fe77de2b85fad59d8894af"
+      ],
+      "qualname": "leaky_relu",
+      "outcomes": [
+        {
+          "edge": [
+            4,
+            6
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            4,
+            20
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            138
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            212
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        483,
+        "f8cadaada3301eaf5c05606509cb7d553c1fec345749c4b98d79cdf488ffa132"
+      ],
+      "qualname": "softplus",
+      "outcomes": [
+        {
+          "edge": [
+            4,
+            6
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            4,
+            20
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            22,
+            24
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            22,
+            342
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            140,
+            142
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            140,
+            216
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        220,
+        "504dcee2c407848b1c32c244f9c4e73c3b6a40bfbab9978c321e7104ffad9395"
+      ],
+      "qualname": "hardswish",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        412,
+        "c998943c55e57b382952453589421bcef9716bcde6f743cd4ae4e1705380f83d"
+      ],
+      "qualname": "mish",
+      "outcomes": [
+        {
+          "edge": [
+            4,
+            6
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            4,
+            20
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "qualname": "addmm",
+      "outcomes": [
+        {
+          "edge": [
+            28,
+            30
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            28,
+            344
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            104,
+            106
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            104,
+            344
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            180,
+            182
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            180,
+            344
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            256,
+            258
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            256,
+            344
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            376,
+            378
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            376,
+            1138
+          ],
+          "status": "unknown_or_possible_retained"
+        },
+        {
+          "edge": [
+            452,
+            454
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            452,
+            772
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            528,
+            530
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            528,
+            772
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            846,
+            848
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            846,
+            1138
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            922,
+            924
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            922,
+            1138
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            998,
+            1000
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            998,
+            1138
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": {
+        "complete_for_supported_abstract_model": true,
+        "possible_outcomes": [
+          [
+            28,
+            30
+          ],
+          [
+            104,
+            106
+          ],
+          [
+            104,
+            344
+          ],
+          [
+            180,
+            182
+          ],
+          [
+            180,
+            344
+          ],
+          [
+            256,
+            258
+          ],
+          [
+            256,
+            344
+          ],
+          [
+            376,
+            1138
+          ]
+        ],
+        "created_nested_identities": [],
+        "abstract_states": 73,
+        "errors": []
+      }
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        610,
+        "f7710919006e988718a95b4f34798f79cac7bbd62b859164019f71d93c8ac3b9"
+      ],
+      "qualname": "tuned_addmm",
+      "outcomes": [
+        {
+          "edge": [
+            32,
+            34
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            32,
+            322
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            46
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            52
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            126,
+            128
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            126,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            802
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            800,
+            850
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            824,
+            826
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            824,
+            1048
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            848,
+            850
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            848,
+            1048
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1078,
+            1080
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1078,
+            1454
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1154,
+            1156
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1154,
+            1350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1228,
+            1230
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1228,
+            1350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1262,
+            1264
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1262,
+            1350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1296,
+            1298
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1296,
+            1350
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1456,
+            1458
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1456,
+            1930
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1490,
+            1492
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1490,
+            1930
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1580,
+            1582
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1580,
+            1636
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1672,
+            1674
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1672,
+            1814
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1706,
+            1708
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            1706,
+            1762
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2036,
+            2038
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2036,
+            2204
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2072,
+            2074
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2072,
+            2204
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2102,
+            2104
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2102,
+            2204
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2206,
+            2208
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2206,
+            2344
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2242,
+            2244
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2242,
+            2344
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2376,
+            2378
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            2376,
+            2466
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        568,
+        "666f6828ec866793f9e21d71f436c8426e916a0ba1689702c832ecb22165f726"
+      ],
+      "qualname": "add.<locals>._requires_fallback",
+      "outcomes": [
+        {
+          "edge": [
+            22,
+            24
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            22,
+            28
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        593,
+        "399341715e5380f13e6f6b9cb09f278cdd55c3d446713223cffa40ef26bb66a0"
+      ],
+      "qualname": "add.<locals>.reshape_tensor_complex",
+      "outcomes": [
+        {
+          "edge": [
+            38,
+            40
+          ],
+          "status": "proven_outside_fixed_domain"
+        },
+        {
+          "edge": [
+            38,
+            70
+          ],
+          "status": "proven_outside_fixed_domain"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        510,
+        "d8e7e9eaa2165e049fa56572347d04304fe2be690dcef1e39b270a142492fbaa"
+      ],
+      "qualname": "_register_lowering.<locals>.wrapped.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            68
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            28,
+            30
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            28,
+            60
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        514,
+        "0a4814a5507522e54e84c620a55f18ded6a2a455204f1deb196dda07a20e8720"
+      ],
+      "qualname": "_register_lowering.<locals>.wrapped.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            30
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        722,
+        "8af746346181c8db010dba6a3a3f7f9f72882c057e31c835c0e87517b1a66392"
+      ],
+      "qualname": "make_pointwise.<locals>.inner.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            90
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            52,
+            54
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            52,
+            82
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        750,
+        "eacdc34c8bac6ed4aaeee1b9e63a6992d1f3e07663eff53ddd70648a0d04d97d"
+      ],
+      "qualname": "make_pointwise.<locals>.inner.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            6,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            6,
+            52
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        781,
+        "ec1b710e675fc9871fc27c5b6ea7681889bfc23b21ac35d671c819d44c3707ce"
+      ],
+      "qualname": "make_pointwise.<locals>.inner.<locals>.inner_fn",
+      "outcomes": [
+        {
+          "edge": [
+            68,
+            70
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            68,
+            102
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            172
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            138
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            136,
+            172
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            206,
+            208
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            206,
+            434
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            292,
+            294
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            292,
+            390
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            300,
+            302
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            300,
+            390
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            446,
+            448
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            446,
+            536
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        784,
+        "e55c7420e5b38f06b79ff9d6c2eef79b359f74193d840dcd9ee37d8eebce70f1"
+      ],
+      "qualname": "make_pointwise.<locals>.inner.<locals>.inner_fn.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            36
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7045,
+        "24d4a49e8a7e60418461e0c5ab528c7213ab951f0eda6cd3704f6b5408d7f113"
+      ],
+      "qualname": "mean.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            10,
+            12
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            10,
+            36
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        300,
+        "c8d688e7e9e288eb2cfe6323dfb39d8bb34901fc848ff6f2fc6f9905fd6b43f4"
+      ],
+      "qualname": "out_wrapper.<locals>._out_wrapper.<locals>._fn.<locals>.maybe_check_copy_devices",
+      "outcomes": [
+        {
+          "edge": [
+            44,
+            46
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            150
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            98,
+            100
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            98,
+            154
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        375,
+        "a78ae107d0e559b5d67dd7702998b2650550f42525155b09b2b6e5617503ead3"
+      ],
+      "qualname": "out_wrapper.<locals>._out_wrapper.<locals>._fn.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        5321,
+        "9955286879463e87c717b86bd565f41f1c3506e3a887108cd7f354e14e2afe66"
+      ],
+      "qualname": "matmul.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        132,
+        "baa043852943e38becc714512b5ba1407865caa50d10bf3cb00bcc106ddec926"
+      ],
+      "qualname": "elementwise_type_promotion_wrapper.__call__.<locals>._fn.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            10,
+            12
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            10,
+            64
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            30,
+            32
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        144,
+        "470a1f4bc86128a983a4fc3c567056ce8d5405072a33f3fb12e4ae6ca30b501c"
+      ],
+      "qualname": "elementwise_type_promotion_wrapper.__call__.<locals>._fn.<locals>.<dictcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            88
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            28,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            28,
+            30
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_prims_common/wrappers.py",
+        162,
+        "96983d9470d2b8c911490e01a3e0fb8482785c5eac62d3d2ad5a2d02713b273c"
+      ],
+      "qualname": "elementwise_type_promotion_wrapper.__call__.<locals>._fn.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            10,
+            12
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            10,
+            52
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        69,
+        "cf8940985adf5749d5b76f0d4b12b99c7e2d039baa2fe6e4a68a2db737f17be5"
+      ],
+      "qualname": "type_casts.<locals>.inner.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            50
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            42,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            42,
+            44
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        79,
+        "8ac8a13a3a497c14f24aac5a2937f3621934b6021d33a4b8f86f94244a9cc81a"
+      ],
+      "qualname": "type_casts.<locals>.inner.<locals>.increase_prec",
+      "outcomes": [
+        {
+          "edge": [
+            44,
+            46
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            88
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        85,
+        "8ac8a13a3a497c14f24aac5a2937f3621934b6021d33a4b8f86f94244a9cc81a"
+      ],
+      "qualname": "type_casts.<locals>.inner.<locals>.decrease_prec",
+      "outcomes": [
+        {
+          "edge": [
+            44,
+            46
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            44,
+            88
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        5136,
+        "eb54284a14ca96f2fef42c8fdedcb6dc6a0a3cab3052bf383d49d84f1a0efe2d"
+      ],
+      "qualname": "mv.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_decomp/decompositions.py",
+        5140,
+        "eb9160ff43bcd3573145ab8c4fb25f32e4054b0b3655fd540ef62902df6b11b2"
+      ],
+      "qualname": "mv.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        322,
+        "9955286879463e87c717b86bd565f41f1c3506e3a887108cd7f354e14e2afe66"
+      ],
+      "qualname": "tuned_mm.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        326,
+        "9955286879463e87c717b86bd565f41f1c3506e3a887108cd7f354e14e2afe66"
+      ],
+      "qualname": "tuned_mm.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        334,
+        "9955286879463e87c717b86bd565f41f1c3506e3a887108cd7f354e14e2afe66"
+      ],
+      "qualname": "tuned_mm.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        367,
+        "8de15cade7831cfa6ad19b6704c928de40b27ee695859ceca0d3c7e86c63a061"
+      ],
+      "qualname": "tuned_mm.<locals>._to_dtype",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        370,
+        "21af2b2abbdb87cd57106d4b68c066b33beac700cb74a0cc653574b0b02ee432"
+      ],
+      "qualname": "tuned_mm.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/mm.py",
+        529,
+        "18e1ccfb11ef10e0e2aa9060bb065a2f37dcc6f9f605534301454f3efd4cbb1f"
+      ],
+      "qualname": "tuned_mm.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            26
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            18,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            18,
+            20
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        100,
+        "40243138e6e9e1a736eadfbd224ef59c731fa539f7aca9abee11231b9e479d33"
+      ],
+      "qualname": "tuned_bmm.<locals>.dim_is_one_or_hint",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        105,
+        "cc0f45ab887d3d2d7be0e89f8adfa56946004cea3b52a791d91def078c2432ae"
+      ],
+      "qualname": "tuned_bmm.<locals>.dim_is_not_known_gt",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        126,
+        "7e75002a9bacb422b58344ac121e888ec4ce019f87ff6b6bfb494511fee1a73a"
+      ],
+      "qualname": "tuned_bmm.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            76
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        133,
+        "a6c4a5e38ecf8c8e544f9104fdc3cc71fb6b8755f103b787ec392f4c78b369bd"
+      ],
+      "qualname": "tuned_bmm.<locals>.is_valid_to_require_contiguous",
+      "outcomes": [
+        {
+          "edge": [
+            40,
+            42
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            40,
+            46
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        139,
+        "e4a47ccd41c0ce092cc3e9ba9ae3de19fdcd39fb5d6931751d4c0a1d6cb4a9ab"
+      ],
+      "qualname": "tuned_bmm.<locals>.is_preferred_layout_as_bmm_input",
+      "outcomes": [
+        {
+          "edge": [
+            24,
+            26
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            24,
+            84
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            48,
+            50
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            48,
+            84
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            84,
+            86
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            84,
+            168
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            110
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            108,
+            168
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            134
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            132,
+            168
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        149,
+        "e6fc336051d37962f68ce82ead2269fe7e976ffe7a5e51a89c34164ebc95814f"
+      ],
+      "qualname": "tuned_bmm.<locals>.may_require_contiguous",
+      "outcomes": [
+        {
+          "edge": [
+            150,
+            152
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            150,
+            214
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        179,
+        "8de15cade7831cfa6ad19b6704c928de40b27ee695859ceca0d3c7e86c63a061"
+      ],
+      "qualname": "tuned_bmm.<locals>._to_dtype",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/kernel/bmm.py",
+        182,
+        "21af2b2abbdb87cd57106d4b68c066b33beac700cb74a0cc653574b0b02ee432"
+      ],
+      "qualname": "tuned_bmm.<locals>.<listcomp>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            62
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7248,
+        "13e2ec4bf6c0da8dbd4293a60e5463099932769b9115b7ae317caa1092779fd7"
+      ],
+      "qualname": "pow.<locals>.<genexpr>",
+      "outcomes": [
+        {
+          "edge": [
+            8,
+            10
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            8,
+            110
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            62,
+            8
+          ],
+          "status": "unknown_retained"
+        },
+        {
+          "edge": [
+            62,
+            64
+          ],
+          "status": "unknown_retained"
+        }
+      ],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7258,
+        "3978eb9b722c7b2d5a082ab0229a1e3092a1f274dccba614d68905921165f060"
+      ],
+      "qualname": "pow.<locals>.fn",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7459,
+        "c3fc5cc19d365cce2da955c5c4e7c921a45331b97800646c8058348fe75c5458"
+      ],
+      "qualname": "fmod.<locals>.fn",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/lowering.py",
+        7464,
+        "c3fc5cc19d365cce2da955c5c4e7c921a45331b97800646c8058348fe75c5458"
+      ],
+      "qualname": "fmod.<locals>.fn",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        157,
+        "9955286879463e87c717b86bd565f41f1c3506e3a887108cd7f354e14e2afe66"
+      ],
+      "qualname": "_inplace_wrapper.<locals>._fn.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        252,
+        "2eefb46e65875173b5a7b689d81e24ecccc429d6505b032517853bf6c15d51ee"
+      ],
+      "qualname": "elu.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        256,
+        "5e6a45e39c6a5e392128cd8e30118a41a4850e07966f02402f0242738cd9f8c9"
+      ],
+      "qualname": "elu.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/nn/functional/__init__.py",
+        260,
+        "2eefb46e65875173b5a7b689d81e24ecccc429d6505b032517853bf6c15d51ee"
+      ],
+      "qualname": "elu.<locals>.<lambda>",
+      "outcomes": [],
+      "proof": null
+    }
+  ],
+  "exclusions": [
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        164,
+        166
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        168,
+        170
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        168,
+        184
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        254,
+        256
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        254,
+        282
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        276,
+        278
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        276,
+        282
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        302,
+        304
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        302,
+        346
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        366,
+        368
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        366,
+        410
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        416,
+        418
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        416,
+        428
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        510,
+        512
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        510,
+        534
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        532,
+        534
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        532,
+        548
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        874,
+        876
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        555,
+        "4b94ad1f077d153062733fd925b3a69b6e2b311fdab46b3f35943ce1971ad1a8"
+      ],
+      "edge": [
+        874,
+        892
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        24,
+        26
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        52,
+        54
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        52,
+        300
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        112,
+        114
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        112,
+        174
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        172,
+        174
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        172,
+        300
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        556,
+        558
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        588,
+        590
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        588,
+        954
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        664,
+        666
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        664,
+        954
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        740,
+        742
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        740,
+        954
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        772,
+        774
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        772,
+        954
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        888,
+        890
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        888,
+        954
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        984,
+        986
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        1060,
+        1062
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        1060,
+        1358
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        1136,
+        1138
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        426,
+        "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a"
+      ],
+      "edge": [
+        1136,
+        1358
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        190,
+        192
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        218,
+        220
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        218,
+        470
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        278,
+        280
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        278,
+        340
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        338,
+        340
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        338,
+        470
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        500,
+        502
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        576,
+        578
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        576,
+        874
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        652,
+        654
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        353,
+        "2726e69bf4b7ba9bde6628007676f31f21d57ba69eeada99024cc3f28bb0f7a8"
+      ],
+      "edge": [
+        652,
+        874
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        28,
+        344
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        376,
+        378
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        452,
+        454
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        452,
+        772
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        528,
+        530
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        528,
+        772
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        846,
+        848
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        846,
+        1138
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        922,
+        924
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        922,
+        1138
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        998,
+        1000
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        386,
+        "6733b4caafc6fa574ae67778ca53c34a803ef0d469b5c1b318dc9351e430d8dc"
+      ],
+      "edge": [
+        998,
+        1138
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "sound abstract CUDA/noncomplex/configFalse execution overapproximates all unknown shapes/dtypes"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        568,
+        "666f6828ec866793f9e21d71f436c8426e916a0ba1689702c832ecb22165f726"
+      ],
+      "edge": [
+        22,
+        24
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "nested MAKE_FUNCTION unreachable on all supported parent paths"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        568,
+        "666f6828ec866793f9e21d71f436c8426e916a0ba1689702c832ecb22165f726"
+      ],
+      "edge": [
+        22,
+        28
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "nested MAKE_FUNCTION unreachable on all supported parent paths"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        593,
+        "399341715e5380f13e6f6b9cb09f278cdd55c3d446713223cffa40ef26bb66a0"
+      ],
+      "edge": [
+        38,
+        40
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "nested MAKE_FUNCTION unreachable on all supported parent paths"
+    },
+    {
+      "source_identity": [
+        "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+        593,
+        "399341715e5380f13e6f6b9cb09f278cdd55c3d446713223cffa40ef26bb66a0"
+      ],
+      "edge": [
+        38,
+        70
+      ],
+      "status": "proven_outside_fixed_domain",
+      "proof": "nested MAKE_FUNCTION unreachable on all supported parent paths"
+    }
+  ],
+  "abstract_assumptions": [
+    "all compiler tensor arguments attributable to generated DAG stay on CUDA",
+    "default-template tensor/scalar dtypes contain no complex",
+    "unknown shape,dtype,param branches are forked; unsupported functions exclude nothing"
+  ],
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "proof_not_yet_independently_qualified": true,
+  "source_sha256": "cc18fc7c8b5a19d3bc3d279b2939d74c809ccb83b89b25f7da6e34fc5cdd15c9"
+}

@@ -1,0 +1,234 @@
+{
+  "controls": [
+    {
+      "control": "fmod_integer_zero",
+      "expected_accepted": false,
+      "accepted": false,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.fmod.Tensor",
+            "schema": "aten::fmod.Tensor(Tensor self, Tensor other) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": false,
+            "reason": "integer_zero_divisor"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "remainder_integer_zero",
+      "expected_accepted": false,
+      "accepted": false,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.remainder.Tensor",
+            "schema": "aten::remainder.Tensor(Tensor self, Tensor other) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": false,
+            "reason": "integer_zero_divisor"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "rounded_integer_div_zero",
+      "expected_accepted": false,
+      "accepted": false,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.div.Tensor_mode",
+            "schema": "aten::div.Tensor_mode(Tensor self, Tensor other, *, str? rounding_mode) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": false,
+            "reason": "integer_zero_divisor"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "integer_signed_overflow",
+      "expected_accepted": false,
+      "accepted": false,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.fmod.Tensor",
+            "schema": "aten::fmod.Tensor(Tensor self, Tensor other) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": true,
+            "signed_division_overflow_absent": false,
+            "reason": "signed_integer_division_overflow"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "integer_negative_exponent",
+      "expected_accepted": false,
+      "accepted": false,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.pow.Tensor_Tensor",
+            "schema": "aten::pow.Tensor_Tensor(Tensor self, Tensor exponent) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_exponent_nonnegative": false,
+            "reason": "negative_integer_exponent"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "integer_fmod_legal",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.fmod.Tensor",
+            "schema": "aten::fmod.Tensor(Tensor self, Tensor other) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": true,
+            "signed_division_overflow_absent": true,
+            "status": "accepted_by_checked_value_rules"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "integer_remainder_legal",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.remainder.Tensor",
+            "schema": "aten::remainder.Tensor(Tensor self, Tensor other) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_divisor_nonzero": true,
+            "signed_division_overflow_absent": true,
+            "status": "accepted_by_checked_value_rules"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "floating_zero_divisor",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "integer_true_div_zero",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "positive_integer_power",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [
+          {
+            "aten": "aten.pow.Tensor_Tensor",
+            "schema": "aten::pow.Tensor_Tensor(Tensor self, Tensor exponent) -> Tensor",
+            "result_dtype": "torch.int64",
+            "integer_exponent_nonnegative": true,
+            "status": "accepted_by_checked_value_rules"
+          }
+        ],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    },
+    {
+      "control": "float_negative_power",
+      "expected_accepted": true,
+      "accepted": true,
+      "passed": true,
+      "screen": {
+        "schema": "common-value-domain-screen-v1",
+        "dispatch_calls": 3,
+        "checks": [],
+        "scope": "integer divisor, signed division overflow and integer exponent rules only",
+        "complete_value_domain_proven": false,
+        "mutates_inputs": false
+      }
+    }
+  ],
+  "all_passed": true,
+  "cpu_integer_fmod_zero_raises": true,
+  "cpu_error": "ZeroDivisionError",
+  "excluded_from_discovery_and_coverage": true,
+  "scope": "the checked rules only; no claim of exhaustive semantic domain validation",
+  "source_sha256": {
+    "value_domain.py": "f80ae64a0015f4bcbd9b0763c4a8f1dc413ec9411943e8adafc279cc314c286e",
+    "qualify_value_domain.py": "ee7fe63439132154f7d8e15474a853b2633606bc4cc8fb88c88759eac85bf5aa"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "statement_conditions": 177,
+  "guidance_statuses": {
+    "unsupported_retained": 152,
+    "fixed_or_structural_no_binding_action": 12,
+    "input_condition_specified": 13
+  },
+  "domain_statuses": {
+    "possible_or_unknown_retained": 116,
+    "unresolved": 47,
+    "outside_fixed_domain": 14
+  },
+  "source_records_without_statement_if_mapping": 26,
+  "primary_denominator_committed": false
+}

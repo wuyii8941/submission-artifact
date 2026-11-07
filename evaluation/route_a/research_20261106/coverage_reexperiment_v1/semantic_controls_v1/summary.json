@@ -1,0 +1,22 @@
+{
+  "operators_probed": 55,
+  "render_changes": [
+    "torch.add",
+    "torch.sum",
+    "torch.mean",
+    "torch.amax",
+    "torch.amin",
+    "torch.nn.functional.gelu",
+    "torch.round",
+    "torch.nn.functional.elu",
+    "torch.nn.functional.leaky_relu",
+    "torch.nn.functional.softplus"
+  ],
+  "first_meta_failures": [],
+  "second_meta_failures": [
+    "torch.round",
+    "torch.nn.functional.softplus"
+  ],
+  "probe_errors": [],
+  "effect_experiment_started": false
+}

@@ -1,0 +1,7 @@
+{
+  "scope": "independent frontend operator-kind identity audit;not branch coverage or effect comparison",
+  "audit_utc": "2026-11-06T12:24:59Z",
+  "verified_public_api_to_backend_target_instances": 1075,
+  "unresolved_target_identity_instances": [],
+  "metric_population": "public operator kinds at Dynamo backend entry,not generated-node appearances or device-kernel kinds"
+}

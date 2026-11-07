@@ -1,0 +1,168 @@
+{
+  "status": "draft_runner_qualification_required_before_formal_start",
+  "effect_experiment_started": false,
+  "universe": "coverage_universe_v1/universe.json",
+  "universe_sha256": "053491a87f700fd6ae38111d3b6a7e15fdd8ca886494bd182c5569beb4f66d83",
+  "condition_inventory": "source_condition_inventory_v2/conditions.json",
+  "condition_selection_rule": "all input_condition_specified conditions not proved wholly outside fixed domain; keep fixed/unsupported conditions in capability census and all admitted branch targets in denominator",
+  "selected_decision_ids": [
+    "b012bde34af533a287b06ea0",
+    "c6172ddb5f3a0651fcb23678",
+    "17ef21952460b4ff15610170",
+    "d5e35e89da45482abb8a28b5",
+    "be53de133e8a85dcb8566a8c",
+    "3acb7eec562b0fc96b881a52",
+    "a279d7254f97c7d873692db2"
+  ],
+  "selected_decision_source_locations": [
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 362,
+      "expression": "statically_known_true(self.shape[2] == 1) and statically_known_true(batch2.shape[1] == 1)"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 397,
+      "expression": "statically_known_true(mat1.size(-1) == 1) and statically_known_true(mat1.size(0) != 1) and statically_known_true(mat2.size(1) != 1)"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 444,
+      "expression": "statically_known_true(self.size(-1) == 1) and statically_known_true(self.size(0) != 1) and statically_known_true(input2.size(1) != 1)"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 565,
+      "expression": "not x_is_complex_tensor or not y_is_complex_tensor"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 651,
+      "expression": "self.dtype == torch.bool"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+      "if_line": 662,
+      "expression": "self.dtype == torch.bool"
+    },
+    {
+      "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_refs/__init__.py",
+      "if_line": 6631,
+      "expression": "self.is_complex()"
+    }
+  ],
+  "holdout_rule": "dtype-only decisions are held out of feedback-policy tuning; source/oracle qualification controls are allowed but excluded from effect results",
+  "heldout_decision_ids": [
+    "d5e35e89da45482abb8a28b5",
+    "be53de133e8a85dcb8566a8c",
+    "3acb7eec562b0fc96b881a52",
+    "a279d7254f97c7d873692db2"
+  ],
+  "master_seeds": [
+    3072749904,
+    611391528,
+    3540550185,
+    2487031236,
+    3313031328,
+    2436924015,
+    809160771,
+    2341637125
+  ],
+  "seed_derivation": "coverage-universe-v1-formal-master-seed-index, first32bits SHA256, indices0..7; independent of control successes",
+  "per_arm_seed_wall_seconds": 600,
+  "planned_total_arm_wall_seconds": 14400,
+  "order_by_seed": [
+    [
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "A",
+      "C",
+      "B"
+    ],
+    [
+      "B",
+      "A",
+      "C"
+    ],
+    [
+      "B",
+      "C",
+      "A"
+    ],
+    [
+      "C",
+      "A",
+      "B"
+    ],
+    [
+      "C",
+      "B",
+      "A"
+    ],
+    [
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "A",
+      "C",
+      "B"
+    ]
+  ],
+  "common_generation": {
+    "generator": "dag_generator.generate",
+    "pool_size": 55,
+    "template": "default",
+    "target_insertion": false,
+    "same_profiles_and_legal_action_domain": true,
+    "initial_shared_skeleton_batch": 24,
+    "shared_generation_seed_stream": true
+  },
+  "A": "same per-target skeleton schedule as B; uniform legal input/action choice without predicate filtering; same identification and observation",
+  "B": "fixed target quotas and master-seeded skeleton schedule independent of predicate satisfiability; alternating desired true/false input condition, fixed random tie breaks; impossible/unknown/target-absent retained",
+  "C": "same candidate actions and no-feedback baseline as B; verified feedback may prioritize outcomes/regions/normalized contexts within target; cannot add actions or change target quota",
+  "AB_pairing": "compare on shared DAG skeleton prefix, also report full wall-budget results separately; different input choices allowed, graph identities must match at each paired ordinal",
+  "BC_pairing": "matched master seeds, generation distribution,target quotas and full budgets; choices may diverge after verified feedback; record that divergence",
+  "cost_accounting": "wall starts at arm process launch, including import,graph generation,all failed proposals,binding,queue,inputs,eager,compile,observation,serialization and timeout cleanup; charge each arm its generation cost, no free pregenerated control corpus",
+  "cache_policy": "identical flags, empty per-arm/seed Inductor,Triton and CUDA cache dirs; forced source compilation, no cross-arm cache reuse; Python imports also charged",
+  "primary_results": [
+    "fixed642 target outcomes hit on legal-input compilation attempts,globally deduplicated",
+    "same hits restricted to successful execution",
+    "public operator kinds actually at backend entry /55 reported separately"
+  ],
+  "secondary_results": [
+    "binding success",
+    "target absent rate",
+    "confirmed source decision sides",
+    "unattributed events and domain-check failures",
+    "normalized original-DAG context count",
+    "full cost and per-stage breakdown",
+    "BF16 support rejections retained separately from bugs"
+  ],
+  "hypotheses": [
+    "B-A improvement in predeclared source branch coverage",
+    "C-B improvement in same source branch coverage"
+  ],
+  "analysis": {
+    "replicate_unit": "master seed, not request or kernel",
+    "primary_effect": "per-seed paired covered-outcome count difference; proportions use common642 denominator",
+    "stability_test": "two-sided exact sign test over nonzero master-seed differences, Holm correction for two primary comparisons",
+    "uncertainty": "paired master-seed bootstrap95% interval for mean difference,10000resamples with fixed analysis seed",
+    "positive_claim_requires": "positive mean difference,bootstrap lower bound>0,Holm-adjusted sign-test p<0.05; operator-kind improvement requires separate evidence and is never inferred from branch improvement",
+    "no_optional_stopping": "complete all8masterseeds unless protocol invalidated; do not add seeds or discard hard cases to obtain positivity"
+  },
+  "required_runner_gates": [
+    "common A/B/C action-set and predicted-goal fairness check",
+    "A/B identical paired skeletons",
+    "variable-name-independent context signatures",
+    "real post-feedback selections on supported and heldout conditions",
+    "universe membership and excluded-edge/domain falsification check for each source report",
+    "wall deadline and child cleanup checks",
+    "source/config/device/cache manifests"
+  ],
+  "invalidation": "stop inference and issue a new protocol/data version on metric/domain/fairness failure, even mid-run; preserve raw failures and costs; negative or inconclusive effect alone never invalidates a protocol"
+}

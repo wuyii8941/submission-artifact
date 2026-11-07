@@ -1,0 +1,17 @@
+{
+  "control_only": true,
+  "supported_and_heldout_real_feedback_followed_by_execution": true,
+  "both_next_source_exits_confirmed": true,
+  "foreign_program_feedback_rejected": true,
+  "controls_use_frozen_general_DAG": true,
+  "not_effect_evidence": true,
+  "source_sha256": {
+    "experiment_queue.py": "01522f370682c5211b92c24561b73e636ef4f85b23ea9620615a54003adbc9ea",
+    "graph_context.py": "6514009ca38944c2ee3325e99bff89f2254651484ee721c5deed4b0f9910e719",
+    "input_regions.py": "f798eaf0bd3150dbfffd0dba8653c2904549c5c8f2f427fe594fc190ce195074",
+    "action_candidates.py": "4126947752e7f0070d412480a8233e0043af70596306014a7bc2c39f57c2c7cf",
+    "experiment_metrics.py": "7ada8511376344790586f40d26872b0ac165ac919cf0297343ba792b7330aeec",
+    "experiment_runtime.py": "8c4ac591224ce03025f33c63fa7170ba39ecfad8d8ad2fdb57d1ec7b15ad98f2",
+    "qualify_live_feedback.py": "4cc2df9827633936eede3880d8c3e468da2b70a5d0eeb222257e33ba41ecc1f7"
+  }
+}

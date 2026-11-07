@@ -1,0 +1,21 @@
+{
+  "control_only": true,
+  "candidate_count": 12,
+  "identical_action_set": true,
+  "no_feedback_B_equals_C": true,
+  "verified_post_feedback_opportunities": 3,
+  "feedback_changed_selection": true,
+  "persistent_replay": true,
+  "cross_target_feedback_rejected": true,
+  "unknown_did_not_mark_coverage": true,
+  "effect_experiment_started": false,
+  "primary_denominator_committed": false,
+  "limitations": [
+    "synthetic observations only",
+    "not integrated with compiler source observer or full wall budget runner"
+  ],
+  "source_sha256": {
+    "candidate_queue.py": "bd1c6b46c0797a55369c16f2e7a9dc61e083a09096102978ea00d1db15a488f2",
+    "qualify_candidate_queue.py": "cece512cd3ae1bf9ebeff41bdf2aaa41ddb9973948c49494d33d6c449c818881"
+  }
+}

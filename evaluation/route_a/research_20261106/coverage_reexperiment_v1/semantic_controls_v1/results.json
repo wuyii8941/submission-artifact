@@ -1,0 +1,1422 @@
+{
+  "scope": "one isolated semantic control per common operator; no claim of complete legal domain or compiler coverage",
+  "all55retained": true,
+  "denominator_selection_uses_these_results": false,
+  "rows": [
+    {
+      "operator": "torch.add",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.add(probe_input_0, probe_input_1, alpha=4.7648)",
+      "second_code": "probe_output = torch.add(probe_input_0, probe_input_1)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sub",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sub(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.sub(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.mul",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.mul(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.mul(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.div",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.div(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.div(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sigmoid",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sigmoid(probe_input_0)",
+      "second_code": "probe_output = torch.sigmoid(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.tanh",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.tanh(probe_input_0)",
+      "second_code": "probe_output = torch.tanh(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.exp",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.exp(probe_input_0)",
+      "second_code": "probe_output = torch.exp(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sqrt",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sqrt(probe_input_0)",
+      "second_code": "probe_output = torch.sqrt(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.abs",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.abs(probe_input_0)",
+      "second_code": "probe_output = torch.abs(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sin",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sin(probe_input_0)",
+      "second_code": "probe_output = torch.sin(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.cos",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.cos(probe_input_0)",
+      "second_code": "probe_output = torch.cos(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sum",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sum(probe_input_0, dtype=torch.float32)",
+      "second_code": "probe_output = torch.sum(probe_input_0, dim=None, dtype=torch.float32)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.mean",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.mean(probe_input_0)",
+      "second_code": "probe_output = torch.mean(probe_input_0, dim=None)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.amax",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.amax(probe_input_0)",
+      "second_code": "probe_output = torch.amax(probe_input_0, dim=None)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.amin",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.amin(probe_input_0)",
+      "second_code": "probe_output = torch.amin(probe_input_0, dim=None)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.matmul",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.matmul(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.matmul(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.mm",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.mm(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.mm(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.bmm",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.bmm(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.bmm(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.gelu",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.gelu(probe_input_0, approximate='none')",
+      "second_code": "probe_output = torch.nn.functional.gelu(probe_input_0, approximate='tanh')",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.silu",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.silu(probe_input_0)",
+      "second_code": "probe_output = torch.nn.functional.silu(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.softmax",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.softmax(probe_input_0, dim=-1)",
+      "second_code": "probe_output = torch.nn.functional.softmax(probe_input_0, dim=-1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [
+          3
+        ],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.neg",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.neg(probe_input_0)",
+      "second_code": "probe_output = torch.neg(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.square",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.square(probe_input_0)",
+      "second_code": "probe_output = torch.square(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.reciprocal",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.reciprocal(probe_input_0)",
+      "second_code": "probe_output = torch.reciprocal(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.rsqrt",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.rsqrt(probe_input_0)",
+      "second_code": "probe_output = torch.rsqrt(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.exp2",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.exp2(probe_input_0)",
+      "second_code": "probe_output = torch.exp2(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.expm1",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.expm1(probe_input_0)",
+      "second_code": "probe_output = torch.expm1(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.log",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.log(probe_input_0)",
+      "second_code": "probe_output = torch.log(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.log2",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.log2(probe_input_0)",
+      "second_code": "probe_output = torch.log2(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.log10",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.log10(probe_input_0)",
+      "second_code": "probe_output = torch.log10(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.log1p",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.log1p(probe_input_0)",
+      "second_code": "probe_output = torch.log1p(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.erf",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.erf(probe_input_0)",
+      "second_code": "probe_output = torch.erf(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.erfc",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.erfc(probe_input_0)",
+      "second_code": "probe_output = torch.erfc(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.floor",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.floor(probe_input_0)",
+      "second_code": "probe_output = torch.floor(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.ceil",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.ceil(probe_input_0)",
+      "second_code": "probe_output = torch.ceil(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.round",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.round(probe_input_0, decimals=2)",
+      "second_code": "probe_output = torch.round(probe_input_0, decimals=None)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "error",
+        "type": "TypeError",
+        "error": "round() received an invalid combination of arguments - got (Tensor, decimals=NoneType), but expected one of:\n * (Tensor input, *, Tensor out = None)\n * (Tensor input, *, int decimals, Tensor out = None)\n"
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.trunc",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.trunc(probe_input_0)",
+      "second_code": "probe_output = torch.trunc(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sign",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sign(probe_input_0)",
+      "second_code": "probe_output = torch.sign(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.sinh",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.sinh(probe_input_0)",
+      "second_code": "probe_output = torch.sinh(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.cosh",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.cosh(probe_input_0)",
+      "second_code": "probe_output = torch.cosh(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.atan",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.atan(probe_input_0)",
+      "second_code": "probe_output = torch.atan(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.asinh",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.asinh(probe_input_0)",
+      "second_code": "probe_output = torch.asinh(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.maximum",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.maximum(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.maximum(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.minimum",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.minimum(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.minimum(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.pow",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.pow(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.pow(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.remainder",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.remainder(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.remainder(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.bfloat16",
+        "matches_output": false
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.bfloat16",
+        "matches_output": false
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.fmod",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.fmod(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.fmod(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.hypot",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.hypot(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.hypot(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.logaddexp",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.logaddexp(probe_input_0, probe_input_1)",
+      "second_code": "probe_output = torch.logaddexp(probe_input_0, probe_input_1)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.elu",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.elu(probe_input_0, alpha=1.2806)",
+      "second_code": "probe_output = torch.nn.functional.elu(probe_input_0, alpha=0.2745)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.leaky_relu",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.leaky_relu(probe_input_0, negative_slope=0.4647)",
+      "second_code": "probe_output = torch.nn.functional.leaky_relu(probe_input_0, negative_slope=0.397)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.softplus",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.softplus(probe_input_0, beta=0.6093, threshold=12.4906)",
+      "second_code": "probe_output = torch.nn.functional.softplus(probe_input_0, beta=None, threshold=None)",
+      "render_identical": false,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "error",
+        "type": "TypeError",
+        "error": "softplus(): argument 'beta' must be Number, not NoneType"
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.hardswish",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.hardswish(probe_input_0)",
+      "second_code": "probe_output = torch.nn.functional.hardswish(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.nn.functional.mish",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.nn.functional.mish(probe_input_0)",
+      "second_code": "probe_output = torch.nn.functional.mish(probe_input_0)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [],
+        "dtype": "torch.float32"
+      }
+    },
+    {
+      "operator": "torch.addmm",
+      "excluded_from_discovery": true,
+      "control_only": true,
+      "first_code": "probe_output = torch.addmm(probe_input_0, probe_input_1, probe_input_2)",
+      "second_code": "probe_output = torch.addmm(probe_input_0, probe_input_1, probe_input_2)",
+      "render_identical": true,
+      "first_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "second_meta": {
+        "status": "meta_executable",
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32",
+        "matches_output": true
+      },
+      "status": "probed",
+      "output": {
+        "shape": [
+          2,
+          3
+        ],
+        "dtype": "torch.float32"
+      }
+    }
+  ]
+}

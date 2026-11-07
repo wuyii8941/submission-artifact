@@ -1,0 +1,188 @@
+{
+  "control_only": true,
+  "source": {
+    "module": "torch._inductor.decomposition",
+    "qualname": "mm",
+    "source": "/data1/tzh/pt_nightly_env/lib/python3.11/site-packages/torch/_inductor/decomposition.py",
+    "first_line": 426,
+    "code_sha256": "66c1c86d64769004682dc57063d97b6ed0ebc1b3eb498376579ab6d57bb6a38a",
+    "source_sha256": "22cc9ad902624b669807b06fbf6b8105cbfcb6f6a97c0d928bf9bdd73aa7aea3",
+    "conditional_outcomes": [
+      [
+        24,
+        26
+      ],
+      [
+        24,
+        300
+      ],
+      [
+        52,
+        54
+      ],
+      [
+        52,
+        300
+      ],
+      [
+        112,
+        114
+      ],
+      [
+        112,
+        174
+      ],
+      [
+        172,
+        174
+      ],
+      [
+        172,
+        300
+      ],
+      [
+        376,
+        378
+      ],
+      [
+        376,
+        954
+      ],
+      [
+        452,
+        454
+      ],
+      [
+        452,
+        954
+      ],
+      [
+        528,
+        530
+      ],
+      [
+        528,
+        954
+      ],
+      [
+        556,
+        558
+      ],
+      [
+        556,
+        890
+      ],
+      [
+        588,
+        590
+      ],
+      [
+        588,
+        954
+      ],
+      [
+        664,
+        666
+      ],
+      [
+        664,
+        954
+      ],
+      [
+        740,
+        742
+      ],
+      [
+        740,
+        954
+      ],
+      [
+        772,
+        774
+      ],
+      [
+        772,
+        954
+      ],
+      [
+        888,
+        890
+      ],
+      [
+        888,
+        954
+      ],
+      [
+        984,
+        986
+      ],
+      [
+        984,
+        1358
+      ],
+      [
+        1060,
+        1062
+      ],
+      [
+        1060,
+        1358
+      ],
+      [
+        1136,
+        1138
+      ],
+      [
+        1136,
+        1358
+      ]
+    ],
+    "nested_code_objects_excluded": true
+  },
+  "raw_opcode_offsets": [
+    2,
+    14,
+    24,
+    300,
+    312,
+    314,
+    336,
+    338,
+    342,
+    352,
+    354,
+    360,
+    364,
+    374,
+    954,
+    956,
+    966,
+    976,
+    978,
+    984,
+    1358,
+    1370
+  ],
+  "extended_conditional_jumps": [
+    {
+      "prefix_offset": 374,
+      "jump_offset": 376,
+      "jump_target": 954,
+      "prefix_executed": true,
+      "jump_opcode_trace_event_seen": false
+    }
+  ],
+  "missed_by_jump_offset_only_collector": [
+    {
+      "prefix_offset": 374,
+      "jump_offset": 376,
+      "jump_target": 954,
+      "prefix_executed": true,
+      "jump_opcode_trace_event_seen": false
+    }
+  ],
+  "numerator_measurement_incomplete": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "source_sha256": "4b856a4c51710e49a7bcdf097c5d15ad407ce0bbfea73ad6e9e511976a4d6cf2"
+}

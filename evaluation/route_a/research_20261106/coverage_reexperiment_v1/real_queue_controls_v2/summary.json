@@ -1,0 +1,68 @@
+{
+  "control_only": true,
+  "domain": {
+    "schema": 1,
+    "template": "default",
+    "device": "cuda",
+    "mode": "forward_static_fullgraph",
+    "dtypes": [
+      "torch.float32",
+      "torch.float64",
+      "torch.float16",
+      "torch.bfloat16",
+      "torch.int8",
+      "torch.int16",
+      "torch.int32",
+      "torch.int64",
+      "torch.bool"
+    ],
+    "layout_actions": [
+      "contiguous",
+      "column_major"
+    ],
+    "shape_actions": [
+      0,
+      1,
+      2,
+      7,
+      16,
+      17,
+      32
+    ],
+    "zero_dimensions_legal": true,
+    "shape_zero_binding_currently_supported": false,
+    "max_storage_elements": 4000000,
+    "generator_shapes": "unchanged upstream semantic specifications; no decision-specific shape generator",
+    "input_values": "per-sample seeded normal floating/complex,0..1 integral/bool; shared value-domain screen rejects unsafe combinations without repair",
+    "binding_parameters": "only registered shape,dtype,layout actions; topology and other semantic parameters frozen",
+    "source_sha256": "2c914dc45da954900dde988b5cc0cd918d7ba4195ad4b91fb74489e47648f434",
+    "template_source": "/data1/tzh/submission-artifact/third_party/torchfuzz/cuda/_codegen.py",
+    "template_source_sha256": "6bf2c587fb339081116f4b7265e3c24fdab5df82a2dbbe66638ae2c482679628"
+  },
+  "candidate_count_by_target": {
+    "bmm_outer_product_v4": 56,
+    "mm_outer_product_v4": 60,
+    "addmm_gpu_outer_product_v4": 20
+  },
+  "input_prefix_cases": 24,
+  "source_order_target_count": 3,
+  "fixed_quota_per_target": 3,
+  "binding_attempts": 136,
+  "binding_failures": 0,
+  "real_observed_feedback": 4,
+  "post_feedback_selections": 2,
+  "feedback_changed_next_action": true,
+  "full_wall_seconds": 149.9515379369259,
+  "source_sha256": {
+    "qualify_real_queue_v2.py": "52906174cbcbd0be8a3a4913c898c45665b154e4bbb06481c32d3a3bbe817b7b",
+    "candidate_queue.py": "bd1c6b46c0797a55369c16f2e7a9dc61e083a09096102978ea00d1db15a488f2",
+    "decision_feedback.py": "68dbb7150ec950856dd9e85b8daa2b7e133f43709d3517f9732b6cd874c8c535",
+    "runtime_audit.py": "3de3e720db7e0119c574def81091a06ce4967b5823da4076a94586c9a7095ee5",
+    "dag_binding.py": "211d673953f964a030b154239a55aa97a25885edd799f354a48465be20504b99",
+    "common_domain.py": "2c914dc45da954900dde988b5cc0cd918d7ba4195ad4b91fb74489e47648f434"
+  },
+  "source_unchanged": true,
+  "primary_denominator_committed": false,
+  "effect_experiment_started": false,
+  "not_effect_evidence": "C execution plus unexecuted shadow B; historical condition controls; original graphs pregenerated; no A/B/C effect claim"
+}

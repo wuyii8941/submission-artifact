@@ -1,0 +1,10 @@
+{
+  "status": "frozen_before_effect_experiment",
+  "metric_name": "预登记算子实现分支结果的观测覆盖率",
+  "branch_candidate_count": 712,
+  "excluded_outcome_count": 70,
+  "denominator": 642,
+  "primary_denominator_committed": true,
+  "effect_experiment_started": false,
+  "universe_sha256": "053491a87f700fd6ae38111d3b6a7e15fdd8ca886494bd182c5569beb4f66d83"
+}
